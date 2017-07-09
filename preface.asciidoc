@@ -1,83 +1,83 @@
-[preface]
-== Preface
+[머리말]
+== 머리말
 
-=== Writing the Bitcoin Book
+=== Bitcoin 서적 쓰기
 
-((("bitcoin", "benefits of", id="BCbasicbenefits0")))((("decentralized systems", "bitcoin as")))I first stumbled upon bitcoin in mid-2011. My immediate reaction was more or less "Pfft! Nerd money!" and I ignored it for another six months, failing to grasp its importance. This is a reaction that I have seen repeated among many of the smartest people I know, which gives me some consolation. The second time I came across bitcoin, in a mailing list discussion, I decided to read the whitepaper written by Satoshi Nakamoto to study the authoritative source and see what it was all about. ((("digital currencies", "bitcoin vs. others")))I still remember the moment I finished reading those nine pages, when I realized that bitcoin was not simply a digital currency, but a network of trust that could also provide the basis for so much more than just currencies. The realization that "this isn't money, it's a decentralized trust network," started me on a four-month journey to devour every scrap of information about bitcoin I could find. I became obsessed and enthralled, spending 12 or more hours each day glued to a screen, reading, writing, coding, and learning as much as I could. I emerged from this state of fugue, more than 20 pounds lighter from lack of consistent meals, determined to dedicate myself to working on bitcoin.
+((("bitcoin", "benefits of", id="BCbasicbenefits0")))((("decentralized systems", "bitcoin as")))나는 2011 년 중반에 비트 코인을 처음 발견했습니다. 나의 즉각적인 반응은 어느 정도 "Pfft! Nerd money!"였습니다. 나는 그 중요성을 이해하지 못하고 또 다른 6 개월 동안 그것을 무시했습니다. 이것은 제가 아는 많은 사람들 중에서 제가 반복적으로 보았던 반응입니다. 두 번째로 메일 링리스트 토론에 나왔을 때, 나는 Satoshi Nakamoto가 작성한 백서를 읽고 신뢰할 수있는 출처를 연구하고 그것이 무엇에 관한 것인지 알아보기로 결정했습니다. (비트 콜인 대 비트 코인 대))) 비트 코인은 단순한 디지털 통화가 아니라 신뢰를 제공하는 네트워크라는 것을 깨달았을 때 나는 여전히 9 페이지를 읽은 순간을 기억합니다. 단순한 통화 그 이상을위한 토대. "이것은 돈이 아니며 분산 된 신뢰 네트워크입니다"라는 깨달음은 제가 발견 할 수있는 비트 코에 대한 모든 정보 스크랩을 삼키기 위해 4 개월 간의 여행을 시작했습니다. 나는 매일 적어도 12 시간 이상을 화면에 붙이고, 읽고, 쓰고, 코딩하고, 최대한 많이 학습하는 데 집착하고 열중했습니다. 나는 푸가의이 상태에서, 비트 코인 작업에 자신을 바치기로 결심 한 일관된 식사 부족으로 20 파운드 이상 가벼워졌습니다.
 
-Two years later, after creating a number of small startups to explore various bitcoin-related services and products, I decided that it was time to write my first book. Bitcoin was the topic that had driven me into a frenzy of creativity and consumed my thoughts; it was the most exciting technology I had encountered since the internet. It was now time to share my passion about this amazing technology with a broader audience.
+2 년 후 다양한 비트 코인 관련 서비스 및 제품을 탐색 할 수있는 소규모 벤처 기업을 만든 후 첫 번째 책을 쓸 시간이라고 결정했습니다. Bitcoin은 나를 창의력의 광란으로 몰고 내 생각을 소모시킨 주제였습니다. 그것은 내가 인터넷에서 만난 가장 흥미로운 기술이었습니다. 이제이 놀라운 기술에 대한 열정을 더 많은 사람들과 나누어야 할 때입니다.
 
-=== Intended Audience
+=== 대상 독자
 
-((("intended audience")))This book is mostly intended for coders. If you can use a programming language, this book will teach you how cryptographic currencies work, how to use them, and how to develop software that works with them. The first few chapters are also suitable as an in-depth introduction to bitcoin for noncoders—those trying to understand the inner workings of bitcoin and cryptocurrencies.
+((("intended audience")))이 책은 주로 코더를 대상으로합니다. 프로그래밍 언어를 사용할 수있는 경우이 설명서는 암호화 통화의 작동 방식, 사용 방법 및 함께 작동하는 소프트웨어 개발 방법을 알려줍니다. 처음 몇 장은 비 코더 (bitcoin과 cryptocurrencies의 내부 동작을 이해하려고 시도하는 사람들)를위한 비트 코어에 대한 심층적 인 소개로도 적합합니다.
 
-=== Why Are There Bugs on the Cover?
+=== 표지에 버그가있는 이유는 무엇입니까?
 
-((("decentralized systems", "in nature")))The leafcutter ant is a species that exhibits highly complex behavior in a colony super-organism, but each individual ant operates on a set of simple rules driven by social interaction and the exchange of chemical scents (pheromones). Per Wikipedia: "Next to humans, leafcutter ants form the largest and most complex animal societies on Earth." Leafcutter ants don't actually eat leaves, but rather use them to farm a fungus, which is the central food source for the colony. Get that? These ants are farming!
+((("decentralized systems", "in nature"))(잎사귀 개미는 식민지 미생물에서 매우 복잡한 행동을 보이는 종이다. 그러나 개개의 개미는 사회적 상호 작용에 의해 유도 된 일련의 단순한 규칙에 따라 작동한다. 화학 냄새 교환 (페로몬). 위키 피 디아 (Wikipedia) : "인간 옆에, 리프 커터 개미가 지구상에서 가장 크고 복잡한 동물 사회를 형성합니다." 잎이 많은 개미는 실제로 잎을 먹지 않고 식민지의 중심 음식원 인 곰팡이를 기른다. 알 겠어? 이 개미는 경작 중입니다!
 
-Although ants form a caste-based society and have a queen for producing offspring, there is no central authority or leader in an ant colony. The highly intelligent and sophisticated behavior exhibited by a multimillion-member colony is an emergent property from the interaction of the individuals in a social network.
+개미는 계급 기반 사회를 형성하고 자손을 낳기위한 여왕이 있지만 개미 식민지에는 중앙 권위 나 지도자가 없다. 수백만 명의 회원 집단에 의해 전시 된 고도로 지능적이고 정교한 행동은 소셜 네트워크에서 개인의 상호 작용에서 창발 된 속성입니다.
 
-Nature demonstrates that decentralized systems can be resilient and can produce emergent complexity and incredible sophistication without the need for a central authority, hierarchy, or complex parts.
+자연은 분산 된 시스템이 탄력적 일 수 있으며 중앙 권한, 계층 구조 또는 복잡한 부분을 필요로하지 않으면 서 창 발적 복잡성과 믿을 수없는 정교함을 나타낼 수 있음을 보여줍니다.
 
-((("decentralized systems", "benefits of")))Bitcoin is a highly sophisticated decentralized trust network that can support myriad financial processes. Yet, each node in the bitcoin network follows a few simple mathematical rules. The interaction between many nodes is what leads to the emergence of the sophisticated behavior, not any inherent complexity or trust in any single node. Like an ant colony, the bitcoin network is a resilient network of simple nodes following simple rules that together can do amazing things without any central coordination.((("", startref="BCbasicbenefits0")))
+((("decentralized systems", "benefits of")))Bitcoin은 무수히 많은 재무 프로세스를 지원할 수있는 고도로 정교화 된 분산 된 신뢰 네트워크입니다. 그러나 비트 코인 네트워크의 각 노드는 몇 가지 간단한 수학적 규칙을 따릅니다. 많은 노드 사이의 상호 작용은 복잡한 노드의 고유 한 복잡성이나 신뢰가 아니라 정교한 동작의 출현으로 연결됩니다. 개미 식민지와 마찬가지로 비트 코인 네트워크는 중앙 규칙없이 놀라운 규칙을 수행 할 수있는 간단한 규칙을 따르는 단순한 노드의 탄력적 인 네트워크입니다((("", startref="BCbasicbenefits0")))
 
-=== Conventions Used in This Book
+=== 이 책에 사용 된 규칙
 
-((("typographical conventions")))The following typographical conventions are used in this book:
+((("typographical conventions")))이 책에는 다음과 같은 인쇄 협약이 사용됩니다.
 
-_Italic_:: Indicates new terms, URLs, email addresses, filenames, and file extensions.
+_Italic_:: 새로운 용어, URL, 전자 메일 주소, 파일 이름 및 파일 확장명을 나타냅니다.
 
-+Constant width+:: Used for program listings, as well as within paragraphs to refer to program elements such as variable or function names, databases, data types, environment variables, statements, and keywords.
++Constant width+:: 프로그램 목록뿐만 아니라 변수 또는 함수 이름, 데이터베이스, 데이터 유형, 환경 변수, 명령문 및 키워드와 같은 프로그램 요소를 참조하는 단락 내에서 사용됩니다.
 
-**`Constant width bold`**:: Shows commands or other text that should be typed literally by the user.
+**`Constant width bold`**:: 문자 그대로 사용자가 입력해야하는 명령이나 다른 텍스트를 보여줍니다.
 
-_++Constant width italic++_:: Shows text that should be replaced with user-supplied values or by values determined by context.
+_++Constant width italic++_:: 사용자 제공 값 또는 컨텍스트에 의해 결정된 값으로 대체되어야하는 텍스트를 표시합니다.
 
 
 [TIP]
 ====
-This icon signifies a tip or suggestion.
+이 아이콘은 팁 또는 제안을 나타냅니다.
 ====
 
 [NOTE]
 ====
-This icon signifies a general note.
+이 아이콘은 일반적인 참고 사항입니다.
 ====
 
 [WARNING]
 ====
-This icon indicates a warning or caution.
+이 아이콘은 경고 또는주의를 나타냅니다.
 ====
 
-=== Code Examples
+=== 코드 예제
 
-((("code examples, obtaining and using", id="codeuse00")))The examples are illustrated in Python, C++, and using the command line of a Unix-like operating system such as Linux or macOS. All code snippets are available in the https://github.com/aantonop/bitcoinbook[GitHub repository] in the _code_ subdirectory of the main repo. Fork the book code, try the code examples, or submit corrections via GitHub.
+((("code examples, obtaining and using", id="codeuse00")))예제는 Python, C ++ 및 Linux 또는 macOS와 같은 Unix 계열 운영 체제의 명령 줄을 사용하여 설명합니다. 모든 코드 스 니펫은 기본 저장소의 _code_ 하위 디렉토리에있는 https://github.com/aantonop/bitcoinbook[GitHub 저장소]에서 사용할 수 있습니다. 책 코드를 포크로 찍거나, 코드 예제를 시도하거나, GitHub를 통해 수정 사항을 제출하십시오.
 
-All the code snippets can be replicated on most operating systems with a minimal installation of compilers and interpreters for the corresponding languages. Where necessary, we provide basic installation instructions and step-by-step examples of the output of those instructions.
+모든 코드 스 니펫은 해당 언어에 대한 컴파일러 및 해석기를 최소한으로 설치하여 대부분의 운영 체제에서 복제 할 수 있습니다. 필요한 경우 기본 설치 지침과 해당 지침의 출력에 대한 단계별 예제를 제공합니다.
 
-Some of the code snippets and code output have been reformatted for print. In all such cases, the lines have been split by a backslash (\) character, followed by a newline character. When transcribing the examples, remove those two characters and join the lines again and you should see identical results as shown in the example.
+코드 스 니펫 중 일부와 코드 출력이 인쇄용으로 다시 포맷되었습니다. 이 경우 줄은 백 슬래시 (\) 문자와 줄 바꿈 문자로 구분됩니다. 예제를 옮길 때, 두 문자를 제거하고 행을 다시 결합하면 예제와 같은 결과가 나타납니다.
 
-All the code snippets use real values and calculations where possible, so that you can build from example to example and see the same results in any code you write to calculate the same values. For example, the private keys and corresponding public keys and addresses are all real. The sample transactions, blocks, and blockchain references have all been introduced in the actual bitcoin blockchain and are part of the public ledger, so you can review them on any bitcoin system.
+모든 코드 스 니펫은 가능한 경우 실제 값과 계산을 사용하므로 예제에서 예제로 빌드하고 작성한 코드에서 동일한 결과를보고 동일한 값을 계산할 수 있습니다. 예를 들어 개인 키와 해당 공개 키 및 주소는 모두 실제입니다. 샘플 거래, 블록 및 블록 체인 참조는 모두 실제 비트 코인 블록 체인에 도입되었으며 공공 원장의 일부이므로 모든 비트 코인 시스템에서 검토 할 수 있습니다.
 
-=== Using Code Examples
+=== 코드 예제 사용하기
 
-This book is here to help you get your job done. In general, if example code is offered with this book, you may use it in your programs and documentation. You do not need to contact us for permission unless you’re reproducing a significant portion of the code. For example, writing a program that uses several chunks of code from this book does not require permission. Selling or distributing a CD-ROM of examples from O’Reilly books does require permission. Answering a question by citing this book and quoting example code does not require permission. Incorporating a significant amount of example code from this book into your product’s documentation does require permission.
+이 책은 직업을 완성시키는 데 도움이됩니다. 일반적으로 예제 코드가이 책과 함께 제공되면 프로그램 및 설명서에이 코드를 사용할 수 있습니다. 코드의 상당 부분을 복제하지 않는 한 우리에게 허가를 요청할 필요가 없습니다. 예를 들어,이 책의 여러 청크 코드를 사용하는 프로그램을 작성하는 데는 권한이 필요하지 않습니다. O'Reilly 서적에서 CD-ROM을 판매하거나 배포하려면 허가가 필요합니다. 이 책을 인용하고 예제 코드를 인용하여 질문에 대답하는 것은 허가가 필요하지 않습니다. 이 책의 상당량의 예제 코드를 제품 설명서에 통합하려면 허가가 필요합니다.
 
-((("attribution")))We appreciate, but do not require, attribution. An attribution usually includes the title, author, publisher, and ISBN. For example: “_Mastering Bitcoin_ by Andreas M. Antonopoulos (O’Reilly). Copyright 2017 Andreas M. Antonopoulos, 978-1-491-95438-6.”
+((("attribution")))귀속되기를 요청 하나, 요구하지는 않습니다. 저작자 표시에는 일반적으로 제목, 저자, 발행인 및 ISBN이 포함됩니다. 예를 들면 : "_Mastering Bitcoin_ Andreas M. Antonopoulos (O'Reilly). 저작권 2017 Andreas M. Antonopoulos, 978-1-491-95438-6. "
 
-((("open source licenses")))Some editions of this book are offered under an open source license, such as https://creativecommons.org/licenses/by-nc/4.0/[CC-BY-NC], in which case the terms of that license apply.
+((("open source licenses")))이 책의 일부 버전은 https://creativecommons.org/licenses/by-nc/4.0/[CC-BY-NC]와 같은 오픈 소스 라이선스에 따라 제공됩니다. 이 경우 면허 조건이 적용됩니다.
 
-If you feel your use of code examples falls outside fair use or the permission given above, feel free to contact us at pass:[<a href="mailto:permissions@oreilly.com">permissions@oreilly.com</a>].
+코드 예제를 공정 사용 또는 위에 명시된 권한 범위를 벗어난 것으로 생각되면 패스:[<a href="mailto:permissions@oreilly.com">permissions@oreilly.com</a>].
 
-=== Bitcoin Addresses and Transactions in This Book
+=== 이 책의 Bitcoin 주소와 트랜잭션
 
-((("getting started", "warnings and cautions")))((("warnings and cautions", "avoid sending money to addresses appearing in book")))((("keys and addresses", "warnings and cautions")))((("transactions", "warnings and cautions")))((("blockchain applications", "warnings and cautions")))((("QR codes", "warnings and cautions")))The bitcoin addresses, transactions, keys, QR codes, and blockchain data used in this book are, for the most part, real. That means you can browse the blockchain, look at the transactions offered as examples, retrieve them with your own scripts or programs, etc.
+((("getting started", "warnings and cautions")))((("warnings and cautions", "avoid sending money to addresses appearing in book")))((("keys and addresses", "warnings and cautions")))((("transactions", "warnings and cautions")))((("blockchain applications", "warnings and cautions")))((("QR codes", "warnings and cautions")))이 책에서 사용 된 비트 코인 주소, 트랜잭션, 키, QR 코드 및 블록 체인 데이터는 대부분 실제적입니다. 즉, 블록 체인을 검색하고, 예제로 제공되는 트랜잭션을보고, 자신의 스크립트 나 프로그램 등으로 검색 할 수 있습니다.
 
-However, note that the private keys used to construct addresses are either printed in this book, or have been "burned." That means that if you send money to any of these addresses, the money will either be lost forever, or in some cases everyone who can read the book can take it using the private keys printed in here.
+그러나 주소를 구성하는 데 사용되는 개인 키는이 설명서에 인쇄되거나 "구운"것입니다. 즉,이 주소 중 하나에 돈을 보내면 영원히 돈을 잃게되거나 책을 읽을 수있는 모든 사람이 여기에 인쇄 된 개인 키를 사용하여 돈을 가져갈 수 있습니다.
 
-[WARNING]
+[경고]
 ====
-DO NOT SEND MONEY TO ANY OF THE ADDRESSES IN THIS BOOK. Your money will be taken by another reader, or lost forever.((("", startref="codeuse00")))
+이 책의 주소 중 어느 곳에도 돈을 보내지 마십시오. 귀하의 돈은 다른 독자가 가져 가거나 영원히 잃게됩니다.((("", startref="codeuse00")))
 ====
 
 === O'Reilly Safari
@@ -140,27 +140,27 @@ link:$$https://patreon.com/aantonop$$[]
 
 === Acknowledgments
 
-((("acknowledgments", id="acknowledge0")))This book represents the efforts and contributions of many people. I am grateful for all the help I received from friends, colleagues, and even complete strangers, who joined me in this effort to write the definitive technical book on cryptocurrencies and bitcoin.
+((("acknowledgments", id="acknowledge0")))이 책은 많은 사람들의 노력과 기여를 나타냅니다. cryptocurrencies와 bitcoin에 관한 확실한 기술 서적을 쓰려고 노력하면서, 친구, 동료, 심지어 완전한 이방인들로부터받은 모든 도움에 감사드립니다.
 
-It is impossible to make a distinction between the bitcoin technology and the bitcoin community, and this book is as much a product of that community as it is a book on the technology. My work on this book was encouraged, cheered on, supported, and rewarded by the entire bitcoin community from the very beginning until the very end. More than anything, this book has allowed me to be part of a wonderful community for two years and I can't thank you enough for accepting me into this community. There are far too many people to mention by name—people I've met at conferences, events, seminars, meetups, pizza gatherings, and small private gatherings, as well as many who communicated with me by Twitter, on reddit, on bitcointalk.org, and on GitHub who have had an impact on this book. Every idea, analogy, question, answer, and explanation you find in this book was at some point inspired, tested, or improved through my interactions with the community. Thank you all for your support; without you this book would not have happened. I am forever grateful.
+Bitcoin 기술과 Bitcoin 커뮤니티를 구별하는 것은 불가능하며,이 책은 기술에 관한 책과 마찬가지로 커뮤니티의 많은 제품입니다. 이 책에 대한 저의 작업은 처음부터 끝까지 전체 비트 코인 커뮤니티에 격려 받고, 응원하고, 지원하고, 보상했습니다. 무엇보다이 책은 내가 2 년 동안 훌륭한 공동체의 일원이 될 수있게 해 주었고, 나를이 공동체에 받아 들일 수있을만큼 충분히 감사 할 수는 없다. 회의, 이벤트, 세미나, 모임, 피자 모임, 소규모 개인 모임에서 만난 사람들, 트위터, reddit, bitcointalk에서 저와 대화 한 사람들이 너무 많습니다. org 및 GitHub에서이 책에 영향을 미쳤습니다. 이 책에서 발견 한 모든 생각, 비유, 질문, 대답 및 설명은 어느 시점에서 커뮤니티와의 상호 작용을 통해 영감을 얻거나 테스트를 거쳤거나 개선되었습니다. 귀하의 모든 지원에 감사드립니다. 너 없이는이 책은 안 들었을거야. 나는 영원히 감사한다.
 
-The journey to becoming an author starts long before the first book, of course. My first language (and schooling) was Greek, so I had to take a remedial English writing course in my first year of university. I owe thanks to Diana Kordas, my English writing teacher, who helped me build confidence and skills that year. Later, as a professional, I developed my technical writing skills on the topic of data centers, writing for _Network World_ magazine. I owe thanks to John Dix and John Gallant, who gave me my first writing job as a columnist at _Network World_ and to my editor Michael Cooney and my colleague Johna Till Johnson who edited my columns and made them fit for publication. Writing 500 words a week for four years gave me enough experience to eventually consider becoming an author.
+물론 저자가되기위한 여행은 첫 번째 책이 나오기 훨씬 전에 시작됩니다. 제 첫 번째 언어 (그리고 학교 교육)는 그리스어 였으므로 대학 1 학년 때 영어 구술 수업을해야했습니다. 저는 저의 영어 작문 선생님 인 다이아나 코르다 (Diana Kordas)에게 감사드립니다. 그 선생님은 그 해에 자신감과 기술을 키울 수있게 도와주었습니다. 나중에 전문가로서 저는 _Network World_ 잡지에 대한 글쓰기를 통해 데이터 센터 주제에 관한 기술 작문 기술을 개발했습니다. _Network World _에서 칼럼니스트로 처음 저술 한 John Dix와 John Gallant와 저의 편집인 인 Michael Cooney와 저의 동료 인 Johna Till Johnson이 저의 칼럼을 편집하여 출판에 적합하게되어 감사드립니다. 4 년 동안 일주일에 500 단어를 쓰면 저에게 충분한 경험을주었습니다.
 
-Thanks also to those who supported me when I submitted my book proposal to O'Reilly, by providing references and reviewing the proposal. Specifically, thanks to John Gallant, Gregory Ness, Richard Stiennon, Joel Snyder, Adam B. Levine, Sandra Gittlen, John Dix, Johna Till Johnson, Roger Ver, and Jon Matonis. Special thanks to Richard Kagan and Tymon Mattoszko, who reviewed early versions of the proposal and Matthew Taylor, who copyedited the proposal.
+O'Reilly에게 책 제안서를 제출할 때 저를지지 해준 사람들에게도 참고서를 제공하고 제안서를 검토해 주셔서 감사드립니다. John Gallant, Gregory Ness, Richard Stiennon, Joel Snyder, Adam B. Levine, Sandra Gittlen, John Dix, Johna Till Johnson, Roger Ver 및 Jon Matonis에게 감사드립니다. 제안의 초기 버전을 검토 한 Richard Kagan과 Tymon Mattoszko와 제안서를 복제 한 Matthew Taylor에게 감사드립니다.
 
-Thanks to Cricket Liu, author of the O'Reilly title _DNS and BIND_, who introduced me to O'Reilly. Thanks also to Michael Loukides and Allyson MacDonald at O'Reilly, who worked for months to help make this book happen. Allyson was especially patient when deadlines were missed and deliverables delayed as life intervened in our planned schedule. For the second edition, I thank Timothy McGovern for guiding the process, Kim Cofer for patiently editing, and Rebecca Panzer for illustrating many new diagrams.
+O'Reilly title _DNS와 BIND_의 저자 인 Cricket Liu에게 감사 드리며 O'Reilly에게 저를 소개했습니다. 오라일리 (O'Reilly)의 Michael Loukides와 Allyson MacDonald에게도 감사합니다. 오라일리는 몇 달 동안이 책을 만드는 데 도움을주었습니다. Allyson은 마감 시간을 놓치고 계획된 일정에 생명이 개입되면 딜리버리가 지연 될 때 특히 참을성이있었습니다. 두 번째 판의 경우, Timothy McGovern이 인내심있게 편집 한 Kim Cofer와 많은 새로운 다이어그램을 보여준 Rebecca Panzer에게 감사의 인사를 전합니다.
 
-The first few drafts of the first few chapters were the hardest, because bitcoin is a difficult subject to unravel. Every time I pulled on one thread of the bitcoin technology, I had to pull on the whole thing. I repeatedly got stuck and a bit despondent as I struggled to make the topic easy to understand and create a narrative around such a dense technical subject. Eventually, I decided to tell the story of bitcoin through the stories of the people using bitcoin and the whole book became a lot easier to write. I owe thanks to my friend and mentor, Richard Kagan, who helped me unravel the story and get past the moments of writer's block. I thank Pamela Morgan, who reviewed early drafts of each chapter in the first and second edition of the book, and asked the hard questions to make them better. Also, thanks to the developers of the San Francisco Bitcoin Developers Meetup group as well as Taariq Lewis and Denise Terry for helping test the early material. Thanks also to Andrew Naugler for infographic design.
+비트 코인은 풀기 어려운 주제이기 때문에 처음 몇 장의 초안은 가장 힘들었습니다. 비트 코인 기술의 한 가지 실마리를 잡을 때마다 나는 모든 것을 끌어 당겨야했습니다. 나는 주제가 이해하기 쉽도록 고투하고 그러한 빽빽한 기술 주제에 대한 서사를 만드는 데 어려움을 겪었을 때마다 반복적으로 조금씩 낙담했다. 결국 나는 비트 코인 (bitcoin)을 사용하는 사람들의 이야기를 통해 비트 코인의 이야기를하기로 결정했고, 전체 책은 훨씬 쉽게 쓰게되었습니다. 나는 이야기를 풀어주고 작가 블록의 순간을 지나갈 수있게 도와 준 친구이자 스승 인 Richard Kagan에게 감사해야합니다. 나는이 책의 첫 번째와 두 번째 판에서 각 장의 초안을 검토 한 Pamela Morgan에게 감사를 드리며, 어려운 질문을 통해 더 좋게 만들 것을 요청했다. 또한 San Francisco Bitcoin Developers Meetup 그룹의 개발자뿐만 아니라 Taariq Lewis 및 Denise Terry 덕분에 초기 자료를 테스트 할 수있었습니다. Infographic 디자인을 담당 한 Andrew Naugler에게도 감사드립니다.
 
-During the development of the book, I made early drafts available on GitHub and invited public comments. More than a hundred comments, suggestions, corrections, and contributions were submitted in response. Those contributions are explicitly acknowledged, with my thanks, in <<github_contrib>>. Most of all, my sincere thanks to my volunteer GitHub editors Ming T. Nguyen (1st edition) and Will Binns (2nd edition), who worked tirelessly to curate, manage and resolve pull requests, issue reports, and perform bug fixes on GitHub.
+이 책을 개발하는 동안 GitHub에서 초기 초안을 제공하고 대중의 의견을 초청했습니다. 이에 대해 100 건이 넘는 의견, 제안, 수정 및 기고가 제출되었습니다. 그 공헌은 << github_contrib >>에 내 감사와 함께 명시 적으로 인정됩니다. 무엇보다 내 자원 봉사자 인 GitHub 편집자 Ming T. Nguyen (1 판)과 Will Binns (2 판)는 pull 요청을 큐 레이트, 관리 및 해결하고 보고서를 발행하고 GitHub에서 버그를 수정하기 위해 끊임없이 노력했습니다.
 
-Once the book was drafted, it went through several rounds of technical review. Thanks to Cricket Liu and Lorne Lantz for their thorough review, comments, and support.
+책이 초안되면 몇 차례의 기술 검토를 거쳤습니다. Cricket Liu와 Lorne Lantz의 철저한 검토, 의견 및 지원에 감사드립니다.
 
-Several bitcoin developers contributed code samples, reviews, comments, and encouragement. Thanks to Amir Taaki and Eric Voskuil for example code snippets and many great comments; Chris Kleeschulte for contributing the Bitcore appendix; Vitalik Buterin and Richard Kiss for help with elliptic curve math and code contributions; Gavin Andresen for corrections, comments, and encouragement; Michalis Kargakis for comments, contributions, and btcd writeup; and Robin Inge for errata submissions improving the second print. In the second edition, I again received a lot of help from many Bitcoin Core developers, including Eric Lombrozo who demystified Segregated Witness, Luke-Jr who helped improve the chapter on transactions, Johnson Lau who reviewed Segregated Witness and other chapters, and many others. I owe thanks to Joseph Poon, Tadge Dryja, and Olaoluwa Osuntokun who explained Lightning Network, reviewed my writing, and answered questions when I got stuck.
+여러 비트 코인 개발자가 코드 샘플, 리뷰, 의견 및 격려를 제공했습니다. Amir Taaki와 Eric Voskuil에게 예제 코드 스 니펫 및 많은 훌륭한 의견을 제공합니다. Bitcore 부록에 기고 한 Chris Kleeschulte; Vitalik Buterin과 Richard Kiss는 타원 곡선 수학과 코드 기여에 도움을주었습니다. Gavin Andresen은 정정, 의견 및 격려를 요청합니다. 코멘트, 공헌 및 btcd writeup를위한 Michalis Kargakis; 그리고 두 번째 인쇄본을 개선 한 정오표 제출을위한 Robin Inge. 두 번째 에디션에서, 나는 Bitcoin Core 개발자들로부터 많은 도움을 받았다. Eric Lombrozo는 분리 된 증인, 트랜잭션을 다루는 Luke-Jr, 분리 된 증인 및 다른 장들을 검토 한 Johnson Lau 및 많은 다른 사람들 . 나는 Joseph Poon, Tadge Dryja 및 Olaoluwa Osuntokun에게 Lightning Network에 대해 설명하고, 필자의 글을 검토하고, 내가 붙어있을 때 질문에 대답 한 덕분에 빚을졌습니다.
 
-I owe my love of words and books to my mother, Theresa, who raised me in a house with books lining every wall. My mother also bought me my first computer in 1982, despite being a self-described technophobe. My father, Menelaos, a civil engineer who just published his first book at 80 years old, was the one who taught me logical and analytical thinking and a love of science and engineering.
+나는 모든 벽을 감싸고있는 서적들이있는 집에서 나를 일으켰던 나의 어머니, 테레사에게 내 말과 책에 대한 나의 사랑을 빚지고있다. 우리 엄마도 1982 년 자기 소개 기술 공룡 이었음에도 불구하고 저에게 첫 번째 컴퓨터를 사 주셨습니다. 나의 아버지, 80 세의 나이에 처음으로 책을 출간 한 토목 기사 인 Menelaos는 논리적이고 분석적인 사고와 과학과 공학에 대한 사랑을 가르쳐주었습니다.
 
-Thank you all for supporting me throughout this journey.
+이 여행을 통해 저를지지 해주신 모든 분들께 감사드립니다.
 
 [[github_contrib]]
 ==== Early Release Draft (GitHub Contributions)
