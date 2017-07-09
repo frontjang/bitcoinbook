@@ -1,118 +1,118 @@
 [[ch12]]
-== Blockchain Applications
+== 블록 체인 어플리케이션
 
-Let's now build on our understanding of bitcoin by looking at it as an _application platform_. Nowadays, many people use the term "blockchain" to refer to any application platform that shares the design principles of bitcoin. The term is often misused and applied to many things that fail to deliver the primary features that bitcoin's blockchain delivers.
+이제 응용 프로그램 플랫폼으로 보는 비트 코인에 대한 이해를 기반으로합니다. 요즘 많은 사람들이 비트 코인의 디자인 원칙을 공유하는 모든 응용 프로그램 플랫폼을 지칭하기 위해 "블록 체인 (blockchain)"이라는 용어를 사용합니다. 이 용어는 종종 잘못 사용되어 비트 코인의 블록 체인이 제공하는 주요 기능을 제공하지 못하는 많은 요소에 적용됩니다.
 
-In this chapter we will look at the features offered by the bitcoin blockchain, as an application platform. We will consider the application building _primitives_, which form the building blocks of any blockchain application. We will look at several important applications that use these primitives, such as colored coins, payment (state) channels, and routed payment channels (Lightning Network).
+이 장에서는 비트 코인 블록 체인이 제공하는 기능을 응용 프로그램 플랫폼으로 살펴 보겠습니다. 블록 체인 응용 프로그램의 구성 요소를 형성하는 응용 프로그램 구축 _ 초기 _을 고려할 것입니다. 착색 된 동전, 지불 (주) 채널 및 라우팅 된 지불 채널 (Lightning Network)과 같은 프리미티브를 사용하는 몇 가지 중요한 응용 프로그램을 살펴 보겠습니다.
 
-=== Introduction
+=== 소개
 
-((("blockchain applications", "benefits of bitcoin system")))The bitcoin system was designed as a decentralized currency and payment system. However, most of its functionality is derived from much lower-level constructs that can be used for much broader applications. Bitcoin wasn't built with components such as accounts, users, balances, and payments. Instead, it uses a transactional scripting language with low-level cryptographic functions, as we saw in <<transactions>>. Just like the higher-level concepts of accounts, balances, and payments can be derived from these basic primitives, so can many other complex applications. Thus, the bitcoin blockchain can become an application platform offering trust services to applications, such as smart contracts, far surpassing the original purpose of digital currency and payments.
+((("blockchain applications", "benefits of bitcoin system")))비트 코인 시스템은 분산 된 통화 및 지불 시스템으로 설계되었습니다. 그러나 대부분의 기능은 훨씬 더 광범위한 응용 프로그램에 사용할 수있는 훨씬 낮은 수준의 구조에서 파생되었습니다. Bitcoin은 계정, 사용자, 잔액 및 지불과 같은 구성 요소로 구축되지 않았습니다. 대신 << 트랜잭션 >>에서 보았 듯이 낮은 수준의 암호화 기능을 갖춘 트랜잭션 스크립팅 언어를 사용합니다. 계정, 잔액 및 지불의 상위 개념이 기본 프리미티브에서 파생 될 수 있으므로 다른 여러 복잡한 애플리케이션도 마찬가지입니다. 따라서 Bitcoin 블록 체인은 스마트 계약과 같은 응용 프로그램에 대한 신뢰 서비스를 제공하는 응용 프로그램 플랫폼이 될 수 있습니다.
 
-=== Building Blocks (Primitives)
+=== 빌딩 블록 (프리미티브)
 
-((("blockchain applications", "building blocks for (primitives)")))((("primitives")))When operating correctly and over the long term, the bitcoin system offers certain guarantees, which can be used as building blocks to create applications. These include:
+((("blockchain applications", "building blocks for (primitives)")))((("primitives")))비트 동전 시스템은 올바르게 작동하고 장기간에 걸쳐 특정 보증을 제공하며 건물로 사용할 수 있습니다 블록을 사용하여 응용 프로그램을 만듭니다. 여기에는 다음이 포함됩니다.
 
-No Double-Spend:: The most fundamental guarantee of bitcoin's decentralized consensus algorithm ensures that no UTXO can be spent twice.
+이중 지출 없음 :: 비트 코인의 분산 합의 알고리즘의 가장 기본적인 보증은 UTXO를 두 번 쓸 수 없음을 보장합니다.
 
-Immutability:: Once a transaction is recorded in the blockchain and sufficient work has been added with subsequent blocks, the transaction's data becomes immutable. Immutability is underwritten by energy, as rewriting the blockchain requires the expenditure of energy to produce Proof-of-Work. The energy required and therefore the degree of immutability increases with the amount of work committed on top of the block containing a transaction.
+Immutability :: 트랜잭션이 블록 체인에 기록되고 후속 블록에 충분한 작업이 추가되면 트랜잭션의 데이터가 변경되지 않습니다. 블록 체인을 다시 작성하면 작업 증명을 산출하기 위해 에너지를 소비해야하므로 불변의 힘이 에너지로 채워집니다. 필요한 에너지와 그에 따른 불변성의 정도는 트랜잭션이 포함 된 블록 위에 커밋 된 작업량에 따라 증가합니다.
 
-Neutrality:: The decentralized bitcoin network propagates valid transactions regardless of the origin or content of those transactions. This means that anyone can create a valid transaction with sufficient fees and trust they will be able to transmit that transaction and have it included in the blockchain at anytime.
+중립성 :: 분산 비트 코인 네트워크는 트랜잭션의 출처 또는 내용에 관계없이 유효한 트랜잭션을 전파합니다. 즉, 누구든지 충분한 거래와 적절한 거래를 생성하여 언제든지 거래를 전송하고 블록 체인에 포함시킬 수 있습니다.
 
-Secure Timestamping:: The consensus rules reject any block whose timestamp is too far in the past or future. This ensures that timestamps on blocks can be trusted. The timestamp on a block implies an unspent-before guarantee for the inputs of all included transactions.
+Secure Timestamping :: 합의 규칙은 과거 또는 미래의 타임 스탬프가 너무 먼 블록을 거부합니다. 이렇게하면 블록의 타임 스탬프를 신뢰할 수 있습니다. 블록에 대한 시간 소인은 모든 포함 된 트랜잭션의 입력에 대한 미사용 - 이전 보증을 의미합니다.
 
-Authorization:: Digital signatures, validated in a decentralized network, offer authorization guarantees. Scripts that contain a requirement for a digital signature cannot be executed without authorization by the holder of the private key implied in the script.
+Authorization :: 분산 된 네트워크에서 유효성이 검증 된 디지털 서명은 인증 보증을 제공합니다. 디지털 서명 요구 사항을 포함하는 스크립트는 스크립트에 암시 된 개인 키 보유자의 승인없이 실행할 수 없습니다.
 
-Auditability:: All transactions are public and can be audited. All transactions and blocks can be linked back in an unbroken chain to the genesis block.
+감사 기능 :: 모든 트랜잭션은 공개되어 있으며 감사 할 수 있습니다. 모든 트랜잭션과 블록은 깨지지 않은 체인에서 기원 블록으로 다시 링크 될 수 있습니다.
 
-Accounting:: In any transaction (except the coinbase transaction) the value of inputs is equal to the value of outputs plus fees. It is not possible to create or destroy bitcoin value in a transaction. The outputs cannot exceed the inputs.
+회계 :: 코인베이스 트랜잭션을 제외한 모든 트랜잭션에서 입력 값은 출력 값과 수수료를 합친 값과 같습니다. 트랜잭션에서 비트 코인 값을 작성하거나 파기 할 수 없습니다. 출력은 입력을 초과 할 수 없습니다.
 
-Nonexpiration:: A valid transaction does not expire. If it is valid today, it will be valid in the near future, as long as the inputs remain unspent and the consensus rules do not change.
+Nonexpiration :: 유효한 트랜잭션이 만료되지 않습니다. 오늘이 유효하다면, 입력 자료가 사용되지 않고 합의 규칙이 변경되지 않는 한 가까운 장래에 유효 할 것입니다.
 
-Integrity:: A bitcoin transaction signed with +SIGHASH_ALL+ or parts of a transaction signed by another +SIGHASH+ type cannot be modified without invalidating the signature, thus invalidating the transaction itself.
+무결성 :: + SIGHASH_ALL +로 서명 된 비트 동전 트랜잭션 또는 다른 + SIGHASH + 유형으로 서명 된 트랜잭션 부분은 서명을 무효화하지 않고는 수정할 수 없으므로 트랜잭션 자체가 무효화됩니다.
 
-Transaction Atomicity:: Bitcoin transactions are atomic. They are either valid and confirmed (mined) or not. Partial transactions cannot be mined and there is no interim state for a transaction. At any point in time a transaction is either mined, or not.
+Transaction Atomicity :: Bitcoin 트랜잭션은 원자 적입니다. 그들은 유효하거나 확인 된 (채굴 된) 것인지 그렇지 않은 것인지. 부분 트랜잭션은 마이닝 할 수 없으며 트랜잭션의 임시 상태는 없습니다. 어느 시점에서든 트랜잭션은 채굴되거나 채워지지 않습니다.
 
-Discrete (Indivisible) Units of Value:: Transaction outputs are discrete and indivisible units of value. They can either be spent or unspent, in full. They cannot be divided or partially spent.
+이산 적 (불가분) 가치의 단위 :: 거래 출력은 분리 된 개별 가치 단위입니다. 그들은 소비되거나 소비되지 않을 수 있습니다. 분할되거나 부분적으로 지출 될 수 없습니다.
 
-Quorum of Control:: Multisignature constraints in scripts impose a quorum of authorization, predefined in the multisignature scheme. The M-of-N requirement is enforced by the consensus rules.
+쿼럼 (Quorum of Control) :: 스크립트의 다중 서명 제약은 다중 서명 스키마에서 미리 정의 된 인증 쿼럼을 부과합니다. M of N 요구 사항은 합의 규칙에 의해 시행됩니다.
 
-Timelock/Aging:: Any script clause containing a relative or absolute timelock can only be executed after its age exceeds the time specified.
+Timelock / Ageing :: 상대적 또는 절대 시간 기록을 포함하는 모든 스크립트 절은 지정된 시간을 경과 한 후에 만 ​​실행할 수 있습니다.
 
-Replication:: The decentralized storage of the blockchain ensures that when a transaction is mined, after sufficient confirmations, it is replicated across the network and becomes durable and resilient to power loss, data loss, etc.
+복제 :: 블록 체인의 분산 스토리지는 트랜잭션이 마이닝 된 후 충분한 확인 후 네트워크를 통해 복제되고 전력 손실, 데이터 손실 등의 내구성과 탄력성을 보장합니다.
 
-Forgery Protection:: A transaction can only spend existing, validated outputs. It is not possible to create or counterfeit value.
+위조 방지 :: 트랜잭션은 기존의 유효성이 입증 된 출력만을 보낼 수 있습니다. 가치를 창출하거나 위조 할 수는 없습니다.
 
-Consistency:: In the absence of miner partitions, blocks that are recorded in the blockchain are subject to reorganization or disagreement with exponentially decreasing likelihood, based on the depth at which they are recorded. Once deeply recorded, the computation and energy required to change makes change practically infeasible.
+일관성 :: 광부 파티션이없는 경우, 블록 체인에 기록 된 블록은 기록되는 깊이에 따라 기하 급수적으로 감소하는 재조직 또는 불일치가 발생할 수 있습니다. 일단 깊이 기록되면, 변화에 필요한 계산과 에너지는 실제적으로 실행 불가능합니다.
 
-Recording External State:: A transaction can commit a data value, via +OP_RETURN+, representing a state transition in an external state machine.
+외부 상태 기록 :: 트랜잭션은 외부 상태 머신에서 상태 전이를 나타내는 + OP_RETURN +를 통해 데이터 값을 커밋 할 수 있습니다.
 
-Predictable Issuance:: Less than 21 million bitcoin will be issued, at a predictable rate.
+예측 가능한 발급 : 예측 가능한 속도로 2100 만 비트 미만의 비트 코킹이 발행됩니다.
 
-The list of building blocks is not complete and more are added with each new feature introduced into bitcoin.
+빌딩 블록 목록이 완전하지 않으며 비트 코 인사 (bitcoin)에 도입 된 새로운 기능이 추가 될 때마다 더 많이 추가됩니다.
 
-=== Applications from Building Blocks
+=== Building Blocks의 응용 프로그램
 
-((("blockchain applications", "examples of")))The building blocks offered by bitcoin are elements of a trust platform that can be used to compose applications. Here are some examples of applications that exist today and the building blocks they use:
+((("blockchain applications", "examples of")))비트 코인이 제공하는 빌딩 블록은 애플리케이션을 작성하는 데 사용할 수있는 신뢰 플랫폼의 요소입니다. 다음은 현재 존재하는 응용 프로그램과 응용 프로그램이 사용하는 구성 요소의 예입니다.
 
-Proof-of-Existence (Digital Notary):: ((("digital notary services")))((("Proof of Existence")))Immutability + Timestamp + Durability. A digital fingerprint can be committed with a transaction to the blockchain, proving that a document existed (Timestamp) at the time it was recorded. The fingerprint cannot be modified ex-post-facto (Immutability) and the proof will be stored permanently (Durability).
+Proof of-Existence (디지털 공증인) :: ((( "디지털 공증인 서비스"))) (Immunability + Timestamp + Durability. 디지털 지문은 블록 체인에 대한 트랜잭션으로 커밋되어 기록 당시의 문서 (타임 스탬프)가 있음을 증명합니다. 지문을 사후 수정 (Immutability) 할 수 없으며 증명은 영구적으로 저장됩니다 (내구성).
 
-Kickstarter (Lighthouse):: Consistency + Atomicity + Integrity. If you sign one input and the output (Integrity) of a fundraiser transaction, others can contribute to the fundraiser but it cannot be spent (Atomicity) until the goal (output value) is funded (Consistency).
+Kickstarter (등대) :: 일관성 + 원자력 + 무결성. 하나의 입력과 기금 모금 거래의 산출 (청렴도)에 서명하면 기금 모금 활동에 기여할 수있는 다른 사람들이 있지만 목표 (산출 값)가 자금을 지원받을 때까지 (원자력) 지출 할 수 없습니다 (일관성).
 
-Payment Channels:: ((("payment (state) channels", "building blocks (primitives) used in")))Quorum of Control + Timelock + No Double Spend + Nonexpiration + Censorship Resistance + Authorization. A multisig 2-of-2 (Quorum) with a timelock (Timelock) used as the "settlement" transaction of a payment channel can be held (Nonexpiration) and spent whenever (Censorship Resistance) by either party (Authorization). The two parties can then create commitment transactions that double-spend (No Double-Spend) the settlement on a shorter timelock (Timelock).
+지불 채널 : ((( "지불 (주) 채널", "빌딩 블록 (프리미티브)"))) 정족수 + 일정 + 무보수 + 무 방제 + 검열 저항 + 승인. 지불 채널의 "결제"거래로 사용되는 타임 록 (Timelock)이있는 다중 2-of-2 (정족수)는 어느 한 당사자 (인증)가 개최 될 때마다 (무호흡) 개최 될 수 있습니다 (Censorship Resistance). 그러면 양 당사자는 짧은 시간 잠금 (Timelock)으로 결제를 이중 지출 (이중 지출 없음)하는 약정 거래를 생성 할 수 있습니다.
 
-=== Colored Coins
+=== 착색 한 동전
 
-((("blockchain applications", "colored coins", id="BCAcoins12")))((("colored coins", id="color12")))The first blockchain application we will discuss is _colored coins_.
+((("blockchain applications", "colored coins", id="BCAcoins12")))((("colored coins", id="color12")))우리가 논의 할 첫 번째 블록 체인 응용은 _colored coins_입니다.
 
-((("extrinsic asset management")))Colored coins refers to a set of similar technologies that use bitcoin transactions to record the creation, ownership, and transfer of extrinsic assets other than bitcoin. By "extrinsic" we mean assets that are not stored directly on the bitcoin blockchain, as opposed to bitcoin itself, which is an asset intrinsic to the blockchain.
+((("extrinsic asset management")))컬러 동전은 비트 코인 이외의 외부 자산의 생성, 소유권 및 이전을 기록하기 위해 비트 코 트랜잭션을 사용하는 유사한 기술 세트를 나타냅니다. "외부 (extrinsic)"란 블록 체인에 고유 한 자산 인 비트 코인 자체와는 달리 비트 코인 블록 체인에 직접 저장되지 않는 자산을 의미합니다.
 
-((("digital asset management")))Colored coins are used to track digital assets as well as physical assets held by third parties and traded through colored coins certificates of ownership. Digital asset colored coins can represent intangible assets such as a stock certificate, license, virtual property (game items), or most any form of licensed intellectual property (trademarks, copyrights, etc.). Tangible asset colored coins can represent certificates of ownership of commodities (gold, silver, oil), land title, automobiles, boats, aircraft, etc.
+((("digital asset management")))컬러 동전은 디지털 자산뿐만 아니라 제 3자가 보유한 물리적 자산을 추적하는 데 사용되며 컬러 동전 소유권 인증서를 통해 거래됩니다. 디지털 자산 색 동전은 주식 인증서, 라이센스, 가상 자산 (게임 항목) 또는 대부분의 라이센스가 부여 된 지적 재산권 (상표, 저작권 등)과 같은 무형 자산을 나타낼 수 있습니다. 유형의 유색 인종 동전은 상품 (금,은, 기름), 토지 소유권, 자동차, 보트, 항공기 등의 소유권 증명서를 나타낼 수 있습니다.
 
-((("Enhanced Padded-Order-Based Coloring (EPOBC)")))The term derives from the idea of "coloring" or marking a nominal amount of bitcoin, for example, a single satoshi, to represent something other than the bitcoin value itself. As an analogy, consider stamping a $1 note with a message saying, "this is a stock certificate of ACME" or "this note can be redeemed for 1 oz of silver" and then trading the $1 note as a certificate of ownership of this other asset. The first implementation of colored coins, named _Enhanced Padded-Order-Based Coloring_ or _EPOBC_, assigned extrinsic assets to a 1-satoshi output. In this way, it was a true "colored coin," as each asset was added as an attribute (color) of a single satoshi.
+(이 용어는 Bitcoin 이외의 것을 표현하기 위해 단일 사토시와 같이 명목상의 비트 코인을 "채색하거나"표시하는 아이디어에서 파생됩니다 (EPOBC (Enhanced Padded-Order-Based Coloring))) 가치 그 자체. 비유로, "이것은 ACME의 주식 증서입니다"또는 "이 메모는 1 온스의은으로 사용할 수 있습니다"라는 메시지와 함께 $ 1 메모를 찍은 다음 $ 1 메모를 다른 사람의 소유권 인증서로 교환하는 것을 고려하십시오 유산. _Enhanced Padded-Order-Based Coloring_ 또는 _EPOBC_라는 색 동전의 첫 번째 구현은 외계 자산을 1-satoshi 출력에 할당했습니다. 이 방법으로, 그것은 각각의 자산이 하나의 사오시의 속성 (색)으로 추가 되었기 때문에 진정한 "색깔의 동전"이었습니다.
 
-More recent implementations of colored coins use the +OP_RETURN+ script opcode to store metadata in a transaction, in conjunction with external data stores that associate the metadata to specific assets.
+최근에 착색 된 동전의 구현은 + OP_RETURN + 스크립트 opcode를 사용하여 특정 자산에 메타 데이터를 연결하는 외부 데이터 저장소와 함께 트랜잭션에 메타 데이터를 저장합니다.
 
-((("Open Assets")))The two most prominent implementations of colored coins today are http://www.openassets.org/[_Open Assets_] and http://coloredcoins.org[_Colored Coins by Colu_]. These two systems use different approaches to colored coins and are not compatible. Colored coins created in one system cannot be seen or used in the other system.
+((("Open Assets")))오늘날 유색 인종 동전 중 가장 두드러진 구현은 http://www.openassets.org/[_Open Assets_]과 http://coloredcoins.org [Colored Colins by _ Colored Coins]입니다. 이 두 시스템은 착색 된 동전에 대해 다른 접근 방식을 사용하며 호환되지 않습니다. 한 시스템에서 생성 된 컬러 동전은 다른 시스템에서 보거나 사용할 수 없습니다.
 
-==== Using Colored Coins
+==== 착색 한 동전 사용하기
 
-Colored coins are created, transferred, and generally viewed in special wallets that can interpret the colored coins protocol metadata attached to bitcoin transactions. Special care must be taken to avoid using a colored-coin&#x2013;related key in a regular bitcoin wallet, as the regular wallet may destroy the metadata. Similarly, colored coins should not be sent to addresses managed by regular wallets, but only to addresses that are managed by wallets that are colored-coin-aware. Both Colu and Open Assets systems use special colored-coin addresses to mitigate this risk and to ensure that colored coins are not sent to unaware wallets.
+컬러 동전은 비트 동전 트랜잭션에 첨부 된 컬러 동전 프로토콜 메타 데이터를 해석 할 수있는 특수 지갑에서 생성, 전송 및 일반적으로 볼 수 있습니다. 일반 지갑이 메타 데이터를 파괴 할 수 있으므로 일반 비트 동전 지갑에 착색 된 동전과 관련된 키를 사용하지 않으려면 특별한주의가 필요합니다. 마찬가지로 유색인 동전은 일반 지갑으로 관리되는 주소로 보내지 말고 색 동전 인식 지갑으로 관리해야합니다. Colu와 Open Assets 시스템은이 위험을 줄이고 색상이없는 동전을 인식되지 않는 지갑으로 보내지 않도록 특별 컬러 동전 주소를 사용합니다.
 
-Colored coins are also not visible to most general-purpose blockchain explorers. Instead, you must use a colored-coins explorer to interpret the metadata of a colored coins transaction.
+유색 동전은 대부분의 범용 블록 체인 탐험가에게 보이지 않습니다. 대신, 유색 동전 거래의 메타 데이터를 해석하기 위해 유색 동전 탐색기를 사용해야합니다.
 
-An Open Assets-compatible wallet application and blockchain explorer can be found at https://www.coinprism.info[coinprism].
+Open Assets과 호환되는 지갑 응용 프로그램과 블록 체인 탐색기는 https://www.coinprism.info [coinprism]에서 찾을 수 있습니다.
 
-A Colu Colored Coins-compatible wallet application and blockchain explorer can be found at http://coloredcoins.org/explorer/[Blockchain Explorer].
+Colu Colored Colins 호환 지갑 응용 프로그램과 블록 체인 탐색기는 http://coloredcoins.org/explorer/[Blockchain Explorer]에서 찾을 수 있습니다.
 
-A Copay wallet plug-in can be found at  http://coloredcoins.org/colored-coins-copay-addon/[Colored Coins Copay Addon].
+Copay 지갑 플러그인은 http://coloredcoins.org/colored-coins-copay-addon/[Colored Coins Copay Addon]에서 찾을 수 있습니다.
 
-==== Issuing Colored Coins
+==== 동전 발행
 
-Each of the colored coins implementations has a different way of creating colored coins, but they all provide similar functionality. The process of creating a colored coin asset is called _issuance_. An initial transaction, the _issuance transaction_ registers the asset on the bitcoin blockchain and creates an _asset ID_ that is used to reference the asset. Once issued, assets can be transferred between addresses using _transfer transactions_.
+각 색깔의 동전 구현은 색깔이 다른 동전을 만드는 다른 방법을 가지고 있지만 모두 비슷한 기능을 제공합니다. 유색 인종 자산을 만드는 과정을 _issuance_라고합니다. 초기 트랜잭션 인 _issuance transaction_은 비트 코인 블록 체인에 자산을 등록하고 자산을 참조하는 데 사용되는 _asset ID_를 만듭니다. 일단 발급되면 자산은 _ 전송 트랜잭션 _을 사용하여 주소간에 전송 될 수 있습니다.
 
-Assets issued as colored coins can have multiple properties. They can be _divisible_ or _indivisible_, meaning that the amount of asset in a transfer can be an integer (e.g., 5) or have decimal subdivision (e.g., 4.321). Assets can also have _fixed issuance_, meaning a certain amount are issued only once, or can be _reissued_, meaning that new units of the asset can be issued by the original issuer after the initial issuance.
+유색 인종으로 발행 된 자산은 여러 속성을 가질 수 있습니다. 이 값은 _divisible_ 또는 _indivisible_ 일 수 있습니다. 즉, 전송할 자산의 양이 정수 (예 : 5)이거나 십진수 세분 (예 : 4.321) 일 수 있습니다. 자산에는 _fixed issuance_가있을 수도 있습니다. 즉, 한 번만 발급되거나 _reissued_ 일 수 있습니다. 즉, 초기 발급 후 원래 발급자가 새 자산 단위를 발급 할 수 있음을 의미합니다.
 
-Finally, some colored coins enable _dividends_, allowing the distribution of bitcoin payments to the owners of a colored coin asset in proportion to their ownership.
+마지막으로, 일부 색 동전은 _ 배당 _을 가능하게하여 소유권에 비례하여 색 동전 주인에게 비트 동전 지불금을 분배 할 수있게합니다.
 
-==== Colored Coins Transactions
+==== 컬러 동전 거래
 
-The metadata that gives meaning to a colored coin transaction is usually stored in one of the outputs using the +OP_RETURN+ opcode. Different colored coins protocols use different encodings for the content of the +OP_RETURN+ data. The output containing the +OP_RETURN+ is called the _marker output_.
+유색 동전 거래에 의미를 부여하는 메타 데이터는 일반적으로 + OP_RETURN + opcode를 사용하여 출력 중 하나에 저장됩니다. 다른 색깔의 동전 프로토콜은 + OP_RETURN + 데이터의 내용에 대해 다른 인코딩을 사용합니다. + OP_RETURN +를 포함하는 출력을 _marker 출력 _이라고합니다.
 
-The order of the outputs and position of the marker output may have special meaning in the colored coins protocol. In Open Assets, for example, any outputs before the marker output represent asset issuance. Any outputs after the marker represent asset transfer. The marker output assigns specific values and colors to the other outputs by referencing their order in the transaction.
+유색 동전 프로토콜에서 출력의 순서와 마커 출력의 위치는 특별한 의미를 가질 수 있습니다. 예를 들어, Open Assets에서 마커 출력 이전의 출력은 자산 발행을 나타냅니다. 마커 뒤의 출력은 자산 이전을 나타냅니다. 마커 출력은 트랜잭션의 순서를 참조하여 특정 값과 색상을 다른 출력에 지정합니다.
 
-In Colored Coins (Colu), by comparison, the marker output encodes an opcode that determines how the metadata is interpreted. Opcodes 0x01 through 0x0F indicate an issuance transaction. An issuance opcode is usually followed by an asset ID or other identifier that can be used to retrieve the asset information from an external source (e.g., bittorrent).
-Opcodes 0x10 through 0x1F represent a transfer transaction.  Transfer transaction metadata contain simple scripts that transfer specific amounts of assets from inputs to outputs, by reference to their index. Ordering of inputs and outputs is therefore important in the interpretation of the script.
+Coloured Coins (콜루)에서는 마커 출력이 메타 데이터 해석 방법을 결정하는 opcode를 인코딩합니다. Opcode 0x01 ~ 0x0F는 발행 거래를 나타냅니다. 발행 opcode 다음에는 일반적으로 외부 소스 (예 : bittorrent)에서 자산 정보를 검색하는 데 사용할 수있는 자산 ID 또는 기타 식별자가옵니다.
+Opcode 0x10에서 0x1F는 전송 트랜잭션을 나타냅니다. 전송 트랜잭션 메타 데이터에는 색인을 기준으로 특정 금액의 자산을 입력에서 출력으로 전송하는 간단한 스크립트가 포함됩니다. 따라서 입출력 순서는 스크립트의 해석에 중요합니다.
 
-If the metadata is too long to fit in +OP_RETURN+, the colored coins protocol may use other "tricks" to store metadata in a transaction. Examples include putting metadata in a redeem script, followed by +OP_DROP+ opcodes to ensure the script ignores the metadata. Another mechanism used is a 1-of-N multisig script where only the first public key is a real public key that can spend the output and subsequent "keys" are replaced by encoded metadata.
+메타 데이터가 너무 길어서 + OP_RETURN +에 맞지 않으면 유색 인 코인 프로토콜은 다른 "트릭"을 사용하여 메타 데이터를 트랜잭션에 저장할 수 있습니다. 예를 들어 메타 데이터를 교환 스크립트에 넣고 + OP_DROP + opcode를 사용하여 스크립트가 메타 데이터를 무시하도록합니다. 사용 된 또 다른 메커니즘은 1-of-N 다중 스크립트입니다. 여기서 첫 번째 공개 키만 출력을 보낼 수있는 실제 공개 키이고 이후의 "키"는 인코딩 된 메타 데이터로 대체됩니다.
 
-In order to correctly interpret the metadata in a colored coins transaction you must use a compatible wallet or block explorer. Otherwise, the transaction looks like a "normal" bitcoin transaction with an +OP_RETURN+ output.
+유색 인 동전 거래에서 메타 데이터를 올바르게 해석하려면 호환되는 지갑 또는 블록 탐색기를 사용해야합니다. 그렇지 않으면 트랜잭션은 + OP_RETURN + 출력이있는 "정상적인"비트 동전 트랜잭션처럼 보입니다.
 
-As an example, I created and issued a MasterBTC asset using colored coins. The MasterBTC asset represents a voucher for a free copy of this book. These vouchers can be transferred, traded, and redeemed using a colored coins-compatible wallet.
+예를 들어, 나는 색 동전을 사용하여 MasterBTC 자산을 만들고 발행했습니다. MasterBTC 자산은이 책의 무료 사본을위한 바우처입니다. 이 쿠폰은 컬러 동전 호환 지갑을 사용하여 양도, 교환 및 교환 할 수 있습니다.
 
-For this particular example, I used the wallet and explorer at http://coinprism.info/[_https://coinprism.info_], which uses the Open Assets colored coins protocol.
+이 특별한 예를 들어, 저는 Open Assets color coins 프로토콜을 사용하는 지갑과 탐색기를 http://coinprism.info/[_https://coinprism.info_]에서 사용했습니다.
 
-<<the_issuance_transaction_as_viewed_on_coinprismio>> shows the issuance transaction using the Coinprism block explorer:
+<< the_issuance_transaction_as_viewed_on_coinprismio >>는 Coinprism 블록 탐색기를 사용한 발행 거래를 보여줍니다.
 
 https://www.coinprism.info/tx/10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec[https://www.coinprism.info/tx/10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec])
 
@@ -120,18 +120,18 @@ https://www.coinprism.info/tx/10d7c4e022f35288779be6713471151ede967caaa39eecd352
 .The issuance transaction as viewed on coinprism.info
 image::images/mbc2_1201.png[The Issuance Transaction - as viewed on coinprism.info]
 
-As you can see, coinprism shows the issuance of 20 units of "Free copy of Mastering Bitcoin," the MasterBTC asset, to a special colored coin address:
+보시다시피, coinprism은 MasterBTC 자산 인 Mastering Bitcoin의 무료 사본 20 단위를 특수한 색 동전 주소로 발급 한 것을 보여줍니다.
 
 ----
 akTnsDt5uzpioRST76VFRQM8q8sBFnQiwcx
 ----
 
-[WARNING]
+[경고]
 ====
-Any funds or colored assets sent to this address will be lost forever. Do not send value to this example address!
+이 주소로 전송 된 모든 자금 또는 유색 자산은 영원히 손실됩니다. 이 예제 주소에 값을 보내지 마십시오!
 ====
 
-((("transaction IDs (txid)")))The transaction ID of the issuance transaction is a "normal" bitcoin transaction ID. <<the_issuance_transaction_on_a_block>> shows that same transaction in a block explorer that doesn't decode colored coins. We'll use _blockchain.info_:
+((("transaction IDs (txid)")))발급 트랜잭션의 트랜잭션 ID는 "정상적인"비트 코인 트랜잭션 ID입니다. << The_issuance_transaction_on_a_block >>은 컬러 동전을 디코딩하지 않는 블록 탐색기에서 동일한 트랜잭션을 표시합니다. _blockchain.info_를 사용하겠습니다.
 
 https://blockchain.info/tx/10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec[https://blockchain.info/tx/10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec]
 
@@ -139,15 +139,15 @@ https://blockchain.info/tx/10d7c4e022f35288779be6713471151ede967caaa39eecd35296a
 .The issuance transaction on a block explorer that doesn't decode colored coins
 image::images/mbc2_1202.png[The Issuance Transaction - on a block explorer that doesn't decode colored coins]
 
-As you can see, _blockchain.info_ doesn't recognize this as a colored coins transaction. In fact, it marks the second output with "Unable to decode output address" in red letters.
+보시다시피, _blockchain.info_는 이것을 컬러 동전 거래로 인식하지 않습니다. 사실, 두 번째 출력에는 "출력 주소를 디코딩 할 수 없습니다"라는 빨간색 문자가 표시됩니다.
 
-If you select "Show scripts &amp; coinbase" on that screen, you can see more detail about the transaction (<<the_scripts_in_the_issuance_transaction>>).
+해당 화면에서 "Show scripts & amp; coinbase"를 선택하면 거래에 대한 자세한 정보 (<< the_scripts_in_the_issuance_transaction >>)를 볼 수 있습니다.
 
 [[the_scripts_in_the_issuance_transaction]]
 .The scripts in the issuance transaction
 image::images/mbc2_1203.png[The scripts in the Issuance Transaction]
 
-Once again, _blockchain.info_ doesn't understand the second output. It marks it with "Strange" in red letters. However, we can see that some of the metadata in the marker output is human-readable:
+다시 한 번, _blockchain.info_는 두 번째 출력을 이해하지 못합니다. 빨간 글자로 "Strange"로 표시합니다. 그러나 마커 출력의 일부 메타 데이터는 사람이 읽을 수 있음을 알 수 있습니다.
 
 ----
 OP_RETURN 4f41010001141b753d68747470733a2f2f6370722e736d2f466f796b777248365559
@@ -160,7 +160,7 @@ Let's retrieve the transaction using +bitcoin-cli+:
 $ bitcoin-cli decoderawtransaction `bitcoin-cli getrawtransaction 10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec`
 ----
 
-Stripping out the rest of the transaction, the second output looks like this:
+나머지 트랜잭션을 제거하면 두 번째 결과는 다음과 같습니다.
 
 [role="pagebreak-before"]
 [source,json]
@@ -173,7 +173,7 @@ Stripping out the rest of the transaction, the second output looks like this:
 }
 ----
 
-The prefix +4F41+ represents the letters "OA", which stands for "Open Assets" and helps us identify that what follows is metadata defined by the Open Assets protocol. The ASCII-encoded string that follows is a link to an asset definition:
+접두사 + 4F41 +는 "Open Assets"을 나타내는 "OA"라는 문자를 나타내며, 다음은 Open Assets 프로토콜에 정의 된 메타 데이터임을 나타냅니다. 다음에 나오는 ASCII 인코딩 문자열은 자산 정의에 대한 링크입니다.
 
 ----
 u=https://cpr.sm/FoykwrH6UY
@@ -204,173 +204,173 @@ u=https://cpr.sm/FoykwrH6UY
 
 === Counterparty
 
-((("blockchain applications", "Counterparty")))((("Counterparty")))((("smart contracts")))((("Ethereum Virtual Machine (EVM)")))((("extrinsic asset management")))((("virtual asset management")))Counterparty is a protocol layer built on top of bitcoin. The Counterparty protocol, similar to colored coins, offers the ability to create and trade virtual assets and tokens. In addition, Counterparty offers a decentralized exchange for assets. Counterparty is also implementing smart contracts, based on the Ethereum Virtual Machine (EVM).
+((("blockchain applications", "Counterparty")))((("Counterparty")))((("smart contracts")))((("Ethereum Virtual Machine (EVM)")))((("extrinsic asset management")))((("virtual asset management")))상대방은 비트 코인 위에 구축 된 프로토콜 계층입니다. 색깔있는 동전과 유사한 거래 상대방 의정서는 가상 자산 및 토큰을 만들고 거래하는 기능을 제공합니다. 또한 거래 상대방은 자산에 대한 분산 된 교환을 제공합니다. Counterparty는 또한 Ethereum Virtual Machine (EVM)에 기반한 현명한 계약을 이행하고 있습니다.
 
-Like the colored coins protocols, Counterparty embeds metadata in bitcoin transactions, using the +OP_RETURN+ opcode or 1-of-N multisignature addresses that encode metadata in the place of public keys. Using these mechanisms, Counterparty implements a protocol layer encoded in bitcoin transactions. The additional protocol layer can be interpreted by applications that are Counterparty-aware, such as wallets and blockchain explorers, or any application built using the Counterparty libraries.
+유색 인화 프로토콜과 마찬가지로, 상대방은 공개 키 대신 메타 데이터를 인코딩하는 + OP_RETURN + opcode 또는 1-N 다중 서명 주소를 사용하여 비트 동전 트랜잭션에 메타 데이터를 내장합니다. 이러한 메커니즘을 사용하여 상대방은 비트 동전 트랜잭션으로 인코딩 된 프로토콜 계층을 구현합니다. 추가 프로토콜 계층은 Wallet 및 Blockchain 탐색기와 같은 상대방 인식 응용 프로그램이나 Counterparty 라이브러리를 사용하여 작성된 응용 프로그램에서 해석 할 수 있습니다.
 
-((("digital ownership")))Counterparty can be used as a platform for other applications and services, in turn. For example, Tokenly is a platform built on top of Counterparty that allows content creators, artists, and companies to issue tokens that express digital ownership and can be used to rent, access, trade, or shop for content, products, and services. Other applications leveraging Counterparty include games (Spells of Genesis) and grid computing projects (Folding Coin).
+((("digital ownership")))거래 상대방은 다른 애플리케이션 및 서비스를위한 플랫폼으로 사용할 수 있습니다. 예를 들어, Tokenly는 콘텐츠 제작자, 아티스트 및 회사가 디지털 소유권을 나타내는 토큰을 발행하고 콘텐츠, 제품 및 서비스를 임대, 액세스, 거래 또는 쇼핑하는 데 사용할 수있는 Counterparty 위에 구축 된 플랫폼입니다. 상대방을 활용하는 다른 응용 프로그램으로는 게임 (Spells of Genesis)과 그리드 컴퓨팅 프로젝트 (Folding Coin)가 있습니다.
 
-More details about Counterparty can be found at https://counterparty.io. The open source project can be found at https://github.com/CounterpartyXCP[].
+상대방에 대한 자세한 내용은 https://counterparty.io에서 확인할 수 있습니다. 오픈 소스 프로젝트는 https://github.com/CounterpartyXCP []에서 찾을 수 있습니다.
 
 [[state_channels]]
-=== Payment Channels and State Channels
+=== 지불 채널 및 주 채널
 
-_Payment channels_ ((("blockchain applications", "payment (state) channels", id="BCApayment12")))((("payment (state) channels", "defined")))are a trustless mechanism for exchanging bitcoin transactions between two parties, outside of the bitcoin blockchain. These transactions, which would be valid if settled on the bitcoin blockchain, are held off-chain instead, acting as _promissory notes_ for eventual batch settlement. Because the transactions are not settled, they can be exchanged without the usual settlement latency, allowing extremely high transaction throughput, low (submillisecond) latency, and fine (satoshi-level) granularity.
+_Payment channels_ ((("blockchain applications", "payment (state) channels", id="BCApayment12")))((("payment (state) channels", "defined")))은 비트 동전 Bitcoin 블록 체인 외부의 두 당사자 간의 트랜잭션. Bitcoin 블록 체인에 정착 된 경우 유효한 이러한 트랜잭션은 최종 배치 정산을 위해 _ 증언 노트로 작동하여 대신 오프 체인 (off-chain)으로 유지됩니다. 거래가 정산되지 않기 때문에 일반적인 결제 대기 시간없이 교환 할 수 있으므로 매우 높은 트랜잭션 처리량, 낮은 (잠깐 지속되는) 대기 시간 및 미세한 (토질 수준) 세분성을 허용합니다.
 
-Actually, the term _channel_ is a metaphor. State channels are virtual constructs represented by the exchange of state between two parties, outside of the blockchain. There are no "channels" per se and the underlying data transport mechanism is not the channel. We use the term channel to represent the relationship and shared state between two parties, outside of the blockchain.
+사실 _channel_이라는 용어는 은유입니다. 상태 채널은 블록 체인 외부의 두 당사자 간의 상태 교환으로 대표되는 가상 구조입니다. 본질적으로 "채널"은 없으며 기본 데이터 전송 메커니즘은 채널이 아닙니다. 채널이라는 용어를 사용하여 블록 체인 외부의 두 당사자 간의 관계 및 공유 상태를 나타냅니다.
 
-((("payment (state) channels", "concept of")))To further explain this concept, think of a TCP stream. From the perspective of higher-level protocols it is a "socket" connecting two applications across the internet. But if you look at the network traffic, a TCP stream is just a virtual channel over IP packets. Each endpoint of the TCP stream sequences and assembles IP packets to create the illusion of a stream of bytes. Underneath, it's all disconnected packets. Similarly, a payment channel is just a series of transactions. If properly sequenced and connected, they create redeemable obligations that you can trust even though you don't trust the other side of the channel.
+((("payment (state) channels", "concept of")))이 개념을 더 자세히 설명하기 위해 TCP 스트림을 생각해보십시오. 고급 프로토콜의 관점에서 보면 인터넷을 통해 두 개의 응용 프로그램을 연결하는 "소켓"입니다. 그러나 네트워크 트래픽을 살펴보면 TCP 스트림은 IP 패킷을 통한 가상 채널 일뿐입니다. TCP 스트림의 각 종점은 IP 패킷을 배열하고 조합하여 바이트 스트림의 환상을 만듭니다. 아래에는 모든 연결이 끊긴 패킷입니다. 마찬가지로 결제 채널은 일련의 거래 일뿐입니다. 순서가 제대로 지정되고 연결되면 채널의 다른면을 신뢰하지 않아도 신뢰할 수있는 상환 의무가 생성됩니다.
 
-In this section we will look at various forms of payment channels. First, we will examine the mechanisms used to construct a one-way (unidirectional) payment channel for a metered micropayment service, such as streaming video. Then, we will expand on this mechanism and introduce bidirectional payment channels. Finally, we will look at how bidirectional channels can be connected end-to-end to form multihop channels in a routed network, first proposed under the name _Lightning Network_.
+이 섹션에서는 다양한 결제 채널을 살펴 보겠습니다. 먼저, 스트리밍 비디오와 같은 계량 형 소액 결제 서비스에 대해 단방향 (단방향) 지불 채널을 구성하는 데 사용되는 메커니즘을 살펴 봅니다. 그런 다음이 메커니즘을 확장하고 양방향 지불 채널을 도입 할 것입니다. 마지막으로 _Lightning Network_라는 이름으로 처음 제안 된 라우팅 된 네트워크에서 양방향 채널을 다중 홉 채널을 형성하기 위해 종단 간 연결하는 방법에 대해 살펴 보겠습니다.
 
-Payment channels are part of the broader concept of a _state channel_, which represents an off-chain alteration of state, secured by eventual settlement in a blockchain. A payment channel is a state channel where the state being altered is the balance of a virtual currency.
+지불 채널은 블록 체인의 최종 결제에 의해 확보 된 상태의 오프 체인 변경을 나타내는 _state 채널 _이라는 더 광범위한 개념의 일부입니다. 지불 채널은 변경되는 상태가 가상 화폐의 잔액 인 상태 채널입니다.
 
-==== State Channels&#x2014;Basic Concepts and Terminology
+==== 주 채널 & # x2014; 기본 개념 및 용어
 
-((("payment (state) channels", "terminology")))A state channel is established between two parties, through a transaction that locks a shared state on the blockchain. This is called the _funding transaction_ or _anchor transaction_. This single transaction must be transmitted to the network and mined to establish the channel. In the example of a payment channel, the locked state is the initial balance (in currency) of the channel.
+((("payment (state) channels", "terminology")))상태 채널은 블록 체인에서 공유 상태를 잠그는 트랜잭션을 통해 두 당사자간에 설정됩니다. 이를 _funding transaction_ 또는 _anchor transaction_이라고합니다. 이 단일 트랜잭션은 채널을 설정하기 위해 네트워크로 전송되고 채워 져야합니다. 지불 채널의 예에서 잠긴 상태는 채널의 초기 잔액 (통화)입니다.
 
-The two parties then exchange signed transactions, called _commitment transactions_, that alter the initial state. These transactions are valid transactions in that they _could_ be submitted for settlement by either party, but instead are held off-chain by each party pending the channel closure. State updates can be created as fast as each party can create, sign, and transmit a transaction to the other party. In practice this means that thousands of transactions per second can be exchanged.
+그런 다음 두 당사자는 _commitment transactions_라는 서명 된 트랜잭션을 교환하여 초기 상태를 변경합니다. 이러한 거래는 각 당사자가 해결하기 위해 제출할 수있는 유효한 거래이지만 대신 채널 폐쇄가 진행되는 동안 각 당사자가 오프 체인 상태로 유지됩니다. 상태 업데이트는 각 당사자가 거래를 생성, 서명 및 전송할 수있는 속도로 신속하게 생성 될 수 있습니다. 실제로 이것은 초당 수천 트랜잭션을 교환 할 수 있음을 의미합니다.
 
-When exchanging commitment transactions the two parties also invalidate the previous states, so that the most up-to-date commitment transaction is always the only one that can be redeemed. This prevents either party from cheating by unilaterally closing the channel with an expired prior state that is more favorable to them than the current state. We will examine the various mechanisms that can be used to invalidate prior state in the rest of this chapter.
+약정 거래를 교환 할 때 두 당사자는 이전 상태를 무효화하므로 가장 최신의 약정 거래가 항상 회수 할 수있는 유일한 거래입니다. 이렇게하면 한쪽 당사자가 현재 상태보다 자신에게 유리한 만료 된 이전 상태로 채널을 일방적으로 닫을 수 있습니다. 이 장의 나머지 부분에서는 이전 상태를 무효화하는 데 사용할 수있는 다양한 메커니즘을 검토합니다.
 
-Finally, the channel can be closed either cooperatively, by submitting a final _settlement transaction_ to the blockchain, or unilaterally, by either party submitting the last commitment transaction to the blockchain. A unilateral close option is needed in case one of the parties unexpectedly disconnects. The settlement transaction represents the final state of the channel and is settled on the blockchain.
+마지막으로 채널은 블록 체인에 마지막 _settlement 트랜잭션 _을 제출하여 협력 적으로 또는 블록 체인에 마지막 커밋 트랜잭션을 제출 한 당사자가 일방적으로 제출하여 공동으로 폐쇄 할 수 있습니다. 당사자 중 한 사람이 예기치 않게 연결이 끊어진 경우 일방적 인 종결 옵션이 필요합니다. 결제 트랜잭션은 채널의 최종 상태를 나타내며 블록 체인에 정산됩니다.
 
-In the entire lifetime of the channel, only two transactions need to be submitted for mining on the blockchain: the funding and settlement transactions. In between these two states, the two parties can exchange any number of commitment transactions that are never seen by anyone else, nor submitted to the blockchain.
+채널의 전체 수명 기간 동안 블록 체인에서 마이닝을 위해 제출해야하는 트랜잭션은 자금 및 결제 트랜잭션 2 개뿐입니다. 이 두 주 사이에서 두 당사자는 다른 사람이 본 적이 없으며 블록 체인에 제출 된 모든 약정 거래를 교환 할 수 있습니다.
 
-<<payment_channel>> illustrates a payment channel between Bob and Alice, showing the funding, commitment, and settlement transactions.((("use cases", "buying coffee", startref="alicetwelve")))
+<< payment_channel >>은 Bob과 Alice 간의 결제 채널로서 자금, 약정 및 결제 거래를 보여줍니다((("use cases", "buying coffee", startref="alicetwelve")))
 
 [[payment_channel]]
 .A payment channel between Bob and Alice, showing the funding, commitment, and settlement transactions
 image::images/mbc2_1204.png["A payment channel between Bob and Alice, showing the funding, commitment, and settlement transactions"]
 
-==== Simple Payment Channel Example
+==== 간단한 지불 채널 예제
 
-((("payment (state) channels", "example of", id="PSCexample12")))To explain state channels, we have to start with a very simple example. We demonstrate a one-way channel, meaning that value is flowing in one direction only. We will also start with the naive assumption that no one is trying to cheat, to keep things simple. Once we have the basic channel idea explained, we will then look at what it takes to make it trustless so that neither party _can_ cheat, even if they are trying to.
+((("payment (state) channels", "example of", id="PSCexample12")))상태 채널을 설명하기 위해 아주 간단한 예부터 시작해야합니다. 우리는 가치가 한 방향으로 만 흐르고 있음을 의미하는 단방향 채널을 시연합니다. 우리는 아무도 속이려고 노력하지 않고 일을 단순하게 유지한다는 순진한 가정으로 시작할 것입니다. 일단 기본 채널 아이디어가 설명되면, 우리는 믿을 수 없게 만들려고하는 것을 보게 될 것이므로 어떤 파티도 시도하지 않더라도 속일 수 없습니다.
 
-For this example we will assume two participants: Emma and Fabian. Fabian offers a video streaming service that is billed by the second using a micropayment channel. Fabian charges 0.01 millibit (0.00001 BTC) per second of video, equivalent to 36 millibits (0.036 BTC) per hour of video. Emma is a user who purchases this streaming video service from Fabian. <<emma_fabian_streaming_video>> shows Emma buying the video streaming service from Fabian using a payment channel.
+이 예제에서는 Emma와 Fabian이라는 두 명의 참가자를 가정합니다. Fabian은 마이크로 결제 채널을 사용하여 두 번째로 청구되는 비디오 스트리밍 서비스를 제공합니다. Fabian은 비디오 1 초당 0.01 밀리 비트 (0.00001 BTC)를 청구하며, 이는 비디오 시간당 36 밀리 비트 (0.036 BTC)와 같습니다. Emma는 Fabian에서이 스트리밍 비디오 서비스를 구매 한 사용자입니다. << emma_fabian_streaming_video >>는 Emma가 지불 채널을 사용하여 Fabian에서 비디오 스트리밍 서비스를 구매하는 것을 보여줍니다.
 
 [[emma_fabian_streaming_video]]
 .Emma purchases streaming video from Fabian with a payment channel, paying for each second of video
 image::images/mbc2_1205.png["Emma purchases streaming video from Fabian with a payment channel, paying for each second of video"]
 
-In this example, Fabian and Emma are using special software that handles both the payment channel and the video streaming. Emma is running the software in her browser, Fabian is running it on a server. The software includes basic bitcoin wallet functionality and can create and sign bitcoin transactions. Both the concept and the term "payment channel" are completely hidden from the users. What they see is video that is paid for by the second.
+이 예에서 Fabian과 Emma는 지불 채널과 비디오 스트리밍을 모두 처리하는 특별한 소프트웨어를 사용하고 있습니다. Emma는 브라우저에서 소프트웨어를 실행하고 Fabian은 서버에서이 소프트웨어를 실행합니다. 이 소프트웨어에는 기본 비트 동전 지갑 기능이 포함되어 있으며 비트 동전 트랜잭션을 생성하고 서명 할 수 있습니다. 개념과 용어 "지불 채널"은 사용자에게 완전히 숨겨져 있습니다. 그들이 보는 것은 두 번째로 지불되는 비디오입니다.
 
-To set up the payment channel, Emma and Fabian establish a 2-of-2 multisignature address, with each of them holding one of the keys. From Emma's perspective, the software in her browser presents a QR code with a P2SH address (starting with "3"), and asks her to submit a "deposit" for up to 1 hour of video. The address is then funded by Emma. Emma's transaction, paying to the multisignature address, is the funding or anchor transaction for the payment channel.
+지불 채널을 설정하기 위해 Emma와 Fabian은 2-of-2 다중 서명 주소를 설정합니다. 각 주소에는 하나의 키가 있습니다. Emma의 관점에서 볼 때 브라우저의 소프트웨어는 P2SH 주소 ( "3"으로 시작)가 포함 된 QR 코드를 제시하고 최대 1 시간 분량의 동영상에 대해 "입금"을 제출하도록 요청합니다. 이 주소는 Emma가 자금을 지원합니다. 다중 서명 주소로 지불하는 Emma의 거래는 지불 채널에 대한 자금 조달 또는 앵커 거래입니다.
 
-For this example, let's say that Emma funds the channel with 36 millibits (0.036 BTC). This will allow Emma to consume _up to_ 1 hour of streaming video. The funding transaction in this case sets the maximum amount that can be transmitted in this channel, setting the _channel capacity_.
+이 예에서는 Emma가 36 밀리 비트 (0.036 BTC)로 채널에 자금을 제공한다고 가정 해 보겠습니다. Emma가 1 시간 분량의 비디오 스트리밍을 소모 할 수 있습니다. 이 경우 자금 지원 트랜잭션은 _ 채널 용량 _을 설정하여이 채널에서 전송할 수있는 최대 금액을 설정합니다.
 
-The funding transaction consumes one or more inputs from Emma's wallet, sourcing the funds. It creates one output with a value of 36 millibits paid to the multisignature 2-of-2 address controlled jointly between Emma and Fabian. It may have additional outputs for change back to Emma's wallet.
+자금 거래는 Emma의 지갑에서 하나 이상의 입력을 사용하여 자금을 소싱합니다. Emma와 Fabian이 공동으로 관리하는 다중 서명 2-of-2 주소에 지불 된 36 밀리 비트의 값으로 하나의 출력을 생성합니다. Emma의 지갑으로 다시 변경하기 위해 추가 출력물이있을 수 있습니다.
 
-Once the funding transaction is confirmed, Emma can start streaming video. Emma's software creates and signs a commitment transaction that changes the channel balance to credit 0.01 millibit to Fabian's address and refund 35.99 millibits back to Emma. The transaction signed by Emma consumes the 36 millibits output created by the funding transaction and creates two outputs: one for her refund, the other for Fabian's payment. The transaction is only partially signed&#x2014;it requires two signatures (2-of-2), but only has Emma's signature. When Fabian's server receives this transaction, it adds the second signature (for the 2-of-2 input) and returns it to Emma together with 1 second worth of video. Now both parties have a fully signed commitment transaction that either can redeem, representing the correct up-to-date balance of the channel. Neither party broadcasts this transaction to the network.
+자금 거래가 확인되면 Emma는 스트리밍 비디오를 시작할 수 있습니다. Emma의 소프트웨어는 채널 균형을 Fabian 주소로 0.01 밀리 비트 단위로 변경하고 Emma에게 35.99 밀리 비트를 환불하는 약정 거래를 생성하고 서명합니다. Emma가 서명 한 거래는 자금 거래로 생성 된 36 밀리비터 출력을 소비하고 두 개의 출력을 만듭니다. 하나는 환불을위한 것이고 다른 하나는 Fabian의 지불입니다. 거래는 부분적으로 만 서명되었지만 2 개의 서명 (2/2)이 필요하지만 엠마의 서명 만 있습니다. Fabian의 서버가이 트랜잭션을 수신하면 두 번째 서명 (2-of-2 입력)을 추가하고이를 1 초의 비디오와 함께 Emma에게 반환합니다. 이제 양 당사자는 완전히 서명 된 약정 거래를 사용하거나, 채널의 정확한 최신 균형을 나타냅니다. 어느 당사자도이 트랜잭션을 네트워크에 브로드 캐스팅하지 않습니다.
 
-In the next round, Emma's software creates and signs another commitment transaction (commitment #2) that consumes the _same_ 2-of-2 output from the funding transaction. The second commitment transaction allocates one output of 0.2 millibits to Fabian's address and one output of 35.98 millibits back to Emma's address. This new transaction is payment for two cumulative seconds of video. Fabian's software signs and returns the second commitment transaction, together with the another second of video.
+다음 라운드에서는 Emma의 소프트웨어가 자금 조달 트랜잭션의 2-of-2 결과를 소비하는 또 다른 약정 거래 (약정 # 2)를 작성하고 서명합니다. 두 번째 위탁 거래는 파비안의 주소에 0.2 밀리 비트의 출력 하나를 할당하고 엠마의 주소에 35.98 밀리 비트의 출력 하나를 할당합니다. 이 새로운 거래는 2 초 동안 동영상을 지불하는 것입니다. Fabian의 소프트웨어는 두 번째 약속 트랜잭션에 서명하고 두 번째 약속 트랜잭션을 다른 두 번째 비디오와 함께 반환합니다.
 
-In this way, Emma's software continues to send commitment transactions to Fabian's server in exchange for streaming video. The balance of the channel gradually accumulates in favor of Fabian, as Emma consumes more seconds of video. Let's say Emma watches 600 seconds (10 minutes) of video, creating and signing 600 commitment transactions. The last commitment transaction (#600) will have two outputs, splitting the balance of the channel, 6 millibits to Fabian and 30 millibits to Emma.
+이러한 방식으로, Emma의 소프트웨어는 스트리밍 비디오 대신 Fabian의 서버에 약정 거래를 계속합니다. Emma가 더 많은 비디오를 소비함에 따라 채널의 균형이 Fabian에 유리하게 점차 축적됩니다. Emma가 600 초 (10 분)의 비디오를보고 600 개의 약속 트랜잭션을 만들고 서명한다고 가정 해 봅시다. 마지막 약정 거래 (# 600)는 채널의 균형을 파비안에게 6 밀리 비트를, 엠마에게 30 밀리 비트를 분배하는 두 개의 출력을 갖습니다.
 
-Finally, Emma clicks "Stop" to stop streaming video. Either Fabian or Emma can now transmit the final state transaction for settlement. This last transaction is the _settlement transaction_ and pays Fabian for all the video Emma consumed, refunding the remainder of the funding transaction to Emma.
+끝으로 Emma는 "정지"를 클릭하여 스트리밍 비디오를 중지합니다. Fabian 또는 Emma는 이제 최종 상태 트랜잭션을 정산하여 전송할 수 있습니다. 이 마지막 거래는 _settlement transaction_이며 Emma가 소비 한 모든 동영상에 대해 Fabian에게 지불하여 나머지 자금 거래를 Emma에게 환불합니다.
 
-<<video_payment_channel>> shows the channel between Emma and Fabian and the commitment transactions that update the balance of the channel.
+<< video_payment_channel >>은 Emma와 Fabian 사이의 채널과 채널의 잔액을 업데이트하는 약정 거래를 보여줍니다.
 
-In the end, only two transactions are recorded on the blockchain: the funding transaction that established the channel and a settlement transaction that allocated the final balance correctly between the two participants.((("", startref="PSCexample12")))
+결국 채널을 구축 한 자금 거래와 두 참가자간에 최종 잔액을 정확하게 할당 한 결제 트랜잭션 (두 가지 참가자 사이에 두 개의 트랜잭션 만 기록됩니다.((("", startref="PSCexample12")))
 
 [[video_payment_channel]]
 .Emma's payment channel with Fabian, showing the commitment transactions that update the balance of the channel
 image::images/mbc2_1206.png["Emma's payment channel with Fabian, showing the commitment transactions that update the balance of the channel"]
 
-==== Making Trustless Channels
+==== 트러스트없는 채널 만들기
 
-((("payment (state) channels", "making trustless channels", id="PSCtrust12")))The channel we just described works, but only if both parties cooperate, without any failures or attempts to cheat. Let's look at some of the scenarios that break this channel and see what is needed to fix those:
+((("payment (state) channels", "making trustless channels", id="PSCtrust12")))우리가 방금 설명한 채널은 작동하지만, 실패하거나 속이려는 시도없이 양측이 협력 할 때만 작동합니다. 이 채널을 깨고 시나리오를 수정하는 데 필요한 것이 무엇인지 살펴 봅니다.
 
-* Once the funding transaction happens, Emma needs Fabian's signature to get any money back. If Fabian disappears, Emma's funds are locked in a 2-of-2 and effectively lost. This channel, as constructed, leads to a loss of funds if one of the parties disconnects before there is at least one commitment transaction signed by both parties.
+* 일단 자금 제공 거래가 발생하면 Emma는 돈을 돌려 받기 위해 Fabian의 서명이 필요합니다. Fabian이 사라지면 Emma의 자금은 2의 2로 고정되어 효과적으로 손실됩니다. 구성된이 채널은 두 당사자가 서명 한 적어도 하나의 약정 거래가 있기 전에 당사자 중 하나가 연결을 끊으면 자금이 손실됩니다.
 
-* While the channel is running, Emma can take any of the commitment transactions Fabian has countersigned and transmit one to the blockchain. Why pay for 600 seconds of video, if she can transmit commitment transaction #1 and only pay for 1 second of video? The channel fails because Emma can cheat by broadcasting a prior commitment that is in her favor.
+* 채널이 실행되는 동안 Emma는 Fabian이 서명 한 트랜잭션 중 하나를 취하여 블록 체인으로 전송합니다. 그녀가 약정 거래 # 1을 전송하고 비디오의 1 초분 만 지불 할 수 있다면 왜 600 초 분량의 비디오를 지불해야합니까? Emma는 자신이 선호하는 사전 약속을 방송함으로써 속임수를 쓸 수 있기 때문에 채널이 실패합니다.
 
-Both of these problems can be solved with timelocks&#x2014;let's look at how we could use transaction-level timelocks (+nLocktime+).
+이 두 가지 문제는 모두 timelock으로 해결할 수 있습니다. # x2014; 트랜잭션 수준의 타임 로크 (+ nLocktime +)를 사용하는 방법을 살펴 보겠습니다.
 
-Emma cannot risk funding a 2-of-2 multisig unless she has a guaranteed refund. To solve this problem, Emma constructs the funding and refund transaction at the same time. She signs the funding transaction but doesn't transmit it to anyone. Emma transmits only the refund transaction to Fabian and obtains his signature.
+Emma는 2-of-2 multisig에게 환불 보장이없는 한 자금을 제공 할 수 없습니다. 이 문제를 해결하기 위해 Emma는 자금 및 환불 거래를 동시에 구성합니다. 그녀는 자금 거래에 서명하지만 누구에게도 전달하지 않습니다. Emma는 Fabian에게 환불 거래 만 전송하고 그의 서명을 얻습니다.
 
-The refund transaction acts as the first commitment transaction and its timelock establishes the upper bound for the channel's life. In this case, Emma could set the +nLocktime+ to 30 days or 4320 blocks into the future. All subsequent commitment transactions must have a shorter timelock, so that they can be redeemed before the refund transaction.
+환불 거래는 첫 번째 약정 거래로 작동하며 타임 로크는 채널 수명의 상한선을 설정합니다. 이 경우 Emma는 + nLocktime +를 향후 30 일 또는 4320 블록으로 설정할 수 있습니다. 모든 후속 약정 트랜잭션은보다 짧은 타임 록을 가져야하며, 따라서 환불 트랜잭션 전에 회수 될 수 있습니다.
 
-Now that Emma has a fully signed refund transaction, she can confidently transmit the signed funding transaction knowing that she can eventually, after the timelock expires, redeem the refund transaction even if Fabian disappears.
+이제 엠마가 완전히 서명 환불 트랜잭션을 가지고, 그녀는 자신있게 그녀는 결국, timelock이 만료 된 후, 파비안가 사라진 경우에도 환불 거래를 구속 할 것을 알고 서명 된 자금 거래를 전송할 수 있습니다.
 
-Every commitment transaction the parties exchange during the life of the channel will be timelocked into the future. But the delay will be slightly shorter for each commitment so the most recent commitment can be redeemed before the prior commitment it invalidates. Because of the +nLocktime+, neither party can successfully propagate any of the commitment transactions until their timelock expires. If all goes well, they will cooperate and close the channel gracefully with a settlement transaction, making it unnecessary to transmit an intermediate commitment transaction. In essence, the commitment transactions are only used when one party disconnects and the other party has to close the channel unilaterally.
+채널의 수명 기간 동안 당사자가 교환하는 모든 약정 거래는 미래에 맞춰 타임 록이 걸리게됩니다. 그러나 지연은 각 약정에 대해 약간 더 짧을 것이므로 가장 최근의 약정은 무효화되는 사전 약정 전에 회수 될 수 있습니다. + nLocktime +로 인해 어느 쪽도 시간 잠금이 만료 될 때까지 확약 트랜잭션을 성공적으로 전파 할 수 없습니다. 모든 것이 잘되면, 그들은 협상하여 정산 거래로 정상적으로 채널을 닫을 것이므로 중간 약정 거래를 전송할 필요가 없습니다. 본질적으로, 약정 트랜잭션은 한 쪽이 연결을 끊고 다른 쪽이 채널을 일방적으로 닫아야하는 경우에만 사용됩니다.
 
-For example, if commitment transaction #1 is timelocked to 4320 blocks in the future, then commitment transaction #2 is timelocked to 4319 blocks in the future. Commitment transaction #600 can be spent 600 blocks before commitment transaction #1 becomes valid.
+예를 들어, 약정 트랜잭션 # 1이 미래에 4320 블록으로 타임 록되는 경우 약정 트랜잭션 # 2는 미래에 4319 블록으로 시간 잠금됩니다. 약정 트랜잭션 # 600은 약정 트랜잭션 # 1이 유효하게되기 전에 600 블록을 소비 할 수 있습니다.
 
-<<timelocked_commitments>> shows each commitment transaction setting a shorter timelock, allowing it to be spent before the previous commitments become valid.
+<< timelocked_commitments >>는 각 커미트먼트 트랜잭션이보다 짧은 타임 록을 설정하여 이전 커미트먼트가 유효하게되기 전에 소비되도록합니다.
 
 [[timelocked_commitments]]
 .Each commitment sets a shorter timelock, allowing it to be spent before the previous commitments become valid
 image::images/mbc2_1207.png["Each commitment sets a shorter timelock, allowing it to be spent before the previous commitments become valid"]
 
-Each subsequent commitment transaction must have a shorter timelock so that it may be broadcast before its predecessors and before the refund transaction. The ability to broadcast a commitment earlier ensures it will be able to spend the funding output and preclude any other commitment transaction from being redeemed by spending the output. The guarantees offered by the bitcoin blockchain, preventing double-spends and enforcing timelocks, effectively allow each commitment transaction to invalidate its predecessors.
+후속 약정 거래는 전임자와 환불 거래 전까지 방송 될 수 있도록보다 짧은 타임 록을 가져야합니다. 약속을 먼저 ​​방송 할 수있는 능력은 자금 조달 결과물을 소비하고 출력물을 소비함으로써 다른 모든 약정 거래가 상환되는 것을 방지 할 수 있음을 보장합니다. Bitcoin 블록 체인에 의해 제공되는 보증은 이중 지출을 방지하고 타임 록을 적용함으로써 각 약정 트랜잭션이 이전의 트랜잭션을 무효로하는 것을 효과적으로 허용합니다.
 
-State channels use timelocks to enforce smart contracts across a time dimension. In this example we saw how the time dimension guarantees that the most recent commitment transaction becomes valid before any earlier commitments. Thus, the most recent commitment transaction can be transmitted, spending the inputs and invalidating prior commitment transactions. The enforcement of smart contracts with absolute timelocks protects against cheating by one of the parties. This implementation needs nothing more than absolute transaction-level timelocks (+nLocktime+). Next, we will see how script-level timelocks, +CHECKLOCKTIMEVERIFY+ and +CHECKSEQUENCEVERIFY+, can be used to construct more flexible, useful, and sophisticated state channels.
+주 채널은 타임 로크를 사용하여 시간 차원에서 스마트 계약을 시행합니다. 이 예에서 우리는 시간 차원이 가장 최근의 약정 트랜잭션이 이전 커미트먼트 이전에 유효하게되는 것을 어떻게 보장 하는지를 보았습니다. 따라서 가장 최근의 약정 거래를 전송하고, 투입액을 지출하고 이전 약정 거래를 무효화 할 수 있습니다. 절대 시간 잠금을 사용하여 스마트 계약을 시행하면 당사자 중 한 사람이 속일 수 없습니다. 이 구현에는 절대 트랜잭션 수준의 타임 락 (+ nLocktime +) 이상을 필요로하지 않습니다. 다음으로 우리는 스크립트 수준의 타임 록 (+ CHECKLOCKTIMEVERIFY + 및 + CHECKSEQUENCEVERIFY +)을 사용하여보다 유연하고 유용하며 정교한 상태 채널을 구성하는 방법을 알아 봅니다.
 
-The first form of unidirectional payment channel was demonstrated as a prototype video streaming application in 2015 by an Argentinian team of developers. You can still see it at pass:[<a href="https://streamium.io/" class="orm:hideurl"><em>streamium.io</em></a>].
+단방향 지불 채널의 첫 번째 형태는 2015 년 아르헨티나 개발자 팀이 프로토 타입 비디오 스트리밍 응용 프로그램으로 시연했습니다. 당신은 여전히 ​​패스로 그것을 볼 수 있습니다 : [<a href="https://streamium.io/" class="orm:hideurl"> <em> streamium.io </ em> </a>].
 
-Timelocks are not the only way to invalidate prior commitment transactions. In the next sections we will see how a revocation key can be used to achieve the same result. Timelocks are effective but they have two distinct disadvantages. By establishing a maximum timelock when the channel is first opened, they limit the lifetime of the channel. Worse, they force channel implementations to strike a balance between allowing long-lived channels and forcing one of the participants to wait a very long time for a refund in case of premature closure. For example, if you allow the channel to remain open for 30 days, by setting the refund timelock to 30 days, if one of the parties disappears immediately the other party must wait 30 days for a refund. The more distant the endpoint, the more distant the refund.
+Timelocks 만 이전 약정 거래를 무효화하는 유일한 방법은 아닙니다. 다음 섹션에서는 동일한 결과를 얻기 위해 해지 키를 사용하는 방법을 살펴 보겠습니다. Timelocks는 효과적이지만 두 가지 단점이 있습니다. 채널이 처음 열릴 때 최대 타임 록을 설정함으로써 채널의 수명을 제한합니다. 더 나쁜 것은, 채널 구현이 긴 수명 채널 허용과 조기 종결시 환불을 위해 매우 오랜 시간 동안 기다려야하는 것 사이의 균형을 맞춰야한다는 것입니다. 예를 들어 채널을 30 일 동안 열어 둘 수 있도록 허용 한 경우 환불 시간대를 30 일로 설정하면 당사자 중 하나가 즉시 사라지면 상대방은 30 일 동안 환불을 기다려야합니다. 엔드 포인트가 멀리 떨어져있을수록 환불이 더 먼 것입니다.
 
-The second problem is that since each subsequent commitment transaction must decrement the timelock, there is an explicit limit on the number of commitment transactions that can be exchanged between the parties. For example, a 30-day channel, setting a timelock of 4320 blocks into the future, can only accommodate 4320 intermediate commitment transactions before it must be closed. There is a danger in setting the timelock commitment transaction interval at 1 block. By setting the timelock interval between commitment transactions to 1 block, a developer is creating a very high burden for the channel participants who have to be vigilant, remain online and watching, and be ready to transmit the right commitment transaction at anytime.
+두 번째 문제는 각 후속 약정 트랜잭션이 시간 잠금을 감소시켜야하기 때문에 당사자간에 교환 될 수있는 약정 트랜잭션 수에 대한 명시적인 제한이 있다는 것입니다. 예를 들어 미래에 4320 블록의 시간 제한을 설정하는 30 일 채널은 폐쇄 되어야만하기 전에 중간 약정 트랜잭션을 4320 개까지만 수용 할 수 있습니다. timelock 약정 트랜잭션 간격을 1 블록으로 설정하면 위험 할 수 있습니다. 약속 트랜잭션 간의 시간 잠금 간격을 1 블록으로 설정하면 개발자는 경계해야하고 온라인 상태를 유지하며 시청할 수 있어야하며 언제든지 올바른 약정 트랜잭션을 전송할 준비가되어 있어야합니다.
 
-Now that we understand how timelocks can be used to invalidate prior commitments, we can see the difference between closing the channel cooperatively and closing it unilaterally by broadcasting a commitment transaction. All commitment transactions are timelocked, therefore broadcasting a commitment transaction will always involve waiting until the timelock has expired. But if the two parties agree on what the final balance is and know they both hold commitment transactions that will eventually make that balance a reality, they can construct a settlement transaction without a timelock representing that same balance. In a cooperative close, either party takes the most recent commitment transaction and builds a settlement transaction that is identical in every way except that it omits the timelock. Both parties can sign this settlement transaction knowing there is no way to cheat and get a more favorable balance. By cooperatively signing and transmitting the settlement transaction they can close the channel and redeem their balance immediately. Worst case, one of the parties can be petty, refuse to cooperate, and force the other party to do a unilateral close with the most recent commitment transaction. But if they do that, they have to wait for their funds too.((("", startref="PSCtrust12")))
+이제 우리는 timelock을 사용하여 이전 약속을 무효화하는 방법을 이해 했으므로 채널을 공동으로 닫고 계약 트랜잭션을 브로드 캐스트하여 일방적으로 닫는 것의 차이를 확인할 수 있습니다. 모든 커미트먼트 트랜잭션은 타임 로크되므로, 커밋 트랜잭션을 브로드 캐스트하면 항상 타임 록이 만료 될 때까지 기다리는 것이 포함된다. 그러나 양 당사자가 최종 잔고가 무엇인지에 동의하고 양측이 모두 잔액을 현실화 할 약정 거래를 보유하고 있다는 것을 알고 있다면 동일한 균형을 대표하는 시간 제한없이 결제 거래를 구성 할 수 있습니다. 협상 종료시, 어느 당사자라도 가장 최근의 약정 거래를 수행하고 타임 록을 생략하는 것을 제외하고는 모든면에서 동일한 결제 트랜잭션을 구축합니다. 양측은 속임수를 쓰고 더 유리한 균형을 취할 방법이 없다는 것을 알고이 합의 거래에 서명 할 수 있습니다. 결제 거래를 협조하여 서명하고 전송함으로써 그들은 채널을 폐쇄하고 잔액을 즉시 상환 할 수 있습니다. 최악의 경우, 당사자 중 한 명은 사소한 일이며, 협조를 거부하고 상대방에게 가장 최근의 약정 거래를 일방적으로 종결하도록 강요 할 수 있습니다. 하지만 그렇게하면 펀드를 기다려야합니다. (( "", startref = "PSCtrust12"))) 가장 최근의 약정 거래로 상대방에게 일방적 인 종결을하도록 강요합니다. 하지만 그렇게하면 펀드를 기다려야합니다. (( "", startref = "PSCtrust12"))) 가장 최근의 약정 거래로 상대방에게 일방적 인 종결을하도록 강요합니다. 하지만 그렇게하면 펀드를 기다려야합니다.((("", startref="PSCtrust12")))
 
-==== Asymmetric Revocable Commitments
+==== 비대칭 취소 가능 약정
 
-((("payment (state) channels", "asymmetric revocable commitments", id="PSCaymetric12")))A better way to handle the prior commitment states is to explicitly revoke them. However, this is not easy to achieve. A key characteristic of bitcoin is that once a transaction is valid, it remains valid and does not expire. The only way to cancel a transaction is by double-spending its inputs with another transaction before it is mined. That's why we used timelocks in the simple payment channel example above to ensure that more recent commitments could be spent before older commitments were valid. However, sequencing commitments in time creates a number of constraints that make payment channels difficult to use.
+((("payment (state) channels", "asymmetric revocable commitments", id="PSCaymetric12")))이전 확약 상태를 처리하는 더 좋은 방법은 명시 적으로 해지하는 것입니다. 그러나 이것은 달성하기 쉽지 않습니다. 비트 코인의 주요 특징은 트랜잭션이 유효하면 유효한 상태로 만료되지 않는다는 것입니다. 트랜잭션을 취소하는 유일한 방법은 채굴되기 전에 입력을 다른 트랜잭션과 함께 두 번 소비하는 것입니다. 그래서 위의 간단한 지불 채널 예제에서 시간 약속을 사용하여 더 오래된 계약이 유효하기 전에 더 최근의 약정이 이루어질 수 있도록했습니다. 그러나 시간에 맞추어 계약을 체결하면 지불 채널을 사용하기 어렵게 만드는 여러 가지 제약 조건이 생깁니다.
 
-Even though a transaction cannot be canceled, it can be constructed in such a way as to make it undesirable to use. The way we do that is by giving each party a _revocation key_ that can be used to punish the other party if they try to cheat. This mechanism for revoking prior commitment transactions was first proposed as part of the Lightning Network.
+트랜잭션을 취소 할 수 없더라도 트랜잭션을 사용하지 않는 방식으로 트랜잭션을 구성 할 수 있습니다. 우리가하는 방법은 속임수를 쓰려고 할 때 상대방을 처벌하는 데 사용할 수있는 _ 재배치 키 _를 각 당사자에게주는 것입니다. 사전 약정 거래를 철회하기위한이 메커니즘은 먼저 번개 네트워크의 일부로 제안되었습니다.
 
-To explain revocation keys, we will construct a more complex payment channel between two exchanges run by Hitesh and Irene. Hitesh and Irene run bitcoin exchanges in India and the USA, respectively. Customers of Hitesh's Indian exchange often send payments to customers of Irene's USA exchange and vice versa. Currently, these transactions occur on the bitcoin blockchain, but this means paying fees and waiting several blocks for confirmations. Setting up a payment channel between the exchanges will significantly reduce the cost and accelerate the transaction flow.
+해지 키를 설명하기 위해 Hitesh와 Irene이 운영하는 두 거래소간에보다 복잡한 지불 채널을 구성 할 것입니다. Hitesh와 Irene은 각각 인도와 미국에서 비트 동전 교환을 운영합니다. Hitesh의 인도 교환 고객은 종종 Irene의 미국 교환 고객에게 지불하고 그 반대의 경우도 마찬가지입니다. 현재 이러한 거래는 Bitcoin 블록 체인에서 발생하지만 요금을 지불하고 확인을 위해 여러 블록을 기다리는 것을 의미합니다. 거래소간에 결제 채널을 설정하면 비용을 크게 절감하고 거래 흐름을 가속화 할 수 있습니다.
 
-Hitesh and Irene start the channel by collaboratively constructing a funding transaction, each funding the channel with 5 bitcoin.
-The initial balance is 5 bitcoin for Hitesh and 5 bitcoin for Irene. The funding transaction locks the channel state in a 2-of-2 multisig, just like in the example of a simple channel.
+Hitesh와 Irene은 자금 조달 거래를 공동으로 구성하여 채널을 시작합니다. 각 채널은 5 비트 코히로 채널에 자금을 지원합니다.
+초기 균형은 Hitesh의 경우 5 bitcoin이고 Irene의 경우 5 bitcoin입니다. 자금 조달 거래는 단순 채널의 예와 마찬가지로 2-of-2 multisig에서 채널 상태를 잠급니다.
 
-The funding transaction may have one or more inputs from Hitesh (adding up to 5 bitcoin or more), and one or more inputs from Irene (adding up to 5 bitcoin or more). The inputs have to slightly exceed the channel capacity in order to cover the transaction fees. The transaction has one output that locks the 10 total bitcoin to a 2-of-2 multisig address controlled by both Hitesh and Irene. The funding transaction may also have one or more outputs returning change to Hitesh and Irene if their inputs exceeded their intended channel contribution. This is a single transaction with inputs offered and signed by two parties. It has to be constructed in collaboration and signed by each party before it is transmitted.
+자금 조달 거래에는 Hitesh (최대 5 bitcoin 이상 추가) 및 Irene (최대 5 bitcoin 이상 합산)의 입력이 하나 이상있을 수 있습니다. 거래 수수료를 충당하기 위해서는 입력 값이 채널 용량을 약간 초과해야합니다. 트랜잭션에는 10 개의 총 비트 코 인을 Hitesh와 Irene이 모두 제어하는 ​​2-of-2 multisig 주소로 잠그는 하나의 출력이 있습니다. 자금 유입은 또한 입력이 의도 된 채널 기여도를 초과하는 경우 Hitesh 및 Irene에게 변경을 반환하는 하나 이상의 결과를 가질 수 있습니다. 이것은 두 당사자가 제안하고 서명 한 입력이있는 단일 거래입니다. 협업을 통해 구축되고 전송되기 전에 각 당사자가 서명해야합니다.
 
-Now, instead of creating a single commitment transaction that both parties sign, Hitesh and Irene create two different commitment transactions that are _asymmetric_.
+이제 Hitesh와 Irene은 양 당사자가 서명 한 단일 약정 거래를 생성하는 대신에 대칭성 인 두 가지 약정 거래를 생성합니다.
 
-Hitesh has a commitment transaction with two outputs. The first output pays Irene the 5 bitcoin she is owed _immediately_. The second output pays Hitesh the 5 bitcoin he is owed, but only after a timelock of 1000 blocks. The transaction outputs look like this:
-
-----
-Input: 2-of-2 funding output, signed by Irene
-
-Output 0 <5 bitcoin>:
-    <Irene's Public Key> CHECKSIG
-
-Output 1:
-    <1000 blocks>
-    CHECKSEQUENCEVERIFY
-    DROP
-    <Hitesh's Public Key> CHECKSIG
-----
-
-Irene has a different commitment transaction with two outputs. The first output pays Hitesh the 5 bitcoin he is owed immediately. The second output pays Irene the 5 bitcoin she is owed but only after a timelock of 1000 blocks. The commitment transaction Irene holds (signed by Hitesh) looks like this:
+Hitesh는 두 가지 산출물로 약정 거래를합니다. 첫 번째 출력은 Irene에게 그녀가 지불해야하는 5 bitcoin을 지불합니다. 두 번째 출력은 Hitesh에게 그가 지불해야하는 5 비트 코치를 지불하지만, 1000 블록의 타임 록 후에 만 ​​발생합니다. 트랜잭션 출력은 다음과 같습니다.
 
 ----
-Input: 2-of-2 funding output, signed by Hitesh
+입력 : 2-of-2 자금 조달 결과, Irene이 서명 함
 
-Output 0 <5 bitcoin>:
-    <Hitesh's Public Key> CHECKSIG
+출력 0 <5 bitcoin> :
+    <아이린의 공개 키> CHECKSIG
 
-Output 1:
-    <1000 blocks>
-    CHECKSEQUENCEVERIFY
-    DROP
-    <Irene's Public Key> CHECKSIG
+출력 1 :
+    <1000 블록>
+    확인 증빙
+    하락
+    <Hitesh의 공개 키> CHECKSIG
 ----
 
-This way, each party has a commitment transaction, spending the 2-of-2 funding output. This input is signed by the _other_ party. At any time the party holding the transaction can also sign (completing the 2-of-2) and broadcast. However, if they broadcast the commitment transaction, it pays the other party immediately whereas they have to wait for a short timelock to expire. By imposing a delay on the redemption of one of the outputs, we put each party at a slight disadvantage when they choose to unilaterally broadcast a commitment transaction. But a time delay alone isn't enough to encourage fair conduct.
+Irene은 두 가지 산출물을 가지고 다른 약정 거래를합니다. 첫 번째 산출물은 Hitesh에게 그가 지불해야하는 5 비트 코인을 지불합니다. 두 번째 출력은 Irene에게 지불해야하는 5 비트 코인이지만 1000 블록의 타임 록 후에 만 ​​발생합니다. Irene이 보유한 약정 거래 (Hitesh가 서명)는 다음과 같습니다.
 
-<<asymmetric_commitments>> shows two asymmetric commitment transactions, where the output paying the holder of the commitment is delayed.
+----
+투입물 : 2-of-2 자금 조달 결과, Hitesh가 서명 함.
+
+출력 0 <5 bitcoin> :
+    <Hitesh의 공개 키> CHECKSIG
+
+출력 1 :
+    <1000 블록>
+    확인 증빙
+    하락
+    <아이린의 공개 키> CHECKSIG
+----
+
+이 방법으로, 각 당사자는 2-of-2 자금 조달 결과를 보내는 약정 거래를합니다. 이 입력은 _other_ party에 의해 서명됩니다. 거래를하는 당사자는 언제든지 서명 (2-of-2 완료)과 방송을 할 수 있습니다. 그러나 약속 트랜잭션을 브로드 캐스트하는 경우에는 상대방에게 즉시 지불하지만 짧은 시간 제한이 만료 될 때까지 기다려야합니다. 결과물 중 하나의 사용에 지체를 두어 당사자가 일방적으로 약정 거래를 방송 할 때 각 당사자에게 약간의 불이익을주게됩니다. 그러나 시간 지연만으로는 공정한 행동을 장려하는 데 충분하지 않습니다.
+
+<< asymmetric_commitments >>는 두 개의 비대칭 약정 트랜잭션을 보여줍니다. 커미트먼트 보유자에게 지불하는 출력이 지연됩니다.
 
 [[asymmetric_commitments]]
 .Two asymmetric commitment transactions with delayed payment for the party holding the transaction
 image::images/mbc2_1208.png["Two asymmetric commitment transactions with delayed payment for the party holding the transaction"]
 
-Now we introduce the final element of this scheme: a revocation key that allows a wronged party to punish a cheater by taking the entire balance of the channel.
+이제 우리는이 계획의 마지막 요소, 즉 잘못된 파티가 채널의 전체 균형을 취함으로써 치어 리더를 처벌 할 수있게하는 해지 키를 소개합니다.
 
-Each of the commitment transactions has a "delayed" output. The redemption script for that output allows one party to redeem it after 1000 blocks _or_ the other party to redeem it if they have a revocation key. So when Hitesh creates a commitment transaction for Irene to sign, he makes the second output payable to himself after 1000 blocks, or to whoever can present a revocation key. Hitesh constructs this transaction and creates a revocation key that he keeps secret. He will only reveal it to Irene when he is ready to move to a new channel state and wants to revoke this commitment. The second output's script looks like this:
+확약 트랜잭션마다 "지연된"출력이 있습니다. 해당 출력에 대한 사용 스크립트를 사용하면 한 당사자가 해지 키가있는 경우 다른 당사자가 1000 블록 (또는 다른 상대방)을 사용하여 쿠폰을 사용할 수 있습니다. 따라서 Hitesh는 Irene이 서명 할 약정 거래를 생성 할 때, 두 번째 산출물을 1000 블록 이후 자신에게 지급하거나 해지 키를 제시 할 수있는 사람에게 지급합니다. Hitesh는이 거래를 구성하고 비밀 유지하는 취소 키를 만듭니다. 그는 새로운 채널 상태로 이동할 준비가되면서 Irene에게만 공개하고이 약속을 철회하고자합니다. 두 번째 출력의 스크립트는 다음과 같습니다.
 
 ----
 Output 0 <5 bitcoin>:
@@ -389,35 +389,35 @@ ENDIF
 CHECKSIG
 ----
 
-Irene can confidently sign this transaction, since if transmitted it will immediately pay her what she is owed. Hitesh holds the transaction, but knows that if he transmits it in a unilateral channel closing, he will have to wait 1000 blocks to get paid.
+아이린은이 거래에 자신있게 서명 할 수 있습니다. 전송되면 즉시 그녀에게 빚진 것을 지불하게됩니다. Hitesh는 거래를 보유하고 있지만, 일방적 인 채널 폐쇄를 통해이를 전송하는 경우 지급을 위해 1000 블록을 기다려야한다는 것을 알고 있습니다.
 
-When the channel is advanced to the next state, Hitesh has to _revoke_ this commitment transaction before Irene agrees to sign the next commitment transaction. To do that, all he has to do is send the _revocation key_ to Irene. Once Irene has the revocation key for this commitment, she can sign the next commitment with confidence. She knows that if Hitesh tries to cheat by publishing the prior commitment, she can use the revocation key to redeem Hitesh's delayed output. _If Hitesh cheats, Irene gets BOTH outputs_.
+채널이 다음 상태로 진행될 때, Iites가 다음 약속 트랜잭션에 서명하기 전에 Hitesh는이 약정 트랜잭션을 재발급해야합니다. 그렇게하기 위해서, 그가해야 할 일은 _revocation key_를 아이린에게 보내는 것입니다. 아이린 (Irene)이 이러한 약속을 취소하는 열쇠를 갖게되면, 그녀는 자신감을 갖고 다음 약속에 서명 할 수 있습니다. 그녀는 Hitesh가 이전 약속을 발표하여 속임수를 쓰려고하면 Hitesh의 연기 된 산출물을 보상하기 위해 취소 키를 사용할 수 있음을 알고 있습니다. _Hitesh가 속임수를 쓰면 Irene은 두 가지 결과를 얻습니다.
 
-The revocation protocol is bilateral, meaning that in each round, as the channel state is advanced, the two parties exchange new commitments, exchange revocation keys for the previous commitment, and sign each other's commitment transactions. As they accept a new state, they make the prior state impossible to use, by giving each other the necessary revocation keys to punish any cheating.
+해지 프로토콜은 양방향이며, 이는 각 라운드에서 채널 상태가 진행됨에 따라 양 당사자가 새로운 약정을 교환하고 이전 약정에 대한 해지 키를 교환하며 서로의 약정 거래에 서명하는 것을 의미합니다. 그들은 새로운 상태를 받아 들일 때 어떤 부정 행위를 처벌하기 위해 필요한 취소 키를 서로 제공함으로써 이전 상태를 사용할 수 없도록 만듭니다.
 
-Let's look at an example of how it works. One of Irene's customers wants to send 2 bitcoin to one of Hitesh's customers. To transmit 2 bitcoin across the channel, Hitesh and Irene must advance the channel state to reflect the new balance. They will commit to a new state (state number 2) where the channel's 10 bitcoin are split, 7 bitcoin to Hitesh and 3 bitcoin to Irene. To advance the state of the channel, they will each create new commitment transactions reflecting the new channel balance.
+어떻게 작동하는지 예를 들어 봅시다. Irene의 고객 중 한 명이 Hitesh의 고객 중 한 명에게 2 비트 동전을 보내려고합니다. 채널을 통해 2 비트 코치를 전송하려면 Hitesh와 Irene이 새로운 균형을 반영하도록 채널 상태를 전진시켜야합니다. 그들은 채널의 10 bitcoin이 분리되는 새로운 주 (state number 2), 7 bitcoin은 Hitesh, 3 bitcoin은 Irene에게 맡깁니다. 채널 상태를 향상시키기 위해 새로운 채널 균형을 반영하여 새로운 약속 트랜잭션을 만듭니다.
 
-As before, these commitment transactions are asymmetric so that the commitment transaction each party holds forces them to wait if they redeem it. Crucially, before signing new commitment transactions, they must first exchange revocation keys to invalidate the prior commitment. In this particular case, Hitesh's interests are aligned with the real state of the channel and therefore he has no reason to broadcast a prior state. However, for Irene, state number 1 leaves her with a higher balance than state 2. When Irene gives Hitesh the revocation key for her prior commitment transaction (state number 1) she is effectively revoking her ability to profit from regressing the channel to a prior state because with the revocation key, Hitesh can redeem both outputs of the prior commitment transaction without delay. Meaning if Irene broadcasts the prior state, Hitesh can exercise his right to take all of the outputs.
+이전과 마찬가지로 이러한 약정 거래는 비대칭이므로 각 당사자가 보유한 약정 거래가이를 사용하면 대기하도록합니다. 결정적으로, 새로운 약정 거래에 서명하기 전에 먼저 해지 키를 교환하여 이전 약정을 무효화해야합니다. 이 특별한 경우 히트의 관심사는 채널의 실제 상태와 일치하므로 이전 상태를 방송 할 이유가 없습니다. 그러나 아이린에게 주 번호 1은 그녀에게 주 2보다 높은 균형을 남긴다. 아이린 (Irene)은 하이테 (Hitesh)에게 그녀의 이전 약정 거래 (상태 번호 1)에 대한 철회 키를 제공하면 그녀는 채널을 회귀하여 이전의 왜냐하면 해지 키로 Hitesh는 지체없이 이전 약정 거래의 두 산출물을 모두 상환 할 수 있기 때문입니다.
 
-Importantly, the revocation doesn't happen automatically. While Hitesh has the ability to punish Irene for cheating, he has to watch the blockchain diligently for signs of cheating. If he sees a prior commitment transaction broadcast, he has 1000 blocks to take action and use the revocation key to thwart Irene's cheating and punish her by taking the entire balance, all 10 bitcoin.
+중요한 것은 해지가 자동으로 이루어지지 않는다는 것입니다. Hitesh는 속임수로 아이린을 처벌 할 수있는 능력이 있지만, 속임수의 징조로 부지런히 부딪쳐 야합니다. 그가 이전 계약 트랜잭션 방송을 본다면, 그는 1000 블록의 조치를 취해야하며 Irene의 속임수를 저지하고 전체 균형을 잡아서 처벌하기 위해 해지 키를 사용합니다 (모두 10 비트 코인).
 
-Asymmetric revocable commitments with relative time locks (+CSV+) are a much better way to implement payment channels and a very significant innovation in this technology.  With this construct, the channel can remain open indefinitely and can have billions of intermediate commitment transactions. In prototype implementations of Lightning Network, the commitment state is identified by a 48-bit index, allowing more than 281 trillion (2.8 x 10^14^) state transitions in any single channel!((("", startref="PSCaymetric12")))
+상대적 시간 잠금 (+ CSV +)을 통한 비대칭 취소 가능 약정은 지불 채널을 구현하는 훨씬 좋은 방법이며이 기술에서 매우 중요한 혁신입니다. 이 구성을 사용하면 채널을 무기한으로 열어두고 수십억 개의 중간 약정 트랜잭션을 수행 할 수 있습니다. Lightning Network의 프로토 타입 구현에서 약속 상태는 48 비트 인덱스로 식별되므로 모든 단일 채널에서 281 조 (2.8 x 10 ^ 14 ^)의 상태 전이를 허용합니다!((("", startref="PSCaymetric12")))
 
-==== Hash Time Lock Contracts (HTLC)
+==== 해시 시간 잠금 계약 (HTLC)
 
-((("Hash Time Lock Contracts (HTLC)")))((("payment (state) channels", "Hash Time Lock Contracts (HTLC)")))Payment channels can be further extended with a special type of smart contract that allows the participants to commit funds to a redeemable secret, with an expiration time. This feature is called a _Hash Time Lock Contract_, or _HTLC_, and is used in both bidirectional and routed payment channels.
+((("Hash Time Lock Contracts (HTLC)")))((("payment (state) channels", "Hash Time Lock Contracts (HTLC)")))지불 채널은 특별한 유형의 스마트로 더 확장 될 수 있습니다. ((( "Hash Time Lock Contracts (HTLC) 참가자가 만료 시간이있는 상환 할 수있는 비밀에 자금을 투입 할 수있게하는 계약. 이 기능은 _Hash Time Lock Contract_ _ 또는 _HTLC_라고하며 양방향 및 라우팅 된 지불 채널에서 모두 사용됩니다.
 
-Let's first explain the "hash" part of the HTLC. To create an HTLC, the intended recipient of the payment will first create a secret +R+. They then calculate the hash of this secret +H+:
+먼저 HTLC의 "해시"부분을 설명해 보겠습니다. HTLC를 만들려면 지불 대상자는 먼저 비밀 + R +를 만듭니다. 그런 다음이 비밀 + 해시의 해시를 계산합니다.
 
 ----
-H = Hash(R)
+H = 해쉬 (R)
 ----
 
-This produces a hash +H+ that can be included in an output's locking script. Whoever knows the secret can use it to redeem the output. The secret +R+ is also referred to as a _preimage_ to the hash function. The preimage is just the data that is used as input to a hash function.
+이렇게하면 출력물의 잠금 스크립트에 포함될 수있는 해시 + H +가 생성됩니다. 그 비밀을 아는 사람은 그것을 사용하여 산출물을 사용할 수 있습니다. 비밀 + R +는 해시 함수에 대한 _ 프리 픽스라고도합니다. 프리 이미지는 해시 함수에 대한 입력으로 사용되는 데이터입니다.
 
-The second part of an HTLC is the "time lock" component. If the secret is not revealed, the payer of the HTLC can get a "refund" after some time. This is achieved with an absolute time lock using +CHECKLOCKTIMEVERIFY+.
+HTLC의 두 번째 부분은 "시간 잠금"구성 요소입니다. 비밀이 드러나지 않으면 HTLC의 지불자는 얼마 후 "환불"을받을 수 있습니다. + CHECKLOCKTIMEVERIFY +를 사용하여 절대 시간 잠금을 설정하면됩니다.
 
-The script implementing an HTLC might look like this:
+HTLC를 구현하는 스크립트는 다음과 같습니다.
 
 ----
 IF
@@ -430,114 +430,114 @@ ELSE
 ENDIF
 ----
 
-Anyone who knows the secret +R+, which when hashed equals to +H+, can redeem this output by exercising the first clause of the +IF+ flow.
+비밀 + R +를 알고있는 사람은 해시가 + H +와 같을 때 + IF + 흐름의 첫 번째 절을 실행하여이 출력을 사용할 수 있습니다.
 
-If the secret is not revealed and the HTLC claimed, after a certain number of blocks the payee can claim a refund using the second clause in the +IF+ flow.
+비밀이 밝혀지지 않았고 HTLC가 청구 한 경우 특정 수의 블록 이후에 수취인은 + IF + 흐름의 두 번째 조항을 사용하여 환불을 청구 할 수 있습니다.
 
-This is a basic implementation of an HTLC. This type of HTLC can be redeemed by _anyone_ who has the secret +R+. An HTLC can take many different forms with slight variations to the script. For example, adding a +CHECKSIG+ operator and a public key in the first clause restricts redemption of the hash to a named recipient, who must also know the secret +R+.((("", startref="BCApayment12")))
+이것은 HTLC의 기본 구현입니다. 이 유형의 HTLC는 비밀 + R +을 가진 _anyone_이 (를) 사용할 수 있습니다. HTLC는 스크립트에 약간의 변형을 가한 다양한 형태를 취할 수 있습니다. 예를 들어 첫 번째 절에 + CHECKSIG + 연산자와 공개 키를 추가하면 이름받는 사람에게 해시 사용을 제한하고 비밀 + R +도 알아야합니다.((("", startref="BCApayment12")))
 
 [[lightning_network]]
-=== Routed Payment Channels (Lightning Network)
+=== 라우팅 된 지불 채널 (번개 네트워크)
 
-((("blockchain applications", "routed payment channels", seealso="Lightning Network", id="BCAlightning12")))((("routed payment channels", see="Lightning Network")))((("Lightning Network", "defined")))The Lightning Network is a proposed routed network of bidirectional payment channels connected end-to-end. A network like this can allow any participant to route a payment from channel to channel without trusting any of the intermediaries. The Lightning Network was https://lightning.network/lightning-network-paper.pdf[first described by Joseph Poon and Thadeus Dryja in February 2015], building on the concept of payment channels as proposed and elaborated upon by many others.
+((("blockchain applications", "routed payment channels", seealso="Lightning Network", id="BCAlightning12")))((("routed payment channels", see="Lightning Network")))((("Lightning Network", "defined")))번개 네트워크는 엔드 투 엔드로 연결된 양방향 지불 채널의 제안 된 라우팅 네트워크입니다. 이와 같은 네트워크는 모든 참가자가 중개자를 신뢰하지 않고 채널에서 채널로 지불을 라우팅 할 수있게합니다. 번개 네트워크는 2015 년 2 월에 Joseph Poon과 Thadeus Dryja가 처음으로 설명한 https://lightning.network/lightning-network-paper.pdf였으며 많은 다른 사람들이 제안하고 정성 들여 만든 지불 채널 개념을 토대로 구축되었습니다.
 
-"Lightning Network" refers to a specific design for a routed payment channel network, which has now been implemented by at least five different open source teams. ((("Basics of Lightning Technology (BOLT)")))The independent implementations are coordinated by a set of interoperability standards described in the http://bit.ly/2rBHeoL[_Basics of Lightning Technology (BOLT)_ paper].
+"번개 네트워크"는 적어도 5 개의 다른 오픈 소스 팀에 의해 구현 된 라우팅 된 지불 채널 네트워크를위한 특정 디자인을 나타냅니다. (( "BOLT (Lightning Technology BOLT)"))) 독립적 인 구현은 http://bit.ly/2rBHeoL [BTLT (Battle of Lightning Technology) _ 문서]에 설명 된 일련의 상호 운용성 표준에 의해 조정됩니다.
 
-Prototype implementations of the Lightning Network have been released by several teams. For now, these implementations can only be run on testnet because they use segwit, which is not activated on the main bitcoin blockchain (mainnet).
+번개 네트워크의 프로토 타입 구현은 여러 팀에서 출시되었습니다. 현재이 구현은 main bitcoin 블록 체인 (mainnet)에서 활성화되지 않은 segwit을 사용하기 때문에 testnet에서만 실행될 수 있습니다.
 
-The Lightning Network is one possible way of implementing routed payment channels. There are several other designs that aim to achieve similar goals, such as Teechan and Tumblebit.
+번개 네트워크는 라우팅 된 지불 채널을 구현하는 한 가지 방법입니다. Teechan 및 Tumblebit과 같은 유사한 목표를 달성하기위한 몇 가지 다른 디자인이 있습니다.
 
 [role="pagebreak-before less_space_heading"]
-==== Basic Lightning Network Example
+==== 기본 번개 네트워크 예제
 
-((("Lightning Network", "basic example")))Let's see how this works.
+((("Lightning Network", "basic example")))어떻게 작동하는지 보자.
 
-In this example, we have five participants: Alice, Bob, Carol, Diana, and Eric. These five participants have opened payment channels with each other, in pairs. Alice has a payment channel with Bob. Bob is connected to Carol, Carol to Diana, and Diana to Eric. For simplicity let's assume each channel is funded with 2 bitcoin by each participant, for a total capacity of 4 bitcoin in each channel.
+이 예에서는 Alice, Bob, Carol, Diana 및 Eric의 5 명의 참가자가 있습니다. 이 5 명의 참가자는 서로 지불 채널을 쌍으로 열었습니다. Alice에게는 Bob과의 지불 채널이 있습니다. Bob은 Carol, Carol은 Diana, Diana는 Eric에 연결됩니다. 간단하게하기 위해 각 채널은 각 참가자가 2 비트 코인으로 자금을 제공한다고 가정하고 각 채널에서 총 4 비트 코인을 처리합니다.
 
-<<lightning_network_fig>> shows five participants in a Lightning Network, connected by bidirectional payment channels that can be linked to make a payment from Alice to Eric (<<lightning_network>>).
+<< lightning_network_fig >>는 양방향 지불 채널로 연결된 Lightning Network의 5 명의 참가자를 보여줍니다. 이들은 Alice에서 Eric (<< lightning_network >>)에게 지불하기 위해 연결할 수 있습니다.
 
 [[lightning_network_fig]]
 .A series of bidirectional payment channels linked to form a Lightning Network that can route a payment from Alice to Eric
 image::images/mbc2_1209.png["A series of bi-directional payment channels linked to form a Lightning Network"]
 
-Alice wants to pay Eric 1 bitcoin. However, Alice is not connected to Eric by a payment channel. Creating a payment channel requires a funding transaction, which must be committed to the bitcoin blockchain. Alice does not want to open a new payment channel and commit more of her funds. Is there a way to pay Eric, indirectly?
+Alice는 Eric 1 bitcoin을 지불하려고합니다. 그러나 Alice는 지불 채널로 Eric과 연결되어 있지 않습니다. 지불 채널을 생성하려면 자금 조달 거래가 필요합니다. 자금 거래는 비트 코 블록 (bitcoin blockchain)에 맡겨야합니다. Alice는 새로운 지불 채널을 열고 더 많은 금액을 지불하기를 원하지 않습니다. 간접적으로 에릭에게 돈을 지불 할 방법이 있습니까?
 
-<<ln_payment_process>> shows the step-by-step process of routing a payment from Alice to Eric, through a series of HTLC commitments on the payment channels connecting the participants.
+<< ln_payment_process >>는 참여자를 연결하는 결제 채널에서 일련의 HTLC 약정을 통해 Alice에서 Eric으로 지불금을 전달하는 단계별 절차를 보여줍니다.
 
 [[ln_payment_process]]
 .Step-by-step payment routing through a Lightning Network
 image::images/mbc2_1210.png["Step-by-step payment routing through a Lightning Network"]
 
-Alice is running a Lightning Network (LN) node that is keeping track of her payment channel to Bob and has the ability to discover routes between payment channels. Alice's LN node also has the ability to connect over the internet to Eric's LN node. Eric's LN node creates a secret +R+ using a random number generator. Eric's node does not reveal this secret to anyone. Instead, Eric's node calculates a hash +H+ of the secret +R+ and transmits this hash to Alice's node (see <<ln_payment_process>> step 1).
+Alice는 자신의 지불 채널을 Bob에게 추적하는 LN (Lightning Network) 노드를 실행 중이고 지불 채널 사이의 경로를 탐색 할 수 있습니다. Alice의 LN 노드는 인터넷을 통해 Eric의 LN 노드에 연결할 수 있습니다. Eric의 LN 노드는 난수 생성기를 사용하여 비밀 + R +을 만듭니다. 에릭의 노드는이 비밀을 누구에게도 공개하지 않습니다. 대신, Eric의 노드는 secret + R +의 해시 + H +를 계산하고이 해시를 Alice의 노드로 전송합니다 (<< ln_payment_process >> 1 단계 참조).
 
-Now Alice's LN node constructs a route between Alice's LN node and Eric's LN node. The routing algorithm used will be examined in more detail later, but for now let's assume that Alice's node can find an efficient route.
+이제 Alice의 LN 노드는 Alice의 LN 노드와 Eric의 LN 노드 사이의 경로를 구성합니다. 사용 된 라우팅 알고리즘은 나중에 자세히 설명 하겠지만 이제 Alice의 노드가 효율적인 경로를 찾을 수 있다고 가정 해 보겠습니다.
 
-Alice's node then constructs an HTLC, payable to the hash +H+, with a 10-block refund timeout (current block + 10), for an amount of 1.003 bitcoin (see <<ln_payment_process>> step 2). The extra 0.003 will be used to compensate the intermediate nodes for their participation in this payment route. Alice offers this HTLC to Bob, deducting 1.003 bitcoin from her channel balance with Bob and committing it to the HTLC. The HTLC has the following meaning: _"Alice is committing 1.003 of her channel balance to be paid to Bob if Bob knows the secret, or refunded back to Alice's balance if 10 blocks elapse."_ The channel balance between Alice and Bob is now expressed by commitment transactions with three outputs: 2 bitcoin balance to Bob, 0.997 bitcoin balance to Alice, 1.003 bitcoin committed in Alice's HTLC. Alice's balance is reduced by the amount committed to the HTLC.
+Alice의 노드는 1.003 bitcoin (<< ln_payment_process >> 2 단계 참조)의 양에 대해 10 블록 환불 시간 초과 (현재 블록 + 10)로 해시 + H +로 지불 할 수있는 HTLC를 생성합니다. 여분의 0.003은 중간 노드가이 지불 경로에 참여했음을 보완하는 데 사용됩니다. Alice는이 HTLC를 Bob에게 제공하여 Bob과의 채널 균형에서 1.003 비트 코움을 뺀 후 HTLC에 커밋합니다. HTLC의 의미는 다음과 같습니다. _ "앨리스는 밥이 비밀을 알고있는 경우 밥에게 지불 할 채널 잔액을 1.003, 10 블록이 경과하면 앨리스의 잔액으로 환불합니다."_ 앨리스와 밥 사이의 채널 밸런스가 이제 Bob에게 2 bitcoin balance, Alice에 0.997 bitcoin balance, Alice의 HTLC에서 1.003 bitcoin으로 약속 된 거래로 표현됩니다. 앨리스 '
 
-Bob now has a commitment that if he is able to get the secret +R+ within the next 10 blocks, he can claim the 1.003 locked by Alice. With this commitment in hand, Bob's node constructs an HTLC on his payment channel with Carol. Bob's HTLC commits 1.002 bitcoin to hash +H+ for 9 blocks, which Carol can redeem if she has secret +R+ (see <<ln_payment_process>> step 3). Bob knows that if Carol can claim his HTLC, she has to produce +R+. If Bob has +R+ in nine blocks, he can use it to claim Alice's HTLC to him. He also makes 0.001 bitcoin for committing his channel balance for nine blocks. If Carol is unable to claim his HTLC and he is unable to claim Alice's HTLC, everything reverts back to the prior channel balances and no one is at a loss. The channel balance between Bob and Carol is now: 2 to Carol, 0.998 to Bob, 1.002 committed by Bob to the HTLC.
+Bob은 이제 다음 10 블록 내에 비밀 + R +을 확보 할 수 있다면 Alice가 1.003을 소유 할 수 있다고 주장 할 수 있습니다. Bob의 노드는 Carol과의 결제 채널에서 HTLC를 구성합니다. Bob의 HTLC는 9 블록에 대해 1.002 bitcoin을 hash + H +로 커밋합니다. Carol은 secret + R +가있는 경우이를 사용할 수 있습니다 (<< ln_payment_process >> 3 단계 참조). Bob은 Carol이 HTLC를 주장 할 수 있다면 + R +를 생산해야한다는 것을 알고 있습니다. Bob이 9 블록 안에 + R +를 가지고 있다면, 그는 그것을 사용하여 Alice의 HTLC를 주장 할 수 있습니다. 그는 또한 9 블록에 대한 채널 균형을 위해 0.001 비트 코인을 만듭니다. Carol이 자신의 HTLC를 주장 할 수없고 그가 Alice의 HTLC를 주장 할 수 없다면, 모든 것은 이전의 채널 잔액으로 되돌아 가고 어느 누구도 손실되지 않습니다. Bob과 Carol의 채널 밸런스는 이제 Carol : 2, Bob : 0.998, Bob : 1입니다.
 
-Carol now has a commitment that if she gets +R+ within the next nine blocks, she can claim 1.002 bitcoin locked by Bob. Now she can make an HTLC commitment on her channel with Diana. She commits an HTLC of 1.001 bitcoin to hash +H+, for eight blocks, which Diana can redeem if she has secret +R+ (see <<ln_payment_process>> step 4). From Carol's perspective, if this works she is 0.001 bitcoin better off and if it doesn't she loses nothing. Her HTLC to Diana is only viable if +R+ is revealed, at which point she can claim the HTLC from Bob. The channel balance between Carol and Diana is now: 2 to Diana, 0.999 to Carol, 1.001 committed by Carol to the HTLC.
+Carol은 이제 다음 9 개의 블록 내에서 + R +를 얻으면 Bob에 의해 잠긴 1.002 비트 코를 청구 할 수 있다는 의지를 가지고 있습니다. 이제 그녀는 다이애나와 함께 자신의 채널에서 HTLC 공약을 할 수 있습니다. 그녀는 비밀 블록 + R + (<< ln_payment_process >> 4 단계 참조)가있는 경우 다이애나가 사용할 수있는 8 블록의 해시 + H +에 1.001 비트 코르크의 HTLC를 위탁합니다. 캐롤의 관점에서 볼 때, 이것이 작동하면 그녀는 0.001의 비트 코가 더 좋으며, 그렇지 않으면 그녀는 아무것도 잃지 않는다. 그녀의 HTLC to Diana은 + R +가 밝혀진 경우에만 실행 가능하며, 그 시점에서 Bob으로부터 HTLC를 청구 할 수 있습니다. 캐롤과 다이애나 사이의 채널 균형은 이제 2입니다. 다이애나에게 0.999, 캐롤에 0.999, HTLC에 캐롤이 1.001
 
-Finally, Diana can offer an HTLC to Eric, committing 1 bitcoin for seven blocks to hash +H+ (see <<ln_payment_process>> step 5). The channel balance between Diana and Eric is now: 2 to Eric, 1 to Diana, 1 committed by Diana to the HTLC.
+마지막으로 다이애나는 에릭에게 HTLC를 제공 할 수 있으며 해시 + H + (7 단계 참조)에 7 블럭에 대해 1 비트 코인을 위임 할 수 있습니다 ( "ln_payment_process >> 5 단계 참조). Diana와 Eric의 채널 균형은 이제 2입니다. Eric은 1, Diana은 1, HTLC는 Diana가 커밋했습니다.
 
-However, at this hop in the route, Eric _has_ secret +R+. He can therefore claim the HTLC offered by Diana. He sends +R+ to Diana and claims the 1 bitcoin, adding it to his channel balance (see <<ln_payment_process>> step 6). The channel balance is now: 1 to Diana, 3 to Eric.
+그러나 루트의이 홉에서 Eric은 비밀 + R +을 가지고 있습니다. 따라서 그는 다이애나가 제공 한 HTLC를 주장 할 수 있습니다. 그는 다이애나에게 + R +를 보내고 1 비트 코인을 자신의 채널 잔액에 추가합니다 (<< ln_payment_process >> 6 단계 참조). 채널 밸런스가 이제 1 : Diana, 3 : Eric.
 
-Now, Diana has secret +R+. Therefore, she can now claim the HTLC from Carol. Diana transmits +R+ to Carol and adds the 1.001 bitcoin to her channel balance (see <<ln_payment_process>> step 7). Now the channel balance between Carol and Diana is: 0.999 to Carol, 3.001 to Diana. Diana has "earned" 0.001 for participating in this payment route.
+이제 다이애나는 비밀 + R +을가집니다. 따라서, 그녀는 지금 Carol에게서 HTLC를 주장 할 수 있습니다. 다이아나는 캐롤에게 + R +를 전송하고 1.001 비트 코인을 채널 잔액에 추가합니다 (<< ln_payment_process >> 단계 7 참조). 이제 캐롤과 다이아나의 채널 균형은 0.999에서 캐롤, 3.001에서 다이애나로입니다. Diana는이 지불 방법에 참여함으로써 0.001을 벌었습니다.
 
-Flowing back through the route, the secret +R+ allows each participant to claim the outstanding HTLCs. Carol claims 1.002 from Bob, setting the balance on their channel to: 0.998 to Bob, 3.002 to Carol (see <<ln_payment_process>> step 8). Finally, Bob claims the HTLC from Alice (see <<ln_payment_process>> step 9). Their channel balance is updated as: 0.997 to Alice, 3.003 to Bob.
+경로를 통해 다시 흘러 들어오는 비밀 + R +는 각 참가자가 뛰어난 HTLC를 주장 할 수있게합니다. Carol은 Bob에게 1.002의 소유권을 주장하여 채널의 잔액을 Bob에게 0.998, Carol에게 3.002로 설정합니다 (<< ln_payment_process >> 8 단계 참조). 마지막으로, Bob은 Alice의 HTLC를 주장합니다 (<< ln_payment_process >> 9 단계 참조). 채널 밸런스는 Alice에게 0.997, Bob에게 3.003으로 업데이트됩니다.
 
-Alice has paid Eric 1 bitcoin without opening a channel to Eric. None of the intermediate parties in the payment route had to trust each other. For the short-term commitment of their funds in the channel they are able to earn a small fee, with the only risk being a small delay in refund if the channel was closed or the routed payment failed.
+Alice는 Eric에게 채널을 열지 않고도 Eric 1 비트 코인을 지불했습니다. 지불 경로에있는 중간 당사자는 서로를 신뢰해서는 안됩니다. 채널에서 단기간에 자금을 조달하기 위해 채널을 폐쇄했거나 결제 실패로 인해 환불이 지연 될 수있는 유일한 위험을 감수하면서 적은 수수료를받을 수 있습니다.
 
-==== Lightning Network Transport and Routing
+==== 번개 네트워크 전송 및 라우팅
 
-((("Lightning Network", "transport and routing")))All communications between LN nodes are encrypted point-to-point. In addition, nodes have a long-term public key that they http://bit.ly/2r5TACm[use as an identifier and to authenticate each other].
+((("Lightning Network", "transport and routing")))LN 노드 간의 모든 통신은 지점 간 암호화됩니다. 또한 노드에는 http://bit.ly/2r5TACm이라는 식별자를 사용하고 서로를 인증하는 장기 공개 키가 있습니다.
 
-Whenever a node wishes to send a payment to another node, it must first construct a _path_ through the network by connecting payment channels with sufficient capacity. Nodes advertise routing information, including what channels they have open, how much capacity each channel has, and what fees they charge to route payments. The routing information can be shared in a variety of ways and different routing protocols are likely to emerge as Lightning Network technology advances. Some Lightning Network implementations use the IRC protocol as a convenient mechanism for nodes to announce routing information. Another implementation of route discovery uses a P2P model where nodes propagate channel announcements to their peers, in a "flooding" model, similar to how bitcoin propagates transactions. Future plans include a proposal called http://bit.ly/2r5TACm[Flare], which is a hybrid routing model with local node "neighborhoods" and longer-range beacon nodes.
+노드가 다른 노드로 지불을 보내려고 할 때마다, 충분한 용량의 지불 채널을 연결하여 네트워크를 통해 _path_을 먼저 구성해야합니다. 노드는 자신이 열어 놓은 채널, 각 채널의 용량, 경로 지불에 대한 비용을 포함하여 라우팅 정보를 알립니다. 라우팅 정보는 다양한 방식으로 공유 될 수 있으며 번개 네트워크 기술이 발전함에 따라 다양한 라우팅 프로토콜이 등장 할 수 있습니다. 일부 Lightning Network 구현은 노드가 라우팅 정보를 알리는 편리한 메커니즘으로 IRC 프로토콜을 사용합니다. 경로 탐색의 또 다른 구현은 노드가 비트 코인이 트랜잭션을 전파하는 방식과 유사하게 "플러딩 (flooding)"모델에서 동료에게 채널 알림을 전파하는 P2P 모델을 사용합니다. 향후 계획에는 http : // bit라는 제안이 포함됩니다.
 
-In our previous example, Alice's node uses one of these route discovery mechanisms to find one or more paths connecting her node to Eric's node. Once Alice's node has constructed a path, she will initialize that path through the network, by propagating a series of encrypted and nested instructions to connect each of the adjacent payment channels.
+앞의 예에서 Alice의 노드는 경로 탐색 메커니즘 중 하나를 사용하여 노드를 Eric의 노드에 연결하는 하나 이상의 경로를 찾습니다. Alice의 노드가 경로를 구성하면 일련의 암호화되고 중첩 된 명령을 전파하여 인접한 지불 채널을 각각 연결하여 네트워크를 통해 해당 경로를 초기화합니다.
 
-Importantly, this path is only known to Alice's node. All other participants in the payment route see only the adjacent nodes. From Carol's perspective, this looks like a payment from Bob to Diana. Carol does not know that Bob is actually relaying a payment from Alice. She also doesn't know that Diana will be relaying a payment to Eric.
+중요한 것은이 경로는 Alice 노드에만 알려져 있습니다. 지불 라우트의 다른 모든 참여자는 인접 노드 만 볼 수 있습니다. Carol의 관점에서 보았을 때, Bob에서 Diana로 지불하는 것처럼 보입니다. Carol은 Bob이 실제로 Alice로부터 지불금을 중계하고 있음을 알지 못합니다. 그녀는 다이애나가 에릭에게 돈을 전달할 것임을 알지 못합니다.
 
-This is a critical feature of the Lightning Network, because it ensures privacy of payments and makes it very difficult to apply surveillance, censorship, or blacklists. But how does Alice establish this payment path, without revealing anything to the intermediary nodes?
+번개 네트워크의 중요한 특징은 지불의 프라이버시를 보장하고 감시, 검열 또는 블랙리스트를 적용하기가 매우 어렵 기 때문입니다. 그러나 Alice는 중개 노드에 아무 것도 공개하지 않고이 지불 경로를 어떻게 확립합니까?
 
-The Lightning Network implements an onion-routed protocol based on a scheme called http://bit.ly/2q6ZDrP[Sphinx]. This routing protocol ensures that a payment sender can construct and communicate a path through the Lightning Network such that:
+번개 네트워크 (Lightning Network)는 http://bit.ly/2q6ZDrP [스핑크스 (Sphinx)]라는 계획에 따라 양파 라우팅 프로토콜을 구현합니다. 이 라우팅 프로토콜을 통해 지불 발송자는 다음과 같은 번개 네트워크를 통해 경로를 구성하고 전달할 수 있습니다.
 
-* Intermediate nodes can verify and decrypt their portion of route information and find the next hop.
+* 중간 노드는 경로 정보의 일부를 확인 및 해독하고 다음 홉을 찾을 수 있습니다.
 
-* Other than the previous and next hops, they cannot learn about any other nodes that are part of the path.
+* 이전 및 다음 홉 이외에는 경로의 일부인 다른 노드에 대해 알 수 없습니다.
 
-* They cannot identify the length of the payment path, or their own position in that path.
+* 그들은 지불 경로의 길이 또는 그 경로에서 자신의 위치를 ​​식별 할 수 없습니다.
 
-* Each part of the path is encrypted in such a way that a network-level attacker cannot associate the packets from different parts of the path to each other.
+경로의 각 부분은 네트워크 수준의 공격자가 경로의 서로 다른 부분에서 패킷을 서로 연결할 수 없도록 암호화됩니다.
 
-* Unlike Tor (an onion-routed anonymization protocol on the internet), there are no "exit nodes" that can be placed under surveillance. The payments do not need to be transmitted to the bitcoin blockchain; the nodes just update channel balances.
+Tor (인터넷에서 양파 라우트 된 익명화 프로토콜)와는 달리, 감시하에 배치 할 수있는 "종료 노드"는 없습니다. 지불금은 bitcoin blockchain으로 전송 될 필요가 없습니다. 노드는 단지 채널 밸런스를 업데이트합니다.
 
-Using this onion-routed protocol, Alice wraps each element of the path in a layer of encryption, starting with the end and working backward. She encrypts a message to Eric with Eric's public key. This message is wrapped in a message encrypted to Diana, identifying Eric as the next recipient. The message to Diana is wrapped in a message encrypted to Carol's public key and identifying Diana as the next recipient. The message to Carol is encrypted to Bob's key. Thus, Alice has constructed this encrypted multilayer "onion" of messages. She sends this to Bob, who can only decrypt and unwrap the outer layer. Inside, Bob finds a message addressed to Carol that he can forward to Carol but cannot decipher himself. Following the path, the messages get forwarded, decrypted, forwarded, etc., all the way to Eric. Each participant knows only the previous and next node in each hop.((("", startref="alicetwelve")))
+이 onion-routed 프로토콜을 사용하여 Alice는 경로의 각 요소를 암호화 계층에 래핑하고 끝에서 시작하여 뒤로 작업합니다. 그녀는 에릭에게 공개 키로 메시지를 암호화합니다. 이 메시지는 Eiana을 다음받는 사람으로 식별하여 Diana로 암호화 된 메시지로 래핑됩니다. 다이애나에게 보내는 메시지는 캐롤의 공개 키로 암호화 된 메시지에 싸여 있으며 다이애나를 다음 수신자로 식별합니다. Carol에게 보내는 메시지는 Bob의 키로 암호화됩니다. 따라서 Alice는 암호화 된 다층의 "양파"메시지를 구성했습니다. 그녀는 바깥 레이어를 해독하고 풀 수있는 Bob에게 보냅니다. 내부에서, Bob은 Carol에게 보내는 메시지를 찾아 Carol에게 전달하지만 자신을 해독 할 수는 없습니다. 경로를 따라 메시지는 Eric에게 전달, 암호 해독, 전달 등을합니다.
 
-Each element of the path contains information on the HTLC that must be extended to the next hop, the amount that is being sent, the fee to include, and the CLTV locktime (in blocks) expiration of the HTLC. As the route information propagates, the nodes make HTLC commitments forward to the next hop.
+경로의 각 요소에는 다음 홉으로 확장해야하는 HTLC에 대한 정보, 전송되는 양, 포함 할 수수료 및 HTLC의 CLTV 잠금 시간 (블록 단위) 만료가 포함됩니다. 경로 정보가 전달됨에 따라 노드는 HTLC 약정을 다음 홉으로 전달합니다.
 
-At this point, you might be wondering how it is possible that the nodes do not know the length of the path and their position in that path. After all, they receive a message and forward it to the next hop. Doesn't it get shorter, allowing them to deduce the path size and their position? To prevent this, the path is always fixed at 20 hops and padded with random data. Each node sees the next hop and a fixed-length encrypted message to forward. Only the final recipient sees that there is no next hop. To everyone else it seems as if there are always 20 more hops to go.
+이 시점에서 노드가 경로의 길이와 경로에서의 위치를 ​​모르는 경우가있을 수 있습니다. 결국 메시지를 받고 다음 홉으로 전달합니다. 경로 길이와 위치를 추론 할 수 있도록 짧게하지 않습니까? 이를 방지하기 위해 경로는 항상 20 홉으로 고정되어 있으며 임의의 데이터로 채워져 있습니다. 각 노드는 전달할 다음 홉 및 고정 길이 암호화 된 메시지를 보게됩니다. 최종 수신자 만 다음 홉이 없음을 확인합니다. 다른 사람들에게는 항상 갈 20 홉 이상의 홉이있는 것처럼 보입니다.
 
-==== Lightning Network Benefits
+==== 번개 네트워크 혜택
 
-((("Lightning Network", "benefits of")))A Lightning Network is a second-layer routing technology. It can be applied to any blockchain that supports some basic capabilities, such as multisignature transactions, timelocks, and basic smart contracts.
+((("Lightning Network", "benefits of")))번개 네트워크는 2 계층 라우팅 기술입니다. 다중 서명 트랜잭션, 시간 잠금 및 기본 스마트 계약과 같은 일부 기본 기능을 지원하는 블록 체인에 적용 할 수 있습니다.
 
-If a Lightning Network is layered on top of the bitcoin network, the bitcoin network can gain a significant increase in capacity, privacy, granularity, and speed, without sacrificing the principles of trustless operation without intermediaries:
+번개 네트워크가 비트 코인 네트워크 위에 계층화되어있는 경우 비트 코인 네트워크는 중재자없이 신뢰없는 운영 원칙을 희생시키지 않으면 서 용량, 개인 정보, 세분성 및 속도를 크게 높일 수 있습니다.
 
-Privacy:: Lightning Network payments are much more private than payments on the bitcoin blockchain, as they are not public. While participants in a route can see payments propagated across their channels, they do not know the sender or recipient.
+개인 정보 :: 번개 네트워크 지불은 공개되지 않으므로 비트 동전 블록 체인 지불보다 훨씬 개인적인 것입니다. 경로의 참가자는 채널을 통해 전달 된 금액을 볼 수 있지만 발신자 또는 수신자를 알지 못합니다.
 
-Fungibility:: A Lightning Network makes it much more difficult to apply surveillance and blacklists on bitcoin, increasing the fungibility of the currency.
+대체 성 :: 번개 네트워크 (Lightning Network)는 비트 코인 (bitcoin)에 감시 및 블랙리스트를 적용하여 통화의 대체 성을 높이는 것을 훨씬 어렵게 만듭니다.
 
-Speed:: Bitcoin transactions using Lightning Network are settled in milliseconds, rather than minutes, as HTLCs are cleared without committing transactions to a block.
+Speed ​​:: 번개 네트워크를 사용하는 Bitcoin 트랜잭션은 블록으로 트랜잭션을 커밋하지 않고 HTLC가 지워지기 때문에 분 단위가 아니라 밀리 초 단위로 정산됩니다.
 
-Granularity:: A Lightning Network can enable payments at least as small as the bitcoin "dust" limit, perhaps even smaller. Some proposals allow for subsatoshi increments.
+세분성 :: 번개 네트워크는 최소한 비트 코인 "먼지"한도 (아마도 작은 금액)만큼 지불 할 수 있습니다. 일부 제안은 subsatoshi 증분을 허용합니다.
 
-Capacity:: A Lightning Network increases the capacity of the bitcoin system by several orders of magnitude. There is no practical upper bound to the number of payments per second that can be routed over a Lightning Network, as it depends only on the capacity and speed of each node.
+용량 :: 번개 네트워크 (Lightning Network)는 비트 코인 시스템의 용량을 몇 배 증가시킵니다. 번개 네트워크를 통해 라우팅 할 수있는 초당 지불 수에 대한 실질적인 상한선은 각 노드의 용량 및 속도에만 의존하기 때문에 없습니다.
 
-Trustless Operation:: A Lightning Network uses bitcoin transactions between nodes that operate as peers without trusting each other. Thus, a Lightning Network preserves the principles of the bitcoin system, while expanding its operating parameters significantly.
+트러스 닝 네트워크 (Trustless Operation) :: 라이트닝 네트워크 (Lightning Network)는 서로를 신뢰하지 않고 피어 (peer)로 작동하는 노드간에 비트 동전 (bitcoin) 트랜잭션을 사용합니다. 따라서 번개 네트워크는 운영 매개 변수를 크게 확장하면서 비트 코인 시스템의 원칙을 유지합니다.
 
-Of course, as mentioned previously, the Lightning Network protocol is not the only way to implement routed payment channels. Other proposed systems include Tumblebit and Teechan. At this time, however, the Lightning Network has already been deployed on testnet. Several different teams have developed competing implementations of LN and are working toward a common interoperability standard (called BOLT). It is likely that Lightning Network will be the first routed payment channel network to be deployed in production.((("", startref="BCAlightning12")))
+물론 앞에서 언급했듯이 번개 네트워크 프로토콜은 라우팅 된 지불 채널을 구현하는 유일한 방법이 아닙니다. 다른 제안 시스템으로는 Tumblebit과 Teechan이 있습니다. 그러나 현재로서는 번개 네트워크가 이미 testnet에 배포되었습니다. 여러 팀이 LN의 경쟁 구현을 개발하고 공통 상호 운용성 표준 (BOLT라고 함)을 향해 작업하고 있습니다. 번개 네트워크가 프로덕션 환경에 배포되는 최초의 라우팅 된 지불 채널 네트워크 일 가능성이 높습니다.((("", startref="BCAlightning12")))
 
-=== Conclusion
+=== 결론
 
-We have examined just a few of the emerging applications that can be built using the bitcoin blockchain as a trust platform. These applications expand the scope of bitcoin beyond payments and beyond financial instruments, to encompass many other applications where trust is critical. By decentralizing the basis of trust, the bitcoin blockchain is a platform that will spawn many revolutionary applications in a wide variety of industries.
+Bitcoin 블록 체인을 신뢰 플랫폼으로 사용하여 구축 할 수있는 몇 가지 신생 애플리케이션을 살펴 보았습니다. 이러한 응용 프로그램은 결제 이상의 범위와 금융 상품 범위를 넘어 비트 코인의 범위를 확장하여 신뢰가 중요한 다른 많은 응용 프로그램을 포괄합니다. Bitcoin Blockchain은 신뢰의 기반을 분산시킴으로써 다양한 산업 분야에서 많은 혁신적인 애플리케이션을 창출하는 플랫폼입니다.
