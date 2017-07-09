@@ -1,49 +1,49 @@
 [[mining]]
-== Mining and Consensus
+== 채광 및 합의
 
 
-=== Introduction
+=== 소개
 
-((("mining and consensus", "purpose of")))The word "mining" is somewhat misleading. By evoking the extraction of precious metals, it focuses our attention on the reward for mining, the new bitcoin created in each block. Although mining is incentivized by this reward, the primary purpose of mining is not the reward or the generation of new coins. If you view mining only as the process by which coins are created, you are mistaking the means (incentives) as the goal of the process. Mining is the mechanism that underpins the decentralized clearinghouse, by which transactions are validated and cleared. Mining is the invention that makes bitcoin special, a decentralized security mechanism that is the basis for P2P digital cash.
+((("mining and consensus", "purpose of")))"광산"이란 단어는 다소 오해의 소지가 있습니다. 귀금속 추출을 불러 냄으로써 각 블록에서 생성 된 새로운 비트 코인 인 광업에 대한 보상에 집중합니다. 광업은 이러한 보상으로 인센티브를 받지만, 광업의 주된 목적은 새로운 동전의 보상이나 세대가 아닙니다. 광산을 동전이 만들어지는 과정으로 만 본다면, 그 수단 (인센티브)을 과정의 목표로 오해하고있는 것입니다. 광업은 분권화 된 정보 센터의 토대를 이루는 메커니즘으로 거래가 확인되고 처리됩니다. 광업은 P2P 디지털 현금의 기초가되는 분산 된 보안 메커니즘 인 비트 코인을 특별하게 만드는 발명품입니다.
 
-((("mining and consensus", "decentralized consensus")))((("central trusted authority")))Mining _secures the bitcoin system_ and enables the emergence of network-wide _consensus without a central authority_. ((("fees", "transaction fees")))The reward of newly minted coins and transaction fees is an incentive scheme that aligns the actions of miners with the security of the network, while simultaneously implementing the monetary supply.
+((("mining and consensus", "decentralized consensus")))((("central trusted authority")))광업은 비트 코인 시스템을 보장하고 중앙 권위없이 네트워크 전체의 출현을 가능케한다. 새로 발행 된 동전 및 거래 수수료에 대한 보상은 광부의 활동을 네트워크 보안과 연계시키면서 동시에 화폐 공급을 구현하는 인센티브 제도입니다.
 
 [TIP]
 ====
-((("decentralized systems", "bitcoin mining and")))The purpose of mining is not the creation of new bitcoin. That's the incentive system. Mining is the mechanism by which bitcoin's _security_ is _decentralized_.
+((("decentralized systems", "bitcoin mining and")))광업의 목적은 새로운 비트 코인의 창조가 아닙니다. 그것이 인센티브 시스템입니다. 광산은 비트 코인의 _ 안전 _을 _ 중심화하는 메커니즘입니다.
 ====
 
-Miners validate new transactions and record them on the global ledger. A new block, containing transactions that occurred since the last block, is "mined" every 10 minutes on average, thereby adding those transactions to the blockchain. Transactions that become part of a block and added to the blockchain are considered "confirmed," which allows the new owners of bitcoin to spend the bitcoin they received in those transactions.
+광부는 새로운 거래를 확인하고이를 글로벌 원장에 기록합니다. 마지막 블록 이후 발생한 트랜잭션을 포함하는 새 블록은 평균 10 분마다 "마이닝"되어 해당 트랜잭션을 블록 체인에 추가합니다. 블록의 일부가되고 블록 체인에 추가 된 트랜잭션은 비트 코인의 새 소유자가 해당 트랜잭션에서받은 비트 코인을 사용할 수있게하는 "확인 된"것으로 간주됩니다.
 
-((("fees", "mining rewards")))((("mining and consensus", "mining rewards and fees")))((("Proof-of-Work algorithm")))((("mining and consensus", "Proof-of-Work algorithm")))Miners receive two types of rewards in return for the security provided by mining: new coins created with each new block, and transaction fees from all the transactions included in the block. To earn this reward, miners compete to solve a difficult mathematical problem based on a cryptographic hash algorithm. The solution to the problem, called the Proof-of-Work, is included in the new block and acts as proof that the miner expended significant computing effort. The competition to solve the Proof-of-Work algorithm to earn the reward and the right to record transactions on the blockchain is the basis for bitcoin's security model.
+((("fees", "mining rewards")))((("mining and consensus", "mining rewards and fees")))((("Proof-of-Work algorithm")))((("mining and consensus", "Proof-of-Work algorithm")))광부는 광업에서 제공하는 보안 대가로 2 가지 유형의 보상을받습니다. 새로운 블록마다 새로 생성 된 동전과 블록에 포함 된 모든 거래의 거래 수수료 . 이 보상을 얻으려면 광부는 암호화 해시 알고리즘을 기반으로 어려운 수학적 문제를 해결하기 위해 경쟁합니다. Proof-of-Work라고 불리는이 문제에 대한 해결책은 새로운 블록에 포함되어 광부가 상당한 컴퓨팅 노력을 소비했다는 증거가됩니다.
 
-The process is called mining because the reward (new coin generation) is designed to simulate diminishing returns, just like mining for precious metals. Bitcoin's money supply is created through mining, similar to how a central bank issues new money by printing bank notes. The maximum amount of newly created bitcoin a miner can add to a block decreases approximately every four years (or precisely every 210,000 blocks). It started at 50 bitcoin per block in January of 2009 and halved to 25 bitcoin per block in November of 2012. It halved again to 12.5 bitcoin in July 2016. Based on this formula, bitcoin mining rewards decrease exponentially until approximately the year 2140, when all bitcoin (20.99999998 million) will have been issued. After 2140, no new bitcoin will be issued.
+귀금속을 채취하는 것과 마찬가지로 보상 (새로운 동전 생성)이 수익 감소를 시뮬레이션하도록 설계 되었기 때문에이 프로세스를 광산이라고합니다. Bitcoin의 통화 공급은 중앙 은행이 지폐를 인쇄하여 새로운 자금을 발행하는 것과 마찬가지로 광업을 통해 창출됩니다. 광부가 블록에 추가 할 수있는 새로 생성 된 비트 코인의 최대량은 약 4 년마다 (또는 정확히 210,000 블록마다) 감소합니다. 2009 년 1 월에 블록 당 50 비트 코 인식으로 시작하여 2012 년 11 월 블록 당 25 비트 코스트로 반으로 줄어 들었습니다. 2016 년 7 월에 다시 12.5 비트 코닉으로 감소했습니다.이 공식을 기반으로 비트 코닝 마이닝 보상은 약 2140 년까지 기하 급수적으로 감소합니다. 모든 bitcoin (20.99999998 million)이 발행 될 것입니다. 2140 년 이후에는 새로운 비트 코인이 발행되지 않습니다.
 
-Bitcoin miners also earn fees from transactions. Every transaction may include a transaction fee, in the form of a surplus of bitcoin between the transaction's inputs and outputs. The winning bitcoin miner gets to "keep the change" on the transactions included in the winning block. Today, the fees represent 0.5% or less of a bitcoin miner's income, the vast majority coming from the newly minted bitcoin. However, as the reward decreases over time and the number of transactions per block increases, a greater proportion of bitcoin mining earnings will come from fees. Gradually, the mining reward will be dominated by transaction fees, which will form the primary incentive for miners. After 2140, the amount of new bitcoin in each block drops to zero and bitcoin mining will be incentivized only by transaction fees.
+Bitcoin 광부는 또한 거래에서 수수료를받습니다. 모든 거래에는 트랜잭션의 입력과 출력 사이에 과도한 비트 코인 (bitcoin) 형태로 거래 수수료가 포함될 수 있습니다. 이기는 비트 코 광부는 우승 한 블록에 포함 된 트랜잭션에 "변경 사항을 유지"합니다. 오늘날이 수수료는 비트 코 광부 수입의 0.5 % 이하를 차지하며, 대다수는 새로 발행 된 비트 코인에서 비롯됩니다. 그러나 보상이 시간이 지남에 따라 감소하고 블록 당 트랜잭션 수가 증가하면 비트 코닝 광산 수입의 더 많은 부분이 수수료에서 비롯됩니다. 점차적으로, 광산 보상은 광부들의 주요 인센티브가 될 거래 수수료에 의해 지배 될 것입니다. 2140 년 이후에는 각 블록의 새로운 비트 코 인량이 0으로 떨어지며 bitcoin 마이닝은 트랜잭션 수수료에 의해서만 인센티브가 부여됩니다.
 
-In this chapter, we will first examine mining as a monetary supply mechanism and then look at the most important function of mining: the decentralized consensus mechanism that underpins bitcoin's security.
+이 장에서는 먼저 채굴을 화폐 공급 메커니즘으로 검토 한 다음 광산업의 가장 중요한 기능, 즉 비트 코인의 보안을 뒷받침하는 분산 된 합의 메커니즘을 살펴볼 것입니다.
 
-To understand mining and consensus, we will follow Alice's transaction as it is received and added to a block by Jing's mining equipment. Then we will follow the block as it is mined, added to the blockchain, and accepted by the bitcoin network through the process of emergent consensus.
+광업과 합의를 이해하기 위해, 우리는 Alice의 거래를 Jing의 광산 장비가 블록에 추가하여 추가 할 때이를 따를 것입니다. 그런 다음 블록을 광산 채로 채우고 블록 체인에 추가하며 응급의 과정을 통해 비트 코넷 네트워크에 수용합니다.
 
-==== Bitcoin Economics and Currency Creation
+==== Bitcoin 경제 및 통화 창조
 
-((("mining and consensus", "bitcoin economics and currency creation")))((("currency creation")))((("money supply")))((("issuance rate")))Bitcoin are "minted" during the creation of each block at a fixed and diminishing rate. Each block, generated on average every 10 minutes, contains entirely new bitcoin, created from nothing. Every 210,000 blocks, or approximately every four years, the currency issuance rate is decreased by 50%. For the first four years of operation of the network, each block contained 50 new bitcoin.
+((("mining and consensus", "bitcoin economics and currency creation")))((("currency creation")))((("money supply")))((("issuance rate")))고정 및 감소 비율로 각 블록을 생성하는 동안 "생성"됩니다. 매 10 분마다 평균적으로 생성 된 각 블럭은 전혀 새로운 비트 코인을 포함하고 있습니다. 약 210,000 블록 또는 약 4 년마다 통화 발행 율이 50 % 감소합니다. 네트워크 운영 초기 4 년 동안 각 블록에는 50 개의 새로운 비트 코 인이 포함되었습니다.
 
-In November 2012, the new bitcoin issuance rate was decreased to 25 bitcoin per block. In July of 2016 it was decreased again to 12.5 bitcoin per block. It will halve again to 6.25 bitcoin at block 630,000, which will be mined sometime in 2020. The rate of new coins decreases like this exponentially over 32 "halvings" until block 6,720,000 (mined approximately in year 2137), when it reaches the minimum currency unit of 1 satoshi. Finally, after 6.93 million blocks, in approximately 2140, almost 2,099,999,997,690,000 satoshis, or almost 21 million bitcoin, will be issued. Thereafter, blocks will contain no new bitcoin, and miners will be rewarded solely through the transaction fees. <<bitcoin_money_supply>> shows the total bitcoin in circulation over time, as the issuance of currency decreases.
+2012 년 11 월에 새로운 비트 동전 발급 률이 블록 당 25 비트 씩 감소했습니다. 2016 년 7 월 블록 당 12.5 비트 코 감수로 다시 감소했습니다. 그것은 블록 630,000에서 6.25 bitcoin으로 다시 반으로 줄어들 것이며, 2020 년에 채굴 될 것입니다. 새로운 동전의 비율은 최소 통화에 도달하면 블록 6,720,000 (대략 2137 년 채굴)까지 32 "반감"이상으로 기하 급수적으로 감소합니다. 1 satoshi의 단위. 마지막으로, 약 940 만 블록 이후 약 2140 년에 거의 2,099,999,997,690,000 개의 사오 시스 또는 거의 2 천 1 백만 비트 코코아가 발행 될 것입니다. 그 이후 블록에는 새로운 비트 코인이 포함되지 않으며 광부는 거래 수수료만으로 보상을 받게됩니다. << bitcoin_money_supply >>는 통화 발행이 감소함에 따라 시간 경과에 따라 유통되는 총 비트 동전을 보여줍니다.
 
 [[bitcoin_money_supply]]
-.Supply of bitcoin currency over time based on a geometrically decreasing issuance rate
+.기하 급수적 인 발행 금리에 기반한 시간에 따른 비트 코인 통화 공급
 image::images/mbc2_1001.png["BitcoinMoneySupply"]
 
 [NOTE]
 ====
-The maximum number of coins mined is the _upper limit_ of possible mining rewards for bitcoin. In practice, a miner may intentionally mine a block taking less than the full reward. Such blocks have already been mined and more may be mined in the future, resulting in a lower total issuance of the currency.
+채굴되는 동전의 최대 개수는 비트 코인에 대한 가능한 광산 보상의 상한선 _입니다. 실제로, 광부는 전체 보상보다 적게 블록을 의도적으로 채광 할 수 있습니다. 이러한 블록은 이미 채굴되었으며 향후 더 많은 채굴 될 수있어 총 통화 발행량이 감소합니다.
 ====
 
-In the example code in <<max_money>>, we calculate the total amount of bitcoin that will be issued.
+<< max_money >>의 예제 코드에서 우리는 발행 될 비트 코인의 총량을 계산합니다.
 
 [[max_money]]
-.A script for calculating how much total bitcoin will be issued
+.얼마나 많은 비트 코인이 발행 될지 계산하는 스크립트
 ====
 [source, python]
 ----
@@ -63,90 +63,90 @@ Total BTC to ever be created: 2099999997690000 Satoshis
 ----
 ====
 
-The finite and diminishing issuance creates a fixed monetary supply that resists inflation. Unlike a fiat currency, which can be printed in infinite numbers by a central bank, bitcoin can never be inflated by printing.
+유한하고 축소 된 발행은 인플레이션에 저항하는 고정 된 화폐 공급을 창출합니다. 중앙 은행이 무한한 숫자로 인쇄 할 수있는 화폐 단위 통화와 달리 비트 동전은 인쇄하여 결코 부 풀릴 수 없습니다.
 
-.Deflationary Money
+.디플레이션 자금
 ****
-((("deflationary money")))The most important and debated consequence of fixed and diminishing monetary issuance is that the currency tends to be inherently _deflationary_. Deflation is the phenomenon of appreciation of value due to a mismatch in supply and demand that drives up the value (and exchange rate) of a currency. The opposite of inflation, price deflation, means that the money has more purchasing power over time.
+((("deflationary money")))통화 발행이 고정되고 감소하는 가장 중요하고 논쟁의 여지가있는 결과는 통화가 본질적으로 _ deflationary_ 인 경향이 있다는 것이다. 디플레이션은 통화의 가치 (환율)를 높이는 수요와 공급의 불일치로 인해 가치를 인식하는 현상입니다. 인플레, 가격 디플레이션의 반대는 돈이 시간이 지남에 따라 더 많은 구매력을 갖는다는 것을 의미합니다.
 
-Many economists argue that a deflationary economy is a disaster that should be avoided at all costs. That is because in a period of rapid deflation, people tend to hoard money instead of spending it, hoping that prices will fall. Such a phenomenon unfolded during Japan's "Lost Decade," when a complete collapse of demand pushed the currency into a deflationary spiral.
+많은 경제학자들은 디플레이션 적 경제가 모든 비용으로 피해야하는 재앙이라고 주장한다. 급속한 디플레이션 기간에 사람들은 가격을 떨어 뜨리려고 지출하는 대신 돈을 쌓는 경향이 있기 때문입니다. 이러한 현상은 일본의 "잃어버린 10 년"동안 전개되었는데, 수요의 완전한 붕괴가 통화를 디플레 나선형으로 밀어 넣었을 때.
 
-Bitcoin experts argue that deflation is not bad per se. Rather, deflation is associated with a collapse in demand because that is the only example of deflation we have to study. In a fiat currency with the possibility of unlimited printing, it is very difficult to enter a deflationary spiral unless there is a complete collapse in demand and an unwillingness to print money. Deflation in bitcoin is not caused by a collapse in demand, but by a predictably constrained supply.
+Bitcoin 전문가들은 디플레이션 자체가 나쁘지 않다고 주장합니다. 오히려 디플레이션은 우리가 연구해야하는 디플레이션의 유일한 사례이기 때문에 수요의 붕괴와 관련이 있습니다. 무제한 인쇄가 가능한 화폐 단위의 통화에서는 수요가 완전히 붕괴되고 돈을 인쇄하지 않으려는 경우가 아니라면 디플레적인 나선형으로 진입하기가 매우 어렵습니다. 비트 코인의 디플레이션은 수요의 붕괴로 인한 것이 아니라 예상치 않게 제한된 공급으로 인한 것입니다.
 
-The positive aspect of deflation, of course, is that it is the opposite of inflation. Inflation causes a slow but inevitable debasement of currency, resulting in a form of hidden taxation that punishes savers in order to bail out debtors (including the biggest debtors, governments themselves). Currencies under government control suffer from the moral hazard of easy debt issuance that can later be erased through debasement at the expense of savers.
+물론 디플레이션의 긍정적 측면은 인플레의 반대이다. 인플레이션은 느린 그러나 필연적 인 통화 약화를 초래하여 채무자를 구제하기 위해 (가장 큰 채무자, 정부 자체를 포함하여) 저축을 처벌하는 숨겨진 세금의 형태를 낳습니다. 정부 통제하에있는 통화는 쉽게 부채를 발행 할 수있는 도덕적 해이를 겪습니다.이 채무는 나중에 저축을 희생시키면서 저축을 통해 지워질 수 있습니다.
 
-It remains to be seen whether the deflationary aspect of the currency is a problem when it is not driven by rapid economic retraction, or an advantage because the protection from inflation and debasement far outweighs the risks of deflation.
+급속한 경제 철회에 의해 주도되지 않을 때 통화의 디플레이션 적 측면이 문제인지 또는 인플레 및 디 캠 지드로부터의 보호가 디플레이션의 위험을 훨씬 상회하기 때문에 이점이 있는지 여부는 여전히 남아 있습니다.
 ****
 
-=== Decentralized Consensus
+=== 분권화 된 합의
 
-((("mining and consensus", "decentralized consensus")))((("decentralized systems", "consensus in")))In the previous chapter we looked at the blockchain, the global public ledger (list) of all transactions, which everyone in the bitcoin network accepts as the authoritative record of ownership.
+((("mining and consensus", "decentralized consensus")))((("decentralized systems", "consensus in")))이전 장에서 우리는 블록 체인을 보았다. 트랜잭션은 비트 코인 네트워크의 모든 사람이 소유권의 권위있는 기록으로 받아들입니다.
 
-But how can everyone in the network agree on a single universal "truth" about who owns what, without having to trust anyone? All traditional payment systems depend on a trust model that has a central authority providing a clearinghouse service, basically verifying and clearing all transactions. Bitcoin has no central authority, yet somehow every full node has a complete copy of a public ledger that it can trust as the authoritative record. The blockchain is not created by a central authority, but is assembled independently by every node in the network. Somehow, every node in the network, acting on information transmitted across insecure network connections, can arrive at the same conclusion and assemble a copy of the same public ledger as everyone else. This chapter examines the process by which the bitcoin network achieves global consensus without central authority.
+그러나 네트워크의 모든 사람들이 누구를 믿을 필요없이 누가 무엇을 소유하고 있는지에 대한 단일 "보편적"진리에 어떻게 동의 할 수 있습니까? 모든 기존 지불 시스템은 기본적으로 모든 거래를 확인하고 처리하는 정보 센터 (clearinghouse) 서비스를 제공하는 중앙 기관이있는 신탁 모델에 달려 있습니다. Bitcoin에는 중앙 권위는 없지만 모든 노드에는 권한있는 레코드로 신뢰할 수있는 전체 원장 사본이 있습니다. 블록 체인은 중앙 권한에 의해 생성되는 것이 아니라 네트워크의 모든 노드에 의해 독립적으로 어셈블됩니다. 어쨌든 보안되지 않은 네트워크 연결을 통해 전송되는 정보에 작용하는 네트워크의 모든 노드는 동일한 결론에 도달하고 다른 모든 사람과 동일한 공공 원장의 복사본을 구성 할 수 있습니다.
 
-((("emergent consensus")))((("mining and consensus", "emergent consensus")))Satoshi Nakamoto's main invention is the decentralized mechanism for _emergent consensus_. Emergent, because consensus is not achieved explicitly—there is no election or fixed moment when consensus occurs. Instead, consensus is an emergent artifact of the asynchronous interaction of thousands of independent nodes, all following simple rules. All the properties of bitcoin, including currency, transactions, payments, and the security model that does not depend on central authority or trust, derive from this invention.
+Satoshi Nakamoto의 주요 발명은 _emergent consensus_에 대한 분산 된 메커니즘이다. (( "(emergent consensus))))) (("광산 및 합의 ","emergent consensus "))) 컨센서스가 명시 적으로 달성되지 않았기 때문에 이머전트 - 컨센서스가 발생할 때 선거 나 고정 된 순간이 없습니다. 그 대신 합의는 수천 개의 독립 노드의 비동기식 상호 작용의 창작물이며 모두 간단한 규칙을 따른다. 통화, 거래, 지불 및 중앙 권위 또는 신뢰에 의존하지 않는 보안 모델을 포함한 비트 코인의 모든 속성은 본 발명에서 파생됩니다.
 
-Bitcoin's decentralized consensus emerges from the interplay of four processes that occur independently on nodes across the network:
+Bitcoin의 분산 된 합의는 네트워크상의 노드에서 독립적으로 발생하는 네 가지 프로세스의 상호 작용에서 나타납니다.
 
 [role="pagebreak-before"]
-* Independent verification of each transaction, by every full node, based on a comprehensive list of criteria
-* Independent aggregation of those transactions into new blocks by mining nodes, coupled with demonstrated computation through a Proof-of-Work algorithm
-* Independent verification of the new blocks by every node and assembly into a chain
-* Independent selection, by every node, of the chain with the most cumulative computation demonstrated through Proof-of-Work
+* 포괄적 인 기준 목록을 기반으로 모든 전체 노드별로 각 트랜잭션을 독립적으로 검증합니다.
+* 마이닝 노드에 의한 이러한 트랜잭션의 새로운 블록으로의 독립적 인 집계, 작업 증명 알고리즘을 통한 입증 된 계산과 결합
+* 모든 노드와 어셈블리에 의한 새로운 블록을 체인으로 독립적으로 검증
+* 모든 노드에서 독립적 인 선택으로 증명 작업을 통해 입증 된 누적 계산이 가장 많은 체인
 
-In the next few sections we will examine these processes and how they interact to create the emergent property of network-wide consensus that allows any bitcoin node to assemble its own copy of the authoritative, trusted, public, global ledger.
+다음 몇 단원에서는 이러한 프로세스와 이들 프로세스가 어떻게 상호 작용하여 모든 비트 코인 노드가 신뢰할 수있는 공용 신뢰할 수있는 글로벌 원장 복사본을 구성 할 수 있도록 네트워크 전반에 걸친 컨센서스의 창 발적 속성을 만듭니다.
 
 [[tx_verification]]
-=== Independent Verification of Transactions
+=== 거래의 독립적 검증
 
-((("mining and consensus", "independent transaction verification")))((("transactions", "independent verification of")))In <<transactions>>, we saw how wallet software creates transactions by collecting UTXO, providing the appropriate unlocking scripts, and then constructing new outputs assigned to a new owner. The resulting transaction is then sent to the neighboring nodes in the bitcoin network so that it can be propagated across the entire bitcoin network.
+((("mining and consensus", "independent transaction verification")))((("transactions", "independent verification of")))<< 거래 >>에서는 지갑 소프트웨어가 UTXO를 수집하고, 적절한 잠금 해제 스크립트를 제공 한 다음 새 소유자에게 할당 된 새 출력을 구성 할 수 있습니다. 그런 다음 결과 트랜잭션은 비트 코인 네트워크의 인접 노드로 전송되어 전체 비트 코닝 네트워크로 전파 될 수 있습니다.
 
-However, before forwarding transactions to its neighbors, every bitcoin node that receives a transaction will first verify the transaction. This ensures that only valid transactions are propagated across the network, while invalid transactions are discarded at the first node that encounters them.
+그러나 트랜잭션을 이웃 라우터로 전달하기 전에 트랜잭션을 수신하는 모든 비트 코인 노드는 먼저 트랜잭션을 확인합니다. 이렇게하면 유효한 트랜잭션 만 네트워크를 통해 전파되고 잘못된 트랜잭션은 만나는 첫 번째 노드에서 유효하지 않은 트랜잭션이 삭제됩니다.
 
-Each node verifies every transaction against a long checklist of criteria:
+각 노드는 긴 체크리스트를 기준으로 모든 트랜잭션을 확인합니다.
 
-* The transaction's syntax and data structure must be correct.
-* Neither lists of inputs or outputs are empty.
-* The transaction size in bytes is less than +MAX_BLOCK_SIZE+.
-* Each output value, as well as the total, must be within the allowed range of values (less than 21m coins, more than the _dust_ threshold).
-* None of the inputs have hash=0, N=–1 (coinbase transactions should not be relayed).
-* +nLocktime+ is equal to +INT_MAX+, or +nLocktime+ and +nSequence+ values are satisfied according to +MedianTimePast+.
-* The transaction size in bytes is greater than or equal to 100.
-* The number of signature operations (SIGOPS) contained in the transaction is less than the signature operation limit.
-* The unlocking script (+scriptSig+) can only push numbers on the stack, and the locking script (+scriptPubkey+) must match +isStandard+ forms (this rejects "nonstandard" transactions).
-* A matching transaction in the pool, or in a block in the main branch, must exist.
-* For each input, if the referenced output exists in any other transaction in the pool, the transaction must be rejected.
-* For each input, look in the main branch and the transaction pool to find the referenced output transaction. If the output transaction is missing for any input, this will be an orphan transaction. Add to the orphan transactions pool, if a matching transaction is not already in the pool.
-* For each input, if the referenced output transaction is a coinbase output, it must have at least +COINBASE_MATURITY+ (100) confirmations.
-* For each input, the referenced output must exist and cannot already be spent.
-* Using the referenced output transactions to get input values, check that each input value, as well as the sum, are in the allowed range of values (less than 21m coins, more than 0).
-* Reject if the sum of input values is less than sum of output values.
-* Reject if transaction fee would be too low (+minRelayTxFee+) to get into an empty block.
-* The unlocking scripts for each input must validate against the corresponding output locking scripts.
+* 트랜잭션의 구문과 데이터 구조가 정확해야합니다.
+* 입력 또는 출력 목록이 비어 있지 않습니다.
+* 트랜잭션 크기 (바이트)가 MAX_BLOCK_SIZE 이상입니다.
+* 합계뿐만 아니라 각 출력 값은 허용 된 값 범위 (21m 동전 미만, _dust_ 임계 값 이상) 내에 있어야합니다.
+* 입력에는 해시 = 0, N = -1 (코인베이스 트랜잭션을 중계하지 말아야 함)이 없습니다.
+* + nLocktime +는 + INT_MAX +와 같거나 + nLocktime + 및 + nSequence + 값은 + MedianTimePast +에 따라 충족됩니다.
+* 트랜잭션 크기 (바이트)가 100보다 크거나 같습니다.
+* 거래에 포함 된 서명 작업 (SIGOPS)의 수가 서명 작업 제한보다 적습니다.
+* 잠금 해제 스크립트 (+ scriptSig +)는 스택의 숫자 만 푸시 할 수 있으며 잠금 스크립트 (+ scriptPubkey +)는 + isStandard + forms와 일치해야합니다 ( "비표준"트랜잭션을 거부 함).
+* 풀 또는 메인 브랜치의 블록에서 일치하는 트랜잭션이 존재해야합니다.
+* 각 입력에 대해 참조 된 출력이 풀의 다른 트랜잭션에있는 경우 트랜잭션을 거부해야합니다.
+* 각 입력에 대해, 메인 브랜치와 트랜잭션 풀에서 참조 된 출력 트랜잭션을 찾으십시오. 입력에 대해 출력 트랜잭션이 누락 된 경우 이는 고아 트랜잭션이됩니다. 일치하는 트랜잭션이 풀에없는 경우 고아 트랜잭션 풀에 추가합니다.
+* 각 입력에 대해 참조 된 출력 트랜잭션이 코인베이스 출력 인 경우 적어도 + COINBASE_MATURITY + (100) 개의 확인을 가져야합니다.
+* 각 입력에 대해 참조 된 출력이 있어야하며 이미 사용할 수 없습니다.
+* 참조 된 출력 트랜잭션을 사용하여 입력 값을 얻으려면 각 입력 값과 합계가 허용 된 값 범위 (21m 미만 동전, 0 이상)인지 확인하십시오.
+* 입력 값의 합이 출력 값의 합보다 작 으면 거부합니다.
+* 거래 비용이 너무 낮아 (+ minRelayTxFee +) 빈 블록에 들어 가지 않으면 거부하십시오.
+* 각 입력에 대한 잠금 해제 스크립트는 해당 출력 잠금 스크립트에 대해 유효성을 검사해야합니다.
 
-These conditions can be seen in detail in the functions +AcceptToMemoryPool+, +CheckTransaction+, and +CheckInputs+ in Bitcoin Core. Note that the conditions change over time, to address new types of denial-of-service attacks or sometimes to relax the rules so as to include more types of transactions.
+이러한 조건은 Bitcoin Core의 + AcceptToMemoryPool +, + CheckTransaction + 및 + CheckInputs + 함수에서 자세히 볼 수 있습니다. 시간이 지남에 따라 조건이 변경되어 새로운 유형의 서비스 거부 (denial-of-service) 공격을 처리하거나 때때로 더 많은 유형의 트랜잭션을 포함하도록 규칙을 완화 할 수 있습니다.
 
-By independently verifying each transaction as it is received and before propagating it, every node builds a pool of valid (but unconfirmed) transactions known as the _transaction pool_, _memory pool_, or _mempool_.
+각 트랜잭션을 수신 할 때 독립적으로 검증하고이를 전파하기 전에 모든 노드는 _transaction pool_, _memory pool_ 또는 _mempool_으로 알려진 유효한 (그러나 확인되지 않은) 트랜잭션 풀을 빌드합니다.
 
-=== Mining Nodes
+=== 마이닝 노드
 
-((("mining and consensus", "mining nodes")))((("bitcoin nodes", "mining nodes")))Some of the nodes on the bitcoin network are specialized nodes called _miners_. In <<ch01_intro_what_is_bitcoin>> we introduced ((("use cases", "mining for bitcoin", id="jingten")))Jing, a computer engineering student in Shanghai, China, who is a bitcoin miner. Jing earns bitcoin by running a "mining rig," which is a specialized computer-hardware system designed to mine bitcoin. Jing's specialized mining hardware is connected to a server running a full bitcoin node. Unlike Jing, some miners mine without a full node, as we will see in <<mining_pools>>. Like every other full node, Jing's node receives and propagates unconfirmed transactions on the bitcoin network. Jing's node, however, also aggregates these transactions into new blocks.
+비트 코인 네트워크상의 일부 노드는 _miners_라는 특수 노드입니다. ((( "광산 및 합의", "마이닝 노드"))) (비트 코인 노드, 마이닝 노드) << ch01_intro_what_is_bitcoin >>에서 우리는 비트 코 광부 인 중국 상하이의 컴퓨터 공학 학생 인 Jing (( "유스 케이스", "비트 코인 채굴", id = "jingten"))을 소개했습니다. Jing은 비트 코인을 채굴하도록 설계된 특수 컴퓨터 하드웨어 시스템 인 "광산 장비"를 실행하여 비트 코인을 얻습니다. Jing의 전문 마이닝 하드웨어는 전체 Bitcoin 노드를 실행하는 서버에 연결됩니다. Jing과 달리 << mining_pools >>에서 볼 수 있듯이 일부 광부는 완전한 노드없이 광산을 사용합니다. 모든 다른 노드와 마찬가지로 Jing ' s 노드는 비트 코인 네트워크에서 미확인 트랜잭션을 수신하고 전파합니다. 그러나 Jing의 노드는 이러한 트랜잭션을 새로운 블록으로 집계합니다.
 
-Jing's node is listening for new blocks, propagated on the bitcoin network, as do all nodes. However, the arrival of a new block has special significance for a mining node. The competition among miners effectively ends with the propagation of a new block that acts as an announcement of a winner. To miners, receiving a valid new block means someone else won the competition and they lost. However, the end of one round of a competition is also the beginning of the next round. The new block is not just a checkered flag, marking the end of the race; it is also the starting pistol in the race for the next block.
+Jing의 노드는 모든 노드와 마찬가지로 비트 코인 네트워크에 전파되는 새로운 블록을 수신 대기합니다. 그러나 새 블록이 도착하면 광산 노드에 특별한 의미가 있습니다. 광부 간의 경쟁은 우승자의 발표로 작용하는 새로운 블록의 전파로 끝납니다. 광부에게 유효한 새로운 블록을 받는다는 것은 다른 사람이 경쟁에서이긴 것을 의미하며 잃어 버렸음을 의미합니다. 그러나 한 라운드의 경쟁 종료는 다음 라운드의 시작이기도합니다. 새로운 블록은 레이스의 끝을 나타내는 체크 무늬 깃발이 아닙니다. 그것은 또한 다음 블록을위한 경주에서 시작 권총입니다.
 
-=== Aggregating Transactions into Blocks
+=== 트랜잭션을 블록으로 모으기
 
-((("mining and consensus", "aggregating transactions into blocks", id="MACaggreg10")))((("transactions", "aggregating into blocks", id="Taggreg10")))((("blocks", "aggregating transactions into", id="Baggreg10")))((("blocks", "candidate blocks")))((("candidate blocks")))((("transaction pools")))((("memory pools (mempools)")))After validating transactions, a bitcoin node will add them to the _memory pool_, or _transaction pool_, where transactions await until they can be included (mined) into a block. Jing's node collects, validates, and relays new transactions just like any other node. Unlike other nodes, however, Jing's node will then aggregate these transactions into a _candidate block_.
+((("mining and consensus", "aggregating transactions into blocks", id="MACaggreg10")))((("transactions", "aggregating into blocks", id="Taggreg10")))((("blocks", "aggregating transactions into", id="Baggreg10")))((("blocks", "candidate blocks")))((("candidate blocks")))((("transaction pools")))((("memory pools (mempools)")))비트 코인 노드는 트랜잭션을 검증 한 후 _memory 풀 _ 또는 _transaction 풀 _에 추가합니다. 트랜잭션은 블록에 포함 (채굴) 될 때까지 대기합니다. Jing의 노드는 다른 노드와 마찬가지로 새 트랜잭션을 수집, 유효성 검사 및 릴레이합니다. 그러나 다른 노드와 달리 Jing의 노드는 이러한 트랜잭션을 _candidate 블록으로 집계합니다.
 
-Let's follow the blocks that were created during the time Alice bought a cup of coffee from Bob's Cafe (see <<cup_of_coffee>>). Alice's transaction was included in block 277,316. For the purpose of demonstrating the concepts in this chapter, let's assume that block was mined by Jing's mining system and follows Alice's transaction as it becomes part of this new block.
+앨리스 (Alice)가 Bob 's Cafe (<< cup_of_coffee >> 참조)에서 커피 한 잔을 샀을 때 만들어진 블록을 따라 가자. Alice의 거래는 블록 277,316에 포함되었습니다. 이 장의 개념을 설명하기 위해 블록이 Jing의 마이닝 시스템에 의해 채워지고 Alice의 트랜잭션이이 새로운 블록의 일부가 될 때이를 처리한다고 가정 해 봅시다.
 
-Jing's mining node maintains a local copy of the blockchain. By the time ((("use cases", "buying coffee")))Alice buys the cup of coffee, Jing's node has assembled a chain up to block 277,314. Jing's node is listening for transactions, trying to mine a new block and also listening for blocks discovered by other nodes. As Jing's node is mining, it receives block 277,315 through the bitcoin network. The arrival of this block signifies the end of the competition for block 277,315 and the beginning of the competition to create block 277,316.
+Jing의 광산 노드는 블록 체인의 로컬 복사본을 유지 관리합니다. 시간 (( "유스 케이스", "커피를 사다")) 앨리스는 커피 한 잔을 사다. 징의 노드는 277,314 블록까지 체인을 조립했다. Jing의 노드는 트랜잭션을 청취하고 새로운 블록을 채굴하며 다른 노드가 발견 한 블록을 수신 대기합니다. Jing의 노드가 마이닝 일 때, Bitcoin 네트워크를 통해 블록 277,315를 수신합니다. 이 블록의 도착은 블록 277,315에 대한 경쟁의 끝과 블록 277,316을 생성하기위한 경쟁의 시작을 의미합니다.
 
-During the previous 10 minutes, while Jing's node was searching for a solution to block 277,315, it was also collecting transactions in preparation for the next block. By now it has collected a few hundred transactions in the memory pool. Upon receiving block 277,315 and validating it, Jing's node will also compare it against all the transactions in the memory pool and remove any that were included in block 277,315. Whatever transactions remain in the memory pool are unconfirmed and are waiting to be recorded in a new block.
+이전 10 분 동안 Jing의 노드는 277,315 블록을 해결할 솔루션을 찾고 있었지만 다음 블록을 준비하기 위해 트랜잭션을 수집하고있었습니다. 지금까지 메모리 풀에 수백 개의 트랜잭션을 수집했습니다. 블록 (277, 315)을 수신하고 그것을 확인하면, 징 (Jing)의 노드는 메모리 풀 내의 모든 트랜잭션과 그것을 비교하여 블록 (277, 315)에 포함 된 것을 제거 할 것이다. 메모리 풀에 남아있는 트랜잭션은 확인되지 않고 새 블록에 기록되기를 기다리고 있습니다.
 
-((("Proof-of-Work algorithm")))((("mining and consensus", "Proof-of-Work algorithm")))Jing's node immediately constructs a new empty block, a candidate for block 277,316. This block is called a _candidate block_ because it is not yet a valid block, as it does not contain a valid Proof-of-Work. The block becomes valid only if the miner succeeds in finding a solution to the Proof-of-Work algorithm.
+Jing의 노드는 블록 277,316에 대한 후보 빈 블록을 즉시 생성합니다. (( "(" "Proof of Work 알고리즘"))) (( "광업 및 합의", "Proof-of-Work 알고리즘")) 이 블록을 유효한 블록이 아니기 때문에 _candidate 블록이라고합니다. 유효한 블록을 포함하고 있지 않기 때문입니다. 이 블록은 광부가 작업 증명 알고리즘에 대한 솔루션을 찾는 데 성공한 경우에만 유효합니다.
 
-When Jing's node aggregates all the transactions from the memory pool, the new candidate block has 418 transactions with total transaction fees of 0.09094928 bitcoin. You can see this block in the blockchain using the Bitcoin Core client command-line interface, as shown in <<block277316>>.
+Jing의 노드가 메모리 풀에서 모든 트랜잭션을 집계 할 때, 새로운 후보 블록은 비트 트랜잭션 0.09094928의 총 거래 수수료 418 개의 트랜잭션을가집니다. << Block277316 >>에서 볼 수 있듯이 Bitcoin Core 클라이언트 명령 줄 인터페이스를 사용하여 블록 체인에서이 블록을 볼 수 있습니다.
 
 [[block277316]]
 .Using the command line to retrieve block 277,316
@@ -188,16 +188,16 @@ $ bitcoin-cli getblock 0000000000000001b6b9a13b095e96db41c4a928b97ef2d9\
 ----
 ====
 
-==== The Coinbase Transaction
+==== 코인베이스 거래
 
-((("coinbase transactions", id="coinbtrans10")))((("transactions", "coinbase transactions", id="Tcoinb10")))The first transaction in any block is a special transaction, called a _coinbase transaction_. This transaction is constructed by Jing's node and contains his _reward_ for the mining effort.
+((("coinbase transactions", id="coinbtrans10")))((("transactions", "coinbase transactions", id="Tcoinb10")))모든 블록의 첫 번째 트랜잭션은 _coinbase라고하는 특별한 트랜잭션입니다 (( "coinbase transactions", id = "coinbtrans10")) 트랜잭션_. 이 트랜잭션은 Jing의 노드에 의해 생성되며 채광 노력을위한 _reward_를 포함합니다.
 
-[NOTE]
+[노트]
 ====
-When block 277,316 was mined, the reward was 25 bitcoin per block. Since then, one "halving" period has elapsed. The block reward changed to 12.5 bitcoin in July 2016. It will be halved again in 210,000 blocks, in the year 2020.
+블록 277, 316을 채굴 할 때, 보상은 블록 당 25 비트 코인이었다. 그 이후로, 하나의 "절반"기간이 경과되었습니다. 블록 보상은 2016 년 7 월에 12.5 비트 코치로 변경되었습니다. 2020 년에는 210,000 블록으로 다시 반으로 줄어 듭니다.
 ====
 
-Jing's node creates the coinbase transaction as a payment to his own wallet: "Pay Jing's address 25.09094928 bitcoin." The total amount of reward that Jing collects for mining a block is the sum of the coinbase reward (25 new bitcoin) and the transaction fees (0.09094928) from all the transactions included in the block as shown in <<generation_tx_example>>.
+Jing의 노드는 코인베이스 트랜잭션을 자신의 지갑에 지불합니다. "Pay Jing의 주소 25.09094928 bitcoin." Jing이 블록을 채취하기 위해 수집하는 보상의 총 금액은 << generation_tx_example >>과 같이 블록에 포함 된 모든 트랜잭션의 코인베이스 보상 (25 개의 새 비트 코인)과 거래 수수료 (0.09094928)의 합계입니다.
 
 
 [[generation_tx_example]]
@@ -239,21 +239,21 @@ $ bitcoin-cli getrawtransaction d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda1
 ----
 ====
 
-Unlike regular transactions, the coinbase transaction does not consume (spend) UTXO as inputs. Instead, it has only one input, called the _coinbase_, which creates bitcoin from nothing. The coinbase transaction has one output, payable to the miner's own bitcoin address. The output of the coinbase transaction sends the value of 25.09094928 bitcoin to the miner's bitcoin address; in this case it is +1MxTkeEP2PmHSMze5tUZ1hAV3YTKu2Gh1N+.
+일반 트랜잭션과 달리 코인베이스 트랜잭션은 UTXO를 입력으로 사용하지 않습니다. 대신, _coinbase_라고하는 입력이 하나뿐이므로 아무것도 사용하지 않고 비트 코인을 작성합니다. 코인베이스 거래에는 광산 업체의 비트 코인 주소로 지불 할 수있는 하나의 출력이 있습니다. coinbase 트랜잭션의 출력은 25.09094928 bitcoin의 값을 광부의 비트 코인 주소로 보냅니다. 이 경우 + 1MxTkeEP2PmHSMze5tUZ1hAV3YTKu2Gh1N +입니다.
 
-==== Coinbase Reward and Fees
+==== 코인베이스 보상 및 수수료
 
-((("coinbase transactions", "rewards and fees")))((("fees", "transaction fees")))((("mining and consensus", "rewards and fees")))To construct the coinbase transaction, Jing's node first calculates the total amount of transaction fees by adding all the inputs and outputs of the 418 transactions that were added to the block. The fees are calculated as:
+((("coinbase transactions", "rewards and fees")))((("fees", "transaction fees")))((("mining and consensus", "rewards and fees")))Jing의 노드는 먼저 블록에 추가 된 418 트랜잭션의 모든 입력과 출력을 추가하여 트랜잭션 수수료 총액을 계산합니다. 수수료는 다음과 같이 계산됩니다.
 
 ----
-Total Fees = Sum(Inputs) - Sum(Outputs)
+총 요금 = 합계 (입력) - 합계 (출력)
 ----
 
-In block 277,316, the total transaction fees are 0.09094928 bitcoin.
+블록 (277, 316)에서, 총 거래 수수료는 비트 코인 0.09094928이다.
 
-Next, Jing's node calculates the correct reward for the new block. The reward is calculated based on the block height, starting at 50 bitcoin per block and reduced by half every 210,000 blocks. Because this block is at height 277,316, the correct reward is 25 bitcoin.
+다음으로 Jing의 노드는 새로운 블록에 대한 정확한 보상을 계산합니다. 보상은 블록 높이에 따라 계산되며 블록 당 50 비트 코이에서 시작하여 210,000 블록마다 반으로 줄어 듭니다. 이 블록의 높이가 277,316이므로 올바른 보상은 25 비트 코인입니다.
 
-The calculation can be seen in function +GetBlockSubsidy+ in the Bitcoin Core client, as shown in <<getblocksubsidy_source>>.
+<< getblocksubsidy_source >>와 같이 Bitcoin Core 클라이언트의 function + GetBlockSubsidy +에서 계산을 볼 수 있습니다.
 
 [[getblocksubsidy_source]]
 .Calculating the block reward&#x2014;Function GetBlockSubsidy, Bitcoin Core Client, main.cpp
@@ -275,70 +275,70 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 ----
 ====
 
-The initial subsidy is calculated in satoshis by multiplying 50 with the +COIN+ constant (100,000,000 satoshis). This sets the initial reward (+nSubsidy+) at 5 billion satoshis.
+초기 보조금은 50에 + COIN + 상수 (100,000,000 satoshis)를 곱하여 사토시에서 계산됩니다. 이것은 초기 보상 (+ nSubsidy +)을 50 억 개의 사오 시스로 설정합니다.
 
-((("halvings")))Next, the function calculates the number of +halvings+ that have occurred by dividing the current block height by the halving interval (+SubsidyHalvingInterval+). In the case of block 277,316, with a halving interval every 210,000 blocks, the result is 1 halving.
+((("halvings")))다음으로 함수는 현재 블록 높이를 1/2 간격 (+ SubsidyHalvingInterval +)으로 나눈 + 반감 수 +를 계산합니다. 블록 277, 316의 경우, 210,000 블록마다 절반 간격으로, 결과는 1/2입니다.
 
-The maximum number of halvings allowed is 64, so the code imposes a zero reward (returns only the fees) if the 64 halvings is exceeded.
+허용되는 최대 반이중 수는 64이므로 64 개의 절반을 초과하면 코드는 0 보상을 부과합니다 (수수료 만 반환).
 
-Next, the function uses the binary-right-shift operator to divide the reward (+nSubsidy+) by two for each round of halving. In the case of block 277,316, this would binary-right-shift the reward of 5 billion satoshis once (one halving) and result in 2.5 billion satoshis, or 25 bitcoin. The binary-right-shift operator is used because it is more efficient for division by two than integer or floating-point division.
+그런 다음이 함수는 2 진 오른쪽 시프트 연산자를 사용하여 반올림마다 보상 (+ nSubsidy +)을 2로 나눕니다. 블록 277,316의 경우, 이것은 50 억 개의 사오 시스에 대한 보상을 한 번 (1/2로) 2 배 오른쪽으로 시프트하고 25 억 개의 사오 시스 또는 25 개의 비트 코인을 발생시킵니다. 이진 오른쪽 시프트 연산자는 정수 또는 부동 소수점 나누기보다 2로 나누는 것이 더 효율적이기 때문에 사용됩니다.
 
-Finally, the coinbase reward (+nSubsidy+) is added to the transaction fees (+nFees+), and the sum is returned.
+마지막으로, 코인베이스 보상 (+ nSubsidy +)이 거래 수수료 (+ nFees +)에 추가되고 합계가 반환됩니다.
 
-[TIP]
+[팁]
 ====
-If Jing's mining node writes the coinbase transaction, what stops Jing from "rewarding" himself 100 or 1000 bitcoin? The answer is that an incorrect reward would result in the block being deemed invalid by everyone else, wasting Jing's electricity used for Proof-of-Work. Jing only gets to spend the reward if the block is accepted by everyone.
+Jing의 광 노드가 코인베이스 트랜잭션을 쓰는 경우 Jing은 100 비트 코인이나 1000 비트 코인을 "보람"못하게됩니다. 그 대답은 부정확 한 보상으로 인해 다른 모든 사람이 블록을 무효로 처리하게되어 징 작업자가 전기 작업을 낭비하게됩니다. Jing은 블록이 모든 사람에게 허용되는 경우에만 보상을 지출합니다.
 ====
 
-==== Structure of the Coinbase Transaction
+==== Coinbase 트랜잭션의 구조
 
-((("coinbase transactions", "structure of")))With these calculations, Jing's node then constructs the coinbase transaction to pay himself 25.09094928 bitcoin.
+((("coinbase transactions", "structure of")))이 계산을 사용하여 Jing의 노드는 코인베이스 트랜잭션을 구성하여 25.09094928 bitcoin을 지불합니다.
 
-As you can see in <<generation_tx_example>>, the coinbase transaction has a special format. Instead of a transaction input specifying a previous UTXO to spend, it has a "coinbase" input. We examined transaction inputs in <<tx_in_structure>>. Let's compare a regular transaction input with a coinbase transaction input. <<table_8-1>> shows the structure of a regular transaction, while <<table_8-2>> shows the structure of the coinbase transaction's input.
+<< generation_tx_example >>에서 볼 수 있듯이 코인베이스 트랜잭션은 특별한 형식을 가지고 있습니다. 지출 할 이전 UTXO를 지정하는 트랜잭션 입력 대신 "코인베이스"입력이 있습니다. 우리는 << tx_in_structure >>에서 거래 입력을 조사했다. 일반적인 거래 입력과 코인베이스 거래 입력을 비교해 봅시다. << table_8-1 >>은 일반 트랜잭션의 구조를 나타내고, << table_8-2 >>는 코인베이스 트랜잭션의 입력 구조를 보여줍니다.
 
 [[table_8-1]]
-.The structure of a "normal" transaction input
-[options="header"]
-|=======
-|Size| Field | Description
-| 32 bytes | Transaction Hash | Pointer to the transaction containing the UTXO to be spent
-| 4 bytes | Output Index | The index number of the UTXO to be spent, first one is 0
-| 1&#x2013;9 bytes (VarInt) | Unlocking-Script Size | Unlocking-Script length in bytes, to follow
-| Variable | Unlocking-Script | A script that fulfills the conditions of the UTXO locking script
-| 4 bytes | Sequence Number | Currently disabled Tx-replacement feature, set to 0xFFFFFFFF
-|=======
+. "정상적인"거래 입력의 구조
+[options = "header"]
+| =======
+크기 | 필드 | 기술
+| 32 바이트 | 트랜잭션 해시 | 쓰일 UTXO를 포함하는 트랜잭션의 포인터
+| 4 바이트 | 출력 색인 | 보낸 UTXO의 색인 번호, 첫 번째 항목은 0입니다.
+| 1 & # x13; 9 바이트 (VarInt) | 잠금 해제 스크립트 크기 | 잠금 해제 - 따라야 할 스크립트 길이 (바이트)
+| 변수 | 잠금 해제 스크립트 | UTXO 잠금 스크립트의 조건을 충족하는 스크립트
+| 4 바이트 | 시퀀스 번호 | 현재 비활성화 된 Tx 대체 기능은 0xFFFFFFFF로 설정됩니다.
+| =======
 
 [[table_8-2]]
-.The structure of a coinbase transaction input
-[options="header"]
-|=======
-|Size| Field | Description
-| 32 bytes | Transaction Hash | All bits are zero: Not a transaction hash reference
-| 4 bytes | Output Index | All bits are ones: 0xFFFFFFFF
-| 1&#x2013;9 bytes (VarInt) | Coinbase Data Size | Length of the coinbase data, from 2 to 100 bytes
-| Variable | Coinbase Data | Arbitrary data used for extra nonce and mining tags. In v2 blocks; must begin with block height
-| 4 bytes | Sequence Number | Set to 0xFFFFFFFF
-|=======
+. 코인베이스 트랜잭션 입력의 구조
+[options = "header"]
+| =======
+크기 | 필드 | 기술
+| 32 바이트 | 트랜잭션 해시 | 모든 비트는 0입니다. 트랜잭션 해시 참조가 아닙니다.
+| 4 바이트 | 출력 색인 | 모든 비트는 1입니다 : 0xFFFFFFFF
+| 1 & # x13; 9 바이트 (VarInt) | 코인베이스 데이터 크기 | 코인베이스 데이터의 길이, 2에서 100 바이트
+| 변수 | 코인베이스 데이터 | 추가 nonce 및 마이닝 태그에 사용되는 임의의 데이터입니다. v2 블록; 블록 높이로 시작해야합니다.
+| 4 바이트 | 시퀀스 번호 | 0xFFFFFFFF로 설정
+| =======
 
-In a coinbase transaction, the first two fields are set to values that do not represent a UTXO reference. Instead of a "transaction hash," the first field is filled with 32 bytes all set to zero. The "output index" is filled with 4 bytes all set to 0xFF (255 decimal). The "Unlocking Script" (+scriptSig+) is replaced by coinbase data, a data field used by the miners, as we will see next.
+코인베이스 트랜잭션에서 처음 두 필드는 UTXO 참조를 나타내지 않는 값으로 설정됩니다. "트랜잭션 해시"대신 첫 번째 필드는 모두 0으로 설정된 32 바이트로 채워집니다. "출력 인덱스"는 모두 4 바이트로 채워져 0xFF (십진수 255)로 설정됩니다. "Unlocking Script"(+ scriptSig +)는 광부가 사용하는 데이터 필드 인 코인베이스 데이터로 대체됩니다.
 
-==== Coinbase Data
+==== 코인베이스 데이터
 
-((("coinbase transactions", "coinbase data")))Coinbase transactions do not have an unlocking script (aka, +scriptSig+) field. Instead, this field is replaced by coinbase data, which must be between 2 and 100 bytes. Except for the first few bytes, the rest of the coinbase data can be used by miners in any way they want; it is arbitrary data.
+((("coinbase transactions", "coinbase data")))코인베이스 트랜잭션에는 잠금 해제 스크립트 (일명 + scriptSig +) 필드가 없습니다. 대신이 필드는 코인베이스 데이터로 바뀌며 2에서 100 바이트 사이 여야합니다. 처음 몇 바이트를 제외하고 나머지 코인베이스 데이터는 원하는 방식으로 광부가 사용할 수 있습니다. 임의의 데이터입니다.
 
-((("nonce values")))((("blocks", "genesis block")))((("blockchain (the)", "genesis block")))((("genesis block")))In the genesis block, for example, Satoshi Nakamoto added the text "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks" in the coinbase data, using it as a proof of the date and to convey a message. Currently, miners use the coinbase data to include extra nonce values and strings identifying the mining pool.
+((("nonce values")))((("blocks", "genesis block")))((("blockchain (the)", "genesis block")))((("genesis block")))예를 들어 기성 블록에서 나토모토 사토시 (Samosi Nakamoto)는 코인베이스 데이터에서 "은행에 대한 두 번째 구제 금융에 관한 2009 년 1 월 3 일 뉴욕 타임스 총장"이라는 텍스트를 날짜의 증거로 사용하고 메시지 전달을 위해 텍스트를 추가했습니다. 현재 광부는 코인베이스 데이터를 사용하여 추가 논스 값과 마이닝 풀을 식별하는 문자열을 포함합니다.
 
-The first few bytes of the coinbase used to be arbitrary, but that is no longer the case. As per BIP-34, version-2 blocks (blocks with the version field set to 2) must contain the block height index as a script "push" operation in the beginning of the coinbase field.
+coinbase의 처음 몇 바이트는 임의적 이었지만 더 이상 그렇지 않습니다. BIP-34에 따라 버전 2 블록 (버전 필드가 2로 설정된 블록)은 coinbase 필드 시작 부분에 스크립트 "푸시"작업으로 블록 높이 색인을 포함해야합니다.
 
-In block 277,316 we see that the coinbase (see <<generation_tx_example>>), which is in the unlocking script or +scriptSig+ field of the transaction input, contains the hexadecimal value +03443b0403858402062f503253482f+. Let's decode this value.
+블록 277,316에서 트랜잭션 입력의 잠금 해제 스크립트 또는 + scriptSig + 필드에있는 코인베이스 (<< generation_tx_example >> 참조)에 16 진수 값 + 03443b0403858402062f503253482f +가 포함되어 있음을 알 수 있습니다. 이 값을 해독합시다.
 
-The first byte, +03+, instructs the script execution engine to push the next three bytes onto the script stack (see <<tx_script_ops_table_pushdata>>). The next three bytes, +0x443b04+, are the block height encoded in little-endian format (backward, least-significant byte first). Reverse the order of the bytes and the result is +0x043b44+, which is 277,316 in decimal.
+첫 번째 바이트 인 +03+는 스크립트 실행 엔진에 다음 세 바이트를 스크립트 스택으로 푸시하도록 지시합니다 (<< tx_script_ops_table_pushdata >> 참조). 다음 3 바이트 + 0x443b04 +는 리틀 엔디 언 형식으로 인코딩 된 블록 높이입니다 (역방향, 최하위 바이트 먼저). 바이트의 순서를 반대로하면 결과는 + 0x043b44 +로 소수점 277,316입니다.
 
-The next few hexadecimal digits (+0385840206+) are used to encode an extra _nonce_ (see <<extra_nonce>>), or random value, used to find a suitable Proof-of-Work solution.
+다음 몇 자리의 16 진수 (+0385840206+)는 적절한 _0once_ (<< extra_nonce >> 참조) 또는 임의의 값을 인코딩하는 데 사용되며, 이는 적절한 작업 증명 (proof-of-work) 솔루션을 찾는 데 사용됩니다.
 
-((("bitcoin improvement proposals", "Pay to Script Hash (BIP-16)")))((("bitcoin improvement proposals", "CHECKHASHVERIFY (BIP-17)")))((("CHECKHASHVERIFY (CHV)")))((("Pay-to-Script-Hash (P2SH)", "coinbase data")))The final part of the coinbase data (+2f503253482f+) is the ASCII-encoded string pass:[<span class="keep-together"><code>/P2SH/</code></span>], which indicates that the mining node that mined this block supports the P2SH improvement defined in BIP-16. The introduction of the P2SH capability required signaling by miners to endorse either BIP-16 or BIP-17. Those endorsing the BIP-16 implementation were to include +/P2SH/+ in their coinbase data. Those endorsing the BIP-17 implementation of P2SH were to include the string +p2sh/CHV+ in their coinbase data. The BIP-16 was elected as the winner, and many miners continued including the string +/P2SH/+ in their coinbase to indicate support for this feature.
+((("bitcoin improvement proposals", "Pay to Script Hash (BIP-16)")))((("bitcoin improvement proposals", "CHECKHASHVERIFY (BIP-17)")))((("CHECKHASHVERIFY (CHV)")))((("Pay-to-Script-Hash (P2SH)", "coinbase data")))코인베이스 데이터의 마지막 부분 (+ 2f503253482f +)은 ASCII로 인코딩 된 문자열 패스입니다 : [<span> ( "("Pay-to-Script-Hash (P2SH) ","코인베이스 데이터 ")) 이 블록을 채굴 한 마이닝 노드가 BIP-16에 정의 된 P2SH 개선을 지원함을 나타내는 <code> / class = "keep-together"> <code> / P2SH / </ code> </ span> P2SH 기능을 도입하기 위해서는 BIP-16 또는 BIP-17을 보증하기 위해 광부가 신호를 보내야했습니다. BIP-16 구현을 보증하는 사람들은 코인베이스 데이터에 + / P2SH / +를 포함해야했습니다. P2SH의 BIP-17 구현을 보증하는 사람들은 코인베이스 데이터에 + p2sh / CHV + 문자열을 포함 시켰습니다. BIP-16이 우승자로 선출되었으며 많은 광부들이 코인베이스에 + / P2SH / + 문자열을 포함하여이 기능에 대한 지원을 계속했습니다.
 
-<<satoshi_words>> uses the libbitcoin library introduced in <<alt_libraries>> to extract the coinbase data from the genesis block, displaying Satoshi's message. Note that the libbitcoin library contains a static copy of the genesis block, so the example code can retrieve the genesis block directly from the library.
+<< satoshi_words >>는 << alt_libraries >>에서 소개 된 libbitcoin 라이브러리를 사용하여 기성 블록에서 코인베이스 데이터를 추출하여 Satoshi의 메시지를 표시합니다. libbitcoin 라이브러리에는 기생 블록의 정적 복사본이 포함되어 있으므로 예제 코드는 라이브러리에서 직접 기생 블록을 검색 할 수 있습니다.
 
 [[satoshi_words]]
 .Extract the coinbase data from the genesis block
@@ -364,61 +364,61 @@ $ ./satoshi-words
 ----
 ====
 
-=== Constructing the Block Header
+=== 블록 헤더 생성하기
 
-((("mining and consensus", "constructing block headers")))((("blocks", "headers")))((("headers")))((("blockchain (the)", "block headers")))To construct the block header, the mining node needs to fill in six fields, as listed in <<block_header_structure_ch10>>.
+((("mining and consensus", "constructing block headers")))((("blocks", "headers")))((("headers")))((("blockchain (the)", "block headers")))블록 헤더를 생성하기 위해 마이닝 노드는 << block_header_structure_ch10 >>에 나열된 것처럼 6 개의 필드를 채워야합니다.
 
 [[block_header_structure_ch10]]
-.The structure of the block header
-[options="header"]
-|=======
-|Size| Field | Description
-| 4 bytes | Version | A version number to track software/protocol upgrades
-| 32 bytes | Previous Block Hash | A reference to the hash of the previous (parent) block in the chain
-| 32 bytes | Merkle Root | A hash of the root of the merkle tree of this block's transactions
-| 4 bytes | Timestamp | The approximate creation time of this block (seconds from Unix Epoch)
-| 4 bytes | Target | The Proof-of-Work algorithm target for this block
-| 4 bytes | Nonce | A counter used for the Proof-of-Work algorithm
-|=======
+.블록 헤더의 구조
+[options = "header"]
+| =======
+크기 | 필드 | 기술
+| 4 바이트 | 버전 | 소프트웨어 / 프로토콜 업그레이드를 추적하는 버전 번호
+| 32 바이트 | 이전 블록 해쉬 | 체인에서 이전 (상위) 블록의 해시에 대한 참조
+| 32 바이트 | Merkle Root | 이 블록 트랜잭션의 Merkle 트리 루트의 해시
+| 4 바이트 | 타임 스탬프 | 이 블록의 대략적인 생성 시간 (Unix Epoch에서 초)
+| 4 바이트 | 대상 | 이 블록에 대한 Proof-of-Work 알고리즘 타겟
+| 4 바이트 | 논스 | Proof-of-Work 알고리즘에 사용되는 카운터
+| =======
 
-At the time that block 277,316 was mined, the version number describing the block structure is version 2, which is encoded in little-endian format in 4 bytes as +0x02000000+.
+블록 277,316이 채워지는 시간에 블록 구조를 설명하는 버전 번호는 버전 2이며 4 바이트의 리틀 엔디안 형식으로 + 0x02000000 +로 인코딩됩니다.
 
-((("blocks", "parent blocks")))((("parent blocks")))Next, the mining node needs to add the "Previous Block Hash" (also known as +prevhash+). That is the hash of the block header of block 277,315, the previous block received from the network, which Jing's node has accepted and selected as the _parent_ of the candidate block 277,316. The block header hash for block 277,315 is:
+((("blocks", "parent blocks")))((("parent blocks")))다음으로, 마이닝 노드는 "이전 블록 해시"(+ prevhash +라고도 함)를 추가해야합니다. 이는 Jing의 노드가 후보 블록 (277, 316)의 _parent_로서 수용되고 선택된 네트워크로부터 수신 된 이전 블록 인 블록 (277, 315)의 블록 헤더의 해시이다. 블록 277,315에 대한 블록 헤더 해시는 다음과 같습니다.
 
 ----
 0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569
 ----
 
-[TIP]
+[팁]
 ====
-By selecting the specific _parent_ block, indicated by the Previous Block Hash field in the candidate block header, Jing is committing his mining power to extending the chain that ends in that specific block. In essence, this is how Jing "votes" with his mining power for the longest-difficulty valid chain.
+Jing은 후보 블록 헤더에서 이전 블록 해시 필드로 표시된 특정 _parent_ 블록을 선택하여 해당 특정 블록으로 끝나는 체인 확장까지 광업 능력을 커밋합니다. 본질적으로 이것은 Jing이 가장 긴 난이도의 유효한 체인에 대한 채광력으로 "투표"하는 방식입니다.
 ====
 
-((("merkle trees")))((("blockchain (the)", "merkle trees")))The next step is to summarize all the transactions with a merkle tree, in order to add the merkle root to the block header. The coinbase transaction is listed as the first transaction in the block. Then, 418 more transactions are added after it, for a total of 419 transactions in the block. As we saw in the <<merkle_trees>>, there must be an even number of "leaf" nodes in the tree, so the last transaction is duplicated, creating 420 nodes, each containing the hash of one transaction. The transaction hashes are then combined, in pairs, creating each level of the tree, until all the transactions are summarized into one node at the "root" of the tree. The root of the merkle tree summarizes all the transactions into a single 32-byte value, which you can see listed as "merkle root" in <<block277316>>, and here:
+((("merkle trees")))((("blockchain (the)", "merkle trees")))다음 단계는 Merkle 루트를 Merkle 트리에 추가하기 위해 Merkle 트리를 사용하여 모든 트랜잭션을 요약하는 것입니다. 블록 헤더. 코인베이스 트랜잭션은 블록의 첫 번째 트랜잭션으로 나열됩니다. 그런 다음 418 개의 트랜잭션이 추가되고 블록에서 총 419 개의 트랜잭션이 추가됩니다. << merkle_trees >>에서 볼 수 있듯이 트리에 "리프"노드가 짝수이어야하므로 마지막 트랜잭션이 복제되어 각각 하나의 트랜잭션 해시가 포함 된 420 개의 노드가 작성됩니다. 모든 트랜잭션이 트리의 "루트"에서 하나의 노드로 요약 될 때까지 트랜잭션 해시가 쌍으로 결합되어 트리의 각 수준을 만듭니다.
 
 ----
 c91c008c26e50763e9f548bb8b2fc323735f73577effbc55502c51eb4cc7cf2e
 ----
 
-Jing's mining node will then add a 4-byte timestamp, encoded as a Unix "epoch" timestamp, which is based on the number of seconds elapsed from January 1, 1970, midnight UTC/GMT. The time +1388185914+ is equal to Friday, 27 Dec 2013, 23:11:54 UTC/GMT.
+Jing의 마이닝 노드는 UTC / GMT 자정 UTC / 1970 년 1 월 1 일 경과 시간 (초)을 기반으로하는 유닉스 "신기원"타임 스탬프로 인코딩 된 4 바이트 타임 스탬프를 추가합니다. +1388185914+ 시간은 2013 년 12 월 27 일 금요일, 23:11:54 UTC / GMT와 같습니다.
 
-Jing's node then fills in the target, which defines the required Proof-of-Work to make this a valid block. The target is stored in the block as a "target bits" metric, which is a mantissa-exponent encoding of the target. The encoding has a 1-byte exponent, followed by a 3-byte mantissa (coefficient). In block 277,316, for example, the target bits value is +0x1903a30c+. The first part +0x19+ is a hexadecimal exponent, while the next part, +0x03a30c+, is the coefficient. The concept of a target is explained in <<target>> and the "target bits" representation is explained in <<target_bits>>.
+Jing의 노드는 대상을 채운다.이 노드는 이것을 유효한 블록으로 만들기 위해 필요한 Proof-of-Work를 정의한다. 타깃은 타깃의 가수 - 지수 인코딩 인 "타깃 비트"메트릭으로서 블록에 저장된다. 인코딩은 1 바이트 지수와 3 바이트 가수 (계수)가 뒤 따른다. 블록 (277, 316)에서, 예를 들어, 목표 비트 값은 + 0x1903a30c +이다. 첫 번째 부분 + 0x19 +는 16 진수 지수이고 다음 부분 인 + 0x03a30c +는 계수입니다. 대상의 개념은 << target >>에 설명되어 있으며 "target bit"표현은 << target_bits >>에 설명되어 있습니다.
 
-The final field is the nonce, which is initialized to zero.
+마지막 필드는 nonce로, 0으로 초기화됩니다.
 
-With all the other fields filled, the block header is now complete and the process of mining can begin. The goal is now to find a value for the nonce that results in a block header hash that is less than the target. The mining node will need to test billions or trillions of nonce values before a nonce is found that satisfies the requirement.
+다른 모든 필드가 채워지면 이제 블록 헤더가 완성되고 광업 프로세스가 시작될 수 있습니다. 지금 목표는 목표보다 적은 블록 헤더 해시를 초래하는 nonce 값을 찾는 것입니다. 마이닝 노드는 요구 사항을 만족하는 넌스가 발견되기 전에 수십억 또는 수조의 넌스 값을 테스트해야합니다.
 
-=== Mining the Block
+=== 블록 채광
 
-((("mining and consensus", "mining the block", id="MACmining10")))Now that a candidate block has been constructed by Jing's node, it is time for Jing's hardware mining rig to "mine" the block, to find a solution to the Proof-of-Work algorithm that makes the block valid. Throughout this book we have studied cryptographic hash functions as used in various aspects of the bitcoin system. The hash function SHA256 is the function used in bitcoin's mining process.((("", startref="jingten")))
+((("mining and consensus", "mining the block", id="MACmining10")))(Jing의 노드에 의해 후보 블록이 구성되었으므로 Jing의 하드웨어 광업 장비가 블록을 "채광"할 때가되었습니다.이 블록은 블록을 채굴 할 때 사용됩니다. ( "광산 및 합의", "블록 채광", id = "MACmining10")) 블록을 유효하게 만드는 Proof-of-Work 알고리즘에 대한 솔루션을 찾으십시오. 이 책 전체에서 비트 코인 시스템의 다양한 측면에서 사용되는 암호화 해시 함수를 연구했습니다. 해시 함수 SHA256은 bitcoin의 마이닝 프로세스에서 사용되는 함수입니다 (( "" ", startref ="jingten "))))
 
-((("mining and consensus", "defined")))In the simplest terms, mining is the process of hashing the block header repeatedly, changing one parameter, until the resulting hash matches a specific target. The hash function's result cannot be determined in advance, nor can a pattern be created that will produce a specific hash value. This feature of hash functions means that the only way to produce a hash result matching a specific target is to try again and again, randomly modifying the input until the desired hash result appears by chance.
+((("mining and consensus", "defined")))가장 간단한 용어로 마이닝은 결과 헤더가 특정 대상과 일치 할 때까지 블록 헤더를 반복 해싱하여 하나의 매개 변수를 변경하는 프로세스입니다. 해시 함수의 결과는 미리 결정할 수 없으며 특정 해시 값을 생성하는 패턴을 만들 수도 없습니다. 해시 함수의이 기능은 특정 대상과 일치하는 해시 결과를 생성하는 유일한 방법은 원하는 해시 결과가 우연히 나타날 때까지 입력을 임의로 수정하는 것입니다.
 
-==== Proof-of-Work Algorithm
+==== 증명 작업 알고리즘
 
-((("Proof-of-Work algorithm", id="proof10")))((("mining and consensus", "Proof-of-Work algorithm", id="Cproof10")))A hash algorithm takes an arbitrary-length data input and produces a fixed-length deterministic result, a digital fingerprint of the input. For any specific input, the resulting hash will always be the same and can be easily calculated and verified by anyone implementing the same hash algorithm. ((("collisions")))The key characteristic of a cryptographic hash algorithm is that it is computationally infeasible to find two different inputs that produce the same fingerprint (known as a _collision_). As a corollary, it is also virtually impossible to select an input in such a way as to produce a desired fingerprint, other than trying random inputs.
+((("Proof-of-Work algorithm", id="proof10")))((("mining and consensus", "Proof-of-Work algorithm", id="Cproof10")))해시 알고리즘은 다음을 수행합니다. (( "작업 증명 알고리즘", id = "proof10")) 임의의 길이의 데이터 입력 및 고정 길이 결정적 결과, 입력의 디지털 지문을 생성합니다. 특정 입력에 대해 결과 해시는 항상 동일하며 동일한 해시 알고리즘을 구현하는 모든 사람이 쉽게 계산하고 확인할 수 있습니다. ((( "충돌"))) 암호화 해시 알고리즘의 핵심 특징은 동일한 지문 (_collision_)을 생성하는 두 개의 다른 입력을 찾는 것이 계산 상으로 불가능하다는 것입니다. 결과로서, 임의의 입력을 시도하는 것 이외에 원하는 지문을 생성하는 방식으로 입력을 선택하는 것은 사실상 불가능합니다.
 
-With SHA256, the output is always 256 bits long, regardless of the size of the input. In <<sha256_example1>>, we will use the Python interpreter to calculate the SHA256 hash of the phrase, "I am Satoshi Nakamoto."
+SHA256을 사용하면 출력 크기는 입력 크기에 관계없이 항상 256 비트입니다. << sha256_example1 >>에서는 파이썬 인터프리터를 사용하여 "나코 모토 사토시"라는 구문의 SHA256 해시를 계산합니다.
 
 [[sha256_example1]]
 .SHA256 example
@@ -436,9 +436,9 @@ Python 2.7.1
 ----
 ====
 
-<<sha256_example1>> shows the result of calculating the hash of +"I am Satoshi Nakamoto"+: +5d7c7ba21cbbcd75d14800b100252d5b428e5b1213d27c385bc141ca6b47989e+. This 256-bit number is the _hash_ or _digest_ of the phrase and depends on every part of the phrase. Adding a single letter, punctuation mark, or any other character will produce a different hash.
+<< sha256_example1 >>은 "+ 나카 모토 사토시"+ + 5d7c7ba21cbbcd75d14800b100252d5b428e5b1213d27c385bc141ca6b47989e +의 해시 계산 결과를 보여줍니다. 이 256 비트 숫자는 문구의 _hash_ 또는 _digest_이며 문구의 모든 부분에 따라 다릅니다. 단일 문자, 구두점 또는 다른 문자를 추가하면 다른 해시가 생성됩니다.
 
-Now, if we change the phrase, we should expect to see completely different hashes. Let's try that by adding a number to the end of our phrase, using the simple Python scripting in <<sha256_example_generator>>.
+이제 구문을 변경하면 완전히 다른 해시를 볼 수 있습니다. << sha256_example_generator >>의 간단한 파이썬 스크립팅을 사용하여 구문의 끝 부분에 숫자를 추가하여 시도해 보겠습니다.
 
 [[sha256_example_generator]]
 .SHA256 script for generating many hashes by iterating on a nonce
@@ -449,7 +449,7 @@ include::code/hash_example.py[]
 ----
 ====
 
-Running this will produce the hashes of several phrases, made different by adding a number at the end of the text. By incrementing the number, we can get different hashes, as shown in <<sha256_example_generator_output>>.
+이것을 실행하면 텍스트의 끝에 숫자를 추가하여 여러 구의 해시를 생성합니다. 숫자를 증가시킴으로써 << sha256_example_generator_output >>과 같이 다른 해시를 얻을 수 있습니다.
 
 [[sha256_example_generator_output]]
 .SHA256 output of a script for generating many hashes by iterating on a nonce
@@ -483,32 +483,32 @@ I am Satoshi Nakamoto19 => cda56022ecb5b67b2bc93a2d764e75f...
 ----
 ====
 
-Each phrase produces a completely different hash result. They seem completely random, but you can reproduce the exact results in this example on any computer with Python and see the same exact hashes.
+각 구문은 완전히 다른 해시 결과를 생성합니다. 그들은 완전히 무작위로 보이지만, 파이썬이있는 어떤 컴퓨터에서도이 예제의 정확한 결과를 재현 할 수 있으며 똑같은 해시를 볼 수 있습니다.
 
-The number used as a variable in such a scenario is called a _nonce_. The nonce is used to vary the output of a cryptographic function, in this case to vary the SHA256 fingerprint of the phrase.
+이러한 시나리오에서 변수로 사용 된 번호를 _nonce_라고합니다. 논스는 암호 기능의 출력을 변경하는 데 사용되며,이 경우 구문의 SHA256 지문을 변경합니다.
 
-To make a challenge out of this algorithm, let's set a target: find a phrase that produces a hexadecimal hash that starts with a zero. Fortunately, this isn't difficult! <<sha256_example_generator_output>> shows that the phrase "I am Satoshi Nakamoto13" produces the hash +0ebc56d59a34f5082aaef3d66b37a661696c2b618e62432727216ba9531041a5+, which fits our criteria. It took 13 attempts to find it. In terms of probabilities, if the output of the hash function is evenly distributed we would expect to find a result with a 0 as the hexadecimal prefix once every 16 hashes (one out of 16 hexadecimal digits 0 through F). In numerical terms, that means finding a hash value that is less than +0x1000000000000000000000000000000000000000000000000000000000000000+. We call this threshold the _target_ and the goal is to find a hash that is numerically less than the target. If we decrease the target, the task of finding a hash that is less than the target becomes more and more difficult.
+이 알고리즘에서 문제를 해결하려면 대상을 설정하십시오. 0으로 시작하는 16 진수 해시를 생성하는 구문을 찾습니다. 다행히도, 이것은 어렵지 않습니다! << sha256_example_generator_output >>은 "I 'm Satoshi Nakamoto13"이라는 문구가 우리 기준에 맞는 해시 + 0ebc56d59a34f5082aaef3d66b37a661696c2b618e62432727216ba9531041a5 +를 생성 함을 보여줍니다. 그것을 찾기 위해 13 번의 시도가 필요했습니다. 확률의 관점에서, 해시 함수의 출력이 고르게 분포되면 16 개의 해시마다 16 진수 접두사 (16 진수 0에서 F 중 하나)에 0이있는 결과를 기대합니다. 수치 적으로, 이는 + 0x1000000000000000000000000000000000000000000000000000000000000000 +보다 작은 해시 값을 찾는 것을 의미합니다. 이 임계 값을 _target_이라고하며, 목표는 목표보다 수치 적으로 작은 해시를 찾는 것입니다. 목표를 줄이면 목표보다 적은 해시를 찾는 작업이 점점 더 어려워집니다.
 
-To give a simple analogy, imagine a game where players throw a pair of dice repeatedly, trying to throw less than a specified target. In the first round, the target is 12. Unless you throw double-six, you win. In the next round the target is 11. Players must throw 10 or less to win, again an easy task. Let's say a few rounds later the target is down to 5. Now, more than half the dice throws will exceed the target and therefore be invalid. It takes exponentially more dice throws to win, the lower the target gets. Eventually, when the target is 2 (the minimum possible), only one throw out of every 36, or 2% of them, will produce a winning result.
+간단한 비유를 들으려면 플레이어가 지정된 주사위보다 적은 양의 주사위를 반복해서 던지는 게임을 상상해보십시오. 첫 번째 라운드에서 목표는 12입니다. 6 점을 버리지 않는 한 승리합니다. 다음 라운드에서 목표는 11입니다. 플레이어는 이기기 위해 10 이하를 던져야합니다. 다시 쉬운 작업입니다. 몇 라운드가 지나면 목표가 5로 떨어졌습니다. 이제 주사위 던지기의 절반 이상이 목표를 초과하므로 유효하지 않습니다. 이기기 위해 기하 급수적으로 더 많은 주사위를 던질수록 목표가 낮아집니다. 결국 목표가 2 (가능한 한 최소) 일 때 36 개 중 1 회 던져 버리거나 2 %만이 승리 한 결과를 생성합니다.
 
-From the perspective of an observer who knows that the target of the dice game is 2, if someone has succeeded in casting a winning throw it can be assumed that they attempted, on average, 36 throws. In other words, one can estimate the amount of work it takes to succeed from the difficulty imposed by the target. When the algorithm is a based on a deterministic function such as SHA256, the input itself constitutes _proof_ that a certain amount of _work_ was done to produce a result below the target. Hence, _Proof-of-Work_.
+주사위 게임의 목표가 2라는 것을 알고있는 관찰자의 관점에서 볼 때, 누군가가 성공한 던지기에 성공하면 평균 36 개의 던지기를 시도했다고 추정 할 수 있습니다. 즉, 목표에 의해 부과 된 어려움에서 성공하는 데 필요한 작업량을 추정 할 수 있습니다. 알고리즘이 SHA256과 같은 결정 론적 함수를 기반으로 할 때, 입력 자체는 _proof_를 구성하여 목표 아래에 결과를 산출하기 위해 일정량의 _work_가 수행되었습니다. 따라서 _Proof-of-Work_.
 
-[TIP]
+[팁]
 ====
-Even though each attempt produces a random outcome, the probability of any possible outcome can be calculated in advance. Therefore, an outcome of specified difficulty constitutes proof of a specific amount of work.
-====
-
-In <<sha256_example_generator_output>>, the winning "nonce" is 13 and this result can be confirmed by anyone independently. Anyone can add the number 13 as a suffix to the phrase "I am Satoshi Nakamoto" and compute the hash, verifying that it is less than the target. The successful result is also Proof-of-Work, because it proves we did the work to find that nonce. While it only takes one hash computation to verify, it took us 13 hash computations to find a nonce that worked. If we had a lower target (higher difficulty) it would take many more hash computations to find a suitable nonce, but only one hash computation for anyone to verify. Furthermore, by knowing the target, anyone can estimate the difficulty using statistics and therefore know how much work was needed to find such a nonce.
-
-[TIP]
-====
-The Proof-of-Work must produce a hash that is _less than_ the target. A higher target means it is less difficult to find a hash that is below the target. A lower target means it is more difficult to find a hash below the target. The target and difficulty are inversely related.
+각 시도가 무작위 결과를 산출하더라도, 가능한 결과의 확률은 미리 계산할 수 있습니다. 따라서 특정 난이도의 결과는 특정 양의 작업에 대한 증거가됩니다.
 ====
 
+<< sha256_example_generator_output >>에서 우승 한 "넌스"는 13이고,이 결과는 아무나 독립적으로 확인할 수 있습니다. 누구나 "나는 Satoshi Nakamoto"라는 구절에 접미사로 13을 추가하고 해시를 계산하여 목표보다 작음을 확인할 수 있습니다. 성공적인 결과는 Proof-of-Work이기도합니다. 왜냐하면 우리가 그 nonce를 찾기위한 작업을했기 때문입니다. 확인을 위해 하나의 해시 계산 만 수행하는 동안 일한 넌스를 찾기 위해 13 개의 해시 계산이 필요했습니다. 우리가 더 낮은 목표 (더 높은 난이도)를 가졌다면, 적절한 논스를 찾기 위해 더 많은 해시 계산이 필요하지만, 누군가를 검증하기위한 해쉬 계산은 단 하나만 수행됩니다. 또한 목표를 알면 누구나 통계를 사용하여 어려움을 예측할 수 있으므로 그러한 넌스를 찾는 데 얼마나 많은 작업이 필요한지 알 수 있습니다.
 
-((("targets")))Bitcoin's Proof-of-Work is very similar to the challenge shown in <<sha256_example_generator_output>>. The miner constructs a candidate block filled with transactions. Next, the miner calculates the hash of this block's header and sees if it is smaller than the current _target_. If the hash is not less than the target, the miner will modify the nonce (usually just incrementing it by one) and try again. At the current difficulty in the bitcoin network, miners have to try quadrillions of times before finding a nonce that results in a low enough block header hash.
+[팁]
+====
+작업 증명 (Proof of-Work)은 목표보다 _ _ _ _ _ 않은 해시를 생성해야합니다. 대상이 높을수록 대상 아래에있는 해시를 찾는 것이 어렵지 않습니다. 대상이 낮 으면 대상 아래에 해시를 찾는 것이 더 어렵다는 것을 의미합니다. 목표와 난이도는 반비례입니다.
+====
 
-A very simplified Proof-of-Work algorithm is implemented in Python in <<pow_example1>>.
+
+((("targets")))Bitcoin의 작업 증명은 << sha256_example_generator_output >>에 표시된 작업과 매우 유사합니다. 광부는 트랜잭션으로 채워진 후보 블록을 구성합니다. 다음으로, 광부는이 블록의 헤더의 해시를 계산하고 현재 _target_보다 작은 지 확인합니다. 해시가 목표보다 작지 않은 경우 광부는 nonce를 수정하고 (일반적으로 하나 증가) 다시 시도합니다. 비트 코인 네트워크의 현재 어려움에서 광부는 블록 헤더 해시가 충분히 낮아지는 넌스 (nce)를 찾기 전에 시간의 4 배를 시도해야합니다.
+
+매우 단순화 된 Proof-of-Work 알고리즘은 파이썬에서 << pow_example1 >>로 구현됩니다.
 
 [[pow_example1]]
 .Simplified Proof-of-Work implementation
@@ -519,7 +519,7 @@ include::code/proof-of-work-example.py[]
 ----
 ====
 
-Running this code, you can set the desired difficulty (in bits, how many of the leading bits must be zero) and see how long it takes for your computer to find a solution. In <<pow_example_outputs>>, you can see how it works on an average laptop.
+이 코드를 실행하여 원하는 난이도 (비트 수, 선행 비트 수를 0으로 설정해야 함)를 설정하고 컴퓨터가 솔루션을 찾는 데 걸리는 시간을 확인할 수 있습니다. << pow_example_outputs >>에서는 평균 노트북에서 작동하는 방식을 볼 수 있습니다.
 
 [[pow_example_outputs]]
 .Running the Proof-of-Work example for various difficulties
@@ -585,28 +585,28 @@ Hashing Power: 127141 hashes per second
 ----
 ====
 
-As you can see, increasing the difficulty by 1 bit causes a doubling in the time it takes to find a solution. If you think of the entire 256-bit number space, each time you constrain one more bit to zero, you decrease the search space by half. In <<pow_example_outputs>>, it takes 84 million hash attempts to find a nonce that produces a hash with 26 leading bits as zero. Even at a speed of more than 120,000 hashes per second, it still requires 10 minutes on a laptop to find this solution.
+보시다시피, 1 비트만큼 난이도를 높이면 해결 방법을 찾는 데 두 배의 시간이 걸립니다. 전체 256 비트 수 공간을 생각하면, 한 비트를 0으로 제한 할 때마다 검색 공간이 절반으로 줄어 듭니다. << pow_example_outputs >>에서는 26 개의 선행 비트가 0 인 해시를 생성하는 nonce를 찾기 위해 8400 만 건의 해시 시도가 필요합니다. 초당 120,000 개 이상의 해시 속도에서도 랩톱에서이 솔루션을 찾기 위해 10 분이 필요합니다.
 
-At the time of writing, the network is attempting to find a block whose header hash is less than: 
+글을 쓰는 시점에서 네트워크는 헤더 해시가 다음보다 작은 블록을 찾으려고합니다.
 
 ----
 0000000000000000029AB9000000000000000000000000000000000000000000
 ----
 
-As you can see, there are a lot of zeros at the beginning of that target, meaning that the acceptable range of hashes is much smaller, hence it's more difficult to find a valid hash. It will take on average more than 1.8 septa-hashes (thousand billion billion hashes) per second for the network to discover the next block. That seems like an impossible task, but fortunately the network is bringing 3 exa-hashes per second (EH/sec) of processing power to bear, which will be able to find a block in about 10 minutes on average.((("", startref="Cproof10")))((("", startref="proof10")))
+보시다시피, 해당 대상의 시작 부분에 많은 0이 있습니다. 즉, 허용되는 해시 범위가 훨씬 작으므로 유효한 해시를 찾기가 더 어려워집니다. 네트워크가 초당 평균 1.8 septa-hash (십억 억 해시)를 넘으면 다음 블록을 발견하게됩니다. 이는 불가능한 일처럼 보입니다. 그러나 다행스럽게도 네트워크는 처리 능력의 초당 3 회의 해시 (EH / 초)를 가져 오므로 평균 약 10 분 내에 블록을 찾을 수 있습니다. (( " , startref = "Cproof10")))) (( "" ", startref ="proof10 ")))
 
 [[target_bits]]
-==== Target Representation
+==== 대상 표현
 
-((("mining and consensus", "mining the block", "target representation")))((("targets", id="targets10")))In <<block277316>>, we saw that the block contains the target, in a notation called "target bits" or just "bits," which in block 277,316 has the value of +0x1903a30c+. This notation expresses the Proof-of-Work target as a coefficient/exponent format, with the first two hexadecimal digits for the exponent and the next six hex digits as the coefficient. In this block, therefore, the exponent is +0x19+ and the coefficient is +0x03a30c+.
+((("mining and consensus", "mining the block", "target representation")))((("targets", id="targets10")))<< block277316 >>에서는 블록에 다음과 같은 내용이 포함되어 있음을 확인했습니다. (( "광업 및 합의,"블록 채광 ","대상 표현 ")) 블록 277,316에서 + 0x1903a30c +의 값을 갖는 "목표 비트"또는 단지 "비트"로 표기된 표적. 이 표기법은 Proof-of-Work 대상을 지수 / 지수 형식으로 표현하며 지수의 처음 두 16 진수와 그 다음 여섯 자리의 16 진수를 계수로 사용합니다. 따라서이 블록에서 지수는 + 0x19 +이고 계수는 + 0x03a30c +입니다.
 
-The formula to calculate the difficulty target from this representation is:
+이 표현에서 난이도 목표를 계산하는 수식은 다음과 같습니다.
 
 ----
-target = coefficient * 2^(8 * (exponent – 3))
+목표 = 계수 * 2 ^ (8 * (지수 -3))
 ----
 
-Using that formula, and the difficulty bits value 0x1903a30c, we get:
+이 수식과 난이도 비트 값 0x1903a30c를 사용하면 다음과 같이 나타납니다.
 
 ----
 target = 0x03a30c * 2^(0x08 * (0x19 - 0x03))^
@@ -630,24 +630,25 @@ switching back to hexadecimal:
 => target = 0x0000000000000003A30C00000000000000000000000000000000000000000000
 ----
 
-This means that a valid block for height 277,316 is one that has a block header hash that is less than the target. In binary that number must have more than 60 leading bits set to zero. With this level of difficulty, a single miner processing 1 trillion hashes per second (1 terahash per second or 1 TH/sec) would only find a solution once every 8,496 blocks or once every 59 days, on average.
+즉, 높이 277,316의 유효한 블록은 대상보다 작은 블록 헤더 해시를 가진 블록입니다. 바이너리에서이 수는 60보다 큰 선행 비트를 0으로 설정해야합니다. 이 수준의 난이도로 1 초당 1 조개의 해시를 처리하는 단일 광부 (1 테라 하쉬 또는 1 TH / 초)는 평균 8,496 블록마다 또는 59 일마다 한 번만 해결책을 찾습니다.
 
 [[target]]
-==== Retargeting to Adjust Difficulty
+==== 어려움 조정을위한 목표 조정
 
-((("mining and consensus", "mining the block", "retargeting to adjust difficulty")))As we saw, the target determines the difficulty and therefore affects how long it takes to find a solution to the Proof-of-Work algorithm. This leads to the obvious questions: Why is the difficulty adjustable, who adjusts it, and how?
+((("mining and consensus", "mining the block", "retargeting to adjust difficulty")))우리가 본 것처럼 목표는 난이도를 결정하고 따라서 Proof-of- 작업 알고리즘. 이로 인해 분명한 질문이 생깁니다 : 왜 어려움을 조정할 수 있으며, 누가 조정합니까?
 
-Bitcoin's blocks are generated every 10 minutes, on average. This is bitcoin's heartbeat and underpins the frequency of currency issuance and the speed of transaction settlement. It has to remain constant not just over the short term, but over a period of many decades. Over this time, it is expected that computer power will continue to increase at a rapid pace. Furthermore, the number of participants in mining and the computers they use will also constantly change. To keep the block generation time at 10 minutes, the difficulty of mining must be adjusted to account for these changes. In fact, the Proof-of-Work target is a dynamic parameter that is periodically adjusted to meet a 10-minute block interval goal. In simple terms, the target is set so that the current mining power will result in a 10-minute block interval.
+Bitcoin의 블록은 평균 10 분마다 생성됩니다. 이것은 비트 코인의 심장 박동이며 통화 발행 빈도와 거래 결제 속도를 뒷받침합니다. 그것은 단기간뿐만 아니라 수십 년 동안 일정하게 유지되어야합니다. 이 기간 동안 컴퓨터 전력은 빠른 속도로 계속 증가 할 것으로 예상됩니다. 또한, 광업 참여자와 그들이 이용하는 컴퓨터 또한 끊임없이 변화 할 것입니다. 블록 생성 시간을 10 분으로 유지하려면 이러한 변경 사항을 고려하여 광업의 어려움을 조정해야합니다. 실제로, Proof-of-Work 대상은 10 분 블록 간격 목표를 충족 시키도록 주기적으로 조정되는 동적 매개 변수입니다. 간단히 말하자면, 현재의 광산 전력이 10 분 블록 간격을 갖도록 목표가 설정됩니다.
 
-How, then, is such an adjustment made in a completely decentralized network? Retargeting occurs automatically and on every node independently. Every 2,016 blocks, all nodes retarget the Proof-of-Work. The equation for retargeting measures the time it took to find the last 2,016 blocks and compares that to the expected time of 20,160 minutes (2,016 blocks times the desired 10-minute block interval). The ratio between the actual timespan and desired timespan is calculated and a proportionate adjustment (up or down) is made to the target. In simple terms: If the network is finding blocks faster than every 10 minutes, the difficulty increases (target decreases). If block discovery is slower than expected, the difficulty decreases (target increases).
+그렇다면 완전히 분산 된 네트워크에서 어떻게 그런 조정이 이루어 졌습니까? 목표는 자동으로 모든 노드에서 개별적으로 발생합니다. 2,016 블록마다 모든 노드가 작업 기록을 재 지정합니다. 리 타게팅을위한 방정식은 마지막 2,016 블록을 찾는 데 걸리는 시간을 측정하고 20,160 분 (예상 된 10 분 블록 간격의 2,016 블록을 곱한 시간)의 예상 시간과 비교합니다. 실제 시간 간격과 원하는 시간 간격 간의 비율이 계산되고 대상에 비례 조정 (위 또는 아래)이 이루어집니다. 간단히 말하면, 네트워크가 매 10 분보다 빠르게 블록을 찾는 경우 어려움이 증가합니다 (목표 감소). 블록 검색이 예상보다 느리면 어려움이 줄어 듭니다 (대상이 증가합니다).
 
-The equation can be summarized as:
+방정식은 다음과 같이 요약 할 수 있습니다.
 
 ----
-New Target = Old Target * (Actual Time of Last 2016 Blocks / 20160 minutes)
+새로운 목표 = 오래된 목표 * (지난 2016 년 블록의 실제 시간 / 20160 분)
 ----
 
-<<retarget_code>> shows the code used in the Bitcoin Core client.
+<< retarget_code >>는 Bitcoin Core 클라이언트에서 사용되는 코드를 보여줍니다.
+
 
 [[retarget_code]]
 .Retargeting the Proof-of-Work&#x2014;CalculateNextWorkRequired() in pow.cpp
@@ -678,131 +679,131 @@ New Target = Old Target * (Actual Time of Last 2016 Blocks / 20160 minutes)
 ----
 ====
 
-[NOTE]
+[노트]
 ====
-While the target calibration happens every 2,016 blocks, because of an off-by-one error in the original Bitcoin Core client it is based on the total time of the previous 2,015 blocks (not 2,016 as it should be), resulting in a retargeting bias toward higher difficulty by 0.05%.
-====
-
-
-The parameters +Interval+ (2,016 blocks) and +TargetTimespan+ (two weeks as 1,209,600 seconds) are defined in _chainparams.cpp_.
-
-To avoid extreme volatility in the difficulty, the retargeting adjustment must be less than a factor of four (4) per cycle. If the required target adjustment is greater than a factor of four, it will be adjusted by a factor of 4 and not more. Any further adjustment will be accomplished in the next retargeting period because the imbalance will persist through the next 2,016 blocks. Therefore, large discrepancies between hashing power and difficulty might take several 2,016 block cycles to balance out.
-
-[TIP]
-====
-The difficulty of mining a bitcoin block is approximately '10 minutes of processing' for the entire network, based on the time it took to mine the previous 2,016 blocks, adjusted every 2,016 blocks. This is achieved by lowering or raising the target.
+목표 보정은 2,016 블록마다 발생하지만 원래 Bitcoin Core 클라이언트의 오프 - 바이 - 원 오류로 인해 이전 2,015 블록의 총 시간 (2,016이 아님)을 기준으로 한 결과 타겟 조정 편차가 발생합니다 높은 난이도로 0.05 % 감소합니다.
 ====
 
-Note that the target is independent of the number of transactions or the value of transactions. This means that the amount of hashing power and therefore electricity expended to secure bitcoin is also entirely independent of the number of transactions. Bitcoin can scale up, achieve broader adoption, and remain secure without any increase in hashing power from today's level. The increase in hashing power represents market forces as new miners enter the market to compete for the reward. As long as enough hashing power is under the control of miners acting honestly in pursuit of the reward, it is enough to prevent "takeover" attacks and, therefore, it is enough to secure bitcoin.
 
-The difficulty of mining is closely related to the cost of electricity and the exchange rate of bitcoin vis-a-vis the currency used to pay for electricity. High-performance mining systems are about as efficient as possible with the current generation of silicon fabrication, converting electricity into hashing computation at the highest rate possible. The primary influence on the mining market is the price of one kilowatt-hour of electricity in bitcoin, because that determines the profitability of mining and therefore the incentives to enter or exit the mining market.((("", startref="targets10")))
+매개 변수 + 간격 + (2,016 블록) 및 + TargetTimespan + (2 주간 1,209,600 초)는 _chainparams.cpp_에 정의되어 있습니다.
 
-=== Successfully Mining the Block
+어려움의 극심한 변동성을 피하기 위해 목표 조정은주기 당 4 배 이하 여야합니다. 필요한 목표 조정이 4 배보다 크면 4 배 이상 조정되지 않습니다. 불균형이 다음 2,016 블록을 통해 지속될 것이므로 다음 조정 목표에서 추가 조정이 완료됩니다. 따라서 해싱 성능과 난이도 사이의 큰 불일치는 균형을 맞추기 위해 여러 개의 2,016 블록 사이클이 소요될 수 있습니다.
 
-((("mining and consensus", "mining the block", "successful completion")))((("use cases", "mining for bitcoin", id="jingtentwo")))As we saw earlier, Jing's node has constructed a candidate block and prepared it for mining. Jing has several hardware mining rigs with application-specific integrated circuits, where hundreds of thousands of integrated circuits run the SHA256 algorithm in parallel at incredible speeds. Many of these specialized machines are connected to his mining node over USB or a local area network. Next, the mining node running on Jing's desktop transmits the block header to his mining hardware, which starts testing trillions of nonces per second.
+[팁]
+====
+비트 코인 블록을 채우기의 어려움은 이전의 2,016 블록을 채굴하는 데 걸린 시간을 기준으로 전체 네트워크에 대해 약 '10 분의 처리 '입니다. 2,016 블록마다 조정됩니다. 목표를 낮추거나 올리면 달성됩니다.
+====
 
-Almost 11 minutes after starting to mine block 277,316, one of the hardware mining machines finds a solution and sends it back to the mining node. When inserted into the block header, the nonce 4,215,469,401 produces a block hash of:
+목표는 트랜잭션 수 또는 트랜잭션 값과 독립적입니다. 이것은 해시 전력의 양과 비트 코인 확보에 소비되는 전기량도 트랜잭션 수와 완전히 독립적이라는 것을 의미합니다. Bitcoin은 오늘날의 수준에서 해시력이 증가하지 않고도 확장 및 확장 될 수 있으며 보안을 유지할 수 있습니다. 해싱 력의 증가는 신규 광부가 시장에 진입하여 보상을 얻기 위해 경쟁하기 때문에 시장 세력을 나타냅니다. 충분한 해시력이 보상을 추구하는 정직한 광부의 통제하에있는 한 "인수"공격을 막기에 충분하므로 비트 코인을 확보하는 것만으로 충분합니다.
+
+광업의 어려움은 전기 비용과 비트 코인의 환율이 전기 요금을 지불하는 데 사용되는 통화와 밀접한 관련이 있습니다. 고성능 마이닝 시스템은 전기를 가능한 한 최고 속도로 해싱 계산으로 변환하는 현재 실리콘 생성 세대에서 가능한 한 효율적입니다. 광산 시장에 대한 주된 영향은 광업의 수익성을 결정하고 따라서 광산 시장에 출입하기위한 인센티브를 결정하기 때문에 비트 코인으로 1 킬로와트시의 전기 가격이 책정됩니다. (( "" ","startref = "targets10" ))))
+
+=== 블록을 성공적으로 채광하기
+
+((("mining and consensus", "mining the block", "successful completion")))((("use cases", "mining for bitcoin", id="jingtentwo")))이전에 보았 듯이 징 (Jing)의 글에서 보듯이 ( "("광산 및 합의, "블록 채광", "성공적인 완료" 노드는 후보 블록을 구성하고이를 광업을 위해 준비했습니다. Jing은 수십만 개의 집적 회로가 놀라운 속도로 병렬로 SHA256 알고리즘을 실행하는 애플리케이션 별 집적 회로를 갖춘 여러 하드웨어 마이닝 리그를 보유하고 있습니다. 이러한 특수화 된 시스템은 USB 또는 LAN을 통해 광산 노드에 연결됩니다. 그런 다음 Jing의 데스크톱에서 실행되는 마이닝 노드가 블록 헤더를 마이닝 하드웨어로 전송합니다. 마이닝 하드웨어는 초당 1 씩의 nonce를 테스트합니다.
+
+광업 블록 277, 316으로 시작한 후 약 11 분 후, 하드웨어 마이닝 기계 중 하나가 솔루션을 찾아 다시 광산 노드로 보냅니다. 블록 헤더에 삽입되면 nonce 4,215,469,401은 다음과 같은 블록 해시를 생성합니다.
 
 ----
 0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569
 ----
 
-which is less than the target:
+목표보다 적습니다.
 
 ----
 0000000000000003A30C00000000000000000000000000000000000000000000
 ----
 
-Immediately, Jing's mining node transmits the block to all its peers. They receive, validate, and then propagate the new block. As the block ripples out across the network, each node adds it to its own copy of the blockchain, extending it to a new height of 277,316 blocks. As mining nodes receive and validate the block, they abandon their efforts to find a block at the same height and immediately start computing the next block in the chain, using Jing's block as the "parent." By building on top of Jing's newly discovered block, the other miners are essentially "voting" with their mining power and endorsing Jing's block and the chain it extends.
+즉시 Jing의 광산 노드는 모든 피어에게 블록을 전송합니다. 이들은 새 블록을 수신하고 유효성을 검사 한 다음 전파합니다. 블록이 네트워크를 통해 파문을 겪을 때마다 각 노드는이를 블록 체인의 복사본에 추가하여 277,316 블록의 새로운 높이로 확장합니다. 마이닝 노드가 블록을 수신하고 유효성을 검사하면 같은 높이에서 블록을 찾고 즉시 "체인"의 다음 블록을 계산하기 시작합니다. Jing의 블록을 "부모"로 사용합니다. Jing의 새로 발견 된 블록 위에 건축함으로써 다른 광부는 본질적으로 채광력으로 "투표"하고 Jing의 블록과 확장하는 체인을 보증합니다.
 
-In the next section, we'll look at the process each node uses to validate a block and select the longest chain, creating the consensus that forms the decentralized blockchain.((("", startref="MACmining10")))((("", startref="jingtentwo")))
+다음 섹션에서는 각 노드가 블록 유효성을 검사하고 가장 긴 체인을 선택하여 분산 블록 체인을 형성하는 컨센서스를 만드는 과정을 살펴볼 것입니다.((("", startref="MACmining10")))((("", startref="jingtentwo")))
 
-=== Validating a New Block
+=== 새 블록 유효성 검사
 
-((("mining and consensus", "new block validation")))((("blocks", "new block validation")))((("validation")))The third step in bitcoin's consensus mechanism is independent validation of each new block by every node on the network. As the newly solved block moves across the network, each node performs a series of tests to validate it before propagating it to its peers. This ensures that only valid blocks are propagated on the network. The independent validation also ensures that miners who act honestly get their blocks incorporated in the blockchain, thus earning the reward. Those miners who act dishonestly have their blocks rejected and not only lose the reward, but also waste the effort expended to find a Proof-of-Work solution, thus incurring the cost of electricity without compensation.
+((("mining and consensus", "new block validation")))((("blocks", "new block validation")))((("validation")))네트워크상의 모든 노드에 의한 새로운 블록의 유효성 검사. 새로 해결 된 블록이 네트워크를 통해 이동함에 따라 각 노드는 일련의 테스트를 수행하여 노드를 노드로 전파하기 전에 유효성을 검사합니다. 이렇게하면 유효한 블록 만 네트워크에 전파됩니다. 독립적 인 검증을 통해 정직하게 행동하는 광부가 블록 체인에 블록을 통합하여 보상을 얻을 수 있습니다. 부정직하게 행동하는 광부들은 막을 거부하고 보상을 잃을뿐만 아니라 입증 작업 솔루션을 찾는 데 드는 노력을 낭비하므로 보상없이 전기 요금이 발생합니다.
 
-When a node receives a new block, it will validate the block by checking it against a long list of criteria that must all be met; otherwise, the block is rejected. These criteria can be seen in the Bitcoin Core client in the functions +CheckBlock+ and +CheckBlockHeader+ and include:
+노드가 새로운 블록을 받으면 블록은 충족되어야하는 긴 기준 목록과 비교하여 블록의 유효성을 검사합니다. 그렇지 않으면 블록이 거부됩니다. 이러한 기준은 + CheckBlock + 및 + CheckBlockHeader + 함수의 Bitcoin Core 클라이언트에서 볼 수 있으며 다음을 포함합니다.
 
-* The block data structure is syntactically valid
-* The block header hash is less than the target (enforces the Proof-of-Work)
-* The block timestamp is less than two hours in the future (allowing for time errors)
-* The block size is within acceptable limits
-* The first transaction (and only the first) is a coinbase transaction
-* All transactions within the block are valid using the transaction checklist discussed in <<tx_verification>>
+블록 데이터 구조는 구문 적으로 유효합니다.
+* 블록 헤더 해시가 대상보다 작습니다 (작업 증명 실행).
+* 블록 시간 소인은 향후 2 시간 미만입니다 (시간 오류 허용).
+* 블록 크기가 허용되는 한도 내에 있습니다.
+* 첫 번째 트랜잭션 (그리고 첫 번째 트랜잭션 만)은 코인베이스 트랜잭션입니다
+* 블록 내의 모든 트랜잭션은 << tx_verification >>에서 논의 된 트랜잭션 체크리스트를 사용하여 유효합니다.
 
-The independent validation of each new block by every node on the network ensures that the miners cannot cheat. In previous sections we saw how miners get to write a transaction that awards them the new bitcoin created within the block and claim the transaction fees. Why don't miners write themselves a transaction for a thousand bitcoin instead of the correct reward? Because every node validates blocks according to the same rules. An invalid coinbase transaction would make the entire block invalid, which would result in the block being rejected and, therefore, that transaction would never become part of the ledger. The miners have to construct a perfect block, based on the shared rules that all nodes follow, and mine it with a correct solution to the Proof-of-Work. To do so, they expend a lot of electricity in mining, and if they cheat, all the electricity and effort is wasted. This is why independent validation is a key component of decentralized consensus.
+네트워크상의 모든 노드가 각각의 새로운 블록을 독립적으로 검증하면 광부가 속일 수 없음을 보장합니다. 이전 섹션에서 우리는 광부들이 블록 내에서 생성 된 새로운 비트 코인을 수여하고 거래 비용을 청구하는 트랜잭션을 작성하는 방법을 보았습니다. 왜 광부들은 올바른 보상 대신 천 비트 코인 거래를하지 않습니까? 모든 노드가 동일한 규칙에 따라 블록을 검증하기 때문입니다. 유효하지 않은 코인베이스 트랜잭션으로 인해 전체 블록이 무효화되고 블록이 거부되어 해당 트랜잭션이 장부의 일부가 될 수 없습니다. 광부는 모든 노드가 따르는 공유 규칙을 기반으로 완벽한 차단을 구성하고이를 작업 증명에 대한 올바른 솔루션으로 채굴해야합니다. 그렇게하기 위해서, 그들은 채광에 많은 전기를 소비하고, 그들이 속임수를 쓴다면, 모든 전기와 노력은 낭비됩니다. 이것이 독립 검증이 분산 된 합의의 주요 구성 요소 인 이유입니다.
 
-=== Assembling and Selecting Chains of Blocks
+=== 블록 묶음 조립 및 선택
 
-((("mining and consensus", "assembling and selecting chains of blocks", id="MACassembling10")))((("blocks", "assembling and selecting chains of", id="Bassemble10")))The final step in bitcoin's decentralized consensus mechanism is the assembly of blocks into chains and the selection of the chain with the most Proof-of-Work. Once a node has validated a new block, it will then attempt to assemble a chain by connecting the block to the existing blockchain.
+((("mining and consensus", "assembling and selecting chains of blocks", id="MACassembling10")))((("blocks", "assembling and selecting chains of", id="Bassemble10")))비트 코인의 분산 된 합의 메커니즘의 마지막 단계는 블록을 체인으로 조립하고 가장 많은 작업 증명을 가진 체인을 선택하는 것입니다. 노드가 새 블록의 유효성을 검사하면 블록을 기존 블록 체인에 연결하여 체인을 어셈블하려고 시도합니다.
 
-Nodes maintain three sets of blocks: those connected to the main blockchain, those that form branches off the main blockchain (secondary chains), and finally, blocks that do not have a known parent in the known chains (orphans). Invalid blocks are rejected as soon as any one of the validation criteria fails and are therefore not included in any chain.
+노드는 주 블록 체인에 연결된 블록, 주 블록 체인 (2 차 체인)에서 분기하는 블록 및 알려진 체인 (고아)에서 알려진 부모가없는 블록의 세 가지 블록 세트를 유지합니다. 유효하지 않은 블록은 유효성 검사 기준 중 하나가 실패하면 즉시 거부되므로 어떤 체인에도 포함되지 않습니다.
 
-The "main chain" at any time is whichever _valid_ chain of blocks has the most cumulative Proof-of-Work associated with it. Under most circumstances this is also the chain with the most blocks in it, unless there are two equal-length chains and one has more Proof-of-Work. The main chain will also have branches with blocks that are "siblings" to the blocks on the main chain. These blocks are valid but not part of the main chain. They are kept for future reference, in case one of those chains is extended to exceed the main chain in work. In the next section (<<forks>>), we will see how secondary chains occur as a result of an almost simultaneous mining of blocks at the same height.
+언제든지 "주 체인"은 가장 누적 된 누적 증명 (Proof-of-Work)이있는 블록의 _ 유효 _ 체인 체인 중 하나입니다. 대부분의 상황에서 두 개의 등 길이 체인이 있고 하나의 체인에 더 많은 증명 작업이있는 경우가 아니면 가장 많은 블록이있는 체인입니다. 주 체인에는 주 체인의 블록에 대한 "형제"인 블록이있는 분기가 있습니다. 이 블록은 유효하지만 주 체인의 일부는 아닙니다. 이러한 체인 중 하나가 작업의 주 체인을 초과하도록 확장되는 경우 향후 참조를 위해 보관됩니다. 다음 섹션 (<< 포크 >>)에서는 동일한 높이의 블록을 거의 동시에 채굴 한 결과로 2 차 체인이 어떻게 발생하는지 볼 수 있습니다.
 
-When a new block is received, a node will try to slot it into the existing blockchain. The node will look at the block's "previous block hash" field, which is the reference to the block's parent. Then, the node will attempt to find that parent in the existing blockchain. Most of the time, the parent will be the "tip" of the main chain, meaning this new block extends the main chain. For example, the new block 277,316 has a reference to the hash of its parent block 277,315. Most nodes that receive 277,316 will already have block 277,315 as the tip of their main chain and will therefore link the new block and extend that chain.
+새로운 블록이 수신되면 노드는이를 기존 블록 체인에 슬롯에 넣으려고 시도합니다. 노드는 블록의 부모에 대한 참조 인 블록의 "이전 블록 해시"필드를 봅니다. 그런 다음 노드는 기존 블록 체인에서 해당 상위 항목을 찾으려고 시도합니다. 대부분의 경우 부모는 주 체인의 "팁"이됩니다. 즉이 새로운 블록이 주 체인을 확장한다는 의미입니다. 예를 들어, 새로운 블록 (277, 316)은 그 부모 블록 (277, 315)의 해시에 대한 참조를 갖는다. 277,316을받는 대부분의 노드는 이미 주 체인의 끝으로 블록 277,315를 가지므로 새 블록을 연결하고 해당 체인을 확장합니다.
 
-Sometimes, as we will see in <<forks>>, the new block extends a chain that is not the main chain. In that case, the node will attach the new block to the secondary chain it extends and then compare the work of the secondary chain to the main chain. If the secondary chain has more cumulative work than the main chain, the node will _reconverge_ on the secondary chain, meaning it will select the secondary chain as its new main chain, making the old main chain a secondary chain. If the node is a miner, it will now construct a block extending this new, longer, chain.
+때로 << 포크 >>에서 볼 수 있듯이 새 블록은 주 체인이 아닌 체인을 확장합니다. 이 경우 노드는 새로운 블록을 보조 체인에 연결하고 보조 체인의 작업을 주 체인과 비교합니다. 2 차 체인에 주 체인보다 누적 된 작업이 더 많은 경우 노드는 2 차 체인에서 다시 _reconverge_합니다. 즉, 2 차 체인을 새로운 주 체인으로 선택하여 이전 주 체인을 2 차 체인으로 만듭니다. 노드가 광부 인 경우 이제는이 새롭고 긴 체인을 확장하는 블록을 구성합니다.
 
-If a valid block is received and no parent is found in the existing chains, that block is considered an "orphan." Orphan blocks are saved in the orphan block pool where they will stay until their parent is received. Once the parent is received and linked into the existing chains, the orphan can be pulled out of the orphan pool and linked to the parent, making it part of a chain. Orphan blocks usually occur when two blocks that were mined within a short time of each other are received in reverse order (child before parent).
+유효한 블록이 수신되고 기존 체인에서 상위가 발견되지 않으면 해당 블록은 "고아"로 간주됩니다. 고아 블록은 고아 블록 풀에 저장되어 부모가 수신 될 때까지 유지됩니다. 부모가 수신되어 기존 체인에 연결되면 고아가 고아 풀에서 빠져 나가 부모에게 연결되어 체인의 일부가됩니다. 고립 된 블록은 일반적으로 서로 짧은 시간 내에 채광 된 두 개의 블록이 역순으로 수신 될 때 발생합니다 (부모 앞의 자식).
 
-By selecting the greatest-cumulative-work valid chain, all nodes eventually achieve network-wide consensus. Temporary discrepancies between chains are resolved eventually as more work is added, extending one of the possible chains. Mining nodes "vote" with their mining power by choosing which chain to extend by mining the next block. When they mine a new block and extend the chain, the new block itself represents their vote.
+가장 큰 누적 작업 유효 체인을 선택하면 결국 모든 노드가 네트워크 전반에 걸친 컨센서스를 달성하게됩니다. 가능한 체인 중 하나를 확장하여 더 많은 작업이 추가되면 체인 간의 일시적인 불일치가 결국 해결됩니다. 마이닝 노드는 다음 블록을 마이닝하여 확장 할 체인을 선택하여 마이닝 기능으로 "투표"합니다. 그들이 새로운 블록을 채굴하고 체인을 확장 할 때, 새로운 블록 자체가 자신의 표를 나타냅니다.
 
-In the next section we will look at how discrepancies between competing chains (forks) are resolved by the independent selection of the greatest-cumulative-work chain.
+다음 섹션에서는 경쟁 체인 (포크) 간의 불일치를 가장 큰 누적 작업 체인의 독립적 인 선택으로 해결하는 방법을 살펴 보겠습니다.
 
-[[forks]]
-==== Blockchain Forks
+[[포크]]
+==== 블록 체인 포크
 
-((("mining and consensus", "assembling and selecting chains of blocks", "blockchain forks")))((("blockchain (the)", "blockchain forks", id="BCTfork10")))((("forks", "blockchain fork events", id="forks10")))Because the blockchain is a decentralized data structure, different copies of it are not always consistent. Blocks might arrive at different nodes at different times, causing the nodes to have different perspectives of the blockchain. To resolve this, each node always selects and attempts to extend the chain of blocks that represents the most Proof-of-Work, also known as the longest chain or greatest cumulative work chain. By summing the work recorded in each block in a chain, a node can calculate the total amount of work that has been expended to create that chain. As long as all nodes select the greatest-cumulative-work chain, the global bitcoin network eventually converges to a consistent state. Forks occur as temporary inconsistencies between versions of the blockchain, which are resolved by eventual reconvergence as more blocks are added to one of the forks.
+((("mining and consensus", "assembling and selecting chains of blocks", "blockchain forks")))((("blockchain (the)", "blockchain forks", id="BCTfork10")))((("forks", "blockchain fork events", id="forks10")))블록 체인은 분산 된 데이터 구조이기 때문에 서로 다른 복사본이 항상 일치하지는 않습니다. 블록이 다른 시간에 다른 노드에 도착하여 노드가 블록 체인의 다른 시각을 가질 수 있습니다. 이를 해결하기 위해 각 노드는 항상 가장 긴 체인 또는 가장 큰 누적 작업 체인이라고도 알려진 가장 많은 작업 공정을 나타내는 블록 체인을 선택하여 확장하려고 시도합니다. 체인의 각 블록에 기록 된 작업을 합산함으로써 , 노드는 해당 체인을 생성하는 데 소비 된 총 작업량을 계산할 수 있습니다. 모든 노드가 가장 누적 된 작업 체인을 선택하는 한 글로벌 비트 코인 네트워크는 결국 일관된 상태로 수렴됩니다. 포크는 블록 체인의 버전간에 일시적인 불일치로 발생합니다.이 블록은 포크 중 하나에 더 많은 블록이 추가 될 때 최종 재 융합으로 해결됩니다.
 
-[TIP]
+[팁]
 ====
-The blockchain forks described in this section occur naturally as a result of transmission delays in the global network. We will also look at deliberately induced forks later in this chapter.
+이 섹션에서 설명하는 블록 체인 포크는 글로벌 네트워크에서 전송 지연의 결과로 자연스럽게 발생합니다. 또한이 장의 뒷부분에서 의도적으로 유도 된 포크를 살펴볼 것입니다.
 ====
 
-In the next few diagrams, we follow the progress of a "fork" event across the network. The diagram is a simplified representation of the bitcoin network. For illustration purposes, different blocks are shown as different shapes (star, triangle, upside-down triangle, rhombus), spreading across the network. Each node in the network is represented as a circle.
+다음 몇 다이어그램에서는 네트워크에서 "포크 (fork)"이벤트의 진행 상황을 추적합니다. 다이어그램은 비트 코인 네트워크의 단순화 된 표현입니다. 설명을 위해 서로 다른 블록이 네트워크를 통해 서로 다른 모양 (별, 삼각형, 거꾸로 된 삼각형, 마름 모형)으로 표시됩니다. 네트워크의 각 노드는 원으로 표시됩니다.
 
-Each node has its own perspective of the global blockchain. As each node receives blocks from its neighbors, it updates its own copy of the blockchain, selecting the greatest-cumulative-work chain. For illustration purposes, each node contains a shape that represents the block that it believes is currently the tip of the main chain. So, if you see a star shape in the node, that means that the star block is the tip of the main chain, as far as that node is concerned.
+각 노드에는 글로벌 블록 체인에 대한 자체 관점이 있습니다. 각 노드는 이웃 노드로부터 블록을 수신 할 때 가장 큰 누적 작업 체인을 선택하여 블록 체인의 자체 복사본을 업데이트합니다. 설명을 위해 각 노드에는 현재 주 체인의 팁이라고 생각되는 블록을 나타내는 모양이 포함됩니다. 따라서 노드에서 별 ​​모양이 보이면 별 모양 블록이 주 체인의 끝인 것을 의미합니다.
 
-In the first diagram (<<fork1>>), the network has a unified perspective of the blockchain, with the star block as the tip of the main chain.
+첫 번째 다이어그램 (<< fork1 >>)에서 네트워크에는 주 블록의 끝으로 별 블록이있는 블록 체인에 대한 통합 된 관점이 있습니다.
 
 [[fork1]]
 [role="smallereighty"]
 .Before the fork&#x2014;all nodes have the same perspective
 image::images/mbc2_1002.png["Before the fork - all nodes have the same perspective"]
 
-A "fork" occurs whenever there are two candidate blocks competing to form the longest blockchain. This occurs under normal conditions whenever two miners solve the Proof-of-Work algorithm within a short period of time from each other. As both miners discover a solution for their respective candidate blocks, they immediately broadcast their own "winning" block to their immediate neighbors who begin propagating the block across the network. Each node that receives a valid block will incorporate it into its blockchain, extending the blockchain by one block. If that node later sees another candidate block extending the same parent, it connects the second candidate on a secondary chain. As a result, some nodes will "see" one candidate block first, while other nodes will see the other candidate block and two competing versions of the blockchain will emerge.
+가장 긴 블록 체인을 형성하기 위해 두 개의 후보 블록이 경쟁 할 때마다 "포크 (fork)"가 발생합니다. 이는 두 명의 광부가 서로 짧은 시간 내에 Proof-of-Work 알고리즘을 해결할 때마다 정상적인 조건에서 발생합니다. 두 광부가 각각의 후보 블록에 대한 해결책을 발견하면, 그들은 네트워크를 통해 블록을 전파하기 시작하는 바로 인접한 사람들에게 자신의 "승리"블록을 즉시 방송합니다. 유효한 블록을받는 각 노드는이를 블록 체인에 통합하여 블록 체인을 한 블록 씩 확장합니다. 해당 노드가 나중에 동일한 상위를 확장하는 또 다른 후보 블록을 보게되면 보조 체인에서 두 번째 후보를 연결합니다. 결과적으로, 일부 노드는 먼저 하나의 후보 블록을 "볼"것이고,
 
-In <<fork2>>, we see two miners (Node A and Node B) who mine two different blocks almost simultaneously. Both of these blocks are children of the star block, and extend the chain by building on top of the star block. To help us track it, one is visualized as a triangle block originating from Node A, and the other is shown as an upside-down triangle block originating from Node B.
+<< fork2 >>에서는 두 개의 광부 (노드 A와 노드 B)가 두 개의 다른 블록을 거의 동시에 채굴하는 것을 볼 수 있습니다. 이 두 블록은 모두 스타 블록의 하위 노드이며 스타 블록 맨 위에 빌드하여 체인을 확장합니다. 추적을 돕기 위해 노드 A에서 시작된 삼각형 블록으로 시각화되고 다른 하나는 노드 B에서 시작된 거꾸로 된 삼각형 블록으로 표시됩니다.
 
 [[fork2]]
 [role="smallersixty"]
 .Visualization of a blockchain fork event: two blocks found simultaneously
 image::images/mbc2_1003.png["Visualization of a blockchain fork event: two blocks found simultaneously"]
 
-Let's assume, for example, that a miner Node A finds a Proof-of-Work solution for a block "triangle" that extends the blockchain, building on top of the parent block "star." Almost simultaneously, the miner Node B who was also extending the chain from block "star" finds a solution for block "upside-down triangle," his candidate block. Now, there are two possible blocks; one we call "triangle," originating in Node A; and one we call "upside-down triangle," originating in Node B. Both blocks are valid, both blocks contain a valid solution to the Proof-of-Work, and both blocks extend the same parent (block "star"). Both blocks likely contain most of the same transactions, with only perhaps a few differences in the order of transactions.
+예를 들어, 광부 노드 A가 부모 블록 "별표"위에 구축되어 블록 체인을 확장하는 블록 "삼각형"에 대해 작업 증명 솔루션을 찾는다고 가정 해 봅시다. 거의 동시에, 블록 "스타"로부터 체인을 확장하고 있던 광부 노드 B는 그의 후보 블록 인 "거꾸로 된 삼각형"블록에 대한 솔루션을 찾습니다. 이제 두 가지 가능한 블록이 있습니다. 노드 A에서 시작된 "삼각형"이라고하는 하나; 노드 B에서 시작된 "거꾸로 된 삼각형"이라고하는 하나의 블록이 유효합니다. 두 블록 모두 유효하며 두 블록 모두 작업 증명에 대한 유효한 솔루션을 포함하며 두 블록 모두 동일한 상위 (블록 "별")를 확장합니다. 두 블록 모두 트랜잭션 순서의 차이 만있을뿐 아니라 대부분 동일한 트랜잭션을 포함 할 가능성이 높습니다.
 
-As the two blocks propagate, some nodes receive block "triangle" first and some receive block "upside-down triangle" first. As shown in <<fork3>>, the network splits into two different perspectives of the blockchain; one side topped with a triangle block, the other with the upside-down-triangle block.
+두 블록이 전파 될 때, 일부 노드는 먼저 "삼각형"블록을 수신하고 일부는 먼저 "거꾸로 된 삼각형"블록을 수신합니다. << fork3 >>에서 볼 수 있듯이, 네트워크는 블록 체인의 두 가지 다른 관점으로 나뉘어 있습니다. 한면은 삼각형 블록으로, 다른면은 거꾸로 된 삼각형 블록으로 채웠다.
 
 [[fork3]]
 [role="smallersixty"]
 .Visualization of a blockchain fork event: two blocks propagate, splitting the network
 image::images/mbc2_1004.png["Visualization of a blockchain fork event: two blocks propagate, splitting the network"]
 
-In the diagram, a randomly chosen "Node X" received the triangle block first and extended the star chain with it. Node X selected the chain with "triangle" block as the main chain. Later, Node X also received the "upside-down triangle" block. Since it was received second, it is assumed to have "lost" the race. Yet, the "upside-down triangle" block is not discarded. It is linked to the "star" block parent and forms a secondary chain. While Node X assumes it has correctly selected the winning chain, it keeps the "losing" chain so that it has the information needed to reconverge if the "losing" chain ends up "winning."
+다이어그램에서 임의로 선택된 "노드 X"는 먼저 삼각형 블록을 수신하고 스타 체인을 확장했습니다. 노드 X는 "삼각형"블록을 주 체인으로하여 체인을 선택했습니다. 나중에 노드 X도 "거꾸로 된 삼각형"블록을 받았습니다. 두 번째로받은 이후, 그것은 "잃어버린"경주라고 가정합니다. 그러나 "거꾸로 된 삼각형"블록은 삭제되지 않습니다. "별"블록 부모와 연결되어 보조 체인을 구성합니다. 노드 X는 우승 한 체인을 올바르게 선택했다고 가정하지만 "잃어버린"체인이 "우승"을 끝내면 재협상하는 데 필요한 정보를 갖도록 "잃어버린"체인을 유지합니다.
 
-On the other side of the network, Node Y constructs a blockchain based on its own perspective of the sequence of events. It received "upside-down triangle" first and elected that chain as the "winner." When it later received "triangle" block, it connected it to the "star" block parent as a secondary chain.
+네트워크의 다른 측면에서 노드 Y는 일련의 이벤트에 대한 자체 관점을 기반으로 블록 체인을 구성합니다. 그것은 "거꾸로 된 삼각형"을 먼저 받았고 그 고리를 "승자"로 선출했습니다. 나중에 "삼각형"블록을 받으면 보조 블록 체인 "별"블록 부모에 연결했습니다.
 
-Neither side is "correct," or "incorrect." Both are valid perspectives of the blockchain. Only in hindsight will one prevail, based on how these two competing chains are extended by additional work.
+어느 쪽도 "정확하다"또는 "틀렸다". 둘 다 블록 체인의 타당한 관점입니다. 오직이 두 경쟁 사슬이 추가 작업에 의해 어떻게 확장되는지에 근거하여 오직 하나의 통찰력 만이 우선합니다.
 
-Mining nodes whose perspective resembles Node X will immediately begin mining a candidate block that extends the chain with "triangle" as its tip. By linking "triangle" as the parent of their candidate block, they are voting with their hashing power. Their vote supports the chain that they have elected as the main chain.
+원근감이 노드 X와 유사한 채광 노드는 "삼각형"을 팁으로 삼아 체인을 연장하는 후보 블록을 즉시 채광하기 시작합니다. "삼각형"을 후보 블록의 부모로 연결함으로써 해싱 파워로 투표합니다. 그들의 표결은 그들이 주 체인으로 선출 한 사슬을지지합니다.
 
-Any mining node whose perspective resembles Node Y will start building a candidate node with "upside-down triangle" as its parent, extending the chain that they believe is the main chain. And so, the race begins again.
+원근법이 노드 Y와 유사한 모든 광산 노드는 부모가 "거꾸로 된 삼각형"을 가진 후보 노드를 구축하기 시작하여 주 체인이라고 생각되는 체인을 확장합니다. 그래서 경기가 다시 시작됩니다.
 
-Forks are almost always resolved within one block. While part of the network's hashing power is dedicated to building on top of "triangle" as the parent, another part of the hashing power is focused on building on top of "upside-down triangle." Even if the hashing power is almost evenly split, it is likely that one set of miners will find a solution and propagate it before the other set of miners have found any solutions. Let's say, for example, that the miners building on top of "triangle" find a new block "rhombus" that extends the chain (e.g., star-triangle-rhombus). They immediately propagate this new block and the entire network sees it as a valid solution as shown in <<fork4>>.
+포크는 거의 항상 한 블록 내에서 해결됩니다. 네트워크의 해싱 능력의 일부는 "삼각형"을 부모로 삼는 데 전념하고 있지만 해싱 능력의 또 다른 부분은 "거꾸로 된 삼각형"위에 구축하는 데 초점을 맞추고 있습니다. 해싱 능력이 거의 균등하게 분할 되더라도, 한 세트의 광부가 솔루션을 찾아서 다른 광부가 해결 방법을 찾지 전에 전파 할 가능성이 있습니다. 예를 들어, "삼각형"위에 건축하는 광부가 사슬을 확장하는 새로운 블록 "마름모"(예 : 삼각형 - 마름모꼴)를 발견한다고 가정 해 봅시다. 그들은 즉시이 새로운 블록을 전파하고 전체 네트워크는 << fork4 >>와 같이 유효한 솔루션으로 간주합니다.
 
 
-All nodes that had chosen "triangle" as the winner in the previous round will simply extend the chain one more block. The nodes that chose "upside-down triangle" as the winner, however, will now see two chains: star-triangle-rhombus and star-upside-down-triangle. The chain star-triangle-rhombus is now longer (more cumulative work) than the other chain. As a result, those nodes will set the chain star-triangle-rhombus as the main chain and change the star-upside-down-triangle chain to a secondary chain, as shown in <<fork5>>. This is a chain reconvergence, because those nodes are forced to revise their view of the blockchain to incorporate the new evidence of a longer chain. Any miners working on extending the chain star-upside-down-triangle will now stop that work because their candidate block is an "orphan," as its parent "upside-down-triangle" is no longer on the longest chain. The transactions within "upside-down-triangle" are re-inserted in the mempool for inclusion in the next block, because the block they were in is no longer in the main chain. The entire network reconverges on a single blockchain star-triangle-rhombus, with "rhombus" as the last block in the chain. All miners immediately start working on candidate blocks that reference "rhombus" as their parent to extend the star-triangle-rhombus chain.
+이전 라운드에서 "삼각형"을 우승자로 선택한 모든 노드는 체인을 한 번 더 확장합니다. 그러나 "거꾸로 된 삼각형"을 승자로 선택한 노드는 이제 두 개의 체인을 볼 수 있습니다 : star-triangle-rhombus 및 star-upside-down-triangle. 체인 별 삼각형 ​​- 마름모는 이제 다른 체인보다 길어집니다 (누적 작업이 더 많음). 결과적으로, 그 노드는 주 사슬로 삼각형 - 삼각형 - 마름모꼴을 설정하고 << fork5 >>와 같이 별표가 뒤집힌 삼각형 체인을 보조 체인으로 변경합니다. 이 노드는 긴 체인의 새로운 증거를 통합하기 위해 블록 체인에 대한 뷰를 수정해야하기 때문에 체인 재 컨버전스입니다. 체인 스타 - 거꾸로 - 삼각형을 확장하는 작업을하는 모든 광부는 후보 블록이 "고아 (orphan) 전체 네트워크는 단일 블록 체인 스타 - 삼각형 - 마름모꼴로 재구성되며 "마름모"가 체인의 마지막 블록으로 사용됩니다. 모든 광부들은 마름모꼴의 마름모를 연장하기 위해 부모로 "마름모"를 참조하는 후보 블록에 대한 작업을 즉시 시작합니다. 전체 네트워크는 단일 블록 체인 스타 - 삼각형 - 마름모꼴로 재구성되며 "마름모"가 체인의 마지막 블록으로 사용됩니다. 모든 광부들은 마름모꼴의 마름모를 확장하기 위해 부모로 "마름모"를 참조하는 후보 블록에 대한 작업을 즉시 시작합니다.
 
 [[fork4]]
 [role="smallereighty"]
@@ -814,289 +815,293 @@ image::images/mbc2_1005.png["Visualization of a blockchain fork event: a new blo
 .Visualization of a blockchain fork event: the network reconverges on a new longest chain
 image::images/mbc2_1006.png["Visualization of a blockchain fork event: the network reconverges on a new longest chain"]
 
-It is theoretically possible for a fork to extend to two blocks, if two blocks are found almost simultaneously by miners on opposite "sides" of a previous fork. However, the chance of that happening is very low. Whereas a one-block fork might occur every day, a two-block fork occurs at most once every few weeks.
+이론적으로 포크가 두 블록으로 확장 될 수 있습니다. 두 블록이 이전 포크의 반대쪽에있는 광부에 의해 거의 동시에 발견되는 경우 가능합니다. 그러나 그럴 가능성은 매우 낮습니다. 한 블록 포크가 매일 발생하는 반면, 두 블록 포크는 기껏해야 몇 주에 한번 발생합니다.
 
-Bitcoin's block interval of 10 minutes is a design compromise between fast confirmation times (settlement of transactions) and the probability of a fork. A faster block time would make transactions clear faster but lead to more frequent blockchain forks, whereas a slower block time would decrease the number of forks but make settlement slower.((("", startref="Bassemble10")))((("", startref="MACassembling10")))((("", startref="forks10")))((("", startref="BCTfork10")))
+Bitcoin의 블록 간격 인 10 분은 빠른 확인 시간 (트랜잭션 정산)과 포크 확률 사이의 설계 절충입니다. 블록 시간이 빠를수록 트랜잭션은 더 빨리 처리되지만 블록 체인 포크는 더 자주 발생하지만 블록 시간이 느릴수록 분기 수가 줄어들지 만 정산 속도가 느려집니다.((("", startref="Bassemble10")))((("", startref="MACassembling10")))((("", startref="forks10")))((("", startref="BCTfork10")))
 
-=== Mining and the Hashing Race
+=== 채광과 해싱 경주
 
-((("mining and consensus", "hashing power race", id="MAChash10")))Bitcoin mining is an extremely competitive industry. The hashing power has increased exponentially every year of bitcoin's existence. Some years the growth has reflected a complete change of technology, such as in 2010 and 2011 when many miners switched from using CPU mining to GPU mining and field programmable gate array (FPGA) mining. In 2013 the introduction of ASIC mining lead to another giant leap in mining power, by placing the SHA256 function directly on silicon chips specialized for the purpose of mining. The first such chips could deliver more mining power in a single box than the entire bitcoin network in 2010.
+((("mining and consensus", "hashing power race", id="MAChash10")))Bitcoin 광산은 매우 경쟁이 치열한 산업입니다. 해싱 능력은 매년 비트 코인의 존재가 기하 급수적으로 증가했습니다. 몇 년 동안이 성장은 많은 광부가 CPU 마이닝에서 GPU 마이닝 및 FPGA (Programmable Gate Array) 마이닝으로 전환 한 2010 년과 2011 년과 같은 기술의 완전한 변화를 반영합니다. 2013 년 ASIC 광산 도입은 광산업에 특화된 실리콘 칩에 SHA256 기능을 직접 배치하여 광산 발전의 또 다른 거대한 도약을 이끌어 냈습니다. 첫 번째 칩은 2010 년 전체 비트 코인 네트워크보다 단일 상자에서 더 많은 광산 생산 능력을 제공 할 수 있습니다.
 
-The following list shows the total hashing power of the bitcoin network, over the first five years of operation:
+다음 목록은 처음 5 년 동안 비트 코인 네트워크의 총 해시 전력을 보여줍니다.
 
-2009:: 0.5 MH/sec–8 MH/sec (16&#x00D7; growth)
-2010:: 8 MH/sec–116 GH/sec (14,500&#x00D7; growth)
-2011:: 16 GH/sec–9 TH/sec (562&#x00D7; growth)
-2012:: 9 TH/sec–23 TH/sec (2.5&#x00D7; growth)
-2013:: 23 TH/sec–10 PH/sec (450&#x00D7; growth)
-2014:: 10 PH/sec–300 PH/sec (3000&#x00D7; growth)
-2015:: 300 PH/sec-800 PH/sec (266&#x00D7; growth)
-2016:: 800 PH/sec-2.5 EH/sec (312&#x00D7; growth))
+2009 :: 0.5 MH / 초 -8 MH / 초 (16 & # x00D7; 성장)
+2010 :: 8 MH / 초 -116 GH / 초 (14,500 & # x00D7 성장)
+2011 :: 16 GH / 초 -9 TH / 초 (562 & # x00D7; 성장)
+2012 :: 9TH / 초 -23TH / 초 (2.5 & # x00D7 성장)
+2013 :: 23TH / 초 - 10PH / 초 (450 & # x00D7 성장)
+2014 :: 10 PH / 초 - 300 PH / 초 (3000 & # x00D7; 성장)
+2015 :: 300 PH / 초 -800 PH / 초 (266 & # x00D7; 성장)
+2016 :: 800 PH / 초 -2.5 EH / 초 (312 & # x00D7; 성장)
 
-In the chart in <<network_hashing_power>>, we can see that bitcoin network's hashing power increased over the past two years. As you can see, the competition between miners and the growth of bitcoin has resulted in an exponential increase in the hashing power (total hashes per second across the network).
+<< network_hashing_power >>의 차트에서 지난 2 년 동안 비트 코인 네트워크의 해시력이 증가했음을 알 수 있습니다. 보시다시피 광부와 비트 코인의 경쟁으로 인해 해싱 성능이 기하 급수적으로 증가했습니다 (네트워크에서 초당 총 해시).
 
 [[network_hashing_power]]
 .Total hashing power, terahashes per second (TH/sec)
 image::images/mbc2_1007.png["NetworkHashingRate"]
 
-As the amount of hashing power applied to mining bitcoin has exploded, the difficulty has risen to match it. The difficulty metric in the chart shown in <<bitcoin_difficulty>> is measured as a ratio of current difficulty over minimum difficulty (the difficulty of the first block).
+채굴 비트 코인에 가해지는 해싱 파워의 양이 폭발적으로 커짐에 따라, 그 어려움은 그것을 맞추기 위해 증가했다. << bitcoin_difficulty >>에 표시된 차트의 난이도는 최소 난이도 (첫 번째 블록의 난이도)에 대한 현재 난이도의 비율로 측정됩니다.
 
 [[bitcoin_difficulty]]
 .Bitcoin's mining difficulty metric
 image::images/mbc2_1008.png["BitcoinDifficulty"]
 
-In the last two years, the ASIC mining chips have become increasingly denser, approaching the cutting edge of silicon fabrication with a feature size (resolution) of 16 nanometers (nm). Currently, ASIC manufacturers are aiming to overtake general-purpose CPU chip manufacturers, designing chips with a feature size of 14 nm, because the profitability of mining is driving this industry even faster than general computing. There are no more giant leaps left in bitcoin mining, because the industry has reached the forefront of Moore's Law, which stipulates that computing density will double approximately every 18 months. Still, the mining power of the network continues to advance at an exponential pace as the race for higher density chips is matched with a race for higher density data centers where thousands of these chips can be deployed. It's no longer about how much mining can be done with one chip, but how many chips can be squeezed into a building, while still dissipating the heat and providing adequate power.
+지난 2 년 동안 ASIC 마이닝 칩은 점점 더 고밀도화되어 16 나노 미터 (nm)의 피처 크기 (해상도)로 실리콘 제조의 최첨단에 접근했습니다. 현재 ASIC 제조업체들은 범용 CPU 칩 제조업체를 추월하여 14nm 크기의 칩을 설계하는 것을 목표로하고 있습니다. 광업의 수익성이이 산업을 일반 컴퓨팅보다 훨씬 빠르게 발전시키고 있기 때문입니다. 비트 코닝 광업에는 거대한 도약이 없다. 산업이 컴퓨팅 밀도가 약 18 개월마다 두 배가된다는 무어의 법칙 (Moore 's Law)의 최전방에 도달했기 때문에 비트 코인 광업에 큰 도약이 없다. 그럼에도 불구하고 고밀도 칩에 대한 경쟁이 수천 개의 칩을 배치 할 수있는 고밀도 데이터 센터 경쟁과 조화를 이루면서 네트워크의 광 출력은 기하 급수적으로 늘어나고 있습니다. 그것'
 
 [[extra_nonce]]
-==== The Extra Nonce Solution
+==== 엑스트라 논스 솔루션
 
-((("nonce values")))Since 2012, bitcoin mining has evolved to resolve a fundamental limitation in the structure of the block header. In the early days of bitcoin, a miner could find a block by iterating through the nonce until the resulting hash was below the target. As difficulty increased, miners often cycled through all 4 billion values of the nonce without finding a block. However, this was easily resolved by updating the block timestamp to account for the elapsed time. Because the timestamp is part of the header, the change would allow miners to iterate through the values of the nonce again with different results.  Once mining hardware exceeded 4 GH/sec, however, this approach became increasingly difficult because the nonce values were exhausted in less than a second. As ASIC mining equipment started pushing and then exceeding the TH/sec hash rate, the mining software needed more space for nonce values in order to find valid blocks. The timestamp could be stretched a bit, but moving it too far into the future would cause the block to become invalid. A new source of "change" was needed in the block header. The solution was to use the coinbase transaction as a source of extra nonce values. Because the coinbase script can store between 2 and 100 bytes of data, miners started using that space as extra nonce space, allowing them to explore a much larger range of block header values to find valid blocks. The coinbase transaction is included in the merkle tree, which means that any change in the coinbase script causes the merkle root to change. Eight bytes of extra nonce, plus the 4 bytes of "standard" nonce allow miners to explore a total 2^96^ (8 followed by 28 zeros) possibilities _per second_ without having to modify the timestamp. If, in the future, miners could run through all these possibilities, they could then modify the timestamp. There is also more space in the coinbase script for future expansion of the extra nonce space.
+((("nonce values")))2012 년부터 비트 동전 채굴은 블록 헤더 구조의 근본적인 한계를 해결하기 위해 발전해 왔습니다. 비트 코인 초기에 광부는 해시가 대상 아래에 올 때까지 넌스를 반복함으로써 블록을 찾을 수있었습니다. 어려움이 커지면서 광부들은 블록을 찾지 않고 40 억 가치의 넌센스를 순환했습니다. 그러나이 작업은 경과 시간을 고려하여 블록 타임 스탬프를 업데이트하여 쉽게 해결할 수있었습니다. 타임 스탬프가 헤더의 일부이기 때문에 변경으로 인해 광부는 다른 결과로 nonce 값을 다시 반복 할 수 있습니다. 그러나 광업 하드웨어가 4 GH / 초를 초과하면 넌스 값이 1 초 이내에 소모되어이 접근법이 점점 어려워졌습니다. ASIC 광산 장비가 TH / sec 해시 비율을 밀고 나서이를 초과하기 시작했기 때문에 마이닝 소프트웨어는 유효한 블록을 찾기 위해 nonce 값에 더 많은 공간이 필요했습니다. 타임 스탬프는 조금 늘어날 수 있지만 너무 멀리 이동하면 블록이 유효하지 않게됩니다. 블록 헤더에 새로운 "변경"소스가 필요했습니다. 해결책은 추가 nonce 값의 소스로 coinbase 트랜잭션을 사용하는 것이 었습니다. coinbase 스크립트는 2에서 100 바이트 사이의 데이터를 저장할 수 있기 때문에 광부는 여분의 넌스 공간으로 해당 공간을 사용하기 시작하여 더 많은 블록 헤더 값 범위를 탐색하여 유효한 블록을 찾습니다. coinbase 트랜잭션은 merkle 트리에 포함되어 있습니다. 즉, coinbase 스크립트가 변경되면 merkle 루트가 변경됩니다. 8 바이트의 추가 nonce와 4 바이트의 "
 
 [[mining_pools]]
-==== Mining Pools
+==== 채광 풀
 
-((("mining pools", id="MACoverpool10")))((("mining pools", "benefits of")))In this highly competitive environment, individual miners working alone (also known as solo miners) don't stand a chance. The likelihood of them finding a block to offset their electricity and hardware costs is so low that it represents a gamble, like playing the lottery. Even the fastest consumer ASIC mining system cannot keep up with commercial systems that stack tens of thousands of these chips in giant warehouses near hydroelectric powerstations. Miners now collaborate to form mining pools, pooling their hashing power and sharing the reward among thousands of participants. By participating in a pool, miners get a smaller share of the overall reward, but typically get rewarded every day, reducing uncertainty.
+((("mining pools", id="MACoverpool10")))((("mining pools", "benefits of")))매우 경쟁이 치열한 환경에서 홀로 작업하는 개별 광부 (솔로 광부라고도 함) 기회를 놓치지 마라. 전기 및 하드웨어 비용을 상쇄하기위한 블록을 찾는 가능성은 매우 낮아 추첨을하는 것처럼 도박을 나타냅니다. 심지어 가장 빠른 소비자 ASIC 마이닝 시스템조차 수력 발전소 근처의 거대한 창고에 수만 개의 칩을 쌓아 두는 상용 시스템을 따라 잡을 수 없습니다. 광부는 이제 협력하여 해싱 풀을 형성하고 해싱 파워를 모으고 수천 명의 참가자들에게 보상을 나누었습니다. 풀에 참여함으로써 광부는 전체 보상 중에서 더 적은 부분을 차지하지만 일반적으로 매일 보상을 받음으로써 불확실성을 줄입니다.
 
-Let's look at a specific example. Assume a miner has purchased mining hardware with a combined hashing rate of 14,000 gigahashes per second (GH/s), or 14 TH/s. In 2017 this equipment costs approximately $2,500 USD. The hardware consumes 1375 watts (1.3 kW) of electricity when running, 32 kW-hours a day, at a cost of $1 to $2 per day at very low electricity rates. At current bitcoin difficulty, the miner will be able to solo mine a block approximately once every 4 years. If the miner does find a single block in that timeframe, the payout of 12.5 bitcoin, at approximately $1,000 per bitcoin, will result in a single payout of $12,500, which will not even cover the entire cost of the hardware and the electricity consumed over the time period, leaving a net loss of approximately $1,000. However, the chance of finding a block in a 4-year period depends on the miner's luck. He might find two blocks in 4 years and make a very large profit. Or he might not find a block for 5 years and suffer a bigger financial loss. Even worse, the difficulty of the bitcoin Proof-of-Work algorithm is likely to go up significantly over that period, at the current rate of growth of hashing power, meaning the miner has, at most, one year to break even before the hardware is effectively obsolete and must be replaced by more powerful mining hardware. If this miner participates in a mining pool, instead of waiting for a once-in-four-years $12,500 windfall, he will be able to earn approximately $50 to $60 per week. The regular payouts from a mining pool will help him amortize the cost of hardware and electricity over time without taking an enormous risk. The hardware will still be obsolete in one or two years and the risk is still high, but the revenue is at least regular and reliable over that period. Financially this only makes sense at very low electricity cost (less than 1 cent per kW) and only at very large scale.
+구체적인 예를 살펴 보겠습니다. 광부가 초당 14,000 기가 와트 (GH / s) 또는 14 TH / s의 해싱 속도를 합한 광산 하드웨어를 구매했다고 가정합니다. 2017 년이 장비의 비용은 약 2,500 달러입니다. 하드웨어는 매우 낮은 전기 요금으로 1 일당 $ 1에서 $ 2의 비용으로, 하루에 32kWhrs의 전력을 1375 와트 (1.3kW)의 전력으로 소비합니다. 현재의 비트 코인 난이도에서 광부는 약 4 년에 한 번 블록을 솔로 할 수 있습니다. 해당 기간에 광부가 단일 블록을 찾으면 비트 동전 당 약 1,000 달러의 12.5 비트 코치 지불금으로 12,500 달러의 단일 지불금이 발생하며 이는 하드웨어 전체 비용과 약 1 천 달러의 순손실을 남겼습니다. 하나, 4 년 동안 블록을 발견 할 확률은 광부의 행운에 달려 있습니다. 그는 4 년 만에 두 개의 블록을 발견하고 매우 큰 이익을 낼 것입니다. 아니면 5 년 동안 블록을 찾지 못할 수도 있고 더 큰 재정적 손실을 입을 수도 있습니다. 심지어 비트 코인 증명 작업 알고리즘의 어려움은 해시 전력 증가 속도가 현저히 빨라질 수 있습니다. 즉, 하드웨어를 사용하기 전에 광부가 최대 1 년 동안 휴식을 취할 수 있음을 의미합니다 효과적으로 쓸모가 없으므로보다 강력한 마이닝 하드웨어로 대체되어야합니다. 이 광부가 4 년에 1 천 2 백달러의 횡재를 기다리는 대신 광산 웅덩이에 참여하면 일주일에 약 50-60 달러를 벌 수 있습니다. 광업 수영장의 정기적 인 지불금은 엄청난 위험을 감수하지 않고 시간이 지남에 따라 하드웨어 및 전기 비용을 상환하는 데 도움이됩니다. 하드웨어는 1 ~ 2 년 후에도 쓸모 없게 될 것이며 위험은 여전히 ​​높지만 그 기간 동안 수익은 적어도 일정하고 신뢰할 만합니다. 재정적으로 이것은 매우 낮은 전기 비용 (kW 당 1 센트 미만)에서 그리고 매우 큰 규모에서만 의미가 있습니다.
 
-Mining pools coordinate many hundreds or thousands of miners, over specialized pool-mining protocols. The individual miners configure their mining equipment to connect to a pool server, after creating an account with the pool. Their mining hardware remains connected to the pool server while mining, synchronizing their efforts with the other miners. Thus, the pool miners share the effort to mine a block and then share in the rewards.
+채광 풀은 특수한 풀 마이닝 프로토콜을 통해 수백 또는 수천 명의 광부를 조정합니다. 개별 광부는 풀을 사용하여 계정을 만든 후 풀 서버에 연결하도록 광산 장비를 구성합니다. 마이닝 하드웨어는 다른 광부와의 노력을 동기화하면서 마이닝하는 동안 풀 서버에 연결되어 있습니다. 따라서 풀 광부들은 블록을 채굴하고 보상을 공유하기위한 노력을 공유합니다.
 
-Successful blocks pay the reward to a pool bitcoin address, rather than individual miners. The pool server will periodically make payments to the miners' bitcoin addresses, once their share of the rewards has reached a certain threshold. Typically, the pool server charges a percentage fee of the rewards for providing the pool-mining service.
+성공적인 블록은 개인 광부가 아니라 수영장 비트 코인 주소로 보상금을 지불합니다. 풀 서버는 보상의 공유가 특정 임계 값에 도달하면 정기적으로 광부의 비트 코인 주소로 지불합니다. 일반적으로 풀 서버는 풀 마이닝 서비스 제공에 대한 보상의 일정 비율을 부과합니다.
 
-((("mining pools", "operation of")))Miners participating in a pool split the work of searching for a solution to a candidate block, earning "shares" for their mining contribution. The mining pool sets a higher target (lower difficulty) for earning a share, typically more than 1,000 times easier than the bitcoin network's target. When someone in the pool successfully mines a block, the reward is earned by the pool and then shared with all miners in proportion to the number of shares they contributed to the effort.
+((("mining pools", "operation of")))풀에 참여하는 광부는 후보 블록에 대한 솔루션 검색 작업을 분할하여 광산 기부금으로 "주식"을 벌었습니다. 마이닝 풀은 비트 코인 네트워크의 목표보다 일반적으로 1,000 배 이상, 더 높은 목표를 설정합니다 (낮은 난이도). 수영장에있는 누군가가 성공적으로 블록을 채광하면 그 보상금은 수영장에서 얻은 다음, 노력에 기여한 주식 수에 비례하여 모든 광부와 공유됩니다.
 
-Pools are open to any miner, big or small, professional or amateur. A pool will therefore have some participants with a single small mining machine, and others with a garage full of high-end mining hardware. Some will be mining with a few tens of a kilowatt of electricity, others will be running a data center consuming a megawatt of power. How does a mining pool measure the individual contributions, so as to fairly distribute the rewards, without the possibility of cheating? The answer is to use bitcoin's Proof-of-Work algorithm to measure each pool miner's contribution, but set at a lower difficulty so that even the smallest pool miners win a share frequently enough to make it worthwhile to contribute to the pool. By setting a lower difficulty for earning shares, the pool measures the amount of work done by each miner. Each time a pool miner finds a block header hash that is less than the pool target, she proves she has done the hashing work to find that result. More importantly, the work to find shares contributes, in a statistically measurable way, to the overall effort to find a hash lower than the bitcoin network's target. Thousands of miners trying to find low-value hashes will eventually find one low enough to satisfy the bitcoin network target.
+수영장은 광부, 크고 작은, 전문가 또는 아마추어에게 개방되어 있습니다. 수영장에는 따라서 하나의 작은 광산 기계가있는 참가자와 고급 광산 용 하드웨어로 가득한 차고가있는 사람들이 있습니다. 일부는 수십 킬로와트의 전력으로 채광하고, 다른 일부는 메가 와트의 전력을 소비하는 데이터 센터를 가동 할 것입니다. 광업 집단이 부정 행위의 가능성없이 보상금을 공평하게 분배하기 위해 어떻게 개인 기부금을 측정합니까? 해답은 bitcoin의 Proof-of-Work 알고리즘을 사용하여 각 풀 마이너의 기여도를 측정하지만 가장 낮은 풀 마이너라도 풀에 기여할 가치가 있도록 공유를 자주 자주 수행하도록 설정됩니다. 주식 획득을위한 어려움을 낮춤으로써, 수영장은 각 광부가 수행 한 작업량을 측정합니다. 풀 마이너가 풀 목표보다 적은 블록 헤더 해시를 발견 할 때마다, 그녀는 그 결과를 찾기 위해 해싱 작업을 수행했다는 것을 증명합니다. 더 중요한 것은 공유를 찾는 작업이 통계적으로 측정 가능한 방식으로 비트 코인 네트워크의 목표보다 해시가 낮다는 것을 찾는 전반적인 노력에 기여한다는 것입니다. 값이 낮은 해시를 찾으려고 노력하는 수천 명의 광부는 결국 비트 코인 네트워크 목표를 충족시킬만큼 충분히 낮은 하나를 찾습니다.
 
-Let's return to the analogy of a dice game. If the dice players are throwing dice with a goal of throwing less than four (the overall network difficulty), a pool would set an easier target, counting how many times the pool players managed to throw less than eight. When pool players throw less than eight (the pool share target), they earn shares, but they don't win the game because they don't achieve the game target (less than four). The pool players will achieve the easier pool target much more often, earning them shares very regularly, even when they don't achieve the harder target of winning the game. Every now and then, one of the pool players will throw a combined dice throw of less than four and the pool wins. Then, the earnings can be distributed to the pool players based on the shares they earned. Even though the target of eight-or-less wasn't winning, it was a fair way to measure dice throws for the players, and it occasionally produces a less-than-four throw.
+주사위 게임의 유추로 돌아 갑시다. 주사위 던지기가 4 이하 (전체 네트워크 난이도) 미만의 던지기를 목표로 주사위를 던지면 수영장은 더 적은 목표를 설정하여 풀 플레이어가 8 이하를 던질 수있는 횟수를 세게됩니다. 풀 플레이어가 8 이하 (풀 공유 대상)를 내면 공유를 얻지 만 게임 목표를 달성하지 못하기 때문에 게임에서 이기지 못합니다 (4 미만). 풀 플레이어는 더 쉬운 풀 목표를 훨씬 더 자주 달성 할 것이고 게임을 이기기 란 더 어려운 목표를 달성하지 못하더라도 매우 자주 정기적으로 공유를 획득하게됩니다. 지금 당장 풀 플레이어 중 하나가 주사위 던지기를 4 번 이하로 던지고 수영장이 이기게됩니다. 그런 다음 수입은 그들이 얻은 주식을 기반으로 풀 플레이어에게 분배 될 수 있습니다.
 
-Similarly, a mining pool will set a (higher and easier) pool target that will ensure that an individual pool miner can find block header hashes that are less than the pool target often, earning shares. Every now and then, one of these attempts will produce a block header hash that is less than the bitcoin network target, making it a valid block and the whole pool wins.
+마찬가지로 마이닝 풀은 개별 풀 마이너가 풀 목표보다 적은 블록 헤더 해시를 자주 찾고 공유를 얻을 수 있도록 (더 높고 더 쉬운) 풀 대상을 설정합니다. 때때로 이러한 시도 중 하나는 비트 코인 네트워크 대상보다 적은 블록 헤더 해시를 생성하여 유효한 블록으로 만들고 전체 풀이 승리합니다.
 
-===== Managed pools
+===== 관리되는 풀
 
-((("mining pools", "managed pools")))((("pool operators", seealso="mining pools")))Most mining pools are "managed," meaning that there is a company or individual running a pool server. The owner of the pool server is called the _pool operator_, and he charges pool miners a percentage fee of the earnings.
+((("mining pools", "managed pools")))((("pool operators", seealso="mining pools")))대부분의 마이닝 풀은 "관리되는", 즉 회사 또는 개인이 운영하는 것을 의미합니다. 풀 서버. 풀 서버의 소유자는 _pool 운영자 _라고하며 풀 광부에게 소득의 일정 비율의 수수료를 청구합니다.
 
-The pool server runs specialized software and a pool-mining protocol that coordinate the activities of the pool miners. The pool server is also connected to one or more full bitcoin nodes and has direct access to a full copy of the blockchain database. This allows the pool server to validate blocks and transactions on behalf of the pool miners, relieving them of the burden of running a full node. For pool miners, this is an important consideration, because a full node requires a dedicated computer with at least 100 to 150 GB of persistent storage (disk) and at least 2 to 4 GB of memory (RAM). Furthermore, the bitcoin software running on the full node needs to be monitored, maintained, and upgraded frequently. Any downtime caused by a lack of maintenance or lack of resources will hurt the miner's profitability. For many miners, the ability to mine without running a full node is another big benefit of joining a managed pool.
+풀 서버는 풀 마이너의 활동을 조정하는 특수 소프트웨어 및 풀 마이닝 프로토콜을 실행합니다. 풀 서버는 하나 이상의 전체 비트 코인 노드에도 연결되어 있으며 블록 체인 데이터베이스의 전체 복사본에 직접 액세스 할 수 있습니다. 이를 통해 풀 서버는 풀 마이너 대신 블록 및 트랜잭션의 유효성을 검사하여 전체 노드를 실행하는 부담을 덜어줍니다. 풀 마이너의 경우 전체 노드에 최소한 100 - 150GB의 영구 저장소 (디스크)와 2 - 4GB의 메모리 (RAM)가 필요한 전용 컴퓨터가 필요하기 때문에 이는 중요한 고려 사항입니다. 또한 전체 노드에서 실행되는 Bitcoin 소프트웨어는 자주 모니터링하고 유지 관리하며 업그레이드해야합니다. 유지 보수 부족이나 자원 부족으로 인한 가동 중단으로 인해 광부의 수익성이 악화됩니다. 많은 광부에게,
 
-Pool miners connect to the pool server using a mining protocol such as Stratum (STM) or GetBlockTemplate (GBT). An older standard called GetWork (GWK) has been mostly obsolete since late 2012, because it does not easily support mining at hash rates above 4 GH/s. Both the STM and GBT protocols create block _templates_ that contain a template of a candidate block header. The pool server constructs a candidate block by aggregating transactions, adding a coinbase transaction (with extra nonce space), calculating the merkle root, and linking to the previous block hash. The header of the candidate block is then sent to each of the pool miners as a template. Each pool miner then mines using the block template, at a higher (easier) target than the bitcoin network target, and sends any successful results back to the pool server to earn shares.
+풀 마이너는 Stratum (STM) 또는 GetBlockTemplate (GBT)와 같은 마이닝 프로토콜을 사용하여 풀 서버에 연결합니다. GetWork (GWK)라는 오래된 표준은 2012 년 하반기부터 대부분 폐기되었으며, 4GH / s 이상의 해시 비율에서 마이닝을 쉽게 지원하지 않기 때문입니다. STM과 GBT 프로토콜은 모두 후보 블록 헤더 템플릿을 포함하는 블록 _ 템플릿을 생성합니다. 풀 서버는 트랜잭션을 집계하고, 코인베이스 트랜잭션 (여분의 넌 스 공간 포함)을 추가하고, 머클 루트를 계산하고, 이전 블록 해시에 링크함으로써 후보 블록을 구성합니다. 후보 블록의 헤더는 템플릿으로 각 풀 광부에게 전송됩니다. 각 풀 마이너는 비트 퀸 네트워크 대상보다 높은 (쉬운) 대상에서 블록 템플릿을 사용하여 마이닝하고 공유 결과를 얻기 위해 풀 서버로 모든 성공적인 결과를 보냅니다.
 
-===== Peer-to-peer mining pool (P2Pool)
+===== 피어 투 피어 마이닝 풀 (P2Pool)
 
-((("mining pools", "peer-to-peer pools (P2Pool)")))((("peer-to-peer pools (P2Pool)")))Managed pools create the possibility of cheating by the pool operator, who might direct the pool effort to double-spend transactions or invalidate blocks (see <<consensus_attacks>>). Furthermore, centralized pool servers represent a single-point-of-failure. If the pool server is down or is slowed by a denial-of-service attack, the pool miners cannot mine. In 2011, to resolve these issues of centralization, a new pool mining method was proposed and implemented: P2Pool, a peer-to-peer mining pool without a central operator.
+((("mining pools", "peer-to-peer pools (P2Pool)")))((("peer-to-peer pools (P2Pool)")))관리되는 풀은 풀 연산자에 의한 부정 행위 가능성을 생성합니다. (( "마이닝 풀", "피어 투 피어 풀 (P2Pool)") 누가 트랜잭션을 이중으로 사용하거나 블록을 무효로 만들도록 풀 노력을 지시 할 수 있습니다 (<< consensus_attacks >> 참조). 또한 중앙 집중식 풀 서버는 단일 실패 지점을 나타냅니다. 풀 서버가 다운되었거나 서비스 거부 공격으로 인해 느려지면 풀 광부가 광산을 사용할 수 없습니다. 2011 년에는 이러한 중앙 집중화 문제를 해결하기 위해 새로운 풀 마이닝 방법이 제안 및 구현되었습니다. P2Pool은 중앙 운영자가없는 P2P 마이닝 풀입니다.
 
-P2Pool works by decentralizing the functions of the pool server, implementing a parallel blockchain-like system called a _share chain_. A share chain is a blockchain running at a lower difficulty than the bitcoin blockchain. The share chain allows pool miners to collaborate in a decentralized pool by mining shares on the share chain at a rate of one share block every 30 seconds. Each of the blocks on the share chain records a proportionate share reward for the pool miners who contribute work, carrying the shares forward from the previous share block. When one of the share blocks also achieves the bitcoin network target, it is propagated and included on the bitcoin blockchain, rewarding all the pool miners who contributed to all the shares that preceded the winning share block. Essentially, instead of a pool server keeping track of pool miner shares and rewards, the share chain allows all pool miners to keep track of all shares using a decentralized consensus mechanism like bitcoin's blockchain consensus mechanism.
+P2Pool은 풀 서버의 기능을 분산하여 _share chain_이라는 병렬 블록 체인과 같은 시스템을 구현함으로써 작동합니다. 공유 체인은 비트 코인 블록 체인보다 낮은 난이도로 실행되는 블록 체인입니다. 공유 체인을 사용하면 풀 마이너가 분산 된 풀에서 공유 체인의 공유를 30 초마다 한 공유 블록 비율로 공동 작업 할 수 있습니다. 공유 체인에있는 각 블록은 이전 공유 블록에서 공유를 진행하면서 작업에 기여한 풀 광부에 대한 비례적인 공유 보상을 기록합니다. 공유 블록 중 하나가 또한 비트 코인 네트워크 목표를 달성하면 비트 코인 블록 체인에 전파되어 수상한 공유 블록 앞에 있던 모든 공유에 기여한 모든 풀 광부에게 보람을 안겨줍니다. 본질적으로,
 
-P2Pool mining is more complex than pool mining because it requires that the pool miners run a dedicated computer with enough disk space, memory, and internet bandwidth to support a full bitcoin node and the P2Pool node software. P2Pool miners connect their mining hardware to their local P2Pool node, which simulates the functions of a pool server by sending block templates to the mining hardware. On P2Pool, individual pool miners construct their own candidate blocks, aggregating transactions much like solo miners, but then mine collaboratively on the share chain. P2Pool is a hybrid approach that has the advantage of much more granular payouts than solo mining, but without giving too much control to a pool operator like managed pools.
+P2Pool 마이닝은 전체 비트 코인 노드와 P2Pool 노드 소프트웨어를 지원하기에 충분한 디스크 공간, 메모리 및 인터넷 대역폭을 갖춘 전용 컴퓨터를 풀 마이너가 실행해야하므로 풀 마이닝보다 복잡합니다. P2Pool 광부는 마이닝 하드웨어를 로컬 P2Pool 노드에 연결합니다.이 노드는 블록 템플릿을 마이닝 하드웨어로 전송하여 풀 서버의 기능을 시뮬레이션합니다. P2Pool에서 개별 풀 마이너는 솔로 마이너와 같은 트랜잭션을 집계 한 다음 자신의 후보 블록을 구성한 다음 공유 체인에서 공동으로 작업합니다. P2Pool은 솔로 마이닝보다 훨씬 세분화 된 지불금을받는 장점이 있지만 관리되는 풀과 같은 풀 운영자에게 너무 많은 통제력을주지 않는 하이브리드 방식입니다.
 
 
-Even though P2Pool reduces the concentration of power by mining pool operators, it is conceivably vulnerable to 51% attacks against the share chain itself. A much broader adoption of P2Pool does not solve the 51% attack problem for bitcoin itself. Rather, P2Pool makes bitcoin more robust overall, as part of a diversified mining ecosystem.((("", startref="MAChash10")))((("", startref="MACoverpool10")))
+P2Pool은 풀 운영자를 통해 전력 집중을 줄이지 만 공유 체인 자체에 대해 51 %의 공격을 받기 쉽습니다. P2Pool을 훨씬 광범위하게 채택해도 비트 코인 자체에 대한 51 % 공격 문제는 해결되지 않습니다. 대신 P2Pool은 다양한 광산 생태계의 일부로 비트 코인을 전반적으로 더 강력하게 만듭니다.((("", startref="MAChash10")))((("", startref="MACoverpool10")))
 
 [[consensus_attacks]]
-=== Consensus Attacks
+=== 합의 공격
 
-((("mining and consensus", "consensus attacks", id="Cattack10")))((("security", "consensus attacks", id="Sconsens10")))Bitcoin's consensus mechanism is, at least theoretically, vulnerable to attack by miners (or pools) that attempt to use their hashing power to dishonest or destructive ends. As we saw, the consensus mechanism depends on having a majority of the miners acting honestly out of self-interest. However, if a miner or group of miners can achieve a significant share of the mining power, they can attack the consensus mechanism so as to disrupt the security and availability of the bitcoin network.
+((("mining and consensus", "consensus attacks", id="Cattack10")))((("security", "consensus attacks", id="Sconsens10")))Bitcoin의 합의 메커니즘은 적어도 이론적으로는 (이론적으로는 ( "광산 및 공감대", "합의 공격", id = "Cattack10")))) 광부 (또는 수영장)가 부정직하거나 파괴적인 목적으로 해싱 능력을 사용하려는 공격에 취약합니다. 우리가 보았 듯이, 합의 메커니즘은 대다수의 광부가 정당하게 사심으로 행동하는 것에 달려 있습니다. 그러나 광부 또는 광부 그룹이 광산 권력의 상당 부분을 확보 할 수 있다면 합의 메커니즘을 공격하여 비트 코인 네트워크의 보안 및 가용성을 파괴 할 수 있습니다.
 
-It is important to note that consensus attacks can only affect future consensus, or at best, the most recent past (tens of blocks). Bitcoin's ledger becomes more and more immutable as time passes. While in theory, a fork can be achieved at any depth, in practice, the computing power needed to force a very deep fork is immense, making old blocks practically immutable. Consensus attacks also do not affect the security of the private keys and signing algorithm (ECDSA). A consensus attack cannot steal bitcoin, spend bitcoin without signatures, redirect bitcoin, or otherwise change past transactions or ownership records. ((("denial-of-service attacks")))((("security", "denial-of-service attacks")))Consensus attacks can only affect the most recent blocks and cause denial-of-service disruptions on the creation of future blocks.
+공감대 공격은 미래의 합의 또는 기껏해야 가장 최근의 과거 (수십 블록)에만 영향을 미칠 수 있다는 점에 주목하는 것이 중요합니다. 비트 코인의 장부는 시간이 지남에 따라 점점 더 변하지 않게됩니다. 이론적으로는 포크가 어떤 깊이에서도 달성 될 수 있지만 실제로는 아주 깊은 포크를 강요하는 데 필요한 계산 능력이 뛰어나 낡은 블록을 사실상 불변으로 만듭니다. 합의 공격은 개인 키 및 서명 알고리즘 (ECDSA)의 보안에도 영향을 미치지 않습니다. 공감대 공격은 비트 코인을 훔치거나, 서명없이 비트 코인을 쓰거나, 비트 코디를 리디렉션하거나, 과거 거래 또는 소유권 레코드를 변경할 수 없습니다. ((( "서비스 거부 공격"))) ((( "보안", "서비스 거부 (denial-of-service)
 
-One attack scenario against the consensus mechanism is called the "51% attack." In this scenario a group of miners, controlling a majority (51%) of the total network's hashing power, collude to attack bitcoin. With the ability to mine the majority of the blocks, the attacking miners can cause deliberate "forks" in the blockchain and double-spend transactions or execute denial-of-service attacks against specific transactions or addresses. A fork/double-spend attack is where the attacker causes previously confirmed blocks to be invalidated by forking below them and re-converging on an alternate chain. With sufficient power, an attacker can invalidate six or more blocks in a row, causing transactions that were considered immutable (six confirmations) to be invalidated. Note that a double-spend can only be done on the attacker's own transactions, for which the attacker can produce a valid signature. Double-spending one's own transactions is profitable if by invalidating a transaction the attacker can get an irreversible exchange payment or product without paying for it.
+합의 메커니즘에 대한 하나의 공격 시나리오를 "51 % 공격"이라고합니다. 이 시나리오에서 총 네트워크 해시력의 51 %를 차지하는 광부 그룹이 비트 코인을 공격합니다. 대다수의 블록을 채굴 할 수있는 능력을 가진 공격 광부는 블록 체인 및 이중 지출 트랜잭션에서 고의적 인 "포크"를 유발하거나 특정 트랜잭션이나 주소에 대해 서비스 거부 공격을 실행할 수 있습니다. 포크 / 이중 지출 공격은 침입자가 이전에 확정 된 블록이 그 아래에 분기하고 대체 체인에서 다시 수렴함으로써 무효화되도록하는 곳입니다. 충분한 권한을 가진 공격자는 연속적으로 6 개 이상의 블록을 무효화 할 수 있으며, 불변으로 간주되는 트랜잭션 (6 개의 확인)은 무효화됩니다. 이중 지출은 공격자가 유효한 서명을 생성 할 수있는 공격자 자신의 거래에서만 수행 할 수 있습니다. 트랜잭션을 무효로하면 공격자가 지불 할 수없는 교환 불가능한 교환 지불 또는 제품을 얻을 수있는 경우 자체 트랜잭션을 두 번 소비하면 수익이 발생합니다.
 
-Let's examine a practical example of a 51% attack. In the first chapter, we looked at a transaction between ((("use cases", "buying coffee")))Alice and Bob for a cup of coffee. Bob, the cafe owner, is willing to accept payment for cups of coffee without waiting for confirmation (mining in a block), because the risk of a double-spend on a cup of coffee is low in comparison to the convenience of rapid customer service. This is similar to the practice of coffee shops that accept credit card payments without a signature for amounts below $25, because the risk of a credit-card chargeback is low while the cost of delaying the transaction to obtain a signature is comparatively larger. In contrast, selling a more expensive item for bitcoin runs the risk of a double-spend attack, where the buyer broadcasts a competing transaction that spends the same inputs (UTXO) and cancels the payment to the merchant. A double-spend attack can happen in two ways: either before a transaction is confirmed, or if the attacker takes advantage of a blockchain fork to undo several blocks. A 51% attack allows attackers to double-spend their own transactions in the new chain, thus undoing the corresponding transaction in the old chain.
+51 %의 공격에 대한 실용적인 예를 살펴 보겠습니다. 첫 번째 장에서는 (( "유스 케이스", "커피 구입"))) 앨리스와 밥이 한 잔의 커피를 거래하는 것을 살펴 보았습니다. 카페 주인 인 밥 (Bob)은 빠른 고객 서비스의 편리 성에 비해 커피 한 잔에 대한 이중 지출의 위험이 낮으므로 확인을 기다리지 않고 (한 블록으로 광산 채굴) 기다리지 않고 커피 잔에 대한 지불을 기꺼이 받아들입니다. . 이것은 서명을 얻기 위해 거래를 지연시키는 비용이 비교적 크고 신용 카드 지불 거절의 위험이 낮기 때문에 $ 25 이하의 금액에 대해 서명없이 신용 카드 지불을 허용하는 커피 숍의 사례와 유사합니다. 반대로, 비트 코인 (bitcoin)에 대해보다 비싼 품목을 판매하면 이중 지출 공격의 위험이 있습니다. 구매자는 동일한 입력 (UTXO)을 소비하고 상인에게 지불을 취소하는 경쟁 거래를 방송합니다. 이중 지출 공격은 트랜잭션이 확인되기 전이나 공격자가 블록 체인 포크를 이용해 여러 블록을 실행 취소하는 두 가지 방법으로 발생할 수 있습니다. 51 %의 공격은 공격자가 새로운 체인에서 자신의 트랜잭션을 두 번 소비하도록하여 이전 체인의 해당 트랜잭션을 취소합니다.
 
-In our example, malicious attacker Mallory goes to ((("use cases", "retail sales", id="carolten")))Carol's gallery and purchases a beautiful triptych painting depicting Satoshi Nakamoto as Prometheus. Carol sells "The Great Fire" paintings for $250,000 in bitcoin to Mallory. Instead of waiting for six or more confirmations on the transaction, Carol wraps and hands the paintings to Mallory after only one confirmation. Mallory works with an accomplice, Paul, who operates a large mining pool, and the accomplice launches a 51% attack as soon as Mallory's transaction is included in a block. Paul directs the mining pool to remine the same block height as the block containing Mallory's transaction, replacing Mallory's payment to Carol with a transaction that double-spends the same input as Mallory's payment. The double-spend transaction consumes the same UTXO and pays it back to Mallory's wallet, instead of paying it to Carol, essentially allowing Mallory to keep the bitcoin. Paul then directs the mining pool to mine an additional block, so as to make the chain containing the double-spend transaction longer than the original chain (causing a fork below the block containing Mallory's transaction). When the blockchain fork resolves in favor of the new (longer) chain, the double-spent transaction replaces the original payment to Carol. Carol is now missing the three paintings and also has no bitcoin payment. Throughout all this activity, Paul's mining pool participants might remain blissfully unaware of the double-spend attempt, because they mine with automated miners and cannot monitor every transaction or block.((("", startref="carolten")))
+우리의 예에서 악의적 인 공격자 Mallory는 Carol의 갤러리에 Satoshi Nakamoto와 Prometheus를 묘사 한 아름다운 삼부작 그림을 구입합니다. (( "(사용 사례,"소매 판매 ", id ="carolten ")) Carol은 말로리 (Mallory)에 25 만 달러의 비트 코인으로 "The Great Fire"그림을 판매합니다. 거래에 대한 6 개 이상의 확인을 기다리는 대신, Carol은 한 번만 확인한 후 Mallory에게 그림을 래핑하여 전달합니다. Mallory는 대형 광산 채굴장을 운영하는 공범 폴과 함께 일하며 Mallory의 거래가 한 블록에 포함되는 즉시 공범자가 51 %의 공격을 시작합니다. Paul은 Mallory의 거래가 포함 된 블록과 동일한 블록 높이를 채광하도록 광산 풀에 지시하고, Mallory ' Mallory의 지불액과 동일한 금액을 이중으로 사용하는 거래로 Carol에게 지불합니다. 이중 지출 거래는 동일한 UTXO를 소비하고 Mallory의 지갑에 지불합니다. Mallory의 지갑에 지불하는 대신 Mallory가 Bitcoin을 유지하게합니다. Paul은 마이닝 풀에 추가 블록을 채광하여 이중 체인 트랜잭션을 포함하는 체인을 원래 체인보다 길게 만듭니다 (Mallory의 트랜잭션이 포함 된 블록 아래에 포크가 생김). 블록 체인 포크가 새로운 (더 긴) 체인을 선호 할 때 이중 소비 트랜잭션은 원래 지불을 캐롤로 바꿉니다. 캐롤은 이제 3 개의 그림을 놓치고 있으며 비트 코인 지불도하지 않습니다. 이 모든 활동을 통해 Paul의 광산 수영장 참가자는 이중 지출 시도를 기쁜 마음으로 알 수 있습니다.
 
-((("confirmations", "of large-value transactions", secondary-sortas="large-value transactions")))To protect against this kind of attack, a merchant selling large-value items must wait at least six confirmations before giving the product to the buyer. Alternatively, the merchant should use an escrow multisignature account, again waiting for several confirmations after the escrow account is funded. The more confirmations elapse, the harder it becomes to invalidate a transaction with a 51% attack. For high-value items, payment by bitcoin will still be convenient and efficient even if the buyer has to wait 24 hours for delivery, which would correspond to approximately 144 confirmations.
+(큰 확인 거래, 큰 가치 거래, 2 차 정렬, 큰 가치 거래))) 이러한 종류의 공격으로부터 보호하기 위해 큰 가치를 지닌 상품을 판매하는 상인은 적어도 6 회의 확인을 기다려야합니다 구매자에게 제품을 제공합니다. 또는 판매자는 에스크로 멀티 시그니처 계정을 사용해야하며 에스크로 계정에 자금이 공급 된 후 몇 가지 확인을 다시 기다려야합니다. 확인이 경과할수록 51 %의 공격으로 거래를 무효화하는 것이 어려워집니다. 가치가 높은 품목의 경우, 구매자가 약 24 시간 동안 배달을 기다려야하는 경우에도 비트 코인으로 결제하는 것이 편리하고 효율적입니다. 이는 약 144 건의 확인에 해당합니다.
 
-In addition to a double-spend attack, the other scenario for a consensus attack is to deny service to specific bitcoin participants (specific bitcoin addresses). An attacker with a majority of the mining power can simply ignore specific transactions. If they are included in a block mined by another miner, the attacker can deliberately fork and remine that block, again excluding the specific transactions. This type of attack can result in a sustained denial-of-service against a specific address or set of addresses for as long as the attacker controls the majority of the mining power.
+이중 소비 공격 외에도 공감대 공격에 대한 또 다른 시나리오는 특정 비트 코인 참가자 (특정 비트 코인 주소)에 대한 서비스를 거부하는 것입니다. 광산 권력의 대부분을 가진 공격자는 특정 거래를 무시할 수 있습니다. 다른 광부가 채굴 한 블록에 포함 된 경우 공격자는 특정 트랜잭션을 제외하고 고의적으로 해당 블록을 포크하고 다시 채울 수 있습니다. 이러한 유형의 공격은 공격자가 광산 권력의 대부분을 제어하는 ​​한 특정 주소 또는 일련의 주소에 대해 지속적인 서비스 거부를 초래할 수 있습니다.
 
-Despite its name, the 51% attack scenario doesn't actually require 51% of the hashing power. In fact, such an attack can be attempted with a smaller percentage of the hashing power. The 51% threshold is simply the level at which such an attack is almost guaranteed to succeed. A consensus attack is essentially a tug-of-war for the next block and the "stronger" group is more likely to win. With less hashing power, the probability of success is reduced, because other miners control the generation of some blocks with their "honest" mining power. One way to look at it is that the more hashing power an attacker has, the longer the fork he can deliberately create, the more blocks in the recent past he can invalidate, or the more blocks in the future he can control. Security research groups have used statistical modeling to claim that various types of consensus attacks are possible with as little as 30% of the hashing power.
+그 이름에도 불구하고 51 %의 공격 시나리오는 실제로 해시력의 51 %를 요구하지 않습니다. 사실, 그러한 공격은 해싱 능력의 더 작은 비율로 시도 될 수 있습니다. 51 % 임계 값은 단순히 그러한 공격이 거의 성공할 수있는 수준입니다. 공감대 공격은 본질적으로 다음 블록을위한 줄다리기이며 "강한"집단은 승리 할 가능성이 더 큽니다. 해싱 력이 적 으면 다른 광부가 "정직한"광산 채굴로 일부 블록 생성을 제어하기 때문에 성공 확률이 낮아집니다. 이를 살펴볼 수있는 한 가지 방법은 공격자의 해싱 파워가 높을수록 의도적으로 만들 수있는 포크가 길어질수록 최근에 차단할 수있는 블록이 많아 지거나 향후 더 많은 블록을 제어 할 수 있다는 것입니다.
 
-The massive increase of total hashing power has arguably made bitcoin impervious to attacks by a single miner. There is no possible way for a solo miner to control more than a small percentage of the total mining power. However, the centralization of control caused by mining pools has introduced the risk of for-profit attacks by a mining pool operator. The pool operator in a managed pool controls the construction of candidate blocks and also controls which transactions are included. This gives the pool operator the power to exclude transactions or introduce double-spend transactions. If such abuse of power is done in a limited and subtle way, a pool operator could conceivably profit from a consensus attack without being noticed.
+총 해싱 파워가 엄청나게 늘어남에 따라 비트 코인은 단일 광부의 공격에 대해 불 침투하게되었습니다. 솔로 광부가 전체 광산 전력 중 적은 비율 이상을 제어 할 수있는 방법은 없습니다. 그러나 채굴장으로 인한 통제의 중앙 집중화는 채광 운영자가 영리를 목적으로하는 공격의 위험을 초래했습니다. 관리되는 풀의 풀 운영자는 후보 블록의 구성을 제어하고 포함되는 트랜잭션을 제어합니다. 이것은 풀 운영자에게 트랜잭션을 제외 시키거나 이중 지출 트랜잭션을 도입 할 수있는 권한을 부여합니다. 이러한 권력 남용이 제한적이고 미묘한 방식으로 수행된다면 풀 운영자는 주목받지 못한 채 공감대를 형성하여 이익을 얻는다.
 
-Not all attackers will be motivated by profit, however. One potential attack scenario is where an attacker intends to disrupt the bitcoin network without the possibility of profiting from such disruption. A malicious attack aimed at crippling bitcoin would require enormous investment and covert planning, but could conceivably be launched by a well-funded, most likely state-sponsored, attacker. Alternatively, a well-funded attacker could attack bitcoin's consensus by simultaneously amassing mining hardware, compromising pool operators, and attacking other pools with denial-of-service. All of these scenarios are theoretically possible, but increasingly impractical as the bitcoin network's overall hashing power continues to grow exponentially.
+모든 공격자가 이익을 얻는 것은 아닙니다. 하나의 잠재적 인 공격 시나리오는 공격자가 그러한 붕괴로부터 이익을 얻을 수있는 가능성이없는 비트 코인 네트워크를 방해하려는 경우입니다. 마비 된 비트 코인을 겨냥한 악의적 인 공격은 엄청난 투자와 은밀한 계획을 필요로하지만 잘 자금을 지원 받고 가장 가능성이있는 주정부가 후원하는 공격자가 시작할 수 있습니다. 또는 잘 투자 된 공격자는 광산 하드웨어를 모으고 풀 운영자를 해치며 서비스 거부 공격으로 다른 풀을 공격하여 비트 코인의 합의를 공격 할 수 있습니다. 이러한 시나리오는 모두 이론적으로 가능하지만 비트 코인 네트워크의 전반적인 해싱 성능이 기하 급수적으로 증가함에 따라 점점 더 비실용적입니다.
 
-Undoubtedly, a serious consensus attack would erode confidence in bitcoin in the short term, possibly causing a significant price decline. However, the bitcoin network and software are constantly evolving, so consensus attacks would be met with immediate countermeasures by the bitcoin community, making bitcoin hardier, stealthier, and more robust than ever.((("", startref="Cattack10")))((("", startref="MACattack10")))((("", startref="Sconsens10")))
+의심 할 여지없이 심각한 합의가 이루어지면 단기간에 비트 코인에 대한 신뢰가 약화되어 상당한 가격 하락을 초래할 수 있습니다. 그러나 비트 코인 네트워크와 소프트웨어는 끊임없이 진화하고 있기 때문에 비트 코인 커뮤니티의 즉각적인 대책으로 합의 공격이 이루어지며 비트 코인은 그 어느 때보 다 강하고 비밀스럽고 강력 해집니다.((("", startref="Cattack10")))((("", startref="MACattack10")))((("", startref="Sconsens10")))
 
 [[consensus_changes]]
-=== Changing the Consensus Rules
+=== 합의 규칙 변경
 
-((("mining and consensus", "consensus rules", "changing", id="Crule10")))The rules of consensus determine the validity of transactions and blocks. These rules are the basis for collaboration between all bitcoin nodes and are responsible for the convergence of all local perspectives into a single consistent blockchain across the entire network.
+((("mining and consensus", "consensus rules", "changing", id="Crule10")))합의 규칙은 거래 및 블록의 유효성을 결정합니다. 이러한 규칙은 모든 비트 코인 노드 간의 공동 작업을위한 기본 요소이며 모든 로컬 관점을 전체 네트워크에서 단일 일관된 블록 체인으로 통합하는 역할을합니다.
 
-While the consensus rules are invariable in the short term and must be consistent across all nodes, they are not invariable in the long term. In order to evolve and develop the bitcoin system, the rules have to change from time to time to accommodate new features, improvements, or bug fixes. Unlike traditional software development, however, upgrades to a consensus system are much more difficult and require coordination between all the participants.
+컨센서스 규칙은 단기간에 변하지 않고 모든 노드에서 일관되어야하지만 장기적으로 변하지는 않습니다. 비트 코인 시스템을 발전시키고 발전시키기 위해 새로운 기능, 개선 사항 또는 버그 수정을 수용하기 위해 규칙이 수시로 변경되어야합니다. 그러나 전통적인 소프트웨어 개발과 달리 컨센서스 시스템으로의 업그레이드는 훨씬 더 어려우며 모든 참여자 간의 조정이 필요합니다.
 
 
 [[hard_forks]]
-==== Hard Forks
-((("forks", "changing consensus rules", id="forks10a")))((("forks", "changing consensus rules", "hard forks")))In <<forks>> we looked at how the bitcoin network may briefly diverge, with two parts of the network following two different branches of the blockchain for a short time. We saw how this process occurs naturally, as part of the normal operation of the network and how the network reconverges on a common blockchain after one or more blocks are mined.
+==== 하드 포크
+((("forks", "changing consensus rules", id="forks10a")))((("forks", "changing consensus rules", "hard forks")))<< 포크 >>에서 우리는 보았습니다. (포크, 컨센서스 규칙 변경, id = "forks10a")) 짧은 시간 동안 블록 체인의 두 가지 다른 가지를 따르는 네트워크의 두 부분으로 비트 코인 네트워크가 잠깐 어떻게 갈라 지는지를 설명합니다. 우리는이 프로세스가 자연스럽게 발생하는 것을 보았습니다. 네트워크의 정상적인 작동과 하나 이상의 블록을 채굴 한 후 네트워크가 공통 블록 체인에서 재분석되는 방식입니다.
 
-There is another scenario in which the network may diverge into following two chains: a change in the consensus rules. This type of fork is called a _hard fork_, because after the fork the network does not reconverge onto a single chain. Instead, the two chains evolve independently. Hard forks occur when part of the network is operating under a different set of consensus rules than the rest of the network. This may occur because of a bug or because of a deliberate change in the implementation of the consensus rules.
+네트워크가 다음의 두 가지 체인으로 갈라질 수있는 또 다른 시나리오가 있습니다 : 합의 규칙의 변화. 이 유형의 포크는 _hard fork_라고합니다. 포크 후에 네트워크가 단일 체인으로 다시 변환되지 않기 때문입니다. 대신, 두 사슬은 독립적으로 진화합니다. 하드 포크는 네트워크의 일부가 네트워크의 나머지 합의 규칙과 다른 세트로 작동 할 때 발생합니다. 이는 버그 또는 합의 규칙의 구현시 고의적 인 변경으로 인해 발생할 수 있습니다.
 
-Hard forks can be used to change the rules of consensus, but they require coordination between all participants in the system. Any nodes that do not upgrade to the new consensus rules are unable to participate in the consensus mechanism and are forced onto a separate chain at the moment of the hard fork. Thus, a change introduced by a hard fork can be thought of as not "forward compatible," in that nonupgraded systems can no longer process the new consensus rules.
+단단한 포크는 합의의 규칙을 변경하는 데 사용할 수 있지만 시스템의 모든 참가자간에 조정이 필요합니다. 새로운 합의 규칙으로 업그레이드하지 않는 노드는 합의 메커니즘에 참여할 수 없으며 하드 포크 (hard fork)의 순간 별도의 체인에 강제 적용됩니다. 따라서 하드 포크에 의해 도입 된 변화는 비 호환 시스템이 더 이상 새로운 합의 규칙을 처리 할 수 ​​없다는 점에서 "순방향 호환성"이 아닌 것으로 간주 될 수 있습니다.
 
-Let's examine the mechanics of a hard fork with a specific example.
+하드 포크의 메커니즘을 구체적인 예를 들어 살펴 봅시다.
 
-<<blockchainwithforks>> shows a blockchain with two forks. At block height 4, a one-block fork occurs. This is the type of spontaneous fork we saw in <<forks>>. With the mining of block 5, the network reconverges on one chain and the fork is resolved.
+<< blockchainwithforks >>는 두 개의 포크가있는 블록 체인을 보여줍니다. 블록 높이 4에서 한 블록 포크가 발생합니다. 이것은 << 포크 >>에서 본 자발적인 포크의 유형입니다. 블록 5의 마이닝을 사용하면 네트워크가 한 체인에서 재구성되고 분기가 해결됩니다.
 
 [[blockchainwithforks]]
 .A blockchain with forks
 image::images/mbc2_1009.png[A blockchain with forks]
 
-Later, however, at block height 6, a hard fork occurs. Let's assume that a new implementation of the client is released with a change in the consensus rules. Starting on block height 7, miners running this new implementation will accept a new type of digital signature, let's call it a "Smores" signature, that is not ECDSA based. Immediately after, a node running the new implementation creates a transaction that contains a Smores signature and a miner with the updated software mines block 7b containing this transaction.
+그러나 나중에 블록 높이 6에서 하드 포크가 발생합니다. 합의 규칙의 변경으로 클라이언트의 새로운 구현이 릴리스된다고 가정 해 봅시다. 블록 높이 7에서 시작하여이 새로운 구현을 실행하는 광부는 새로운 유형의 디지털 서명을 수락합니다. ECDSA 기반이 아닌 "Smores"서명이라고합시다. 즉시 새 구현을 실행하는 노드는 Smores 서명을 포함하는 트랜잭션을 생성하고이 트랜잭션을 포함하는 업데이트 된 소프트웨어 광산 블록 (7b)을 포함하는 광부를 생성합니다.
 
-Any node or miner that has not upgraded the software to validate Smores signatures is now unable to process block 7b. From their perspective, both the transaction that contained a Smores signature and block 7b that contained that transaction are invalid, because they are evaluating them based upon the old consensus rules. These nodes will reject the transaction and the block and will not propagate them. Any miners that are using the old rules will not accept block 7b and will continue to mine a candidate block whose parent is block 6. In fact, miners using the old rules may not even receive block 7b if all the nodes they are connected to are also obeying the old rules and therefore not propagating the block. Eventually, they will be able to mine block 7a, which is valid under the old rules and does not contain any transactions with Smores signatures.
+Smores 서명의 유효성을 검사하기 위해 소프트웨어를 업그레이드하지 않은 노드 또는 광부는 이제 블록 7b를 처리 할 수 ​​없습니다. 그들의 관점에서 볼 때 Smores 서명이 포함 된 트랜잭션과 해당 트랜잭션이 포함 된 블록 (7b)은 이전의 합의 규칙에 따라 트랜잭션을 평가하기 때문에 유효하지 않습니다. 이 노드는 트랜잭션과 블록을 거부하고이를 전파하지 않습니다. 이전 규칙을 사용하는 광부는 블록 7b를 허용하지 않으며 블록 6 인 부모를 가진 후보 블록을 계속 채굴합니다. 사실 이전 규칙을 사용하는 광부는 연결된 모든 노드가 또한 이전 규칙에 복종하므로 블록을 전파하지 않습니다. 결국, 그들은 블록 7a를 채굴 할 수있게 될 것이고,
 
-The two chains continue to diverge from this point. Miners on the "b" chain will continue to accept and mine transactions containing Smores signatures, while miners on the "a" chain will continue to ignore these transactions. Even if block 8b does not contain any Smores-signed transactions, the miners on the "a" chain cannot process it. To them it appears to be an orphan block, as its parent "7b" is not recognized as a valid block.
+두 개의 사슬은이 지점에서 계속해서 발산합니다. "b"체인의 광부는 Smores 서명이 포함 된 거래를 계속 받아 들일 것이며 "a"체인의 광부는 이러한 거래를 계속 무시할 것입니다. 블록 8b가 Smores 서명 거래를 포함하지 않더라도, "a"체인의 광부는 처리 할 수 ​​없습니다. 그 (것)들에게 그것의 부모 "7b"가 유효한 구획으로 인식되지 않기 때문에, 고아 구획 인 것처럼 보인다.
 
-==== Hard Forks: Software, Network, Mining, and Chain
+==== 하드 포크 : 소프트웨어, 네트워크, 채광 및 체인
 
-((("forks", "changing consensus rules", "software forks")))For software developers, the term "fork" has another meaning, adding confusion to the term "hard fork." In open source software, a fork occurs when a group of developers choose to follow a different software roadmap and start a competing implementation of an open source project. We've already discussed two circumstances that will lead to a hard fork: a bug in the consensus rules and a deliberate modification of the consensus rules. In the case of a deliberate change to the consensus rules, a software fork precedes the hard fork. However, for this type of hard fork to occur, a new software implementation of the consensus rules must be developed, adopted, and launched.
+소프트웨어 개발자의 경우 "포크 (fork)"라는 용어는 또 다른 의미를 가지며 "하드 포크 (hard fork)"라는 용어에 혼동을 일으킨다. ( "포크", "컨센서스 규칙의 변화", "소프트웨어 포크")) 오픈 소스 소프트웨어에서 개발자 그룹이 다른 소프트웨어 로드맵을 따르고 오픈 소스 프로젝트의 경쟁 구현을 시작하는 경우 포크가 발생합니다. 우리는 이미 합의를 도출하는 규칙의 버그와 합의 된 규칙의 고의적 인 수정이라는 어려운 포크로 이어질 두 가지 상황에 대해 논의했습니다. 합의 규칙을 의도적으로 변경 한 경우 소프트웨어 포크가 하드 포크보다 우선합니다. 그러나 이러한 유형의 하드 포크가 발생하기 위해서는 합의 규칙에 대한 새로운 소프트웨어 구현이 개발되고 채택되어야합니다.
 
-Examples of software forks that have attempted to change consensus rules include Bitcoin XT, Bitcoin Classic, and most recently Bitcoin Unlimited. However, none of these software forks have resulted in a hard fork. While a software fork is a necessary precondition, it is not in itself sufficient for a hard fork to occur. For a hard fork to occur, the competing implementation must be adopted and the new rules activated, by miners, wallets, and intermediary nodes. Conversely, there are numerous alternative implementations of Bitcoin Core, and even software forks, that do not change the consensus rules and barring a bug, can coexist on the network and interoperate without causing a hard fork.
+합의 규칙을 변경하려고 시도한 소프트웨어 포크의 예로는 Bitcoin XT, Bitcoin Classic, 가장 최근에는 Bitcoin Unlimited가 있습니다. 그러나 이러한 소프트웨어 포크 중 어느 것도 하드 포크를 가져 오지 않았습니다. 소프트웨어 포크가 필요한 전제 조건이지만 하드 포크가 발생하기에 충분하지 않습니다. 하드 포크가 발생하려면 경쟁 구현을 채택하고 광부, 지갑 및 중간 노드가 새 규칙을 활성화해야합니다. 반대로, Bitcoin Core의 다양한 구현 방식이 있으며, 소프트웨어 규칙을 변경하지 않고 버그를 방지하는 소프트웨어 포크조차도 네트워크 상에 공존 할 수 있고 하드 포크를 발생시키지 않고 상호 운용 될 수 있습니다.
 
-Consensus rules may differ in obvious and explicit ways, in the validation of transactions or blocks. The rules may also differ in more subtle ways, in the implementation of the consensus rules as they apply to bitcoin scripts or cryptographic primitives such as digital signatures. Finally, the consensus rules may differ in unanticipated ways because of implicit consensus constraints imposed by system limitations or implementation details. An example of the latter was seen in the unanticipated hard fork during the upgrade of Bitcoin Core 0.7 to 0.8, which was caused by a limitation in the Berkley DB implementation used to store blocks.
+컨센서스 규칙은 트랜잭션 또는 블록의 유효성 검증에서 명확하고 명시적인 방법으로 다를 수 있습니다. 규칙은 Bitcoin 스크립트 나 디지털 서명과 같은 암호 원시에 적용 할 때 합의 규칙을 구현할 때보다 미묘한 방식으로 다를 수 있습니다. 마지막으로, 시스템 제한이나 구현 세부 사항에 의해 내포 된 암묵적인 합의 제약으로 인해 합의 규칙이 예기치 않은 방식으로 다를 수 있습니다. 후자의 예는 블록 저장에 사용 된 Berkley DB 구현의 한계로 인해 Bitcoin Core 0.7을 0.8로 업그레이드하는 동안 예기치 않은 하드 포크에서 나타났습니다.
 
-Conceptually, we can think of a hard fork as developing in four stages: a software fork, a network fork, a mining fork, and a chain fork.
+개념적으로 하드 포크는 소프트웨어 포크, 네트워크 포크, 마이닝 포크 및 체인 포크의 4 단계로 발전하는 것으로 생각할 수 있습니다.
 
-The process begins when an alternative implementation of the client, with modified consensus rules, is created by developers.
+이 프로세스는 수정 된 합의 규칙을 가진 클라이언트의 대체 구현이 개발자에 의해 만들어지기 시작합니다.
 
-When this forked implementation is deployed in the network, a certain percentage of miners, wallet users, and intermediate nodes may adopt and run this implementation. A resulting fork will depend upon whether the new consensus rules apply to blocks, transactions, or some other aspect of the system. If the new consensus rules pertain to transactions, then a wallet creating a transaction under the new rules may precipitate a network fork, followed by a hard fork when the transaction is mined into a block. If the new rules pertain to blocks, then the hard fork process will begin when a block is mined under the new rules.
+이 분기 된 구현이 네트워크에 배치되면 특정 비율의 광부, 지갑 사용자 및 중간 노드가이 구현을 채택하고 실행할 수 있습니다. 결과 포크는 새로운 합의 규칙이 블록, 트랜잭션 또는 시스템의 다른 측면에 적용되는지 여부에 따라 달라집니다. 새로운 합의 규칙이 트랜잭션과 관련된 경우 새 규칙에 따라 트랜잭션을 만드는 지갑은 네트워크 포크를 생성 할 수 있으며 트랜잭션이 블록으로 채워질 때 하드 포크가 이어질 수 있습니다. 새 규칙이 블록과 관련된 경우 새 규칙에 따라 블록을 채울 때 하드 포크 프로세스가 시작됩니다.
 
-First, the network will fork. Nodes based on the original implementation of the consensus rules will reject any transactions and blocks that are created under the new rules. Furthermore, the nodes following the original consensus rules will temporarily ban and disconnect from any nodes that are sending them these invalid transactions and blocks. As a result, the network will partition into two: old nodes will only remain connected to old nodes and new nodes will only be connected to new nodes. A single transaction or block based on the new rules will ripple through the network and result in the partition into two networks.
+먼저, 네트워크가 포킹됩니다. 합의 규칙의 원래 구현을 기반으로 한 노드는 새로운 규칙에 따라 생성 된 트랜잭션과 블록을 거부합니다. 또한 원래의 합의 규칙을 따르는 노드는 이러한 잘못된 트랜잭션과 블록을 보내는 노드를 일시적으로 금지하고 연결을 끊습니다. 결과적으로 네트워크는 두 개로 분할됩니다. 기존 노드는 이전 노드에만 연결되어 있고 새 노드는 새 노드에만 연결됩니다. 새 규칙을 기반으로하는 단일 트랜잭션이나 블록은 네트워크를 통해 파급되어 파티션을 두 개의 네트워크로 만듭니다.
 
-Once a miner using the new rules mines a block, the mining power and chain will also fork. New miners will mine on top of the new block, while old miners will mine a separate chain based on the old rules. The partitioned network will make it so that the miners operating on separate consensus rules won't likely receive each other's blocks, as they are connected to two separate networks.
+새로운 규칙을 사용하는 광부가 블록을 채취하면 광산의 힘과 사슬도 굴러 갈 것입니다. 새로운 광부가 새로운 블록 위에 채굴하는 반면 오래된 광부는 이전 규칙을 기반으로 별도의 체인을 채굴합니다. 분할 네트워크는 별도의 합의 규칙에 따라 운영되는 광부가 서로 다른 두 개의 네트워크에 연결되어있어 서로의 블록을 수신하지 못하도록합니다.
 
-==== Diverging Miners and Difficulty
+==== 광부와 어려움을 분산
 
-((("forks", "changing consensus rules", "diverging miners and difficulty")))As miners diverge into mining two different chains, the hashing power is split between the chains. The mining power can be split in any proportion between the two chains. The new rules may only be followed by a minority, or by the vast majority of the mining power.
+광부가 두 개의 서로 다른 사슬로 갈라지면 해시 능력은 사슬 사이에서 나뉘어진다. (( "포크", "컨센서스 규칙의 변화", "광부와 어려움의 차이"))) 채광력은 두 사슬 사이의 어떤 비율로 나눌 수 있습니다. 새로운 규칙은 소수파 또는 광산 권력의 대다수에 의해서만 뒤따를 수 있습니다.
 
-Let's assume, for example, an 80%&#x2013;20% split, with the majority of the mining power using the new consensus rules. Let's also assume that the fork occurs immediately after a retargeting period.
+예를 들어, 80 % & 20 % 분할로 가정하고, 광산 권력의 대부분은 새로운 합의 규칙을 사용합니다. 또한 포크가 재 타겟팅 기간 후에 발생한다고 가정합시다.
 
-The two chains would each inherit the difficulty from the retargeting period. The new consensus rules would have 80% of the previously available mining power committed to them. From the perspective of this chain, the mining power has suddenly declined by 20% vis-a-vis the previous period. Blocks will be found on average every 12 minutes, representing the 20% decline in mining power available to extend this chain. This rate of block issuance will continue (barring any changes in hashing power) until 2016 blocks are mined, which will take approximately 24,192 minutes (at 12 minutes per block), or 16.8 days. After 16.8 days, a retarget will occur and the difficulty will adjust (reduced by 20%) to produce 10-minute blocks again, based on the reduced amount of hashing power in this chain.
+두 개의 사슬은 대상 재설정 기간에서 어려움을 각각 상속 받게됩니다. 새로운 합의 규칙은 이전에 이용 가능한 채광권의 80 %를 저지른 것이다. 이 사슬의 관점에서, 광산 권력은 이전 기간과 비교하여 갑자기 20 % 감소했다. 블록은 평균 12 분마다 발견 될 수 있으며,이 체인을 확장하는 데 사용할 수있는 광산의 20 % 감소를 나타냅니다. 이 블록 발급 비율은 2016 블록을 채굴 (블록 당 12 분)하는 약 24,192 분 (16.8 일)이 소요될 때까지 계속됩니다 (해시 강도 변경 없음). 16.8 일 후 재 타겟팅이 발생하고이 체인의 해싱 전력 감소량에 따라 10 분 블록을 다시 생성하기 위해 난이도가 조정됩니다 (20 % 감소).
 
-The minority chain, mining under the old rules with only 20% of the hashing power, will face a much more difficult task. On this chain, blocks will now be mined every 50 minutes on average. The difficulty will not be adjusted for 2016 blocks, which will take 100,800 minutes, or approximately 10 weeks to mine. Assuming a fixed capacity per block, this will also result in a reduction of transaction capacity by a factor of 5, as there are fewer blocks per hour available to record transactions.
+해시 체인의 20 % 만 사용하는 기존 규칙에 따라 마이닝하는 소수 체인은 훨씬 더 어려운 작업에 직면하게됩니다. 이 체인에서 블록은 평균 50 분마다 채굴됩니다. 난이도는 2016 블록으로 조정되지 않으며, 100,800 분, 또는 약 10 주가 소요됩니다. 블록 당 고정 용량을 가정하면 트랜잭션 기록에 사용할 수있는 시간당 블록 수가 적기 때문에 트랜잭션 용량을 5 배 줄입니다.
 
-==== Contentious Hard Forks
+==== 논쟁의 여지가있는 하드 포크
 
-((("forks", "changing consensus rules", "contentious hard forks")))((("hard forks")))This is the dawn of consensus software development. Just as open source development changed both the methods and products of software and created new methodologies, new tools, and new communities in its wake, consensus software development also represents a new frontier in computer science. Out of the debates, experiments, and tribulations of the bitcoin development roadmap, we will see new development tools, practices, methodologies, and communities emerge.
+((("forks", "changing consensus rules", "contentious hard forks")))((("hard forks")))이것은 공감대 소프트웨어 개발의 새벽입니다. 오픈 소스 개발이 소프트웨어의 방법과 제품을 변경하고 새로운 방법론, 새로운 도구 및 새로운 커뮤니티를 창안 한 것처럼, 합의 소프트웨어 개발은 ​​또한 컴퓨터 과학의 새로운 영역을 대표합니다. 비트 코인 개발 로드맵에 대한 토론, 실험 및 고난에서 새로운 개발 도구, 사례, 방법론 및 커뮤니티가 등장하게 될 것입니다.
 
-Hard forks are seen as risky because they force a minority to either upgrade or remain on a minority chain. The risk of splitting the entire system into two competing systems is seen by many as an unacceptable risk. As a result, many developers are reluctant to use the hard fork mechanism to implement upgrades to the consensus rules, unless there is near-unanimous support from the entire network. Any hard fork proposals that do not have near-unanimous support are considered too "contentious" to attempt without risking a partition of the system.
+단단한 포크는 소수 민족을 업그레이드하거나 소수 체인에 남겨두기 때문에 위험한 것으로 간주됩니다. 전체 시스템을 2 개의 경쟁 시스템으로 분할하는 위험은 많은 사람들에게 받아 들일 수없는 위험으로 간주됩니다. 결과적으로 많은 개발자는 전체 네트워크에서 만장일치로 지원하지 않는 한, 하드 포크 메커니즘을 사용하여 합의 규칙을 구현하는 것을 꺼립니다. 거의 만장일치로 지원하지 않는 하드 포크 제안은 시스템의 파티션을 위험에 빠뜨리지 않고 시도하기에 너무 논쟁적인 것으로 간주됩니다.
 
-The issue of hard forks is highly controversial in the bitcoin development community, especially as it relates to any proposed changes to the consensus rules controlling the maximum block size limit. Some developers are opposed to any form of hard fork, seeing it as too risky. Others see the mechanism of hard fork as an essential tool for upgrading the consensus rules in a way that avoids "technical debt" and provides a clean break with the past. Finally, some developers see hard forks as a mechanism that should be used rarely, with a lot of advance planning and only under near-unanimous consensus.
+단단한 포크의 문제는 비트 블록 개발 커뮤니티에서 논쟁의 여지가 있습니다. 특히 최대 블록 크기 제한을 제어하는 ​​합의 규칙에 대한 제안 된 변경 사항과 관련이 있습니다. 일부 개발자는 모든 형태의 하드 포크에 반대하며 너무 위험하다고 생각합니다. 다른 사람들은 하드 포크의 메커니즘이 "기술적 부채"를 피하고 과거와의 틈을 타는 방식으로 합의 규칙을 업그레이드하기위한 필수 도구라고 생각합니다. 마지막으로, 일부 개발자는 하드 포크를 거의 사용하지 않아야하는 메커니즘으로 간주합니다. 많은 사전 계획이 필요하며 거의 만장일치로 합의가 이루어집니다.
 
-Already we have seen the emergence of new methodologies to address the risks of hard forks. In the next section, we will look at soft forks, and the BIP-34 and BIP-9 methods for signaling and activation of consensus modifications.
+하드 포크의 위험을 해결하기위한 새로운 방법론의 등장을 이미 보았습니다. 다음 섹션에서는 소프트 포크 (soft forks)와 합의 사항 수정의 신호 및 활성화를위한 BIP-34 및 BIP-9 방법을 살펴볼 것입니다.
 
-==== Soft Forks
+==== 소프트 포크
 
-((("forks", "changing consensus rules", "soft forks")))((("soft forks", "defined")))Not all consensus rule changes cause a hard fork. Only consensus changes that are forward-incompatible cause a fork. If the change is implemented in such a way that an unmodified client still sees the transaction or block as valid under the previous rules, the change can happen without a fork.
+((("forks", "changing consensus rules", "soft forks")))((("soft forks", "defined")))모든 합의 규칙 변경이 하드 포크를 유발하는 것은 아닙니다. (( "포크", "합의 포용 규칙 변경", "소프트 포크" 순방향 호환성이없는 합의 변경 만 포크를 유발합니다. 수정되지 않은 클라이언트가 여전히 이전 규칙에 따라 트랜잭션 또는 블록을 유효한 것으로 보는 방식으로 변경 사항이 구현되면 변경 사항은 포크없이 발생할 수 있습니다.
 
-The term _soft fork_ was introduced to distinguish this upgrade method from a "hard fork." In practice, a soft fork is not a fork at all. A soft fork is a forward-compatible change to the consensus rules that allows unupgraded clients to continue to operate in consensus with the new rules.
+_soft fork_라는 용어는이 업그레이드 방법을 "하드 포크"와 구별하기 위해 도입되었습니다. 실제로, 부드러운 포크는 전혀 포크가 아닙니다. 소프트 포크는 업그레이드되지 않은 클라이언트가 새 규칙에 동의하여 계속 작동 할 수 있도록 합의 규칙에 대한 호환 가능 변경입니다.
 
-One aspect of soft forks that is not immediately obvious is that soft fork upgrades can only be used to constrain the consensus rules, not to expand them. In order to be forward compatible, transactions and blocks created under the new rules must be valid under the old rules too, but not vice versa. The new rules can only limit what is valid; otherwise, they will trigger a hard fork when rejected under the old rules.
+소프트 포크의 한 가지 측면은 즉각적으로 명확하지 않지만 소프트 포크 업그레이드는 컨센서스 규칙을 확장하는 것이 아니라 제약을 가하는 데에만 사용할 수 있다는 것입니다. 순방향 호환을 위해서는 새 규칙에 따라 생성 된 트랜잭션과 블록이 이전 규칙에서도 유효해야하지만 그 반대는 유효하지 않습니다. 새 규칙은 유효한 내용 만 제한 할 수 있습니다. 그렇지 않으면 이전 규칙에 따라 거부 될 때 하드 포크를 트리거합니다.
 
-Soft forks can be implemented in a number of ways&#x2014;the term does not define a single method, rather a set of methods that all have one thing in common: they don't require all nodes to upgrade or force nonupgraded nodes out of consensus.
+소프트 포크는 여러 가지 방법으로 구현 될 수 있습니다. #이 용어는 하나의 메소드를 정의하지 않고 공통점이 한 가지만있는 메소드 세트입니다. 모든 노드가 업그레이드되지 않았거나 노드를 업그레이드하지 않아도됩니다. 일치.
 
-===== Soft forks redefining NOP opcodes
+===== NOP 연산 코드를 재정의하는 소프트 포크
 
 ((("opcodes", "redefinition by soft forks")))((("soft forks", "redefinition of NOP codes")))A number of soft forks have been implemented in bitcoin, based on the re-interpretation of NOP opcodes. Bitcoin Script had ten opcodes reserved for future use, NOP1 through NOP10. Under the consensus rules, the presence of these opcodes in a script is interpreted as a null-potent operator, meaning they have no effect. Execution continues after the NOP opcode as if it wasn't there.
 
 A soft fork therefore can modify the semantics of a NOP code to give it new meaning. For example, BIP-65 (+CHECKLOCKTIMEVERIFY+) reinterpreted the NOP2 opcode. Clients implementing BIP-65 interpret NOP2 as +OP_CHECKLOCKTIMEVERIFY+ and impose an absolute locktime consensus rule on UTXO that contain this opcode in their locking scripts. This change is a soft fork because a transaction that is valid under BIP-65 is also valid on any client that is not implementing (ignorant of) BIP-65. To the old clients, the script contains an NOP code, which is ignored.
 
-===== Other ways to soft fork upgrade
+===== 재 해석을 기반으로 여러 소프트 포크가 비트 동전으로 구현되었습니다 NOP 연산 코드 중. Bitcoin Script에는 향후 사용을 위해 예약 된 10 개의 opcode가 있습니다 (NOP1에서 NOP10까지). 일치 규칙에 따르면, 스크립트에서 이러한 opcode의 존재는 null 효력이있는 연산자로 해석됩니다. 즉, 아무 효과가 없습니다. 실행은 NOP opcode 다음에 계속 존재하지 않는 것처럼 계속됩니다.
 
-The reinterpretation of NOP opcodes was both planned for and an obvious mechanism for consensus upgrades. Recently, however, another soft fork mechanism was introduced that does not rely on NOP opcodes for a very specific type of consensus change. This is examined in more detail in <<segwit>>. Segwit is an architectural change to the structure of a transaction, which moves the unlocking script (witness) from inside the transaction to an external data structure (segregating it). Segwit was initially envisioned as a hard fork upgrade, as it modified a fundamental structure (transaction). In November 2015, a developer working on Bitcoin Core proposed a mechanism by which segwit could be introduced as a soft fork. The mechanism used for this is a modification of the locking script of UTXO created under segwit rules, such that unmodified clients see the locking script as redeemable with any unlocking script whatsoever. As a result, segwit can be introduced without requiring every node to upgrade or split from the chain: a soft fork.
+따라서 소프트 포크는 NOP 코드의 의미를 수정하여 새로운 의미를 부여 할 수 있습니다. 예를 들어, BIP-65 (+ CHECKLOCKTIMEVERIFY +)는 NOP2 opcode를 다시 해석합니다. BIP-65을 구현하는 클라이언트는 NOP2를 + OP_CHECKLOCKTIMEVERIFY +로 해석하고 잠금 스크립트에이 opcode가 포함 된 UTXO에 절대 잠금 시간 합의 규칙을 적용합니다. 이 변경은 BIP-65에서 유효한 트랜잭션이 BIP-65을 구현하지 않는 클라이언트에서도 유효하기 때문에 소프트 포크입니다. 이전 클라이언트에게는 스크립트에 NOP 코드가 포함되어 무시됩니다.
 
-It is likely that there are other, yet to be discovered, mechanisms by which upgrades can be made in a forward-compatible way as a soft fork.
+===== 다른 방법으로 소프트 포크 업그레이드
 
-==== Criticisms of Soft Forks
+NOP 연산 코드의 재 해석은 공감대 업그레이드를위한 계획된 메커니즘이었습니다. 그러나 최근에는 매우 구체적인 유형의 합의 변경을 위해 NOP opcode에 의존하지 않는 또 다른 소프트 포크 메커니즘이 도입되었습니다. << segwit >>에서 자세히 살펴 보겠습니다. Segwit은 트랜잭션 내부에서 잠금 해제 스크립트 (증인)를 외부 데이터 구조 (분리)로 이동시키는 트랜잭션 구조의 아키텍처 변경입니다. Segwit은 초기에 기본적인 구조 (트랜잭션)를 수정하여 하드 포크 업그레이드로 계획되었습니다. 2015 년 11 월 Bitcoin Core에서 작업하는 개발자는 segwit을 소프트 포크 (soft fork)로 도입 할 수있는 메커니즘을 제안했습니다. 이를 위해 사용되는 메커니즘은 segwit 규칙에 따라 생성 된 UTXO의 잠금 스크립트 수정입니다. 수정되지 않은 클라이언트는 잠금 스크립트가 잠금 해제 스크립트로 상환 가능한 것으로 간주합니다. 결과적으로 모든 노드가 체인에서 업그레이드 또는 분리되지 않고도 segwit을 도입 할 수 있습니다. 소프트 포크 (soft fork)입니다.
 
-((("forks", "changing consensus rules", "soft fork drawbacks")))((("soft forks", "drawbacks of")))Soft forks based on the NOP opcodes are relatively uncontroversial. The NOP opcodes were placed in Bitcoin Script with the explicit goal of allowing non-disruptive upgrades.
+소프트 포크 (soft fork)와 같은 포워드 호환 방식으로 업그레이드를 할 수있는 메커니즘은 아직 발견되지 않았지만 가능성이 있습니다.
 
-However, many developers are concerned that other methods of soft fork upgrades make unacceptable tradeoffs. Common criticisms of soft fork changes include:
+==== 소프트 포크에 대한 비판
 
-Technical debt:: Because soft forks are more technically complex than a hard fork upgrade, they introduce _technical debt_, a term that refers to increasing the future cost of code maintenance because of design tradeoffs made in the past. Code complexity in turn increases the likelihood of bugs and security vulnerabilities.
+((("forks", "changing consensus rules", "soft fork drawbacks")))((("soft forks", "drawbacks of")))NOP 연산 코드에 기반한 소프트 포크는 비교적 논쟁의 여지가 없습니다. (포크, "컨센서스 규칙 변경", "소프트 포크 결점" NOP opcode는 비파괴 업그레이드를 허용한다는 명시적인 목표로 Bitcoin Script에 배치되었습니다.
 
-Validation relaxation:: Unmodified clients see transactions as valid, without evaluating the modified consensus rules. In effect, the unmodified clients are not validating using the full range of consensus rules, as they are blind to the new rules. This applies to NOP-based upgrades, as well as other soft fork upgrades.
+그러나 많은 개발자는 소프트 포크 업그레이드의 다른 방법으로는 용납 할 수없는 절충안을 만듭니다. 소프트 포크 변경에 대한 일반적인 비판은 다음과 같습니다.
 
-Irreversible upgrades:: Because soft forks create transactions with additional consensus constraints, they become irreversible upgrades in practice. If a soft fork upgrade were to be reversed after being activated, any transactions created under the new rules could result in a loss of funds under the old rules. For example, if a CLTV transaction is evaluated under the old rules, there is no timelock constraint and it can be spent whenever. Therefore, critics contend that a failed soft fork that had to be reversed because of a bug would almost certainly lead to loss of funds.((("", startref="Crule10")))
+기술적 부채 :: 소프트 포크는 하드 포크 업그레이드보다 기술적으로 복잡하기 때문에 과거의 설계 상 트레이드 오프로 인해 코드 유지 보수 비용을 증가시키는 용어 인 기술 부채가 도입되었습니다. 코드 복잡성은 버그 및 보안 취약성의 가능성을 증가시킵니다.
+
+Validation relaxation :: 수정되지 않은 클라이언트는 수정 된 합의 규칙을 평가하지 않고 트랜잭션을 유효한 것으로 간주합니다. 결과적으로 수정되지 않은 고객은 새로운 규칙에 대해 눈이 멀기 때문에 모든 합의 규칙을 사용하여 유효성을 검사하지 않습니다. 이는 NOP 기반 업그레이드뿐 아니라 다른 소프트 포크 업그레이드에도 적용됩니다.
+
+되돌릴 수없는 업그레이드 :: 소프트 포크는 추가적인 합의 제약 조건을 가진 트랜잭션을 생성하기 때문에 실제로는 돌이킬 수없는 업그레이드가됩니다. 소프트 포크 업그레이드가 활성화 된 후 취소 될 경우 새 규칙에 따라 생성 된 트랜잭션으로 인해 이전 규칙에 따라 자금이 손실 될 수 있습니다. 예를 들어 CLTV 트랜잭션이 이전 규칙에 따라 평가되는 경우 timelock 제약 조건이 없으며 언제든지이를 사용할 수 있습니다. 따라서 비평가들은 버그로 인해 되돌려 져야하는 실패한 소프트 포크는 거의 확실하게 자금 손실로 이어질 것이라고 주장합니다.((("", startref="Crule10")))
 
 [[softforksignaling]]
-=== Soft Fork Signaling with Block Version
+=== 블록 버전을 사용한 Soft Fork Signaling
 
-((("forks", "changing consensus rules", "soft fork activation")))((("soft forks", "activation")))Since soft forks allow unmodified clients to continue to operate within consensus, the mechanism for "activating" a soft fork is through miners signaling readiness: a majority of miners must agree that they are ready and willing to enforce the new consensus rules. To coordinate their actions, there is a signaling mechanism that allows them to show their support for a consensus rule change. This mechanism was introduced with the activation of BIP-34 in March 2013 and replaced by the activation of BIP-9 in July 2016.
+((("forks", "changing consensus rules", "soft fork activation")))((("soft forks", "activation")))소프트 포크는 수정되지 않은 클라이언트가 합의하에 계속 작동 할 수있게하기 때문에 메커니즘 (즉, 포크, 소프트 포크를 "활성화"하는 것은 광부가 신호를 준비 할 수 있도록하는 것입니다. 광부 대다수는 새로운 합의 규칙을 시행 할 준비가되어 있으며 기꺼이 동의해야합니다. 자신의 행동을 조정하기 위해 합의 규칙 변경에 대한 지원을 보여줄 수있는 신호 메커니즘이 있습니다. 이 메커니즘은 2013 년 3 월에 BIP-34를 활성화하고 2016 년 7 월 BIP-9를 활성화하여 도입되었습니다.
 
-==== BIP-34 Signaling and Activation
+==== BIP-34 신호 및 활성화
 
-((("bitcoin improvement proposals", "Block v2, Height in Coinbase (BIP-34)")))The first implementation, in BIP-34, used the block version field to allow miners to signal readiness for a specific consensus rule change. Prior to BIP-34, the block version was set to "1" by _convention_ not enforced by _consensus_.
+BIP-34의 첫 번째 구현은 블록 버전 필드를 사용하여 광부가 특정 합의 규칙에 대한 준비를 신호 할 수있게했습니다 (BIP-34에서의 높이 (블록 코디네이션 개선 제안서, 블록 v2, 코인베이스에서의 높이 (BIP-34) 변화. BIP-34 이전에는 블록 버전이 _consensus_에 의해 시행되지 않고 _convention_에 의해 "1"로 설정되었습니다.
 
-BIP-34 defined a consensus rule change that required the coinbase field (input) of the coinbase transaction to contain the block height. Prior to BIP-34, the coinbase could contain any arbitrary data the miners chose to include. After activation of BIP-34, valid blocks had to contain a specific block-height at the beginning of the coinbase and be identified with a version number greater than or equal to "2."
+BIP-34는 블록 높이를 포함하도록 코인베이스 트랜잭션의 코인베이스 필드 (입력)를 요구하는 합의 규칙 변경을 정의했습니다. BIP-34 이전에는 광부가 선택한 임의의 데이터가 코인베이스에 포함될 수있었습니다. BIP-34를 활성화 한 후 유효한 블록은 코인베이스의 시작 부분에 특정 블록 높이를 포함하고 "2"이상의 버전 번호로 식별되어야합니다.
 
-To signal the change and activation of BIP-34, miners set the block version to "2," instead of "1." This did not immediately make version "1" blocks invalid. Once activated, version "1" blocks would become invalid and all version "2" blocks would be required to contain the block height in the coinbase to be valid.
+BIP-34의 변경 및 활성화를 알리기 위해 광부는 블록 버전을 "1"대신 "2"로 설정합니다. 이것은 즉시 버전 "1"블록이 유효하지 않게 만들지 않았습니다. 활성화되면 버전 "1"블록이 유효하지 않게되고 모든 버전 "2"블록은 유효하도록 코인베이스의 블록 높이를 포함해야합니다.
 
-BIP-34 defined a two-step activation mechanism, based on a rolling window of 1000 blocks. A miner would signal his or her individual readiness for BIP-34 by constructing blocks with "2" as the version number. Strictly speaking, these blocks did not yet have to comply with the new consensus rule of including the block-height in the coinbase transaction because the consensus rule had not yet been activated. The consensus rules activated in two steps:
+BIP-34는 1000 블록의 롤링 윈도우에 기반한 2 단계 활성화 메커니즘을 정의했습니다. 광부는 "2"를 버전 번호로하여 블록을 구성하여 BIP-34에 대한 개별 준비 상태를 알립니다. 엄밀히 말하자면,이 블록들은 합의 규칙이 아직 활성화되지 않았기 때문에 코인베이스 거래에서 블록 높이를 포함하는 새로운 합의 규칙을 준수 할 필요가 없었습니다. 합의 규칙은 두 단계로 활성화되었습니다.
 
-* If 75% (750 of the most recent 1000 blocks) are marked with version "2," then version "2" blocks must contain block height in the coinbase transaction or they are rejected as invalid. Version "1" blocks are still accepted by the network and do not need to contain block-height. The old and new consensus rules coexist during this period.
+* 75 % (가장 최근 1000 개의 블록 중 750 개)가 버전 "2"로 표시되면 코인베이스 트랜잭션에서 버전 "2"블록이 블록 높이를 포함해야하며, 그렇지 않으면 유효하지 않은 것으로 간주됩니다. 버전 "1"블록은 여전히 ​​네트워크에서 허용되며 블록 높이를 포함 할 필요가 없습니다. 이 기간 동안에는 새로운 합의 규칙이 공존한다.
 
-* When 95% (950 of the most recent 1000 blocks) are version "2," version "1" blocks are no longer considered valid. Version "2" blocks are valid only if they contain the block-height in the coinbase (as per the previous threshold). Thereafter, all blocks must comply with the new consensus rules, and all valid blocks must contain block-height in the coinbase transaction.
+* 95 % (가장 최근의 1000 개 블록 중 950 개) 버전이 "2"인 경우 버전 "1"블록이 더 이상 유효하지 않은 것으로 간주됩니다. 버전 "2"블록은 코인베이스에 블록 높이가 포함 된 경우에만 유효합니다 (이전 임계 값 기준). 그런 다음 모든 블록은 새 합의 규칙을 따라야하며 모든 유효한 블록은 코인베이스 트랜잭션에서 블록 높이를 포함해야합니다.
 
-After successful signaling and activation under the BIP-34 rules, this mechanism was used twice more to activate soft forks:
+BIP-34 규칙에 따른 성공적인 신호 및 활성화 후이 메커니즘은 소프트 포크를 활성화하기 위해 두 번 더 사용되었습니다.
 
-* https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki[BIP-66] Strict DER Encoding of Signatures was activated by BIP-34 style signaling with a block version "3" and invalidating version "2" blocks.
+* https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki[BIP-66] 서명의 엄격한 DER 인코딩은 블록 버전이 "3"이고 버전이 무효화 된 BIP-34 스타일 시그널링에 의해 활성화되었습니다 "2"블록.
 
-* https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki[BIP-65] +CHECKLOCKTIMEVERIFY+ was activated by BIP-34 style signaling with a block version "4" and invalidating version "3" blocks.
+* https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki[BIP-65] + CHECKLOCKTIMEVERIFY +는 블록 버전이 "4"이고 버전이 "3"인 BIP-34 스타일 시그널링에 의해 활성화되었습니다. 블록.
 
-After the activation of BIP-65, the signaling and activation mechanism of BIP-34 was retired and replaced with the BIP-9 signaling mechanism described next.
+BIP-65가 활성화 된 후, BIP-34의 신호 및 활성화 메커니즘은 폐기되고 다음에 설명하는 BIP-9 신호 메커니즘으로 대체되었습니다.
 
-The standard is defined in https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki[BIP-34 (Block v2, Height in Coinbase)].
+표준은 https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki[BIP-34 (Block v2, Coinbase의 높이)]에 정의되어 있습니다.
 
-==== BIP-9 Signaling and Activation
+==== BIP-9 신호 및 활성화
 
-((("bitcoin improvement proposals", "Version bits with timeout and delay (BIP-9)")))((("bitcoin improvement proposals", "CHECKLOCKTIMEVERIFY (BIP-65)")))((("bitcoin improvement proposals", "Strict DER signatures (BIP-66)")))The mechanism used by BIP-34, BIP-66, and BIP-65 was successful in activating three soft forks. However, it was replaced because it had several limitations:
+((("bitcoin improvement proposals", "Version bits with timeout and delay (BIP-9)")))((("bitcoin improvement proposals", "CHECKLOCKTIMEVERIFY (BIP-65)")))((("bitcoin improvement proposals", "Strict DER signatures (BIP-66)")))타임 아웃 및 지연이있는 버전 비트 (BIP- BIP-34, BIP-66 및 BIP-65에서 사용 된 메커니즘은 세 개의 소프트 포크를 성공적으로 작동 시켰습니다. 그러나 몇 가지 제한 사항이 있기 때문에 대체되었습니다.
 
-* By using the integer value of the block version, only one soft fork could be activated at a time, so it required coordination between soft fork proposals and agreement on their prioritization and sequencing.
+* 블록 버전의 정수 값을 사용하면 한 번에 하나의 소프트 포크 만 활성화 될 수 있으므로 소프트 포크 제안과 해당 우선 순위 및 순서에 대한 합의가 필요했습니다.
 
-* Furthermore, because the block version was incremented, the mechanism didn't offer a straightforward way to reject a change and then propose a different one. If old clients were still running, they could mistake signaling for a new change as signaling for the previously rejected change.
+또한 블록 버전이 증가했기 때문에 메커니즘은 변경을 거부하고 다른 것을 제안하는 간단한 방법을 제공하지 않았습니다. 오래된 클라이언트가 여전히 실행 중이면 이전에 거부 된 변경 사항에 대한 신호로 새 변경 사항을 알리는 신호를 착각 할 수 있습니다.
 
-* Each new change irrevocably reduced the available block versions for future changes.
+* 각각의 새로운 변경 사항은 향후 변경을 위해 사용 가능한 블록 버전을 획기적으로 줄였습니다.
 
-BIP-9 was proposed to overcome these challenges and improve the rate and ease of implementing future changes.
+BIP-9는 이러한 과제를 극복하고 미래의 변화를 구현하는 속도와 용이성을 개선하기 위해 제안되었습니다.
 
-BIP-9 interprets the block version as a bit field instead of an integer. Because the block version was originally used as an integer, versions 1 through 4, only 29 bits remain available to be used as a bit field. This leaves 29 bits that can be used to independently and simultaneously signal readiness on 29 different proposals.
+BIP-9는 블록 버전을 정수 대신 비트 필드로 해석합니다. 블록 버전은 원래 버전 1에서 버전 4까지의 정수로 사용 되었기 때문에 29 비트 만 비트 필드로 사용할 수 있습니다. 29 비트의 제안서에 대해 독립적으로 그리고 동시에 신호 준비에 사용할 수있는 29 비트가 남습니다.
 
-BIP-9 also sets a maximum time for signaling and activation. This way miners don't need to signal forever. If a proposal is not activated within the +TIMEOUT+ period (defined in the proposal), the proposal is considered rejected. The proposal may be resubmitted for signaling with a different bit, renewing the activation period.
+또한 BIP-9는 신호 및 활성화를위한 최대 시간을 설정합니다. 이런 식으로 광부들은 영원히 신호 할 필요가 없습니다. 제안서가 + TIMEOUT + 기간 (제안서에 정의 됨) 내에서 활성화되지 않으면 제안서가 거부 된 것으로 간주됩니다. 제안서는 활성화 비트를 갱신하면서 다른 비트로 신호를 재전송 할 수 있습니다.
 
-Furthermore, after the +TIMEOUT+ has passed and a feature has been activated or rejected, the signaling bit can be reused for another feature without confusion. Therefore, up to 29 changes can be signaled in parallel and after +TIMEOUT+ the bits can be "recycled" to propose new changes.
+또한 + TIMEOUT +가 지나고 기능이 활성화되거나 거부 된 후에는 신호 비트를 혼동하지 않고 다른 기능에 재사용 할 수 있습니다. 따라서 최대 29 개의 변경 사항을 병렬로 전달할 수 있으며 + TIMEOUT + 후에 비트를 "재활용"하여 새로운 변경 사항을 제안 할 수 있습니다.
 
-[NOTE]
+[노트]
 ====
-While signaling bits can be reused or recycled, as long as the voting period does not overlap, the authors of BIP-9 recommend that bits are reused only when necessary; unexpected behavior could occur due to bugs in older software. In short, we should not expect to see reuse until all 29 bits have been used once.
+시그널링 비트는 재사용하거나 재활용 할 수 있지만, 투표 기간이 겹치지 않는 한, BIP-9의 저자는 필요할 때만 비트를 재사용 할 것을 권장합니다. 구형 소프트웨어의 버그로 인해 예기치 않은 동작이 발생할 수 있습니다. 즉, 29 비트가 모두 사용되기 전에는 재사용을 기대하지 말아야합니다.
 ====
 
-Proposed changes are identified by a data structure that contains the following fields:
+제안 된 변경 사항은 다음 필드가 포함 된 데이터 구조로 식별됩니다.
 
-name:: A short description used to distinguish between proposals. Most often the BIP describing the proposal, as "bipN," where N is the BIP number.
+name : 제안을 구별하기 위해 사용 된 간단한 설명. 대부분 BIP가 제안서를 "bipN"으로 설명하며, 여기서 N은 BIP 번호입니다.
 
-bit:: 0 through 28, the bit in the block version that miners use to signal approval for this proposal.
+bit :: 0 ~ 28,이 제안에 대한 승인을 신호하기 위해 광부가 사용하는 블록 버전의 비트.
 
-starttime:: The time (based on Median Time Past, or MTP) that signaling starts after which the bit's value is interpreted as signaling readiness for the proposal.
+starttime :: 시그널링이 시작된 후 비트 값이 제안서에 대한 시그널링 준비 상태로 해석되는 시간 (중간 시간 경과 또는 MTP 기준).
 
-endtime:: The time (based on MTP) after which the change is considered rejected if it has not reached the activation threshold.
+endtime :: 활성화 임계 값에 도달하지 않은 경우 변경이 거부 된 것으로 간주되는 시간 (MTP 기준).
 
-Unlike BIP-34, BIP-9 counts activation signaling in whole intervals based on the difficulty retarget period of 2016 blocks. For every retarget period, if the sum of blocks signaling for a proposal exceeds 95% (1916 of 2016), the proposal will be activated one retarget period later.
+BIP-34와 달리 BIP-9는 2016 블록의 재 지정 대상 지정 기간을 기준으로 전체 간격으로 활성화 신호를 계산합니다. 리 타겟팅 기간마다 제안서에 대한 시그널링 블록 합계가 95 % (2016 년의 1916)를 초과하는 경우 제안서는 나중에 한 번의 리 타겟팅 기간 동안 활성화됩니다.
 
-BIP-9 offers a proposal state diagram to illustrate the various stages and transitions for a proposal, as shown in <<bip9states>>.
+BIP-9는 << bip9states >>와 같이 제안서의 다양한 단계와 전환을 설명하는 제안 상태 다이어그램을 제공합니다.
 
-Proposals start in the +DEFINED+ state, once their parameters are known (defined) in the bitcoin software. For blocks with MTP after the start time, the proposal state transitions to +STARTED+. If the voting threshold is exceeded within a retarget period and the timeout has not been exceeded, the proposal state transitions to +LOCKED_IN+. One retarget period later, the proposal becomes +ACTIVE+. Proposals remain in the +ACTIVE+ state perpetually once they reach that state. If the timeout is elapsed before the voting threshold has been reached, the proposal state changes to +FAILED+, indicating a rejected proposal. +REJECTED+ proposals remain in that state perpetually.
+제안은 비트 코인 소프트웨어에서 매개 변수가 알려지면 + DEFINED + 상태에서 시작됩니다. 시작 시간 이후에 MTP가있는 블록의 경우 제안서 상태가 + STARTED +로 전환됩니다. 재시도 기간 내에 투표 임계 값을 초과하고 제한 시간을 초과하지 않은 경우 제안서 상태는 + LOCKED_IN + (으)로 전환됩니다. 한 번 대상 지정 기간이 지나면 제안서는 + ACTIVE +가됩니다. 제안서는 영구적으로 + ACTIVE + 상태에 머물러 있습니다. 투표 임계 값에 도달하기 전에 시간 초과가 초과되면 제안서 상태가 + FAILED +로 변경되어 거부 제안을 나타냅니다. + REJECTED + 제안은 영원히 그 상태에 있습니다.
 
 [[bip9states]]
-.BIP-9 state transition diagram
+.BIP-9 상태 전이 도표
 image::images/mbc2_1010.png[BIP-9 Proposal State Transition Diagram]
 
-BIP-9 was first implemented for the activation of +CHECKSEQUENCEVERIFY+ and associated BIPs (68, 112, 113). The proposal named "csv" was activated successfully in July of 2016.((("", startref="forks10a")))
+BIP-9는 + CHECKSEQUENCEVERIFY + 및 관련 BIP (68, 112, 113)의 활성화를 위해 처음 구현되었습니다. "csv"라는 제안이 2016 년 7 월에 성공적으로 활성화되었습니다. (( "" ", startref ="forks10a ")))
 
-The standard is defined in https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki[BIP-9 (Version bits with timeout and delay)].
+표준은 https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki[BIP-9 (타임 아웃 및 지연이있는 버전 비트)]에 정의되어 있습니다.
 
-=== Consensus Software Development
+=== Consensus 소프트웨어 개발
 
-((("mining and consensus", "consensus software development")))((("development environment", "consensus software development")))Consensus software development continues to evolve and there is much discussion on the various mechanisms for changing the consensus rules. By its very nature, bitcoin sets a very high bar on coordination and consensus for changes. As a decentralized system, it has no "authority" that can impose its will on the participants of the network. Power is diffused between multiple constituencies such as miners, core developers, wallet developers, exchanges, merchants, and end users. Decisions cannot be made unilaterally by any of these constituencies. For example, while miners can theoretically change the rules by simple majority (51%), they are constrained by the consent of the other constituencies. If they act unilaterally, the rest of the participants may simply refuse to follow them, keeping the economic activity on a minority chain. Without economic activity (transactions, merchants, wallets, exchanges), the miners will be mining a worthless coin with empty blocks. This diffusion of power means that all the participants must coordinate, or no changes can be made. Status quo is the stable state of this system with only a few changes possible if there is strong consensus by a very large majority. The 95% threshold for soft forks is reflective of this reality.
+((("mining and consensus", "consensus software development")))((("development environment", "consensus software development")))컨센서스 소프트웨어 개발은 ​​계속 발전하고 있으며, 변화를위한 다양한 메커니즘에 대한 논의가 많이있다. (( "광업 및 합의", "컨센서스 소프트웨어 개발")) 합의 규칙. 비트 코인은 본질적으로 코디네이션과 변경에 대한 합의에 매우 높은 기준을 설정합니다. 지방 분권화 된 시스템으로서, 그것은 네트워크 참가자들에게 자신의 의지를 부과 할 수있는 "권위"가 없다. 광부, 핵심 개발자, 지갑 개발자, 거래소, 상인 및 최종 사용자와 같은 여러 선거구간에 권력이 분산됩니다. 결정은 이러한 선거구들 중 어느 누구도 일방적으로 할 수 없습니다. 예를 들어, 광부는 이론적으로 단순 과반수 (51 %)로 규칙을 변경할 수 있지만, 그들은 다른 선거구의 동의에 의해 제약을 받는다. 그들이 일방적으로 행동한다면, 나머지 참가자들은 경제 활동을 소수 민족 체인에 유지하면서 그들을 따르기를 단순히 거부 할 수 있습니다. 경제 활동 (거래, 상인, 지갑, 교환)이 없다면, 광부들은 쓸모없는 동전을 쓸모없는 동전으로 채굴 할 것입니다. 이러한 권력의 확산은 모든 참가자들이 조정해야하거나 변화가 이루어지지 않는다는 것을 의미합니다. 현상 유지는이 시스템의 안정된 상태이며 대다수의 의견 일치가있을 경우 몇 가지 변경 만 가능합니다. 소프트 포크에 대한 95 % 임계 값은이 현실을 반영합니다. 교환 사) 광부들은 쓸모없는 동전을 채굴 할 것입니다. 이러한 권력의 확산은 모든 참가자들이 조정해야하거나 변화가 이루어지지 않는다는 것을 의미합니다. 현상 유지는이 시스템의 안정된 상태이며 대다수의 의견 일치가있을 경우 몇 가지 변경 만 가능합니다. 소프트 포크에 대한 95 % 임계 값은이 현실을 반영합니다. 교환 사) 광부들은 쓸모없는 동전을 채굴 할 것입니다. 이러한 권력의 확산은 모든 참가자들이 조정해야하거나 변화가 이루어지지 않는다는 것을 의미합니다. 현상 유지는이 시스템의 안정된 상태이며 대다수의 의견 일치가있을 경우 몇 가지 변경 만 가능합니다. 소프트 포크에 대한 95 % 임계 값은이 현실을 반영합니다.
 
-((("hard forks")))It is important to recognize that there is no perfect solution for consensus development. Both hard forks and soft forks involve tradeoffs. For some types of changes, soft forks may be a better choice; for others, hard forks may be a better choice. There is no perfect choice; both carry risks. The one constant characteristic of consensus software development is that change is difficult and consensus forces compromise.
+((("hard forks")))합의 개발을위한 완벽한 해결책이 없다는 것을 인식하는 것이 중요합니다. 하드 포크와 소프트 포크 모두 절충안을 포함합니다. 일부 변경 유형의 경우 소프트 포크가 더 나은 선택 일 수 있습니다. 다른 사람들에게는 하드 포크가 더 나은 선택 일 수 있습니다. 완전한 선택은 없습니다. 둘 다 위험을 안고 있습니다. 합의 된 소프트웨어 개발의 한 가지 지속적인 특성은 변화가 어렵고 합의 세력이 타협한다는 것입니다.
 
-Some see this as a weakness of consensus systems. In time, you may come to see it as I do, as the system's greatest strength.
+어떤 이들은이를 합의 시스템의 약점으로 본다. 시간이 지남에 따라, 당신은 내가하는 것처럼 그것을 시스템의 가장 큰 강점으로 볼 수 있습니다.
