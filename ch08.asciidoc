@@ -1,42 +1,42 @@
 [[bitcoin_network_ch08]]
-== The Bitcoin Network
+== The Bitcoin 네트워크
 
-=== Peer-to-Peer Network Architecture
+=== 피어 투 피어 네트워크 아키텍처
 
-((("bitcoin network", "peer-to-peer architecture")))((("peer-to-peer (P2P)")))Bitcoin is structured as a peer-to-peer network architecture on top of the internet. The term peer-to-peer, or P2P, means that the computers that participate in the network are peers to each other, that they are all equal, that there are no "special" nodes, and that all nodes share the burden of providing network services. The network nodes interconnect in a mesh network with a "flat" topology. There is no server, no centralized service, and no hierarchy within the network. Nodes in a P2P network both provide and consume services at the same time with reciprocity acting as the incentive for participation. P2P networks are inherently resilient, decentralized, and open. A preeminent example of a P2P network architecture was the early internet itself, where nodes on the IP network were equal. Today's internet architecture is more hierarchical, but the Internet Protocol still retains its flat-topology essence. Beyond bitcoin, the largest and most successful application of P2P technologies is file sharing, with Napster as the pioneer and BitTorrent as the most recent evolution of the architecture.
+((("bitcoin network", "peer-to-peer architecture")))((("peer-to-peer (P2P)")))Bitcoin은 피어 - 투 - 피어 네트워크 아키텍처로 구조화되어 있습니다 (비트 코인 네트워크, 피어 투 피어 아키텍처) 인터넷. 피어 - 투 - 피어 또는 P2P라는 용어는 네트워크에 참여하는 컴퓨터가 서로 동등하고, 모두 동등하며, 특별한 노드가없고, 모든 노드가 제공하는 부담을 공유한다는 것을 의미합니다. 네트워크 서비스. 네트워크 노드는 메쉬 네트워크에서 "평면"토폴로지로 상호 연결됩니다. 네트워크에는 서버, 중앙 집중식 서비스 및 계층 구조가 없습니다. P2P 네트워크의 노드는 참여를 유도하는 인센티브로 상호성을 유지하면서 동시에 서비스를 제공하고 소비합니다. P2P 네트워크는 본질적으로 탄력 있고 분산되며 개방적입니다. P2P 네트워크 아키텍처의 탁월한 사례는 IP 네트워크상의 노드가 동일한 초기 인터넷 자체였습니다. 오늘날의 인터넷 아키텍처는 계층 적이지만 인터넷 프로토콜은 여전히 ​​평면 토폴로지 본질을 유지합니다. Bitcoin 외에도 P2P 기술의 가장 크고 성공적인 애플리케이션은 파일 공유입니다. Napster는 개척자이며 BitTorrent는 아키텍처의 최신 버전입니다.
 
-Bitcoin's P2P network architecture is much more than a topology choice. Bitcoin is a P2P digital cash system by design, and the network architecture is both a reflection and a foundation of that core characteristic. Decentralization of control is a core design principle that can only be achieved and maintained by a flat, decentralized P2P consensus network.
+Bitcoin의 P2P 네트워크 아키텍처는 토폴로지 선택 이상의 것입니다. Bitcoin은 설계 상 P2P 디지털 현금 시스템이며, 네트워크 아키텍처는 핵심 특성의 반향이며 기초입니다. 통제의 분산은 편평하고 분산 된 P2P 합의 네트워크에 의해서만 성취되고 유지 될 수있는 핵심 설계 원칙이다.
 
-((("bitcoin network", "defined")))The term "bitcoin network" refers to the collection of nodes running the bitcoin P2P protocol. In addition to the bitcoin P2P protocol, there are other protocols such as Stratum that are used for mining and lightweight or mobile wallets. These additional protocols are provided by gateway routing servers that access the bitcoin network using the bitcoin P2P protocol and then extend that network to nodes running other protocols. For example, Stratum servers connect Stratum mining nodes via the Stratum protocol to the main bitcoin network and bridge the Stratum protocol to the bitcoin P2P protocol. We use the term "extended bitcoin network" to refer to the overall network that includes the bitcoin P2P protocol, pool-mining protocols, the Stratum protocol, and any other related protocols connecting the components of the bitcoin system.
+((("bitcoin network", "defined")))"비트 코인 네트워크"라는 용어는 비트 코인 P2P 프로토콜을 실행하는 노드 모음을 나타냅니다. Bitcoin P2P 프로토콜 외에도 채광 및 경량 또는 모바일 지갑에 사용되는 Stratum과 같은 다른 프로토콜이 있습니다. 이러한 추가 프로토콜은 Bitcoin P2P 프로토콜을 사용하여 Bitcoin 네트워크에 액세스 한 게이트웨이 라우팅 서버에서 제공 한 다음 해당 네트워크를 다른 프로토콜을 실행하는 노드로 확장합니다. 예를 들어, Stratum 서버는 Stratum 프로토콜을 통해 Stratum 마이닝 노드를 주 비트 코인 네트워크에 연결하고 Stratum 프로토콜을 Bitcoin P2P 프로토콜에 연결합니다. Bitcoin P2P 프로토콜, 풀 마이닝 프로토콜, Stratum 프로토콜 등을 포함하는 전체 네트워크를 가리키는 용어로 "확장 비트 코인 네트워크"를 사용합니다.
 
-=== Node Types and Roles
+=== 노드 유형 및 역할
 
-((("bitcoin network", "node types and roles", id="BNnode08")))((("bitcoin nodes", "types and roles", id="BNtype08")))Although nodes in the bitcoin P2P network are equal, they may take on different roles depending on the functionality they are supporting. A bitcoin node is a collection of functions: routing, the blockchain database, mining, and wallet services. A full node with all four of these functions is shown in <<full_node_reference>>.
+((("bitcoin network", "node types and roles", id="BNnode08")))((("bitcoin nodes", "types and roles", id="BNtype08")))비트 코인의 노드 (비트 코인 노드, 노드 유형 및 역할, P2P 네트워크는 동일하며 지원하는 기능에 따라 다른 역할을 수행 할 수 있습니다. 비트 코인 노드는 라우팅, 블록 체인 데이터베이스, 마이닝 및 지갑 서비스와 같은 기능 모음입니다. 이 네 가지 기능을 모두 갖춘 노드가 << full_node_reference >>에 표시됩니다.
 
 [[full_node_reference]]
 [role="smallerfifty"]
-.A bitcoin network node with all four functions: wallet, miner, full blockchain database, and network routing
+.지갑, 광부, 전체 블록 체인 데이터베이스 및 네트워크 라우팅의 네 가지 기능을 갖춘 비트 코인 네트워크 노드
 image::images/mbc2_0801.png["FullNodeReferenceClient_Small"]
 
-All nodes include the routing function to participate in the network and might include other functionality. All nodes validate and propagate transactions and blocks, and discover and maintain connections to peers. In the full-node example in <<full_node_reference>>, the routing function is indicated by an orange circle named "Network Routing Node" or with the letter "N."
+모든 노드는 네트워크에 참여하는 라우팅 기능을 포함하며 다른 기능을 포함 할 수 있습니다. 모든 노드는 트랜잭션 및 블록의 유효성을 검사 및 전파하고 피어에 대한 연결을 검색하고 유지 관리합니다. << full_node_reference >>의 전체 노드 예제에서 라우팅 기능은 "Network Routing Node"또는 "N"이라는 주황색 원으로 표시됩니다.
 
-((("full-node clients")))Some nodes, called full nodes, also maintain a complete and up-to-date copy of the blockchain. Full nodes can autonomously and authoritatively verify any transaction without external reference. ((("simple-payment-verification (SPV)")))Some nodes maintain only a subset of the blockchain and verify transactions using a method called _simplified payment verification_, or SPV. ((("lightweight clients")))These nodes are known as SPV nodes or lightweight nodes. In the full-node example in the figure, the full-node blockchain database function is indicated by a blue circle called "Full Blockchain" or the letter "B." In <<bitcoin_network>>, SPV nodes are drawn without the blue circle, showing that they do not have a full copy of the blockchain.
+((("full-node clients")))일부 노드는 전체 노드라고도하며 블록 체인의 전체 복사본을 유지합니다. 전체 노드는 외부 참조없이 모든 트랜잭션을 자율적으로 정식 검증 할 수 있습니다. ((( "간단한 결제 확인 (SPV)"))) 일부 노드는 블록 체인의 하위 집합 만 유지하고 _implified payment verification_ 또는 SPV라는 방법을 사용하여 트랜잭션을 확인합니다. (( "lightweight clients"))) 이러한 노드는 SPV 노드 또는 경량 노드라고합니다. 그림의 전체 노드 예제에서 전체 노드 블록 체인 데이터베이스 기능은 "Full Blockchain"또는 "B"문자로 표시된 파란색 원으로 표시됩니다. << bitcoin_network >>에서 SPV 노드는 파란색 원없이 그려져 블록 체인의 전체 사본이 없음을 나타냅니다.
 
-((("bitcoin nodes", "mining nodes")))((("mining and consensus", "mining nodes")))((("Proof-of-Work algorithm")))((("mining and consensus", "Proof-of-Work algorithm")))Mining nodes compete to create new blocks by running specialized hardware to solve the Proof-of-Work algorithm. Some mining nodes are also full nodes, maintaining a full copy of the blockchain, while others are lightweight nodes participating in pool mining and depending on a pool server to maintain a full node. The mining function is shown in the full node as a black circle called "Miner" or the letter  "M."
+((("bitcoin nodes", "mining nodes")))((("mining and consensus", "mining nodes")))((("Proof-of-Work algorithm")))((("mining and consensus", "Proof-of-Work algorithm")))광업 노드는 특정 하드웨어를 실행하여 새로운 블록을 생성하기 위해 경쟁하여 작업 증명 알고리즘을 해결합니다. 일부 마이닝 노드는 블록 체인의 전체 복사본을 유지하면서 풀 노드이기도하지만 풀 마이닝에 참여하는 경량 노드와 풀 서버를 기반으로 전체 노드를 유지 관리하는 노드가 있습니다. 마이닝 기능은 전체 노드에서 검은 색 원 "광부"또는 문자 "M"으로 표시됩니다.
 
-User wallets might be part of a full node, as is usually the case with desktop bitcoin clients. Increasingly, many user wallets, especially those running on resource-constrained devices such as smartphones, are SPV nodes. The wallet function is shown in <<full_node_reference>> as a green circle called "Wallet" or the letter "W."
+일반적으로 데스크톱 비트 코 클라이언트의 경우와 같이 사용자 지갑이 전체 노드에 포함될 수 있습니다. 점점 더 많은 사용자 지갑, 특히 스마트 폰과 같이 리소스가 제한적인 장치에서 실행되는 많은 사용자 지갑은 SPV 노드입니다. Wallet 함수는 << full_node_reference >>에 "Wallet"또는 "W"라는 녹색 원으로 표시됩니다.
 
-In addition to the main node types on the bitcoin P2P protocol, there are servers and nodes running other protocols, such as specialized mining pool protocols and lightweight client-access protocols.
+Bitcoin P2P 프로토콜의 주 노드 유형 외에 특수화 마이닝 풀 프로토콜 및 경량 클라이언트 액세스 프로토콜과 같은 다른 프로토콜을 실행하는 서버 및 노드가 있습니다.
 
-<<node_type_ledgend>> shows the most common node types on the extended bitcoin network.
+<< node_type_ledgend >>는 확장 비트 코인 네트워크에서 가장 일반적인 노드 유형을 표시합니다.
 
-=== The Extended Bitcoin Network
+=== 확장 비트 코인 네트워크
 
-((("", startref="BNnode08")))((("", startref="BNtype08")))((("bitcoin network", "extended network activities")))The main bitcoin network, running the bitcoin P2P protocol, consists of between 5,000 and 8,000 listening nodes running various versions of the bitcoin reference client (Bitcoin Core) and a few hundred nodes running various other implementations of the bitcoin P2P protocol, such as Bitcoin Classic, Bitcoin Unlimited, BitcoinJ, Libbitcoin, btcd, and bcoin. A small percentage of the nodes on the bitcoin P2P network are also mining nodes, competing in the mining process, validating transactions, and creating new blocks. Various large companies interface with the bitcoin network by running full-node clients based on the Bitcoin Core client, with full copies of the blockchain and a network node, but without mining or wallet functions. These nodes act as network edge routers, allowing various other services (exchanges, wallets, block explorers, merchant payment processing) to be built on top.
+((("", startref="BNnode08")))((("", startref="BNtype08")))((("bitcoin network", "extended network activities")))주 비트 코인 네트워크, 실행중인 (비트 코인 네트워크, "확장 네트워크 활동")) (( "(" ", startref ="BNnode08 ")) 비트 코인 P2P 프로토콜은 비트 코인 참조 클라이언트 (Bitcoin Core)의 다양한 버전을 실행하는 수신 노드 5,000 ~ 8,000 개와 Bitcoin Classic, Bitcoin Unlimited, BitcoinJ 등 다양한 비트 코인 P2P 프로토콜을 실행하는 수 백 개의 노드로 구성됩니다. Libbitcoin, btcd 및 bcoin. Bitcoin P2P 네트워크의 노드 중 일부는 마이닝 노드이며, 마이닝 프로세스에서 경쟁하고, 트랜잭션을 확인하고, 새로운 블록을 생성합니다. 다양한 대기업은 Bitcoin Core 클라이언트를 기반으로 전체 노드 클라이언트를 실행하여 Bitcoin 네트워크와 상호 작용합니다. 블록 체인과 네트워크 노드의 전체 복사본은 있지만 마이닝 또는 지갑 기능은 제공하지 않습니다. 이러한 노드는 네트워크 에지 라우터의 역할을 수행하므로 다양한 다른 서비스 (교환, 지갑, 블록 탐색기, 판매자 지불 처리)를 최상위에 구축 할 수 있습니다.
 
-The extended bitcoin network includes the network running the bitcoin P2P protocol, described earlier, as well as nodes running specialized protocols. Attached to the main bitcoin P2P network are a number of pool servers and protocol gateways that connect nodes running other protocols. These other protocol nodes are mostly pool mining nodes (see <<mining>>) and lightweight wallet clients, which do not carry a full copy of the blockchain.
+확장 비트 코인 네트워크에는 앞에서 설명한 비트 코인 P2P 프로토콜을 실행하는 네트워크는 물론 특수 프로토콜을 실행하는 노드가 포함됩니다. 주요 비트 코인 P2P 네트워크에는 다른 프로토콜을 실행하는 노드를 연결하는 다수의 풀 서버 및 프로토콜 게이트웨이가 연결됩니다. 이러한 다른 프로토콜 노드는 대부분 풀 마이닝 노드 (<< 마이닝 >> 참조)와 경량 지갑 클라이언트 (blockchain의 전체 복사본을 가지고 있지 않음)입니다.
 
-<<bitcoin_network>> shows the extended bitcoin network with the various types of nodes, gateway servers, edge routers, and wallet clients and the various protocols they use to connect to each other.
+<< bitcoin_network >>에서는 다양한 유형의 노드, 게이트웨이 서버, 에지 라우터 및 지갑 클라이언트와 서로 연결하는 데 사용하는 다양한 프로토콜을 사용하는 확장 비트 코인 네트워크를 보여줍니다.
 
 [[node_type_ledgend]]
 .Different types of nodes on the extended bitcoin network
@@ -46,56 +46,56 @@ image::images/mbc2_0802.png["BitcoinNodeTypes"]
 .The extended bitcoin network showing various node types, gateways, and protocols
 image::images/mbc2_0803.png["BitcoinNetwork"]
 
-=== Bitcoin Relay Networks
+=== Bitcoin 릴레이 네트워크
 
-((("bitcoin network", "Bitcoin Relay Networks")))((("relay networks")))While the bitcoin P2P network serves the general needs of a broad variety of node types, it exhibits too high network latency for the specialized needs of bitcoin mining nodes.
+비트 코인 P2P 네트워크는 다양한 노드 유형의 일반적인 요구 사항을 충족시키는 반면, 비트 코인 P2P 네트워크는 다양한 노드 유형에 대한 네트워크 대기 시간이 너무 길다는 장점을 제공합니다. (( "("비트 코인 네트워크 ","비트 코 릴레이 네트워크 ")) 비트 코닝 마이닝 노드의 특수한 요구.
 
-((("propagation", "relay networks and")))Bitcoin miners are engaged in a time-sensitive competition to solve the Proof-of-Work problem and extend the blockchain (see <<mining>>). While participating in this competition, bitcoin miners must minimize the time between the propagation of a winning block and the beginning of the next round of competition. In mining, network latency is directly related to profit margins.
+Bitcoin 광부는 작업 증명 문제를 해결하고 블록 체인 (<< 마이닝 >> 참조)을 확장하기 위해 시간에 민감한 경쟁에 종사하고 있습니다. ((전파), "중계 네트워크 및")) 이 경쟁에 참여하는 동안 비트 코 광부는 우승 한 블록이 전파되고 다음 라운드가 시작될 때까지의 시간을 최소화해야합니다. 광업에서 네트워크 대기 시간은 수익 마진과 직접적으로 관련됩니다.
 
-A _Bitcoin Relay Network_ is a network that attempts to minimize the latency in the transmission of blocks between miners. The original http://www.bitcoinrelaynetwork.org[Bitcoin Relay Network] was created by core developer Matt Corallo in 2015 to enable fast synchronization of blocks between miners with very low latency. The network consisted of several specialized nodes hosted on the Amazon Web Services infrastructure around the world and served to connect the majority of miners and mining pools.
+_Bitcoin Relay Network _는 광부 간의 블록 전송 지연을 최소화하려는 네트워크입니다. 최초의 http://www.bitcoinrelaynetwork.org [Bitcoin Relay Network]는 2015 년 핵심 개발자 인 Matt Corallo가 작성하여 매우 짧은 대기 시간의 광부 사이에서 블록을 신속하게 동기화 할 수 있습니다. 네트워크는 전 세계의 Amazon Web Services 인프라 스트럭처에서 호스팅되는 여러 특수 노드로 구성되어 있으며 대부분의 광부와 광업 수영장을 연결하는 역할을 수행했습니다.
 
-((("Fast Internet Bitcoin Relay Engine (FIBRE)")))((("Compact Block optimization")))The original Bitcoin Relay Network was replaced in 2016 with the introduction of the _Fast Internet Bitcoin Relay Engine_ or http://bitcoinfibre.org[_FIBRE_], also created by core developer Matt Corallo. FIBRE is a UDP-based relay network that relays blocks within a network of nodes. FIBRE implements _compact block_ optimization to further reduce the amount of data transmitted and the network latency.
+원래의 Bitcoin Relay Network는 2016 년에 Fast Internet Bitcoin Relay Engine _ 또는 http : //www.fast.com에서 소개되었습니다. /bitcoinfibre.org[_FIBRE_], 개발자 핵심 개발자 인 Matt Corallo도 만들었습니다. FIBER는 UDP 기반의 릴레이 네트워크로, 노드 네트워크 내에서 블록을 릴레이합니다. FIBER는 _compact block_ optimization을 구현하여 전송되는 데이터의 양과 네트워크 대기 시간을 더욱 줄입니다.
 
-((("Falcon Relay Network")))Another relay network (still in the proposal phase) is http://www.falcon-net.org/about[_Falcon_], based on research at Cornell University. Falcon uses "cut-through-routing" instead of "store-and-forward" to reduce latency by propagating parts of blocks as they are received rather than waiting until a complete block is received.
+((("Falcon Relay Network")))또 다른 중계 네트워크 (아직 제안 단계에 있음)는 http://www.falcon-net.org/about[_Falcon_]이며, 코넬 대학교의 연구를 기반으로합니다. Falcon은 "저장 및 전달"대신 "컷 스루 루팅"을 사용하여 블록 수신시 전체 블록을 수신 할 때까지 기다리지 않고 지연된 부분을 전파함으로써 대기 시간을 줄입니다.
 
-Relay networks are not replacements for bitcoin's P2P network. Instead they are overlay networks that provide additional connectivity between nodes with specialized needs. Like freeways are not replacements for rural roads, but rather shortcuts between two points with heavy traffic, you still need small roads to connect to the freeways.
+릴레이 네트워크는 bitcoin의 P2P 네트워크를 대체하지 않습니다. 대신 특수한 필요성이있는 노드간에 추가 연결을 제공하는 오버레이 네트워크입니다. 고속도로는 시골 길의 대체품이 아니라 오히려 교통량이 많은 두 지점 사이의 지름길이기 때문에 고속도로에 연결하려면 작은 도로가 필요합니다.
 
-=== Network Discovery
+=== 네트워크 발견
 
-((("bitcoin network", "extended network discovery", id="BNextend08")))((("bitcoin nodes", "network discovery", id="BNodiscover08")))When a new node boots up, it must discover other bitcoin nodes on the network in order to participate. To start this process, a new node must discover at least one existing node on the network and connect to it. The geographic location of other nodes is irrelevant; the bitcoin network topology is not geographically defined. Therefore, any existing bitcoin nodes can be selected at random.
+((("bitcoin network", "extended network discovery", id="BNextend08")))((("bitcoin nodes", "network discovery", id="BNodiscover08")))새로운 노드가 부팅 될 때, (비트 코인 네트워크, 확장 네트워크 탐색, id = "BNextend08" 참여하기 위해서는 네트워크상의 다른 비트 코인 노드를 발견해야합니다. 이 프로세스를 시작하려면 새 노드가 네트워크에서 하나 이상의 기존 노드를 찾아 연결해야합니다. 다른 노드의 지리적 위치는 부적합합니다. 비트 코인 네트워크 토폴로지는 지리적으로 정의되지 않습니다. 따라서 임의의 기존 비트 코인 노드를 임의로 선택할 수 있습니다.
 
-To connect to a known peer, nodes establish a TCP connection, usually to port 8333 (the port generally known as the one used by bitcoin), or an alternative port if one is provided. Upon establishing a connection, the node will start a "handshake" (see <<network_handshake>>) by transmitting a  +version+ message, which contains basic identifying information, including:
+알려진 피어에 연결하기 위해 노드는 일반적으로 포트 8333 (일반적으로 bitcoin에서 사용되는 포트) 또는 대체 포트 (제공되는 경우)로 TCP 연결을 설정합니다. 연결을 설정하면 노드는 다음을 포함하여 기본 식별 정보가 포함 된 + version + 메시지를 전송하여 "핸드 셰이크"(<< network_handshake >> 참조)를 시작합니다.
 
-+nVersion+:: The bitcoin P2P protocol version the client "speaks" (e.g., 70002)
-+nLocalServices+:: A list of local services supported by the node, currently just +NODE_NETWORK+
-+nTime+:: The current time
-+addrYou+:: The IP address of the remote node as seen from this node
-+addrMe+:: The IP address of the local node, as discovered by the local node
-+subver+:: A sub-version showing the type of software running on this node (e.g., pass:[<span class="keep-together"><code>/Satoshi:0.9.2.1/</code></span>])
-+BestHeight+:: The block height of this node's blockchain
++ nVersion + : 클라이언트가 "말하는"비트 코인 P2P 프로토콜 버전 (예 : 70002)
++ nLocalServices + :: 노드가 지원하는 로컬 서비스 목록, 현재 + NODE_NETWORK +
++ nTime + :: 현재 시간
++ addrYou + ::이 노드에서 본 원격 노드의 IP 주소
++ addrMe + :: 로컬 노드가 발견 한 로컬 노드의 IP 주소
++ subver + ::이 노드에서 실행중인 소프트웨어 유형을 나타내는 하위 버전 (예 : pass : [<span class = "keep-together"> <code> /Satoshi:0.9.2.1/ </ code> </ span> >])
++ BestHeight + ::이 노드의 블록 체인의 블록 높이
 
-(See http://bit.ly/1qlsC7w[GitHub] for an example of the +version+ network message.)
+(+ 버전 + 네트워크 메시지의 예는 http://bit.ly/1qlsC7w[GitHub를 참조하십시오.)
 
-The +version+ message is always the first message sent by any peer to another peer. The local peer receiving a +version+ message will examine the remote peer's reported +nVersion+ and decide if the remote peer is compatible. If the remote peer is compatible, the local peer will acknowledge the +version+ message and establish a connection by sending a +verack+.
++ version + 메시지는 항상 다른 피어에게 다른 피어가 보낸 첫 번째 메시지입니다. + 버전 + 메시지를 수신하는 로컬 피어는 원격 피어의보고 + nVersion +을 검사하여 원격 피어가 호환 가능한지 여부를 결정합니다. 원격 피어가 호환되면 로컬 피어는 + version + 메시지를 확인하고 + verack +을 보내 연결을 설정합니다.
 
-How does a new node find peers? The first method is to query DNS using a number of "DNS seeds," which are DNS servers that provide a list of IP addresses of bitcoin nodes. Some of those DNS seeds provide a static list of IP addresses of stable bitcoin listening nodes. Some of the DNS seeds are custom implementations of BIND (Berkeley Internet Name Daemon) that return a random subset from a list of bitcoin node addresses collected by a crawler or a long-running bitcoin node.  The Bitcoin Core client contains the names of five different DNS seeds. The diversity of ownership and diversity of implementation of the different DNS seeds offers a high level of reliability for the initial bootstrapping process. In the Bitcoin Core client, the option to use the DNS seeds is controlled by the option switch +-dnsseed+ (set to 1 by default, to use the DNS seed).
+새로운 노드가 동료를 어떻게 찾습니까? 첫 번째 방법은 Bitcoin 노드의 IP 주소 목록을 제공하는 DNS 서버 인 "DNS 시드"를 사용하여 DNS를 쿼리하는 것입니다. 이러한 DNS 시드 중 일부는 안정적인 비트 코 청취 노드의 고정 IP 주소 목록을 제공합니다. 일부 DNS 시드는 크롤러 또는 장기 실행 비트 코인 노드가 수집 한 비트 코인 노드 주소 목록에서 임의의 하위 집합을 반환하는 BIND (Berkeley Internet Name Daemon)의 사용자 지정 구현입니다. Bitcoin Core 클라이언트에는 다섯 가지 DNS 시드의 이름이 들어 있습니다. 다양한 DNS 시드의 구현의 다양성과 소유권의 다양성은 초기 부트 스트랩 프로세스에 높은 수준의 안정성을 제공합니다. Bitcoin Core 클라이언트에서 DNS 시드를 사용하는 옵션은 옵션 스위치 + -dnsseed +에 의해 제어됩니다 (기본적으로 1로 설정 됨,
 
-Alternatively, a bootstrapping node that knows nothing of the network must be given the IP address of at least one bitcoin node, after which it can establish connections through further introductions. The command-line argument +-seednode+ can be used to connect to one node just for introductions using it as a seed. After the initial seed node is used to form introductions, the client will disconnect from it and use the newly discovered peers.
+또는 네트워크를 전혀 모르는 부트 스트래핑 노드에 적어도 하나의 비트 코인 노드의 IP 주소를 부여해야하며, 이후에는 추가 소개를 통해 연결을 설정할 수 있습니다. 명령 줄 인수 + -seednode +는 시드로 시드를 사용하는 소개를 위해 하나의 노드에 연결하는 데 사용할 수 있습니다. 처음 시드 노드가 소개를 형성하는 데 사용 된 후 클라이언트는 연결을 끊고 새로 발견 된 피어를 사용합니다.
 
 [[network_handshake]]
-.The initial handshake between peers
+.동료 간의 초기 핸드 셰이크
 image::images/mbc2_0804.png["NetworkHandshake"]
 
-Once one or more connections are established, the new node will send an +addr+ message containing its own IP address to its neighbors. The neighbors will, in turn, forward the +addr+ message to their neighbors, ensuring that the newly connected node becomes well known and better connected. Additionally, the newly connected node can send +getaddr+ to the neighbors, asking them to return a list of IP addresses of other peers. That way, a node can find peers to connect to and advertise its existence on the network for other nodes to find it. <<address_propagation>> ((("propagation", "address propagation and discovery")))shows the address discovery protocol.
+하나 이상의 연결이 설정되면 새 노드는 자신의 IP 주소를 포함하는 + addr + 메시지를 이웃 노드로 보냅니다. 이웃 노드는 + addr + 메시지를 이웃 라우터로 전달하여 새로 연결된 노드가 잘 알려지고 더 잘 연결되도록합니다. 또한 새로 연결된 노드는 + getaddr +를 이웃 노드로 보내어 다른 피어의 IP 주소 목록을 반환하도록 요청할 수 있습니다. 그런 식으로, 노드는 피어를 찾아서 다른 노드가 찾을 수 있도록 네트워크상의 존재를 광고 할 수 있습니다. << address_propagation >> (( "전파", "주소 전파 및 검색")))은 주소 검색 프로토콜을 보여줍니다.
 
 
 [[address_propagation]]
 .Address propagation and discovery
 image::images/mbc2_0805.png["AddressPropagation"]
 
-A node must connect to a few different peers in order to establish diverse paths into the bitcoin network. Paths are not reliable—nodes come and go—and so the node must continue to discover new nodes as it loses old connections as well as assist other nodes when they bootstrap. Only one connection is needed to bootstrap, because the first node can offer introductions to its peer nodes and those peers can offer further introductions. It's also unnecessary and wasteful of network resources to connect to more than a handful of nodes. After bootstrapping, a node will remember its most recent successful peer connections, so that if it is rebooted it can quickly reestablish connections with its former peer network. If none of the former peers respond to its connection request, the node can use the seed nodes to bootstrap again.
+노드는 비트 코인 네트워크로의 다양한 경로를 설정하기 위해 몇 가지 다른 피어에 연결해야합니다. 경로는 신뢰할 수있는 노드가 아니며 이동하기 때문에 노드는 이전 연결이 끊어지고 다른 노드가 부트 스트랩 할 때이를 지원할 때 새 노드를 계속 찾아야합니다. 첫 번째 노드가 피어 노드에 소개를 제공 할 수 있고 그 피어가 추가 소개를 제공 할 수 있기 때문에 부트 스트랩하기 위해 하나의 연결 만 필요합니다. 네트워크 리소스가 불필요하고 낭비이기 때문에 소수의 노드 이상에 연결할 수 있습니다. 부트 스트랩 후 노드는 가장 최근의 성공적인 피어 연결을 기억하므로 재부팅하면 이전 피어 네트워크와의 연결을 신속하게 재설정 할 수 있습니다. 이전 피어 중 누구도 연결 요청에 응답하지 않으면 노드는 시드 노드를 사용하여 다시 부트 스트랩 할 수 있습니다.
 
-On a node running the Bitcoin Core client, you can list the peer connections with the command +getpeerinfo+:
+Bitcoin Core 클라이언트를 실행하는 노드에서 + getpeerinfo + 명령을 사용하여 피어 연결을 나열 할 수 있습니다.
 
 [source,bash]
 ----
@@ -139,200 +139,200 @@ $ bitcoin-cli getpeerinfo
 ]
 ----
 
-To override the automatic management of peers and to specify a list of IP addresses, users can provide the option +-connect=<IPAddress>+ and specify one or more IP addresses. If this option is used, the node will only connect to the selected IP addresses, instead of discovering and maintaining the peer connections automatically.
+피어의 자동 관리를 무시하고 IP 주소 목록을 지정하려면 사용자는 + -connect = <IPAddress> + 옵션을 제공하고 하나 이상의 IP 주소를 지정할 수 있습니다. 이 옵션을 사용하면 피어 연결을 자동으로 검색하고 유지 관리하는 대신 노드가 선택한 IP 주소에만 연결합니다.
 
-If there is no traffic on a connection, nodes will periodically send a message to maintain the connection. If a node has not communicated on a connection for more than 90 minutes, it is assumed to be disconnected and a new peer will be sought. Thus, the network dynamically adjusts to transient nodes and network problems, and can organically grow and shrink as needed without any central control.((("", startref="BNextend08")))((("", startref="BNodiscover08")))
+연결에 트래픽이 없으면 노드는 연결을 유지하기 위해 정기적으로 메시지를 보냅니다. 노드가 연결을 통해 90 분 이상 통신하지 않으면 연결이 끊어진 것으로 간주되어 새 피어가 검색됩니다. 따라서 네트워크는 일시적인 노드 및 네트워크 문제에 동적으로 적응하고 중앙 제어없이 필요에 따라 유기적으로 확장 및 축소 할 수 있습니다.((("", startref="BNextend08")))((("", startref="BNodiscover08")))
 
-=== Full Nodes
+=== 전체 노드
 
-((("bitcoin network", "full nodes")))((("full-node clients")))((("blockchain (the)", "full blockchain nodes")))Full nodes are nodes that maintain a full blockchain with all transactions. More accurately, they probably should be called "full blockchain nodes." In the early years of bitcoin, all nodes were full nodes and currently the Bitcoin Core client is a full blockchain node. In the past two years, however, new forms of bitcoin clients have been introduced that do not maintain a full blockchain but run as lightweight clients. We'll examine these in more detail in the next section.
+((("bitcoin network", "full nodes")))((("full-node clients")))((("blockchain (the)", "full blockchain nodes")))전체 노드는 모든 거래와 함께 완전한 블록 체인을 유지하십시오. 좀 더 정확히 말하자면, "full blockchain nodes"라고 불러야 할 것입니다. 비트 코인의 초창기에는 모든 노드가 전체 노드 였고 현재 Bitcoin Core 클라이언트는 전체 블록 체인 노드입니다. 그러나 지난 2 년 동안 완전한 블록 체인을 유지하지는 않지만 가벼운 클라이언트로 실행되는 새로운 형태의 Bitcoin 클라이언트가 도입되었습니다. 다음 섹션에서 좀 더 자세히 살펴 보겠습니다.
 
-((("blocks", "genesis block")))((("genesis block")))((("blockchain (the)", "genesis block")))Full blockchain nodes maintain a complete and up-to-date copy of the bitcoin blockchain with all the transactions, which they independently build and verify, starting with the very first block (genesis block) and building up to the latest known block in the network. A full blockchain node can independently and authoritatively verify any transaction without recourse or reliance on any other node or source of information. The full blockchain node relies on the network to receive updates about new blocks of transactions, which it then verifies and incorporates into its local copy of the blockchain.
+((("blocks", "genesis block")))((("genesis block")))((("blockchain (the)", "genesis block")))전체 블록 체인 노드는 완전하고 상향식 데이터를 유지합니다. (( "블록", "기성 블록"))) bitcoin blockchain의 최신 복사본을 모든 트랜잭션과 함께 작성하고 첫 번째 블록 (창 블록)부터 시작하여 네트워크에서 가장 최근에 알려진 블록까지 빌드합니다. 완전한 블록 체인 노드는 다른 노드 또는 정보 소스에 의존하거나 의존하지 않고 독립적으로 그리고 정식으로 모든 트랜잭션을 검증 할 수 있습니다. 전체 블록 체인 노드는 네트워크를 통해 새로운 트랜잭션 블록에 대한 업데이트를 수신 한 다음이를 확인하고 블록 체인의 로컬 복사본에 통합합니다.
 
-((("bitcoin nodes", "full nodes")))Running a full blockchain node gives you the pure bitcoin experience: independent verification of all transactions without the need to rely on, or trust, any other systems. It's easy to tell if you're running a full node because it requires 20+ gigabytes of persistent storage (disk space) to store the full blockchain. If you need a lot of disk and it takes two to three days to sync to the network, you are running a full node. That is the price of complete independence and freedom from central authority.
+((("bitcoin nodes", "full nodes")))전체 블록 체인 노드를 실행하면 순수 비트 코인 경험이 제공됩니다. 다른 시스템에 의존하거나 신뢰하지 않고도 모든 트랜잭션을 독립적으로 확인할 수 있습니다. 완전한 블록 체인을 저장하기 위해 20 기가비트 이상의 영구 저장 장치 (디스크 공간)가 필요하기 때문에 전체 노드를 실행 중인지 쉽게 알 수 있습니다. 디스크가 많이 필요하고 네트워크에 동기화하는 데 2 ​​~ 3 일이 걸리면 전체 노드를 실행하고있는 것입니다. 그것은 완전한 독립과 중앙 권위로부터의 자유의 대가입니다.
 
-((("Satoshi client")))There are a few alternative implementations of full blockchain bitcoin clients, built using different programming languages and software architectures. However, the most common implementation is the reference client Bitcoin Core, also known as the Satoshi client. More than 75% of the nodes on the bitcoin network run various versions of Bitcoin Core. It is identified as "Satoshi" in the sub-version string sent in the +version+ message and shown by the command +getpeerinfo+ as we saw earlier; for example, +/Satoshi:0.8.6/+.
+((("Satoshi client")))서로 다른 프로그래밍 언어와 소프트웨어 아키텍처를 사용하여 빌드 된 완전한 블록 체인 비트 동전 클라이언트에 대한 몇 가지 대안 구현이 있습니다. 그러나 가장 일반적인 구현은 Reference Client Bitcoin Core이며 Satoshi 클라이언트라고도합니다. Bitcoin 네트워크의 노드 중 75 % 이상이 Bitcoin Core의 다양한 버전을 실행합니다. + version + 메시지로 보내진 하위 버전 문자열에서 "Satoshi"로 식별되며 이전에 보았던 것처럼 + getpeerinfo + 명령으로 표시됩니다. 예 : + / Satoshi : 0.8.6 / +.
 
-=== Exchanging "Inventory"
+=== "재고"교환
 
-((("bitcoin network", "syncing the blockchain")))The first thing a full node will do once it connects to peers is try to construct a complete blockchain. If it is a brand-new node and has no blockchain at all, it only knows one block, the genesis block, which is statically embedded in the client software. Starting with block #0 (the genesis block), the new node will have to download hundreds of thousands of blocks to synchronize with the network and reestablish the full blockchain.
+((("bitcoin network", "syncing the blockchain")))전체 노드가 피어와 연결되면 가장 먼저 할 일은 완전한 블록 체인을 만드는 것입니다. 새로운 노드이고 블록 체인이 전혀없는 경우 클라이언트 소프트웨어에 정적으로 포함 된 블록 인 창 블록 만 인식합니다. 블록 # 0 (기원 블록)부터 시작하여, 새로운 노드는 네트워크와 동기화하고 전체 블록 체인을 재 확립하기 위해 수십만 개의 블록을 다운로드해야합니다.
 
-((("blockchain (the)", "syncing the blockchain")))((("syncing")))The process of syncing the blockchain starts with the +version+ message, because that contains +BestHeight+, a node's current blockchain height (number of blocks). A node will see the +version+ messages from its peers, know how many blocks they each have, and be able to compare to how many blocks it has in its own blockchain. Peered nodes will exchange a +getblocks+ message that contains the hash (fingerprint) of the top block on their local blockchain. One of the peers will be able to identify the received hash as belonging to a block that is not at the top, but rather belongs to an older block, thus deducing that its own local blockchain is longer than its peer's.
+블록 체인을 동기화하는 프로세스는 + version + 메시지로 시작합니다. 이는 + BestHeight +, 노드의 현재 블록 체인을 포함하기 때문입니다 (( "("블록 체인 () ","블록 체인 동기화 " 높이 (블록 수). 노드는 동료로부터 + 버전 + 메시지를보고 각 블록에 몇 개의 블록이 있는지 알고 자신의 블록 체인에있는 블록 수와 비교할 수 있습니다. 피어 노드는 로컬 블록 체인에서 맨 위 블록의 해시 (지문)가 포함 된 + getblocks + 메시지를 교환합니다. 피어 중 하나는 수신 된 해시를 상단에 없지만 이전 블록에 속한 블록에 속한 것으로 식별하여 자체 로컬 블록 체인이 해당 피어의 것보다 길다는 것을 추론 할 수 있습니다.
 
-The peer that has the longer blockchain has more blocks than the other node and can identify which blocks the other node needs in order to "catch up." It will identify the first 500 blocks to share and transmit their hashes using an +inv+ (inventory) message. The node missing these blocks will then retrieve them, by issuing a series of +getdata+ messages requesting the full block data and identifying the requested blocks using the hashes from the +inv+ message.
+더 긴 블록 체인을 가진 피어는 다른 노드보다 많은 블록을 가지며 다른 노드가 어떤 블록을 "따라 잡기"위해 필요한지를 식별 할 수 있습니다. + inv + (인벤토리) 메시지를 사용하여 해시를 공유하고 전송할 첫 500 블록을 식별합니다. 이 블록이 누락 된 노드는 일련의 + getdata + 메시지를 발행하여 전체 블록 데이터를 요청하고 + inv + 메시지의 해시를 사용하여 요청 된 블록을 식별함으로써 이들 블록을 검색합니다.
 
-Let's assume, for example, that a node only has the genesis block. It will then receive an +inv+ message from its peers containing the hashes of the next 500 blocks in the chain. It will start requesting blocks from all of its connected peers, spreading the load and ensuring that it doesn't overwhelm any peer with requests. The node keeps track of how many blocks are "in transit" per peer connection, meaning blocks that it has requested but not received, checking that it does not exceed a limit (+MAX_BLOCKS_IN_TRANSIT_PER_PEER+). This way, if it needs a lot of blocks, it will only request new ones as previous requests are fulfilled, allowing the peers to control the pace of updates and not overwhelm the network. As each block is received, it is added to the blockchain, as we will see in <<blockchain>>. As the local blockchain is gradually built up, more blocks are requested and received, and the process continues until the node catches up to the rest of the network.
+예를 들어 노드가 기원 블록 만 가지고 있다고 가정 해 봅시다. 그런 다음 체인에서 다음 500 블록의 해시를 포함하는 + inv + + 메시지를 피어로부터받습니다. 연결된 모든 피어에서 블록을 요청하여로드를 분산시키고 요청이있는 피어를 압도하지 않도록합니다. 노드는 피어 연결 당 "전송 중"인 블록 수를 추적합니다. 즉, 요청했지만 수신하지 못한 블록을 의미하며 한계를 초과하지 않는지 (+ MAX_BLOCKS_IN_TRANSIT_PER_PEER +) 확인합니다. 이렇게하면 많은 블록이 필요한 경우 이전 요청이 충족 될 때만 새로운 요청을 요청하여 피어가 업데이트 속도를 제어하고 네트워크를 압도하지 않도록 할 수 있습니다. 각 블록이 수신되면 << blockchain >>에서 볼 수 있듯이 블록이 블록에 추가됩니다.
 
-This process of comparing the local blockchain with the peers and retrieving any missing blocks happens any time a node goes offline for any period of time. Whether a node has been offline for a few minutes and is missing a few blocks, or a month and is missing a few thousand blocks, it starts by sending +getblocks+, gets an +inv+ response, and starts downloading the missing blocks. <<inventory_synchronization>> shows the inventory and block propagation protocol.
+로컬 블록 체인을 피어와 비교하고 누락 된 블록을 검색하는이 프로세스는 노드가 일정 기간 동안 오프라인이 될 때마다 발생합니다. 노드가 몇 분 동안 오프라인 상태이고 몇 블록 또는 한 달이 누락되어 몇 천 블록이 누락 되더라도 노드는 + getblocks +를 보내고 + inv + 응답을 받고 누락 된 블록 다운로드를 시작합니다. << inventory_synchronization >>은 인벤토리 및 블록 전파 프로토콜을 보여줍니다.
 
 [[inventory_synchronization]]
-[role="smallerfifty"]
-.Node synchronizing the blockchain by retrieving blocks from a peer
+[role = "smallerfifty"]
+.피어에서 블록을 검색하여 블록 체인을 동기화하는 노드
 image::images/mbc2_0806.png["InventorySynchronization"]
 
 [[spv_nodes]]
-=== Simplified Payment Verification (SPV) Nodes
+=== SPV (Simplified Payment Verification) 노드
 
-((("bitcoin network", "SPV nodes", id="BNspvnodes08")))((("bitcoin nodes", "SPV nodes", id="BNospv08")))((("simple-payment-verification (SPV)", id="simple08")))Not all nodes have the ability to store the full blockchain. Many bitcoin clients are designed to run on space- and power-constrained devices, such as smartphones, tablets, or embedded systems. For such devices, a _simplified payment verification_ (SPV) method is used to allow them to operate without storing the full blockchain. These types of clients are called SPV clients or lightweight clients. As bitcoin adoption surges, the SPV node is becoming the most common form of bitcoin node, especially for bitcoin wallets.
+((("bitcoin network", "SPV nodes", id="BNspvnodes08")))((("bitcoin nodes", "SPV nodes", id="BNospv08")))((("simple-payment-verification (SPV)", id="simple08")))모든 노드가 전체 블록 체인을 저장할 수있는 것은 아닙니다. 많은 비트 코인 클라이언트는 스마트 폰, 태블릿 또는 임베디드 시스템과 같이 공간 및 전력이 제한적인 장치에서 실행되도록 설계되었습니다. 이러한 장치의 경우 SPV (단순 지불 검증) 방법을 사용하여 전체 블록 체인을 저장하지 않고도 작동 할 수 있습니다. 이러한 유형의 클라이언트를 SPV 클라이언트 또는 경량 클라이언트라고합니다. 비트 코인 채택이 급상승함에 따라 SPV 노드가 비트 코인 노드의 가장 일반적인 형태가되었습니다. 특히 비트 코인 지갑에 적합합니다.
 
-SPV nodes download only the block headers and do not download the transactions included in each block. The resulting chain of blocks, without transactions, is 1,000 times smaller than the full blockchain. SPV nodes cannot construct a full picture of all the UTXOs that are available for spending because they do not know about all the transactions on the network. SPV nodes verify transactions using a slightly different methodology that relies on peers to provide partial views of relevant parts of the blockchain on demand.
+SPV 노드는 블록 헤더 만 다운로드하고 각 블록에 포함 된 트랜잭션은 다운로드하지 않습니다. 결과 블록 체인은 트랜잭션없이 전체 블록 체인보다 1,000 배 작습니다. SPV 노드는 네트워크상의 모든 트랜잭션을 알지 못하기 때문에 지출 할 수있는 모든 UTXO의 전체 그림을 만들 수 없습니다. SPV 노드는 피어에게 의존하여 블록 체인의 관련 부분에 대한 부분 뷰를 제공하는 약간 다른 방법론을 사용하여 트랜잭션을 확인합니다.
 
-As an analogy, a full node is like a tourist in a strange city, equipped with a detailed map of every street and every address. By comparison, an SPV node is like a tourist in a strange city asking random strangers for turn-by-turn directions while knowing only one main avenue. Although both tourists can verify the existence of a street by visiting it, the tourist without a map doesn't know what lies down any of the side streets and doesn't know what other streets exist. Positioned in front of 23 Church Street, the tourist without a map cannot know if there are a dozen other "23 Church Street" addresses in the city and whether this is the right one. The mapless tourist's best chance is to ask enough people and hope some of them are not trying to mug him.
+비유로 전체 노드는 모든 거리와 모든 주소에 대한 상세한지도가 장착 된 이상한 도시의 관광객과 같습니다. 이와는 대조적으로, SPV 노드는 이상한 도시의 관광객과 같습니다. 단 하나의 주요 도로 만 알고있는 동안 우연한 방향으로 길을 찾아 무작위로 낯선 사람들에게 묻습니다. 두 관광객 모두 방문을 통해 거리의 존재를 확인할 수 있지만지도가없는 관광객은 어떤 거리에 있는지 알지 못하며 다른 거리가 무엇인지 모릅니다. 23 교회 거리 앞쪽에 위치한지도가없는 관광객은 도시에 12 개의 다른 "23 교회 거리"주소가 있는지 여부와 이것이 올바른지 여부를 알 수 없습니다. mapless 관광객의 가장 좋은 기회는 충분한 사람들에게 물어 보는 것입니다. 그들 중 일부는 그를 키우려고하지 않습니다.
 
-SPV verifies transactions by reference to their _depth_ in the blockchain instead of their _height_. Whereas a full blockchain node will construct a fully verified chain of thousands of blocks and transactions reaching down the blockchain (back in time) all the way to the genesis block, an SPV node will verify the chain of all blocks (but not all transactions) and link that chain to the transaction of interest.
+SPV는 _height_ 대신 blockchain에서 _depth_를 참조하여 트랜잭션을 확인합니다. 전체 블록 체인 노드가 블록 체인의 수천을 완전히 검증 한 체인과 블록 체인 (시간의 흐름으로)을 기생 블록까지 연결하는 반면 SPV 노드는 모든 블록의 체인을 확인합니다 (모든 트랜잭션이 아님) 해당 체인을 관심있는 트랜잭션에 연결하십시오.
 
-For example, when examining a transaction in block 300,000, a full node links all 300,000 blocks down to the genesis block and builds a full database of UTXO, establishing the validity of the transaction by confirming that the UTXO remains unspent. An SPV node cannot validate whether the UTXO is unspent. Instead, the SPV node will establish a link between the transaction and the block that contains it, using a _merkle path_ (see <<merkle_trees>>). Then, the SPV node waits until it sees the six blocks 300,001 through 300,006 piled on top of the block containing the transaction and verifies it by establishing its depth under blocks 300,006 to 300,001. The fact that other nodes on the network accepted block 300,000 and then did the necessary work to produce six more blocks on top of it is proof, by proxy, that the transaction was not a double-spend.
+예를 들어 300,000 블록의 트랜잭션을 검사 할 때 전체 노드는 모든 300,000 개의 블록을 기생 블록으로 연결하고 UTXO의 전체 데이터베이스를 구축하여 UTXO가 사용되지 않은 상태로 남아 있는지 확인하여 트랜잭션의 유효성을 확립합니다. SPV 노드는 UTXO가 사용되지 않았는지 여부를 확인할 수 없습니다. 대신 SPV 노드는 _merkle 경로 _ (<< merkle_trees >> 참조)를 사용하여 트랜잭션과이를 포함하는 블록 사이에 링크를 설정합니다. 그런 다음 SPV 노드는 트랜잭션이 포함 된 블록 위에 쌓인 여섯 개의 블록 300,001에서 300,006이 보일 때까지 기다린 다음 블록 300,006에서 300,001까지의 깊이를 설정하여 확인합니다. 네트워크의 다른 노드가 30 만 블록을 허용하고 그 위에 6 개의 블록을 더 생성하는 데 필요한 작업을 수행했다는 사실은 프록시를 통해 증명됩니다.
 
-An SPV node cannot be persuaded that a transaction exists in a block when the transaction does not in fact exist. The SPV node establishes the existence of a transaction in a block by requesting a merkle path proof and by validating the Proof-of-Work in the chain of blocks. However, a transaction's existence can be "hidden" from an SPV node. An SPV node can definitely prove that a transaction exists but cannot verify that a transaction, such as a double-spend of the same UTXO, doesn't exist because it doesn't have a record of all transactions. This vulnerability can be used in a denial-of-service attack or for a double-spending attack against SPV nodes. To defend against this, an SPV node needs to connect randomly to several nodes, to increase the probability that it is in contact with at least one honest node. This need to randomly connect means that SPV nodes also are vulnerable to network partitioning attacks or Sybil attacks, where they are connected to fake nodes or fake networks and do not have access to honest nodes or the real bitcoin network.
+SPV 노드는 트랜잭션이 실제로 존재하지 않을 때 트랜잭션이 블록에 존재한다는 것을 확신 할 수 없습니다. SPV 노드는 merkle path proof를 요청하고 블록 체인에서 Proof-of-Work의 유효성을 검사하여 블록에 트랜잭션 존재를 설정합니다. 그러나 트랜잭션의 존재는 SPV 노드에서 "숨겨 질"수 있습니다. SPV 노드는 트랜잭션이 존재 함을 분명히 증명할 수 있지만 동일한 UTXO의 이중 지출과 같은 트랜잭션은 모든 트랜잭션의 레코드가 없기 때문에 존재하지 않는다는 것을 확인할 수 없습니다. 이 취약점은 서비스 거부 (denial-of-service) 공격이나 SPV 노드에 대한 이중 지출 공격에 사용될 수 있습니다. 이를 막기 위해 SPV 노드는 적어도 하나의 정직한 노드와 접촉 할 확률을 높이기 위해 여러 노드에 무작위로 연결해야합니다.
 
-For most practical purposes, well-connected SPV nodes are secure enough, striking a balance between resource needs, practicality, and security. For infallible security, however, nothing beats running a full blockchain node.
+실용적인 목적을 위해 잘 연결된 SPV 노드는 리소스 요구 사항, 실용성 및 보안 간의 균형을 충분히 확보 할만큼 안전합니다. 그러나 오류가없는 보안을 위해서는 완전한 블록 체인 노드를 실행하는 것이 가장 좋습니다.
 
-[TIP]
+[팁]
 ====
-A full blockchain node verifies a transaction by checking the entire chain of thousands of blocks below it in order to guarantee that the UTXO is not spent, whereas an SPV node checks how deep the block is buried by a handful of blocks above it.
+전체 블록 체인 노드는 UTXO가 사용되지 않도록 보장하기 위해 그 아래에있는 수천 개의 블록 전체 체인을 검사하여 트랜잭션을 확인하는 반면 SPV 노드는 블록 위에 몇 개의 블록이 있는지 확인합니다.
 ====
 
-To get the block headers, SPV nodes use a +getheaders+ message instead of +getblocks+. The responding peer will send up to 2,000 block headers using a single +headers+ message. The process is otherwise the same as that used by a full node to retrieve full blocks. SPV nodes also set a filter on the connection to peers, to filter the stream of future blocks and transactions sent by the peers. Any transactions of interest are retrieved using a +getdata+ request. The peer generates a +tx+ message containing the transactions, in response. <<spv_synchronization>> shows the synchronization of block headers.
+블록 헤더를 얻기 위해 SPV 노드는 + getblocks + 대신에 + getheaders + 메시지를 사용합니다. 응답 피어는 + headers + 메시지 하나를 사용하여 최대 2,000 개의 블록 헤더를 전송합니다. 그렇지 않은 경우 전체 노드가 전체 블록을 검색하는 데 사용되는 프로세스와 동일합니다. 또한 SPV 노드는 피어와의 연결에서 필터를 설정하여 피어가 전송 한 향후 블록 및 트랜잭션의 스트림을 필터링합니다. 관심있는 트랜잭션은 + getdata + 요청을 사용하여 검색됩니다. 피어는 응답으로 트랜잭션을 포함하는 + tx + 메시지를 생성합니다. << spv_synchronization >>은 블록 헤더의 동기화를 보여줍니다.
 
-Because SPV nodes need to retrieve specific transactions in order to selectively verify them, they also create a privacy risk. Unlike full blockchain nodes, which collect all transactions within each block, the SPV node's requests for specific data can inadvertently reveal the addresses in their wallet. For example, a third party monitoring a network could keep track of all the transactions requested by a wallet on an SPV node and use those to associate bitcoin addresses with the user of that wallet, destroying the user's privacy.
+SPV 노드는 특정 트랜잭션을 선택적으로 확인하기 위해 특정 트랜잭션을 검색해야하기 때문에 프라이버시 위험을 발생시킵니다. 각 블록 내의 모든 트랜잭션을 수집하는 전체 블록 체인 노드와 달리 SPV 노드의 특정 데이터 요청은 우연히 지갑의 주소를 나타낼 수 있습니다. 예를 들어, 네트워크를 모니터링하는 제 3자가 SPV 노드에서 지갑이 요청한 모든 트랜잭션을 추적하고이를 사용하여 Bitcoin 주소를 해당 Wallet 사용자와 연결하여 사용자의 개인 정보를 파괴 할 수 있습니다.
 
 [[spv_synchronization]]
-.SPV node synchronizing the block headers
+.블록 헤더를 동기화하는 .SPV 노드
 image::images/mbc2_0807.png["SPVSynchronization"]
 
-Shortly after the introduction of SPV/lightweight nodes, bitcoin developers added a feature called _bloom filters_ to address the privacy risks of SPV nodes. Bloom filters allow SPV nodes to receive a subset of the transactions without revealing precisely which addresses they are interested in, through a filtering mechanism that uses probabilities rather than fixed patterns.((("", startref="BNspvnodes08")))((("", startref="simple08")))
+SPV / lightweight 노드가 도입 된 직후 bitcoin 개발자는 SPV 노드의 프라이버시 위험을 해결하기 위해 _bloom filters_라는 기능을 추가했습니다. Bloom 필터를 사용하면 SPV 노드가 고정 패턴보다는 확률을 사용하는 필터링 메커니즘을 통해 관심있는 주소를 정확하게 표시하지 않고 트랜잭션의 하위 집합을 수신 할 수 있습니다. (( "", startref = "BNspvnodes08")) ( "", startref = "simple08")))
 
 [[bloom_filters]]
-=== Bloom Filters
+=== 블룸 필터
 
-((("bitcoin network", "bloom filters", id="BNebloom08")))((("bloom filters", id="bloom08")))((("privacy, maintaining", id="privacy08")))((("security", "maintaining privacy", id="Sprivacy08")))A bloom filter is a probabilistic search filter, a way to describe a desired pattern without specifying it exactly. Bloom filters offer an efficient way to express a search pattern while protecting privacy. They are used by SPV nodes to ask their peers for transactions matching a specific pattern, without revealing exactly which addresses, keys, or transactions they are searching for.
+((("bitcoin network", "bloom filters", id="BNebloom08")))((("bloom filters", id="bloom08")))((("privacy, maintaining", id="privacy08")))((("security", "maintaining privacy", id="Sprivacy08")))블룸 필터는 확률 적 검색 필터로서 정확하게 지정하지 않고 원하는 패턴을 설명하는 방법입니다. (( "보안", "개인 정보 보호 유지", id = "Sprivacy08"))) 블룸 필터는 개인 정보를 보호하면서 검색 패턴을 표현하는 효율적인 방법을 제공합니다. SPV 노드는 검색중인 주소, 키 또는 트랜잭션을 정확하게 표시하지 않고 특정 패턴과 일치하는 트랜잭션을 동료에게 요청합니다.
 
-In our previous analogy, a tourist without a map is asking for directions to a specific address, "23 Church St." If she asks strangers for directions to this street, she inadvertently reveals her destination. A bloom filter is like asking, "Are there any streets in this neighborhood whose name ends in R-C-H?" A question like that reveals slightly less about the desired destination than asking for "23 Church St." Using this technique, a tourist could specify the desired address in more detail such as "ending in U-R-C-H" or less detail as "ending in H." By varying the precision of the search, the tourist reveals more or less information, at the expense of getting more or less specific results. If she asks a less specific pattern, she gets a lot more possible addresses and better privacy, but many of the results are irrelevant. If she asks for a very specific pattern, she gets fewer results but loses privacy.
+이전의 유추에서지도가없는 관광객은 특정 주소 ( "23 Church St.")로가는 길을 묻습니다. 그녀가 낯선 사람에게이 길에 대한 길을 묻는다면, 우연히 그녀의 목적지를 나타냅니다. 블룸 필터는 "이 이웃에 RCH로 끝나는 거리가 있습니까?"라고 묻는 것과 같습니다. 그와 같은 질문은 "23 교회 성 (Church St)"을 요구하는 것보다 원하는 목적지에 관해서는 조금 덜 드러납니다. 이 기술을 사용하여 관광객은 "URCH로 끝나는"또는 "H로 끝나는"세부 사항과 같이 원하는 주소를보다 자세히 지정할 수 있습니다. 검색의 정확도를 변경함으로써 관광객은 다소 구체적인 결과를 얻지 만 어느 정도 정보를 드러냅니다. 그녀가 덜 구체적인 패턴을 묻는다면, 그녀는 훨씬 더 많은 주소와 프라이버시를 얻을 수 있습니다. 그러나 많은 결과가 부적합합니다. 그녀가 매우 구체적인 패턴을 묻는다면 결과는 줄어들지 만 사생활을 잃을 수 있습니다.
 
-Bloom filters serve this function by allowing an SPV node to specify a search pattern for transactions that can be tuned toward precision or privacy. A more specific bloom filter will produce accurate results, but at the expense of revealing what patterns the SPV node is interested in, thus revealing the addresses owned by the user's wallet. A less specific bloom filter will produce more data about more transactions, many irrelevant to the node, but will allow the node to maintain better privacy.
+블룸 필터는 SPV 노드가 정밀도 또는 프라이버시를 향하여 조정할 수있는 트랜잭션에 대한 검색 패턴을 지정할 수있게함으로써이 기능을 제공합니다. 보다 구체적인 블룸 필터를 사용하면 정확한 결과를 얻을 수 있지만 SPV 노드가 어떤 패턴을 원하는지를 드러내지 않아 사용자의 지갑이 소유 한 주소가 표시됩니다. 덜 구체적인 블룸 필터는 노드와 관련이없는 많은 트랜잭션에 대한 더 많은 데이터를 생성하지만 노드가 더 나은 프라이버시를 유지할 수있게합니다.
 
-==== How Bloom Filters Work
+==== 블룸 필터의 작동 원리
 
-Bloom filters are implemented as a variable-size array of N binary digits (a bit field) and a variable number of M hash functions. The hash functions are designed to always produce an output that is between 1 and N, corresponding to the array of binary digits. The hash functions are generated deterministically, so that any node implementing a bloom filter will always use the same hash functions and get the same results for a specific input. By choosing different length (N) bloom filters and a different number (M) of hash functions, the bloom filter can be tuned, varying the level of accuracy and therefore privacy.
+블룸 필터는 N 개의 2 진수 (비트 필드)와 다양한 수의 M 개의 해시 함수로 구성된 가변 크기 배열로 구현됩니다. 해시 함수는 항상 2 진수 배열에 해당하는 1과 N 사이의 출력을 생성하도록 설계되었습니다. 해시 함수는 결정적으로 생성되므로 블룸 필터를 구현하는 노드는 항상 동일한 해시 함수를 사용하고 특정 입력에 대해 동일한 결과를 얻습니다. 다른 길이 (N)의 블룸 필터와 다른 수 (M)의 해시 함수를 선택함으로써 블룸 필터를 조정할 수있어 정확도와 프라이버시의 수준을 바꿀 수 있습니다.
 
-In <<bloom1>>, we use a very small array of 16 bits and a set of three hash functions to demonstrate how bloom filters work.
+<< bloom1 >>에서는 16 비트의 매우 작은 배열과 3 개의 해시 함수 집합을 사용하여 블룸 필터의 작동 원리를 보여줍니다.
 
-[[bloom1]]
-.An example of a simplistic bloom filter, with a 16-bit field and three hash functions
+[블룸 1]
+.16 비트 필드와 3 개의 해시 함수를 가진 단순한 블룸 필터의 예
 image::images/mbc2_0808.png["Bloom1"]
 
-The bloom filter is initialized so that the array of bits is all zeros. To add a pattern to the bloom filter, the pattern is hashed by each hash function in turn. Applying the first hash function to the input results in a number between 1 and N. The corresponding bit in the array (indexed from 1 to N) is found and set to +1+, thereby recording the output of the hash function. Then, the next hash function is used to set another bit and so on. Once all M hash functions have been applied, the search pattern will be "recorded" in the bloom filter as M bits that have been changed from +0+ to +1+.
+블룸 필터는 비트 배열이 모두 0이되도록 초기화됩니다. 블룸 필터에 패턴을 추가하기 위해 패턴은 각 해시 함수에 의해 해시됩니다. 첫 번째 해시 함수를 입력에 적용하면 1에서 N 사이의 숫자가됩니다. 배열의 해당 비트 (1에서 N까지 색인 됨)가 발견되어 + 1+로 설정되어 해시 함수의 출력을 기록합니다. 그런 다음 다음 해시 함수를 사용하여 다른 비트를 설정하는 등의 작업을 수행합니다. 모든 M 해시 함수가 적용되면 검색 패턴은 블룸 필터에서 +0에서 +1 +로 변경된 M 비트로 "기록"됩니다.
 
-<<bloom2>> is an example of adding a pattern "A" to the simple bloom filter shown in <<bloom1>>.
+<< bloom2 >>는 << bloom1 >>에 표시된 단순 블룸 필터에 패턴 "A"를 추가하는 예입니다.
 
-Adding a second pattern is as simple as repeating this process. The pattern is hashed by each hash function in turn and the result is recorded by setting the bits to +1+. Note that as a bloom filter is filled with more patterns, a hash function result might coincide with a bit that is already set to +1+, in which case the bit is not changed. In essence, as more patterns record on overlapping bits, the bloom filter starts to become saturated with more bits set to +1+ and the accuracy of the filter decreases. This is why the filter is a probabilistic data structure—it gets less accurate as more patterns are added. The accuracy depends on the number of patterns added versus the size of the bit array (N) and number of hash functions (M). A larger bit array and more hash functions can record more patterns with higher accuracy. A smaller bit array or fewer hash functions will record fewer patterns and produce less accuracy.
+두 번째 패턴을 추가하는 것은이 프로세스를 반복하는 것처럼 간단합니다. 패턴은 각 해시 함수에 의해 차례로 해시되고 결과는 +1 +로 비트를 설정하여 기록됩니다. 블룸 필터가 더 많은 패턴으로 채워지므로 해시 함수 결과는 이미 +1 +로 설정된 비트와 일치 할 수 있습니다.이 경우 비트는 변경되지 않습니다. 본질적으로 중복되는 비트에 더 많은 패턴이 기록되면 블룸 필터가 +1 비트로 설정된 더 많은 비트로 포화되기 시작하고 필터의 정확도가 떨어집니다. 따라서 필터는 확률 적 데이터 구조이므로 더 많은 패턴을 추가하면 정확도가 떨어집니다. 정확도는 추가 된 패턴 수와 비트 배열 크기 (N) 및 해시 함수 수 (M)에 따라 달라집니다. 더 큰 비트 배열 및 더 많은 해시 함수는 더 많은 정확도로 더 많은 패턴을 기록 할 수 있습니다.
 
-[[bloom2]]
-.Adding a pattern "A" to our simple bloom filter
+[블룸 2]
+. 간단한 블룸 필터에 패턴 "A"를 추가하십시오.
 image::images/mbc2_0809.png["Bloom2"]
 
-<<bloom3>> is an example of adding a second pattern "B" to the simple bloom filter.
+<< bloom3 >>은 단순 블룸 필터에 두 번째 패턴 "B"를 추가하는 예입니다.
 
 [[bloom3]]
 [role="smallereighty"]
 .Adding a second pattern "B" to our simple bloom filter
 image::images/mbc2_0810.png["Bloom3"]
 
-To test if a pattern is part of a bloom filter, the pattern is hashed by each hash function and the resulting bit pattern is tested against the bit array. If all the bits indexed by the hash functions are set to +1+, then the pattern is _probably_ recorded in the bloom filter. Because the bits may be set because of overlap from multiple patterns, the answer is not certain, but is rather probabilistic. In simple terms, a bloom filter positive match is a "Maybe, Yes."
+패턴이 블룸 필터의 일부인지 테스트하기 위해 패턴은 각 해시 함수에 의해 해시되고 결과 비트 패턴은 비트 배열에 대해 테스트됩니다. 해시 함수에 의해 인덱싱 된 모든 비트가 +1 이상으로 설정되면 패턴이 블룸 필터에 _ 기록 될 수 있습니다. 비트는 여러 패턴과의 겹침으로 인해 설정 될 수 있으므로 대답은 확실하지 않지만 오히려 확률이 높습니다. 간단히 말하면 블룸 필터 포지티브 매치는 "아마도, 그렇습니다"입니다.
 
-<<bloom4>> is an example of testing the existence of pattern "X" in the simple bloom filter. The corresponding bits are set to +1+, so the pattern is probably a match.
+<< bloom4 >>는 단순 블룸 필터에서 패턴 "X"의 존재를 테스트하는 예제입니다. 해당 비트는 +1 이상으로 설정되므로 패턴이 일치 할 가능성이 큽니다.
 
 [[bloom4]]
 [role="smallereighty"]
-.Testing the existence of pattern "X" in the bloom filter. The result is a probabilistic positive match, meaning "Maybe."
+.블룸 필터에서 패턴 "X"의 존재를 테스트합니다. 결과는 "아마"를 의미하는 확정적 인 확실한 일치입니다.
 image::images/mbc2_0811.png["Bloom4"]
 
-On the contrary, if a pattern is tested against the bloom filter and any one of the bits is set to +0+, this proves that the pattern was not recorded in the bloom filter. A negative result is not a probability, it is a certainty. In simple terms, a negative match on a bloom filter is a "Definitely Not!"
+반대로, 패턴이 블룸 필터에 대해 테스트되고 비트 중 하나가 +0+로 설정된 경우, 이는 블룸 필터에 패턴이 기록되지 않았 음을 증명합니다. 부정적인 결과는 확률이 아니라 확률입니다. 간단히 말하면, 블룸 필터의 부정적 일치는 "확실히 아닙니다!"입니다.
 
-<<bloom5>> is an example of testing the existence of pattern "Y" in the simple bloom filter. One of the corresponding bits is set to +0+, so the pattern is definitely not a match.
+<< bloom5 >>는 단순 블룸 필터에서 패턴 "Y"의 존재를 테스트하는 예제입니다. 해당 비트 중 하나가 +0 +로 설정되므로 패턴이 확실히 일치하지 않습니다.
 
-[[bloom5]]
-.Testing the existence of pattern "Y" in the bloom filter. The result is a definitive negative match, meaning "Definitely Not!"
+[블룸 5]
+.블룸 필터에서 패턴 "Y"의 존재를 테스트하십시오. 결과는 "부정적인 의미!"라는 의미의 부정적인 일치입니다.
 image::images/mbc2_0812.png[]
 
-=== How SPV Nodes Use Bloom Filters
+=== SPV 노드가 블룸 필터를 사용하는 방법
 
-Bloom filters are used to filter the transactions (and blocks containing them) that an SPV node receives from its peers, selecting only transactions of interest to the SPV node without revealing which addresses or keys it is interested in.
+블룸 필터는 SPV 노드가 피어로부터받는 트랜잭션 (및이를 포함하는 블록)을 필터링하는 데 사용되며 관심있는 주소 또는 키를 공개하지 않고 SPV 노드에 관심있는 트랜잭션 만 선택합니다.
 
-((("transaction IDs (txid)")))An SPV node will initialize a bloom filter as "empty"; in that state the bloom filter will not match any patterns. The SPV node will then make a list of all the addresses, keys, and hashes that it is interested in. It will do this by extracting the public key hash and script hash and transaction IDs from any UTXO controlled by its wallet. The SPV node then adds each of these to the bloom filter, so that the bloom filter will "match" if these patterns are present in a transaction, without revealing the patterns themselves.
+((("transaction IDs (txid)")))SPV 노드는 블룸 필터를 "비어 있음"으로 초기화합니다. 그 상태에서 블룸 필터는 어떤 패턴과도 일치하지 않을 것입니다. 그러면 SPV 노드는 관심있는 모든 주소, 키 및 해시 목록을 만듭니다. 지갑에서 관리하는 UTXO에서 공개 키 해시 및 스크립트 해시 및 트랜잭션 ID를 추출하여이를 수행합니다. 그런 다음 SPV 노드는 이들 각각을 블룸 필터에 추가하므로 블룸 필터는 패턴이 트랜잭션에 나타나면 패턴 자체를 드러내지 않고 "일치"합니다.
 
-((("bitcoin nodes", "full nodes")))The SPV node will then send a +filterload+ message to the peer, containing the bloom filter to use on the connection. On the peer, bloom filters are checked against each incoming transaction. The full node checks several parts of the transaction against the bloom filter, looking for a match including:
+SPV 노드는 연결에 사용할 블룸 필터를 포함하는 + filterload + 메시지를 피어에 보냅니다. (( "비트 코인 노드", "전체 노드"))) 피어에서 블룸 필터는 들어오는 각 트랜잭션에 대해 검사됩니다. 전체 노드는 블룸 필터에 대한 트랜잭션의 여러 부분을 검사하여 다음을 포함하는 일치 항목을 찾습니다.
 
-* The transaction ID
-* The data components from the locking scripts of each of the transaction outputs (every key and hash in the script)
-* Each of the transaction inputs
-* Each of the input signature data components (or witness scripts)
+* 거래 ID
+* 각 트랜잭션 출력 (스크립트의 모든 키와 해시)의 잠금 스크립트의 데이터 구성 요소
+* 각 거래 입력
+* 입력 된 각 서명 데이터 구성 요소 (또는 감시 스크립트)
 
-By checking against all these components, bloom filters can be used to match public key hashes, scripts, +OP_RETURN+ values, public keys in signatures, or any future component of a smart contract or complex script.
+이러한 모든 구성 요소를 검사하여 블룸 필터를 사용하여 공개 키 해시, 스크립트, + OP_RETURN + 값, 서명의 공개 키 또는 스마트 계약 또는 복잡한 스크립트의 향후 구성 요소를 일치시킬 수 있습니다.
 
-After a filter is established, the peer will then test each transaction's outputs against the bloom filter. Only transactions that match the filter are sent to the node.
+필터가 설정되면 피어는 각 트랜잭션의 출력을 블룸 필터에 대해 테스트합니다. 필터와 일치하는 트랜잭션 만 노드로 전송됩니다.
 
-In response to a +getdata+ message from the node, peers will send a +merkleblock+ message that contains only block headers for blocks matching the filter and a merkle path (see <<merkle_trees>>) for each matching transaction. The peer will then also send +tx+ messages containing the transactions matched by the filter.
+노드의 + getdata + 메시지에 대한 응답으로 피어는 각 일치하는 트랜잭션에 대해 필터와 일치하는 블록에 대한 블록 헤더와 머클 경로 (<< merkle_trees >> 참조) 만 포함하는 + merkleblock + 메시지를 보냅니다. 그러면 피어는 + tx + 필터와 일치하는 트랜잭션이 포함 된 메시지를 보냅니다.
 
-As the full node sends transactions to the SPV node, the SPV node discards any false positives and uses the correctly matched transactions to update its UTXO set and wallet balance. As it updates its own view of the UTXO set, it also modifies the bloom filter to match any future transactions referencing the UTXO it just found. The full node then uses the new bloom filter to match new transactions and the whole process repeats.
+전체 노드가 SPV 노드로 트랜잭션을 보내면 SPV 노드는 오탐 (false positive)을 제거하고 올바르게 일치 된 트랜잭션을 사용하여 UTXO 집합과 지갑 균형을 업데이트합니다. UTXO 세트에 대한 자체 뷰를 업데이트 할 때, 블룸 필터를 수정하여 방금 발견 한 UTXO를 참조하는 향후 트랜잭션과 일치시킵니다. 그런 다음 전체 노드는 새 블룸 필터를 사용하여 새 트랜잭션을 일치시키고 전체 프로세스를 반복합니다.
 
-The node setting the bloom filter can interactively add patterns to the filter by sending a +filteradd+ message. To clear the bloom filter, the node can send a +filterclear+ message. Because it is not possible to remove a pattern from a bloom filter, a node has to clear and resend a new bloom filter if a pattern is no longer desired.
+블룸 필터를 설정하는 노드는 + filteradd + 메시지를 보내어 대화식으로 패턴을 필터에 추가 할 수 있습니다. 블룸 필터를 지우려면 노드가 + filterclear + 메시지를 보낼 수 있습니다. 블룸 필터에서 패턴을 제거 할 수 없기 때문에, 노드는 패턴이 더 이상 필요 없으면 새로운 블룸 필터를 지우고 다시 보내야합니다.
 
-The network protocol and bloom filter mechanism for SPV nodes is defined in http://bit.ly/1x6qCiO[BIP-37 (Peer Services)].((("", startref="BNebloom08")))((("", startref="bloom08")))
+SPV 노드에 대한 네트워크 프로토콜 및 블룸 필터 메커니즘은 http://bit.ly/1x6qCiO[BIP-37 (피어 서비스)]에 정의되어 있습니다. (( "" ", startref ="BNebloom08 ")) ", startref ="bloom08 "))))
 
 
-=== SPV Nodes and Privacy
+=== SPV 노드 및 개인 정보
 
-Nodes that implement SPV have weaker privacy than a full node. A full node receives all transactions and therefore reveals no information about whether it is using some address in its wallet. An SPV node receives a filtered list of transactions related to the addresses that are in its wallet. As a result, it reduces the privacy of the owner.
+SPV를 구현하는 노드는 전체 노드보다 프라이버시가 약합니다. 전체 노드는 모든 트랜잭션을 수신하므로 지갑에 일부 주소를 사용하는지 여부에 대한 정보가 표시되지 않습니다. SPV 노드는 지갑에있는 주소와 관련된 트랜잭션의 필터링 된 목록을받습니다. 결과적으로, 그것은 소유자의 프라이버시를 감소시킵니다.
 
-Bloom filters are a way to reduce the loss of privacy. Without them, an SPV node would have to explicitly list the addresses it was interested in, creating a serious breach of privacy. However, even with bloom filters, an adversary monitoring the traffic of an SPV client or connected to it directly as a node in the P2P network can collect enough information over time to learn the addresses in the wallet of the SPV client.
+블룸 필터는 개인 정보의 손실을 줄이는 방법입니다. SPV 노드가 없으면 SPV 노드는 관심이있는 주소를 명시 적으로 나열해야하므로 심각한 프라이버시 침해가 발생합니다. 그러나 블룸 필터가 있어도 SPV 클라이언트의 트래픽을 모니터링하거나 P2P 네트워크의 노드로 직접 연결되어있는 적들은 시간이 지남에 따라 충분한 정보를 수집하여 SPV 클라이언트의 지갑에있는 주소를 학습 할 수 있습니다.
 
-=== Encrypted and Authenticated Connections
+=== 암호화 및 인증 된 연결
 
-((("bitcoin network", "encrypted connections")))((("encryption")))((("authentication")))Most new users of bitcoin assume that the network communications of a bitcoin node are encrypted. In fact, the original implementation of bitcoin communicates entirely in the clear. While this is not a major privacy concern for full nodes, it is a big problem for SPV nodes.
+((("bitcoin network", "encrypted connections")))((("encryption")))((("authentication")))대부분의 Bitcoin 사용자는 Bitcoin 노드의 네트워크 통신이 암호화되어 있다고 가정합니다. (( "Bitcoin 네트워크", "암호화 연결")) 실제로 비트 코인의 원래 구현은 완전히 명확하게 통신합니다. 이것이 전체 노드에 대한 주요 개인 정보 보호 문제는 아니지만 SPV 노드의 경우 큰 문제입니다.
 
-As a way to increase the privacy and security of the bitcoin P2P network, there are two solutions that provide encryption of the communications: _Tor Transport_ and _P2P Authentication and Encryption_ with BIP-150/151.
+Bitcoin P2P 네트워크의 개인 정보 보호 및 보안을 향상시키는 방법으로 BIP-150 / 151에서 _Tor Transport_ 및 _P2P Authentication 및 Encryption _ 통신의 암호화를 제공하는 두 가지 솔루션이 있습니다.
 
-==== Tor Transport
+==== 토르 수송
 
-((("Tor network")))((("The Onion Routing network (Tor)")))Tor, which stands for _The Onion Routing network_, is a software project and network that offers encryption and encapsulation of data through randomized network paths that offer anonymity, untraceability and privacy. 
+((("Tor network")))((("The Onion Routing network (Tor)")))Tor는 Onion Routing 네트워크 _를 의미하며 무작위로 데이터를 암호화하고 캡슐화하는 소프트웨어 프로젝트 및 네트워크입니다. 익명 성, 추적 불가능 및 개인 정보를 제공하는 네트워크 경로. 
 
-Bitcoin Core offers several configuration options that allow you to run a bitcoin node with its traffic transported over the Tor network. In addition, Bitcoin Core can also offer a Tor hidden service allowing other Tor nodes to connect to your node directly over Tor.
+Bitcoin Core는 Tor 네트워크를 통해 전송되는 트래픽과 함께 Bitcoin 노드를 실행할 수있는 몇 가지 구성 옵션을 제공합니다. 또한 Bitcoin Core는 다른 Tor 노드가 Tor에 직접 노드에 연결할 수 있도록 Tor 숨겨진 서비스를 제공 할 수도 있습니다.
 
-As of Bitcoin Core version 0.12, a node will offer a hidden Tor service automatically if it is able to connect to a local Tor service. If you have Tor installed and the Bitcoin Core process runs as a user with adequate permissions to access the Tor authentication cookie, it should work automatically. Use the +debug+ flag to turn on Bitcoin Core's debugging for the Tor service like this:
+Bitcoin Core 버전 0.12부터 로컬 Tor 서비스에 연결할 수 있다면 노드는 숨겨진 Tor 서비스를 자동으로 제공합니다. Tor를 설치하고 Bitcoin Core 프로세스가 Tor 인증 쿠키에 액세스 할 수있는 적절한 권한을 가진 사용자로 실행되면 자동으로 작동합니다. 다음과 같이 Tor 서비스를위한 Bitcoin Core의 디버깅을 활성화하려면 + debug + 플래그를 사용하십시오 :
 
 ----
 $ bitcoind --daemon --debug=tor
 ----
 
-You should see "tor: ADD_ONION successful" in the logs, indicating that Bitcoin Core has added a hidden service to the Tor network.
+Bitcoin Core가 Tor 네트워크에 숨겨진 서비스를 추가했음을 나타내는 "tor : ADD_ONION successful"이 로그에 표시되어야합니다.
 
-You can find more instructions on running Bitcoin Core as a Tor hidden service in the Bitcoin Core documentation (_docs/tor.md_) and various online tutorials.
+Bitcoin Core 문서 (_docs / tor.md_)와 다양한 온라인 자습서에서 Bitcoin Core를 Tor 숨겨진 서비스로 실행하는 방법에 대한 자세한 지침을 찾을 수 있습니다.
 
-==== Peer-to-Peer Authentication and Encryption
+==== 피어 - 투 - 피어 인증 및 암호화
 
-((("Peer-to-Peer authentication and encryption")))((("bitcoin improvement proposals", "Peer Authentication (BIP-150)")))((("bitcoin improvement proposals", "Peer-to-Peer Communication Encryption (BIP-151)")))Two Bitcoin Improvement Proposals, BIP-150 and BIP-151, add support for P2P authentication and encryption in the bitcoin P2P network.  These two BIPs define optional services that may be offered by compatible bitcoin nodes. BIP-151 enables negotiated encryption for all communications between two nodes that support BIP-151. BIP-150 offers optional peer authentication that allows nodes to authenticate each other's identity using ECDSA and private keys. BIP-150 requires that prior to authentication the two nodes have established encrypted communications as per BIP-151.
+((("Peer-to-Peer authentication and encryption")))((("bitcoin improvement proposals", "Peer Authentication (BIP-150)")))((("bitcoin improvement proposals", "Peer-to-Peer Communication Encryption (BIP-151)")))BIP-151 및 BIP-151)는 Bitcoin P2P 네트워크에서 P2P 인증 및 암호화를 지원합니다. 이 두 BIP는 호환 비트 코인 노드가 제공 할 수있는 선택적 서비스를 정의합니다. BIP-151은 BIP-151을 지원하는 두 노드 간의 모든 통신에 대해 협상 된 암호화를 활성화합니다. BIP-150은 노드가 ECDSA 및 개인 키를 사용하여 서로의 신원을 인증 할 수 있도록하는 선택적 피어 인증을 제공합니다. BIP-150은 인증 전에 두 노드가 BIP-151에 따라 암호화 된 통신을 설정해야합니다.
 
-As of January 2017, BIP-150 and BIP-151 are not implemented in Bitcoin Core. However, the two proposals have been implemented by at least one alternative bitcoin client named bcoin.
+2017 년 1 월부터 BIP-150 및 BIP-151은 Bitcoin Core에서 구현되지 않습니다. 그러나 두 제안은 bcoin이라는 하나 이상의 대체 비트 코 클라이언트에 의해 구현되었습니다.
 
-BIP-150 and BIP-151 allow users to run SPV clients that connect to a trusted full node, using encryption and authentication to protect the privacy of the SPV client.
+BIP-150 및 BIP-151은 사용자가 암호화 및 인증을 사용하여 SPV 클라이언트의 개인 정보를 보호하면서 신뢰할 수있는 전체 노드에 연결하는 SPV 클라이언트를 실행할 수있게합니다.
 
-Additionally, authentication can be used to create networks of trusted bitcoin nodes and prevent Man-in-the-Middle attacks. Finally, P2P encryption, if deployed broadly, would strengthen the resistance of bitcoin to traffic analysis and privacy-eroding surveillance, especially in totalitarian countries where internet use is heavily controlled and monitored.
+또한 인증을 사용하여 신뢰할 수있는 비트 코인 노드의 네트워크를 만들고 Man-in-the-Middle 공격을 방지 할 수 있습니다. 마지막으로, P2P 암호화가 광범위하게 배포되면 트래픽 분석 및 개인 정보 침해 감시, 특히 인터넷 사용이 심하게 통제되고 감시되는 전체주의 국가에서 비트 코인에 대한 저항력이 강화됩니다.
 
-((("", startref="BNospv08")))((("", startref="privacy08")))((("", startref="Sprivacy08")))The standard is defined in https://github.com/bitcoin/bips/blob/master/bip-0150.mediawiki[BIP-150 (Peer Authentication)] and https://github.com/bitcoin/bips/blob/master/bip-0151.mediawiki[BIP-151 (Peer-to-Peer Communication Encryption)].
+((("", startref="BNospv08")))((("", startref="privacy08")))((("", startref="Sprivacy08")))표준은 https : /에 정의되어 있습니다 (( "(" ", startref ="BNospv08 ")) /github.com/bitcoin/bips/blob/master/bip-0150.mediawiki[BIP-150 (피어 인증)] 및 https://github.com/bitcoin/bips/blob/master/bip-0151.mediawiki [ BIP-151 (피어 - 투 - 피어 통신 암호화)]을 참조하십시오.
 
-=== Transaction Pools
+=== 트랜잭션 풀
 
-((("bitcoin network", "transaction pools")))((("transaction pools")))((("memory pools (mempools)")))Almost every node on the bitcoin network maintains a temporary list of unconfirmed transactions called the _memory pool_, _mempool_, or _transaction pool_. Nodes use this pool to keep track of transactions that are known to the network but are not yet included in the blockchain. For example, a wallet node will use the transaction pool to track incoming payments to the user's wallet that have been received on the network but are not yet confirmed.
+((("bitcoin network", "transaction pools")))((("transaction pools")))((("memory pools (mempools)")))비트 코인 네트워크의 거의 모든 노드는 다음과 같은 임시 목록을 유지 관리합니다. (( "비트 코인 네트워크", "트랜잭션 풀"))) _memory pool_, _mempool_ 또는 _transaction pool_이라는 확인되지 않은 트랜잭션. 노드는이 풀을 사용하여 네트워크에 알려져 있지만 아직 블록 체인에 포함되지 않은 트랜잭션을 추적합니다. 예를 들어, Wallet 노드는 트랜잭션 풀을 사용하여 네트워크에서 수신되었지만 아직 확인되지 않은 사용자 지갑으로 들어오는 지불을 추적합니다.
 
-As transactions are received and verified, they are added to the transaction pool and relayed to the neighboring nodes to propagate on the network.
+트랜잭션이 수신되고 확인되면 트랜잭션은 트랜잭션 풀에 추가되고 이웃 노드로 릴레이되어 네트워크에서 전파됩니다.
 
-((("orphan pools")))((("transactions", "orphaned")))Some node implementations also maintain a separate pool of orphaned transactions. If a transaction's inputs refer to a transaction that is not yet known, such as a missing parent, the orphan transaction will be stored temporarily in the orphan pool until the parent transaction arrives.
+((("orphan pools")))((("transactions", "orphaned")))일부 노드 구현은 고아 트랜잭션의 분리 된 풀을 유지합니다. 트랜잭션의 입력이 부모가없는 경우와 같이 아직 알려지지 않은 트랜잭션을 참조하는 경우 상위 트랜잭션이 도착할 때까지 고아 트랜잭션은 고아 풀에 일시적으로 저장됩니다.
 
-When a transaction is added to the transaction pool, the orphan pool is checked for any orphans that reference this transaction's outputs (its children). Any matching orphans are then validated. If valid, they are removed from the orphan pool and added to the transaction pool, completing the chain that started with the parent transaction. In light of the newly added transaction, which is no longer an orphan, the process is repeated recursively looking for any further descendants, until no more descendants are found. Through this process, the arrival of a parent transaction triggers a cascade reconstruction of an entire chain of interdependent transactions by re-uniting the orphans with their parents all the way down the chain.
+트랜잭션이 트랜잭션 풀에 추가되면이 트랜잭션의 출력 (자식)을 참조하는 모든 고아가 없는지 고아 풀을 확인합니다. 일치하는 모든 고아는 유효성을 검사합니다. 유효하면 orphan 풀에서 제거되고 트랜잭션 풀에 추가되어 상위 트랜잭션으로 시작된 체인을 완료합니다. 새로 추가 된 트랜잭션 (더 이상 고아가 아니기 때문에)은 더 이상의 자손을 찾지 않을 때까지 프로세스를 재귀 적으로 반복합니다. 이 프로세스를 통해 부모 트랜잭션이 도착하면 부모와 함께 고아를 전체 체인 아래로 다시 결합하여 상호 의존성 트랜잭션의 전체 체인을 계단식으로 재구성합니다.
 
-Both the transaction pool and orphan pool (where implemented) are stored in local memory and are not saved on persistent storage; rather, they are dynamically populated from incoming network messages. When a node starts, both pools are empty and are gradually populated with new transactions received on the network.
+트랜잭션 풀과 고아 풀 (구현 된 곳)은 모두 로컬 메모리에 저장되며 영구 저장소에 저장되지 않습니다. 오히려 들어오는 네트워크 메시지에서 동적으로 채워집니다. 노드가 시작되면 두 풀이 모두 비어 있고 점진적으로 네트워크에서 수신 된 새 트랜잭션으로 채워집니다.
 
-Some implementations of the bitcoin client also maintain a UTXO database or pool, which is the set of all unspent outputs on the blockchain. Although the name "UTXO pool" sounds similar to the transaction pool, it represents a different set of data. Unlike the transaction and orphan pools, the UTXO pool is not initialized empty but instead contains millions of entries of unspent transaction outputs, everything that is unspent from all the way back to the genesis block. The UTXO pool may be housed in local memory or as an indexed database table on persistent storage.
+Bitcoin 클라이언트의 일부 구현은 UTXO 데이터베이스 또는 풀을 유지 관리합니다.이 풀은 블록 체인에서 사용되지 않은 모든 출력 집합입니다. "UTXO pool"이라는 이름은 트랜잭션 풀과 비슷하게 들리지만 다른 데이터 집합을 나타냅니다. 트랜잭션 및 고아 풀과 달리 UTXO 풀은 빈 상태로 초기화되지 않고 대신 사용되지 않은 트랜잭션 출력 항목이 수백만 개가 포함되어 있습니다.이 모든 항목은 기원 블록으로 돌아 가지 않은 상태로 남아 있습니다. UTXO 풀은 로컬 메모리 또는 영구 저장소의 인덱싱 된 데이터베이스 테이블에 포함될 수 있습니다.
 
-Whereas the transaction and orphan pools represent a single node's local perspective and might vary significantly from node to node depending upon when the node was started or restarted, the UTXO pool represents the emergent consensus of the network and therefore will vary little between nodes. Furthermore, the transaction and orphan pools only contain unconfirmed transactions, while the UTXO pool only contains confirmed outputs.
+트랜잭션과 고아 풀은 단일 노드의 로컬 퍼스펙티브를 나타내며 노드가 시작되거나 다시 시작될 때 노드에 따라 크게 다를 수 있지만 UTXO 풀은 네트워크의 새로운 컨센서스를 나타내므로 노드간에 거의 차이가 없습니다. 또한 트랜잭션 및 고아 풀에는 확인되지 않은 트랜잭션 만 포함되는 반면 UTXO 풀에는 확인 된 출력 만 포함됩니다.
