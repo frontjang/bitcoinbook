@@ -1,212 +1,212 @@
 [role="pagenumrestart"]
 [[ch01_intro_what_is_bitcoin]]
-== Introduction
+== 소개
 
-=== What Is Bitcoin?
+=== Bitcoin은 무엇입니까?
 
-((("bitcoin", "defined", id="GSdefine01")))Bitcoin is a collection of concepts and technologies that form the basis of a digital money ecosystem.  Units of currency called bitcoin are used to store and transmit value among participants in the bitcoin network.  Bitcoin users communicate with each other using the bitcoin protocol primarily via the internet, although other transport networks can also be used. The bitcoin protocol stack, available as open source software, can be run on a wide range of computing devices, including laptops and smartphones, making the technology easily accessible.
+((("bitcoin", "defined", id="GSdefine01")))비트 코인 (Bitcoin)은 디지털 화폐 생태계의 기초를 형성하는 개념과 기술의 모음입니다. (( "bitcoin", "defined", id = "GSdefine01"))) 비트 코인이라고하는 통화 단위는 비트 코인 네트워크의 참가자간에 값을 저장하고 전송하는 데 사용됩니다. Bitcoin 사용자는 주로 인터넷을 통해 Bitcoin 프로토콜을 사용하여 서로 통신하지만 다른 전송 네트워크도 사용할 수 있습니다. 오픈 소스 소프트웨어로 제공되는 Bitcoin 프로토콜 스택은 랩톱 및 스마트 폰을 비롯한 다양한 컴퓨팅 장치에서 실행할 수 있으므로 기술에 쉽게 액세스 할 수 있습니다.
 
-Users can transfer bitcoin over the network to do just about anything that can be done with conventional currencies, including buy and sell goods, send money to people or organizations, or extend credit. Bitcoin can be purchased, sold, and exchanged for other currencies at specialized currency exchanges. Bitcoin in a sense is the perfect form of money for the internet because it is fast, secure, and borderless.
+사용자는 네트워크를 통해 비트 코인을 전송하여 상품 구매 및 판매, 사람이나 조직에 돈을 송금하거나 신용을 연장하는 것과 같은 기존 통화로 할 수있는 모든 일을 할 수 있습니다. Bitcoin은 특별 환전소에서 다른 통화로 구매, 판매 및 교환 할 수 있습니다. Bitcoin은 빠르고 안전하며 경계가 없으므로 인터넷을위한 완벽한 형태의 돈입니다.
 
-Unlike traditional currencies, bitcoin are entirely virtual. There are no physical coins or even digital coins per se. The coins are implied in transactions that transfer value from sender to recipient. Users of bitcoin own keys that allow them to prove ownership of bitcoin in the bitcoin network. With these keys they can sign transactions to unlock the value and spend it by transferring it to a new owner. Keys are often stored in a digital wallet on each user’s computer or smartphone. Possession of the key that can sign a transaction is the only prerequisite to spending bitcoin, putting the control entirely in the hands of each user.
+전통적인 통화와 달리 비트 코인은 전적으로 가상입니다. 실제 동전이나 디지털 동전이 없습니다. 동전은 보낸 사람에서받는 사람에게 가치를 전가시키는 거래에 내재되어 있습니다. 비트 코인 사용자는 비트 코인 네트워크에서 비트 코인의 소유권을 증명할 수있는 자체 키를 소유합니다. 이러한 키를 사용하여 트랜잭션을 서명하여 값의 잠금을 해제하고 새 소유자에게 값을 전송하여 사용할 수 있습니다. 키는 종종 각 사용자의 컴퓨터 또는 스마트 폰의 디지털 지갑에 저장됩니다. 거래에 서명 할 수있는 키를 소유하는 것이 비트 코인을 소비하는 유일한 전제 조건이며 컨트롤을 각 사용자의 손에 완전히 둡니다.
 
-Bitcoin is a distributed, peer-to-peer system. As such there is no "central" server or point of control. Bitcoin are created through a process called "mining," which involves competing to find solutions to a mathematical problem while processing bitcoin transactions. Any participant in the bitcoin network (i.e., anyone using a device running the full bitcoin protocol stack) may operate as a miner, using their computer's processing power to verify and record transactions. Every 10 minutes, on average, someone is able to validate the transactions of the past 10 minutes and is rewarded with brand new bitcoin. Essentially, bitcoin mining decentralizes the currency-issuance and clearing functions of a central bank and replaces the need for any central bank.
+Bitcoin은 분산 된 피어 - 투 - 피어 시스템입니다. 따라서 "중앙"서버 또는 제어 지점이 없습니다. Bitcoin은 비트 동전 트랜잭션을 처리하는 동안 수학 문제에 대한 솔루션을 찾기 위해 경쟁하는 "마이닝"이라는 프로세스를 통해 만들어집니다. 비트 코인 네트워크에 참여하는 모든 참가자 (즉, 전체 비트 코인 프로토콜 스택을 실행하는 장치를 사용하는 모든 사용자)는 컴퓨터의 처리 능력을 사용하여 트랜잭션을 확인하고 기록하는 광부로 작동 할 수 있습니다. 평균 10 분마다 누군가가 지난 10 분간의 트랜잭션을 검증 할 수 있으며 새로운 비트 코인으로 보상을받습니다. 본질적으로 비트 코닝 광업은 중앙 은행의 통화 발행 및 청산 기능을 분권화하고 중앙 은행의 필요성을 대체합니다.
 
-The bitcoin protocol includes built-in algorithms that regulate the mining function across the network.  The difficulty of the processing task that miners must perform is adjusted dynamically so that, on average, someone succeeds every 10 minutes regardless of how many miners (and how much processing) are competing at any moment.  The protocol also halves the rate at which new bitcoin are created every 4 years, and limits the total number of bitcoin that will be created to a fixed total just below 21 million coins. The result is that the number of bitcoin in circulation closely follows an easily predictable curve that approaches 21 million by the year 2140.  Due to bitcoin's diminishing rate of issuance, over the long term, the bitcoin currency is deflationary. Furthermore, bitcoin cannot be inflated by "printing" new money above and beyond the expected issuance rate.
+Bitcoin 프로토콜에는 네트워크에서 마이닝 기능을 제어하는 ​​기본 제공 알고리즘이 포함되어 있습니다. 광부가 수행해야하는 처리 작업의 어려움은 동적으로 조정되어 어느 순간에 얼마나 많은 광부 (및 처리량)가 경쟁하는지에 관계없이 평균 10 분마다 성공합니다. 이 프로토콜은 또한 새로운 비트 코인이 4 년마다 만들어지는 비율을 반으로 줄이고 생성되는 비트 코인의 총 수를 2 천 1 백만 동전 바로 아래의 고정 된 총계로 제한합니다. 그 결과, 유통되는 비트 코인의 수는 2140 년에 2100 만 개에 달하는 예측 가능한 곡선을 따르고 있습니다. 비트 코인의 발행 비율이 감소함에 따라 장기간에 걸쳐 비트 코 인 통화는 디플레가됩니다. 또한, 비트 코인은 예상 된 발행 금리 이상으로 새로운 돈을 "인쇄"함으로써 부풀려 질 수 없습니다.
 
-Behind the scenes, bitcoin is also the name of the protocol, a peer-to-peer network, and a distributed computing innovation. The bitcoin currency is really only the first application of this invention. Bitcoin represents the culmination of decades of research in cryptography and distributed systems and includes four key innovations brought together in a unique and powerful combination. Bitcoin consists of:
+그 뒤에서도 비트 코인은 프로토콜, 피어 투 피어 네트워크 및 분산 컴퓨팅 혁신의 이름이기도합니다. 비트 코인 통화는 실제로 본 발명의 제 1 응용 예일뿐입니다. Bitcoin은 암호화 및 분산 시스템 분야에서 수십 년 간의 연구의 절정을 의미하며 독특하고 강력한 조합으로 결합 된 네 가지 핵심 혁신을 포함합니다. Bitcoin은 다음으로 구성됩니다.
 
-* A decentralized peer-to-peer network (the bitcoin protocol)
-* A public transaction ledger (the blockchain)
-* ((("mining and consensus", "consensus rules", "satisfying")))A set of rules for independent transaction validation and currency issuance (consensus rules)
-* A mechanism for reaching global decentralized consensus on the valid blockchain (Proof-of-Work algorithm)
+* 분산 형 피어 투 피어 네트워크 (비트 코인 프로토콜)
+* 공공 거래 원장 (블록 체인)
+* ((( "광업 및 합의", "합의 규칙", "만족"))) 독립적 인 거래 검증 및 통화 발행 규칙 세트 (합의 규칙)
+* 유효 블록 체인 (Proof-of-Work 알고리즘)에 대한 글로벌 분산 컨센서스에 도달하기위한 메커니즘
 
-As a developer, I see bitcoin as akin to the internet of money, a network for propagating value and securing the ownership of digital assets via distributed computation. There's a lot more to bitcoin than first meets the eye.
+개발자로서, 나는 돈의 인터넷과 같은 비트 코인, 분산 된 컴퓨팅을 통한 디지털 자산의 가치를 전파하고 소유권을 확보하기위한 네트워크를보고 있습니다. 처음에는 눈을 마주보다 비트 코인이 훨씬 더 많습니다.
 
-In this chapter we'll get started by explaining some of the main concepts and terms, getting the necessary software, and using bitcoin for simple transactions. In following chapters we'll start unwrapping the layers of technology that make bitcoin possible and examine the inner workings of the bitcoin network and protocol.((("", startref="GSdefine01")))
+이 장에서는 몇 가지 주요 개념과 용어를 설명하고, 필요한 소프트웨어를 얻고, 간단한 거래에 bitcoin을 사용하는 방법을 설명합니다. 다음 장에서는 비트 코인 (bitcoin)을 가능하게하는 기술 계층의 언 래핑을 시작하고 비트 코넷 네트워크 및 프로토콜의 내부 동작을 살펴 봅니다.((("", startref="GSdefine01")))
 
 [role="pagebreak-before less_space"]
 .Digital Currencies Before Bitcoin
 ****
 
-((("digital currencies", "prior to bitcoin")))The emergence of viable digital money is closely linked to developments in cryptography. This is not surprising when one considers the fundamental challenges involved with using bits to represent value that can be exchanged for goods and services. Three basic questions for anyone accepting digital money are:
+((("digital currencies", "prior to bitcoin")))실행 가능한 디지털 화폐의 출현은 암호 기술의 개발과 밀접하게 관련되어 있습니다. 비트를 사용하여 상품 및 서비스와 교환 할 수있는 가치를 표현하는 것과 관련된 근본적인 문제를 고려할 때 이것은 놀라운 일이 아닙니다. 디지털 돈을받는 사람을위한 세 가지 기본 질문은 다음과 같습니다.
 
-1.     Can I trust that the money is authentic and not counterfeit?
-2.     Can I trust that the digital money can only be spent once (known as the “double-spend” problem)?
-3.     Can I be sure that no one else can claim this money belongs to them and not me? 
+1. 돈은 위조가 아니라 진품임을 믿을 수 있습니까?
+2. 디지털 돈을 한 번만 쓸 수 있다고 믿을 수 있습니까 ( "이중 지출"문제로 알려짐)?
+3. 아무도이 돈이 내가 아닌 돈에 속한다고 주장 할 수 있습니까?
  
-Issuers of paper money are constantly battling the counterfeiting problem by using increasingly sophisticated papers and printing technology.  Physical money addresses the double-spend issue easily because the same paper note cannot be in two places at once. Of course, conventional money is also often stored and transmitted digitally. In these cases, the counterfeiting and double-spend issues are handled by clearing all electronic transactions through central authorities that have a global view of the currency in circulation. For digital money, which cannot take advantage of esoteric inks or holographic strips, cryptography provides the basis for trusting the legitimacy of a user’s claim to value.  Specifically, cryptographic digital signatures enable a user to sign a digital asset or transaction proving the ownership of that asset. With the appropriate architecture, digital signatures also can be used to address the double-spend issue.
+점점 더 복잡한 서류와 인쇄 기술을 사용하여 지폐 발행자는 위조 문제를 끊임없이 해결하고 있습니다. 동일한 종이 노트가 한 번에 두 곳에있을 수 없기 때문에 실제 돈은 이중 지출 문제를 쉽게 해결합니다. 물론 기존의 돈은 종종 디지털 방식으로 저장되고 전송됩니다. 이 경우 위조 및 이중 지출 문제는 유통되는 통화에 대한 세계적인 시각을 가진 중앙 기관을 통해 모든 전자 거래를 해결함으로써 처리됩니다. 난해한 잉크 나 홀로 그래픽 스트립을 이용할 수없는 디지털 돈의 경우, 암호 법은 사용자의 가치 주장의 정당성을 신뢰하는 근거를 제공합니다. 특히, 암호화 디지털 서명을 통해 사용자는 해당 자산의 소유권을 증명하는 디지털 자산 또는 거래에 서명 할 수 있습니다. 적절한 아키텍처를 사용하면 이중 서명 문제를 해결하기 위해 디지털 서명을 사용할 수도 있습니다.
 
-When cryptography started becoming more broadly available and understood in the late 1980s, many researchers began trying to use cryptography to build digital currencies. These early digital currency projects issued digital money, usually backed by a national currency or precious metal such as gold.
+1980 년대 후반에 암호가 널리 보급되고 이해되기 시작했을 때 많은 연구원들이 디지털 통화를 만들기 위해 암호를 사용하기 시작했습니다. 이 초기 디지털 통화 프로젝트는 일반적으로 국가 통화 또는 금과 같은 귀금속으로 뒷받침되는 디지털 화폐를 발행했습니다.
 
-((("decentralized systems", "vs. centralized", secondary-sortas="centralized")))Although these earlier digital currencies worked, they were centralized and, as a result, were easy to attack by governments and hackers. Early digital currencies used a central clearinghouse to settle all transactions at regular intervals, just like a traditional banking system. Unfortunately, in most cases these nascent digital currencies were targeted by worried governments and eventually litigated out of existence. Some failed in spectacular crashes when the parent company liquidated abruptly. To be robust against intervention by antagonists, whether legitimate governments or criminal elements, a _decentralized_ digital currency was needed to avoid a single point of attack. Bitcoin is such a system, decentralized by design, and free of any central authority or point of control that can be attacked or corrupted.
+((("decentralized systems", "vs. centralized", secondary-sortas="centralized")))이러한 초기 디지털 통화는 효과가 있었지만 중앙 집중식 이었기 때문에 결과적으로 정부와 해커가 쉽게 공격 할 수있었습니다. 초기 디지털 통화는 중앙 은행을 사용하여 정기적 인 거래로 모든 거래를 처리했습니다. 이는 기존의 은행 시스템과 마찬가지입니다. 불행히도, 대부분의 경우 이러한 초기 디지털 통화는 걱정되는 정부의 목표가되어 결국 결국 소멸되었습니다. 모회사가 갑작스럽게 청산했을 때 엄청난 사고가 발생하지 못했습니다. 합법적 인 정부 또는 범죄 요소에 관계없이 적대자의 개입에 강하게 대처하기 위해 단일 지점을 피하기 위해 _ 전자 화폐가 필요했습니다. 비트 코인 (Bitcoin)은 설계에 의해 분권화되고 공격받을 수 있거나 손상 될 수있는 중앙 권한이나 통제 지점이없는 그러한 시스템입니다.
 
 ****
 
-=== History of Bitcoin
+=== Bitcoin의 역사
 
-((("Nakamoto, Satoshi")))((("distributed computing")))((("bitcoin", "history of")))Bitcoin was invented in 2008 with the publication of a paper titled "Bitcoin: A Peer-to-Peer Electronic Cash System,"footnote:["Bitcoin: A Peer-to-Peer Electronic Cash System," Satoshi Nakamoto (https://bitcoin.org/bitcoin.pdf).] written under the alias of Satoshi Nakamoto (see <<satoshi_whitepaper>>). Nakamoto combined several prior inventions such as b-money and HashCash to create a completely decentralized electronic cash system that does not rely on a central authority for currency issuance or settlement and validation of transactions. ((("Proof-of-Work algorithm")))((("decentralized systems", "consensus in")))((("mining and consensus", "Proof-of-Work algorithm")))The key innovation was to use a distributed computation system (called a "Proof-of-Work" algorithm) to conduct a global "election" every 10 minutes, allowing the decentralized network to arrive at _consensus_ about the state of transactions. ((("double-spend problem")))((("spending bitcoin", "double-spend problem")))This elegantly solves the issue of double-spend where a single currency unit can be spent twice. Previously, the double-spend problem was a weakness of digital currency and was addressed by clearing all transactions through a central clearinghouse.
+((("Nakamoto, Satoshi")))((("distributed computing")))((("bitcoin", "history of")))비트 코인은 2008 년 "비트 코인 (Bitcoin)"이라는 제목의 논문을 발표하면서 발명되었습니다. Peer-to-Peer Electronic Cash System "이라는 별명으로 작성된 [Bitcoin : Peer-to-Peer 전자 현금 시스템, Satoshi Nakamoto (https://bitcoin.org/bitcoin.pdf). Satoshi Nakamoto (<< satoshi_whitepaper >> 참조). 나카 모토 (Nakamoto)는 b-money 및 HashCash와 같은 몇 가지 이전 발명을 결합하여 통화 발행 또는 결제 및 거래 검증을위한 중앙 기관에 의존하지 않는 완전히 분산 된 전자 현금 시스템을 만들었습니다. ((( "광산 및 합의,"Proof-of-Work 알고리즘 ")))) () (("( ""Proof-of-Work 알고리즘 ")) 핵심 혁신은 분산 컴퓨팅 시스템 ( "Proof-of-Work"알고리즘이라고 함)을 사용하여 매 10 분마다 글로벌 "선거"를 수행하여 분산 네트워크가 거래 상태에 관해 _consensus_에 도달 할 수있게하는 것이 었습니다. ((( "지출 이중 지출", "이중 지출 문제"))) 이것은 단일 통화 단위를 두 번 쓸 수있는 이중 지출 문제를 우아하게 해결합니다. 이전에는 이중 지출 문제가 디지털 통화 약점이었으며 중앙 거래 청 (clearinghouse)을 통해 모든 거래를 처리함으로써 처리되었습니다.
 
-The bitcoin network started in 2009, based on a reference implementation published by Nakamoto and since revised by many other programmers. The implementation of the Proof-of-Work algorithm (mining) that provides security and resilience for bitcoin has increased in power exponentially, and now exceeds the combined processing power of the world's top supercomputers. Bitcoin's total market value has at times exceeded $20 billion US dollars, depending on the bitcoin-to-dollar exchange rate. The largest transaction processed so far by the network was $150 million US dollars, transmitted instantly and processed without any fees.
+Bitcoin 네트워크는 나카 모토 (Nakamoto)가 출판 한 참조 구현을 기반으로 2009 년에 시작되었으며 많은 다른 프로그래머들에 의해 개정되었습니다. 비트 코인에 대한 보안 및 복원력을 제공하는 증명 작업 알고리즘 (마이닝) 구현은 기하 급수적으로 증가했으며 현재 세계 최고의 수퍼 컴퓨터의 처리 능력을 능가합니다. 비트 코인의 시가 총액은 때때로 비트 코인 달러 환율에 따라 200 억 달러를 초과합니다. 지금까지 네트워크로 처리 된 최대 거래액은 1 억 5000 만 달러로 즉시 전송되고 수수료없이 처리되었습니다.
 
-Satoshi Nakamoto withdrew from the public in April 2011, leaving the responsibility of developing the code and network to a thriving group of volunteers. The identity of the person or people behind bitcoin is still unknown. ((("open source licenses")))However, neither Satoshi Nakamoto nor anyone else exerts individual control over the bitcoin system, which operates based on fully transparent mathematical principles, open source code, and consensus among participants. The invention itself is groundbreaking and has already spawned new science in the fields of distributed computing, economics, and econometrics.
+Satoshi Nakamoto는 2011 년 4 월에 대중을 떠났으 며 번창하는 자원 봉사자 그룹에 코드와 네트워크를 개발할 책임이 있습니다. 비트 코인 뒤에있는 사람 또는 사람의 신원은 아직 알려지지 않았습니다. ((( "(오픈 소스 라이센스)))) 그러나 나토 모토 사토시와 그 누구도 완전한 투명한 수학 원리, 공개 소스 코드 및 참가자 간의 합의에 기반한 비트 코인 시스템을 개별적으로 제어 할 수 없습니다. 발명 자체가 획기적이며 이미 분산 컴퓨팅, 경제 및 계량 경제학 분야에서 새로운 과학을 창출했습니다.
 
-
-.A Solution to a Distributed Computing Problem
+. 분산 컴퓨팅 문제에 대한 해결책
 ****
-((("Byzantine Generals&#x27; Problem")))Satoshi Nakamoto's invention is also a practical and novel solution to a problem in distributed computing, known as the "Byzantine Generals' Problem." Briefly, the problem consists of trying to agree on a course of action or the state of a system by exchanging information over an unreliable and potentially compromised network. ((("central trusted authority")))Satoshi Nakamoto's solution, which uses the concept of Proof-of-Work to achieve consensus _without a central trusted authority_, represents a breakthrough in distributed computing and has wide applicability beyond currency. It can be used to achieve consensus on decentralized networks to prove the fairness of elections, lotteries, asset registries, digital notarization, and more.
+((("Byzantine Generals&#x27; Problem")))Satoshi Nakamoto의 발명은 "Byzantine Generals"문제로 알려진 분산 컴퓨팅 문제에 대한 실용적이고 새로운 솔루션입니다. 간단히 말해이 문제는 신뢰할 수없고 잠재적으로 손상된 네트워크를 통해 정보를 교환함으로써 조치 과정 또는 시스템 상태에 동의하는 것으로 구성됩니다. (Central Trusted Authority))) Satoshi Nakamoto의 솔루션은 분산 된 컴퓨팅의 획기적인 발전을 의미하며 통화 이외의 다양한 적용 범위를 가지고 있습니다. 선거, 복권, 자산 등록, 디지털 공증 등의 공정성을 입증하기 위해 분산 네트워크에 대한 합의를 도출하는 데 사용될 수 있습니다.
 ****
 
 
 [[user-stories]]
-=== Bitcoin Uses, Users, and Their Stories
+=== Bitcoin 사용, 사용자 및 그들의 이야기
 
-((("bitcoin", "use cases", id="GSuses01")))Bitcoin is an innovation in the ancient technology of money. At its core, money simply facilitates the exchange of value between people. Therefore, in order to fully understand bitcoin and its uses, we'll examine it from the perspective of people using it. Each of the people and their stories, as listed here, illustrates one or more specific use cases. We'll be seeing them throughout the book:
+((("bitcoin", "use cases", id="GSuses01")))Bitcoin은 고대 기술의 혁신입니다. 핵심은 돈이 단순히 사람들 간의 가치 교환을 촉진한다는 것입니다. 그러므로 비트 코인과 그 사용법을 완전히 이해하기 위해 그것을 사용하는 사람의 관점에서 살펴 보겠습니다. 여기에 나열된 사람들과 이야기의 각각은 하나 이상의 구체적인 사용 사례를 보여줍니다. 우리는 책 전체에 걸쳐 그들을 보게 될 것입니다.
 
-North American low-value retail::
-((("use cases", "retail sales")))Alice lives in Northern California's Bay Area. She has heard about bitcoin from her techie friends and wants to start using it. We will follow her story as she learns about bitcoin, acquires some, and then spends some of her bitcoin to buy a cup of coffee at Bob's Cafe in Palo Alto. This story will introduce us to the software, the exchanges, and basic transactions from the perspective of a retail consumer.
+북미 저가형 소매점 ::
+((( "유스 케이스", "소매 판매")) 앨리스는 캘리포니아 북부 지역에 거주합니다. 그녀는 친구의 비트 코에 대해 듣고 그것을 사용하기 시작했습니다. 그녀는 비트 코인에 대해 배우고, 일부를 사서 팔로 알토에있는 밥스 카페에서 커피 한 잔을 사기 위해 비트 코인을 소비합니다. 이 이야기는 소매 소비자의 관점에서 소프트웨어, 교환 및 기본 거래를 소개합니다.
 
-North American high-value retail::
-Carol is an art gallery owner in San Francisco. She sells expensive paintings for bitcoin. This story will introduce the risks of a "51%" consensus attack for retailers of high-value items.
+북미 고 부가가치 소매점 ::
+Carol은 샌프란시스코의 미술관 주인입니다. 그녀는 비트 코인을 위해 고가의 그림을 파는 중이다. 이 이야기는 가치가 높은 품목의 소매업 자에 대한 "51 %"합의 공격의 위험을 소개합니다.
 
-Offshore contract services::
-((("offshore contract services")))((("use cases", "offshore contract services")))Bob, the cafe owner in Palo Alto, is building a new website. He has contracted with an Indian web developer, Gopesh, who lives in Bangalore, India. Gopesh has agreed to be paid in bitcoin. This story will examine the use of bitcoin for outsourcing, contract services, and international wire transfers.
+근해 계약 서비스 ::
+((( "해외 계약 서비스"))) (( "유스 케이스", "해외 계약 서비스")) 팔로 알토의 카페 주인 인 Bob은 새 웹 사이트를 개설하고 있습니다. 인도의 방갈로 (Bangalore)에 사는 Gopesh 인도 웹 개발자와 계약을 맺었습니다. Gopesh는 비트 코인으로 지불하기로 동의했습니다. 이 이야기는 아웃소싱, 계약 서비스 및 국제 전신 송금에 대한 비트 코인의 사용을 검토합니다.
 
-Web store::
-((("use cases", "web store")))Gabriel is an enterprising young teenager in Rio de Janeiro, running a small web store that sells bitcoin-branded t-shirts, coffee mugs, and stickers. Gabriel is too young to have a bank account, but his parents are encouraging his entrepreneurial spirit.
+웹 스토어::
+Gabriel은 비트 코인 티셔츠, 커피 머그잔 및 스티커를 판매하는 작은 웹 스토어를 운영하는 리우데 자네이루의 진취적인 젊은 십대입니다. (( "유스 케이스", "웹 스토어")) 가브리엘은 은행 계좌를 보유하기에는 너무 어리지만 부모님은 기업가 정신을 북돋아줍니다.
 
-Charitable donations::
-((("charitable donations")))((("use cases", "charitable donations")))Eugenia is the director of a children's charity in the Philippines. Recently she has discovered bitcoin and wants to use it to reach a whole new group of foreign and domestic donors to fundraise for her charity. She's also investigating ways to use bitcoin to distribute funds quickly to areas of need. This story will show the use of bitcoin for global fundraising across currencies and borders and the use of an open ledger for transparency in charitable organizations.
+자선 기부 ::
+(( "("자선 기부금 "))) (("유스 케이스 ","자선 기부금 "))) Eugenia는 필리핀 아동 자선 단체의 이사입니다. 최근에 그녀는 비트 코인 (bitcoin)을 발견했으며, 자선 기금 모금을 위해 완전히 새로운 그룹의 외국 및 국내 기부자들에게 다가 가기 위해 그것을 사용하기를 원합니다. 그녀는 또한 필요한 분야에 자금을 신속하게 분배하기 위해 비트 코인 (bitcoin)을 사용하는 방법을 조사하고 있습니다. 이 이야기는 화폐와 국경에 걸친 글로벌 기금 모금과 자선 단체의 투명성을위한 공개 원장 사용에 대한 비트 코인 사용을 보여줍니다.
 
-Import/export::
-((("use cases", "import/export")))Mohammed is an electronics importer in Dubai. He's trying to use bitcoin to buy electronics from the United States and China for import into the UAE to accelerate the process of payments for imports. This story will show how bitcoin can be used for large business-to-business international payments tied to physical goods.
+수입 수출::
+((( "유스 케이스", "가져 오기 / 내보내기"))) 모하메드는 두바이 전자 제품 수입 업체입니다. 그는 비트 코인 (bitcoin)을 사용하여 미국과 중국으로부터 전자 제품을 구입하여 UAE로 수입하여 수입에 대한 지불 과정을 가속화하려고합니다. 이 이야기는 비트 코인이 실제 물품에 연결된 대규모 B2B 국제 결제에 어떻게 사용될 수 있는지 보여줍니다.
 
-Mining for bitcoin::
-((("use cases", "mining for bitcoin")))Jing is a computer engineering student in Shanghai. He has built a "mining" rig to mine for bitcoin using his engineering skills to supplement his income. This story will examine the "industrial" base of bitcoin: the specialized equipment used to secure the bitcoin network and issue new currency.
+bitcoin 마이닝 ::
+(( "유스 케이스", "비트 동전 채광")) Jing은 상하이의 컴퓨터 공학 학생입니다. 그는 수입을 보충하기 위해 공학 기술을 사용하여 비트 코인을 채굴하는 광산 장비를 만들었습니다. 이 이야기는 비트 코인 네트워크의 보안과 새로운 통화 발행에 사용되는 특수 장비 인 비트 코인의 "산업"기반을 조사합니다.
 
-Each of these stories is based on the real people and real industries currently using bitcoin to create new markets, new industries, and innovative solutions to global economic issues.((("", startref="GSuses01")))
+이 이야기들은 각각 현재 새로운 시장, 새로운 산업 및 글로벌 경제 이슈에 대한 혁신적인 솔루션을 창출하기 위해 비트 코인을 사용하는 실제 사람들과 실제 산업에 기반을두고 있습니다 (( ","startref = "GSuses01"))))
 
-=== Getting Started
+=== 시작하기
 
-((("getting started", "wallet selection", id="GSwallet01")))((("wallets", "selecting", id="Wselect01")))((("bitcoin", "getting started", id="BCbasic01")))Bitcoin is a protocol that can be accessed using a client application that speaks the protocol. A "bitcoin wallet" is the most common user interface to the bitcoin system, just like a web browser is the most common user interface for the HTTP protocol. There are many implementations and brands of bitcoin wallets, just like there are many brands of web browsers (e.g., Chrome, Safari, Firefox, and Internet Explorer). And just like we all have our favorite browsers (Mozilla Firefox, Yay!) and our villains (Internet Explorer, Yuck!), bitcoin wallets vary in quality, performance, security, privacy, and reliability. There is also a reference implementation of the bitcoin protocol that includes a wallet, known as the "Satoshi Client" or "Bitcoin Core," which is derived from the original implementation written by Satoshi Nakamoto.
+((("getting started", "wallet selection", id="GSwallet01")))((("wallets", "selecting", id="Wselect01")))((("bitcoin", "getting started", id="BCbasic01")))Bitcoin은 프로토콜을 사용하는 클라이언트 응용 프로그램을 사용하여 액세스 할 수있는 프로토콜입니다. "bitcoin wallet"은 비트 코인 시스템에 대한 가장 일반적인 사용자 인터페이스입니다. 웹 브라우저가 HTTP 프로토콜에 대한 가장 일반적인 사용자 인터페이스 인 것처럼. 많은 브랜드의 웹 브라우저 (예 : Chrome, Safari, Firefox 및 Internet Explorer)가있는 것처럼 비트 코인 지갑의 구현과 브랜드가 다양합니다. 비트 크로 지갑은 품질, 성능, 보안, 개인 정보 보호 및 안정성면에서 각기 다른 브라우저 (Mozilla Firefox, Yay!)와 악당 (Internet Explorer, Yuck! 또한 Satoshi Nakamoto가 작성한 원래 구현에서 파생 된 "Satoshi Client"또는 "Bitcoin Core"라고하는 Wallet을 포함하는 Bitcoin 프로토콜의 참조 구현이 있습니다.
 
-==== Choosing a Bitcoin Wallet
+==== Bitcoin 지갑 선택하기
 
-((("security", "wallet selection")))Bitcoin wallets are one of the most actively developed applications in the bitcoin ecosystem. There is intense competition, and while a new wallet is probably being developed right now, several wallets from last year are no longer actively maintained. Many wallets focus on specific platforms or specific uses and some are more suitable for beginners while others are filled with features for advanced users. Choosing a wallet is highly subjective and depends on the use and user expertise. It is therefore impossible to recommend a specific brand or project of wallet. However, we can categorize bitcoin wallets according to their platform and function and provide some clarity about all the different types of wallets that exist. Better yet, moving money between bitcoin wallets is easy, cheap, and fast, so it is worth trying out several different wallets until you find one that fits your needs.
+((("security", "wallet selection")))Bitcoin 지갑은 비트 동전 생태계에서 가장 활발하게 개발 된 응용 프로그램 중 하나입니다. 치열한 경쟁이 벌어지고 있으며, 새 지갑이 현재 개발되고있는 중이지만, 작년의 지갑은 더 이상 활발히 관리되지 않습니다. 많은 지갑은 특정 플랫폼 또는 특정 용도에 중점을두고 있으며, 일부는 초보자에게 더 적합하고 다른 일부는 고급 사용자 용 기능으로 가득합니다. 지갑을 선택하는 것은 주관적이며 사용 및 사용자 전문성에 달려 있습니다. 따라서 특정 브랜드 나 지갑 프로젝트를 추천하는 것은 불가능합니다. 그러나 Bitcoin 지갑을 플랫폼 및 기능에 따라 분류하고 존재하는 모든 종류의 지갑에 대해 명확한 정보를 제공 할 수 있습니다. 더 나아가 비트 코인 지갑간에 돈을 이동하는 것은 쉽고 저렴하며 빠르기 때문에 필요에 맞는 지갑을 찾을 때까지 여러 가지 지갑을 시험해 볼 가치가 있습니다.
 
 [role="pagebreak-before"]
-Bitcoin wallets can be categorized as follows, according to the platform:
+Bitcoin 지갑은 플랫폼에 따라 다음과 같이 분류 할 수 있습니다.
 
-Desktop wallet:: A desktop wallet was the first type of bitcoin wallet created as a reference implementation and many users run desktop wallets for the features, autonomy, and control they offer. Running on general-use operating systems such as Windows and Mac OS has certain security disadvantages however, as these platforms are often insecure and poorly configured.
+데스크탑 지갑 :: 데스크탑 지갑은 레퍼런스 구현으로 만들어진 비트 동전 지갑의 첫 번째 유형이었고 많은 사용자가 제공하는 기능, 자율성 및 제어 기능을 위해 데스크톱 지갑을 실행합니다. 그러나 Windows 및 Mac OS와 같은 범용 운영 체제에서 실행하는 경우에는 보안상의 단점이 있습니다. 이러한 플랫폼은 안전하지 못하고 제대로 구성되지 않은 경우가 많기 때문입니다.
 
-Mobile wallet:: A mobile wallet is the most common type of bitcoin wallet. Running on smart-phone operating systems such as Apple iOS and Android, these wallets are often a great choice for new users. Many are designed for simplicity and ease-of-use, but there are also fully featured mobile wallets for power users.
+모바일 지갑 :: 모바일 지갑은 가장 일반적으로 사용되는 비트 동전 지갑입니다. Apple iOS 및 Android와 같은 스마트 폰 운영 체제에서 실행되는이 지갑은 종종 신규 사용자에게 적합한 선택입니다. 대부분은 단순하고 사용하기 쉽도록 설계되었지만 고급 사용자를위한 완벽한 기능의 모바일 지갑도 있습니다.
 
-Web wallet:: Web wallets are accessed through a web browser and store the user's wallet on a server owned by a third party. This is similar to webmail in that it relies entirely on a third-party server. Some of these services operate using client-side code running in the user's browser, which keeps control of the bitcoin keys in the hands of the user. Most, however, present a compromise by taking control of the bitcoin keys from users in exchange for ease-of-use. It is inadvisable to store large amounts of bitcoin on third-party systems.
+Web wallet :: Web wallet은 웹 브라우저를 통해 액세스하고 사용자의 지갑을 제 3자가 소유 한 서버에 저장합니다. 이것은 타사 서버에 전적으로 의존한다는 점에서 웹 메일과 유사합니다. 이러한 서비스 중 일부는 사용자의 브라우저에서 실행중인 클라이언트 측 코드를 사용하여 작동하며 사용자의 비트 코인 키를 계속 제어합니다. 그러나 대부분의 사용자는 사용하기 쉽도록 비트 코인 키를 제어함으로써 절충안을 제시합니다. 써드 파티 시스템에 대량의 비트 코킹을 저장하는 것은 권장하지 않습니다.
 
-Hardware wallet:: Hardware wallets are devices that operate a secure self-contained bitcoin wallet on special-purpose hardware. They are operated via USB with a desktop web browser or via near-field-communication (NFC) on a mobile device. By handling all bitcoin-related operations on the specialized hardware, these wallets are considered very secure and suitable for storing large amounts of bitcoin.
+하드웨어 지갑 : 하드웨어 지갑은 특수 목적 하드웨어에서 안전하게 자체 포함 비트 코인 지갑을 작동하는 장치입니다. 이 장치는 데스크탑 웹 브라우저가있는 USB를 통해 또는 모바일 장치의 근거리 통신 (NFC)을 통해 작동합니다. 특수 하드웨어에서 모든 비트 동전 관련 작업을 처리함으로써이 지갑은 매우 안전하고 다량의 비트 코킹을 저장하는 데 적합합니다.
 
-Paper wallet:: ((("cold storage", seealso="storage")))((("storage", "cold storage")))The keys controlling bitcoin can also be printed for long-term storage. These are known as paper wallets even though other materials (wood, metal, etc.) can be used. Paper wallets offer a low-tech but highly secure means of storing bitcoin long term. Offline storage is also often referred to as _cold storage_.
+종이 지갑 : (( "저온 저장", seealso = "저장"))) (( "저장", "저온 저장"))) 비트 코인을 제어하는 ​​키는 장기 보관을 위해 인쇄 할 수도 있습니다. 다른 재료 (목재, 금속 등)를 사용할 수있는 경우에도 종이 지갑이라고합니다. 종이 지갑은 낮은 기술력을 자랑하지만 비트 코인을 장기간 보관할 수있는 매우 안전한 수단입니다. 오프라인 스토리지는 _cold storage_라고도합니다.
 
-Another way to categorize bitcoin wallets is by their degree of autonomy and how they interact with the bitcoin network:
+비트 동전 지갑을 분류하는 또 다른 방법은 자율성과 비트 코인 네트워크와 상호 작용하는 방법입니다.
 
-Full-node client:: ((("full-node clients")))A full client, or "full node," is a client that stores the entire history of bitcoin transactions (every transaction by every user, ever), manages users' wallets, and can initiate transactions directly on the bitcoin network. A full node handles all aspects of the protocol and can independently validate the entire blockchain and any transaction. A full-node client consumes substantial computer resources (e.g., more than 125 GB of disk, 2 GB of RAM) but offers complete autonomy and independent transaction verification.
+전체 노드 클라이언트 :: (( "전체 노드 클라이언트"))) 전체 클라이언트 또는 "전체 노드"는 Bitcoin 트랜잭션의 모든 기록을 저장하는 클라이언트입니다 (모든 사용자가 모든 트랜잭션을 처리합니다). 사용자의 지갑을 보호하고 Bitcoin 네트워크에서 직접 트랜잭션을 시작할 수 있습니다. 전체 노드는 프로토콜의 모든 측면을 처리하고 전체 블록 체인 및 모든 트랜잭션을 독립적으로 검증 할 수 있습니다. 전체 노드 클라이언트는 상당한 컴퓨터 자원 (예 : 125GB 이상의 디스크, 2GB RAM)을 사용하지만 완전한 자율성 및 독립적 인 트랜잭션 검증을 제공합니다.
 
-Lightweight client:: ((("lightweight clients")))((("simple-payment-verification (SPV)")))A lightweight client, also known as a simple-payment-verification (SPV) client, connects to bitcoin full nodes (mentioned previously) for access to the bitcoin transaction information, but stores the user wallet locally and independently creates, validates, and transmits transactions. Lightweight clients interact directly with the bitcoin network, without an intermediary.
+경량 클라이언트 :: (( "경량 클라이언트"))) (( "간단한 결제 확인 (SPV)"))) 간단한 결제 확인 (SPV) 클라이언트라고도하는 간단한 클라이언트는 bitcoin 트랜잭션 정보에 액세스하기 위해 이전에 언급 한 비트 코인 (bitcoin) 전체 노드를 사용하지만 사용자 지갑을 로컬 및 독립적으로 저장하고 트랜잭션을 생성, 유효성 검사 및 전송합니다. 경량 클라이언트는 중개자없이 비트 코인 네트워크와 직접 상호 작용합니다.
 
-Third-party API client:: ((("third-party API clients")))A third-party API client is one that interacts with bitcoin through a third-party system of application programming interfaces (APIs), rather than by connecting to the bitcoin network directly. The wallet may be stored by the user or by third-party servers, but all transactions go through a third party.
+타사 API 클라이언트 :: (( "타사 API 클라이언트"))) 타사 API 클라이언트는 타사 API 시스템의 타사 시스템을 통해 비트 코인과 상호 작용하는 것입니다. 비트 코인 네트워크에 직접. 지갑은 사용자 또는 타사 서버에 저장 될 수 있지만 모든 트랜잭션은 타사를 통해 수행됩니다.
 
-Combining these categorizations, many bitcoin wallets fall into a few groups, with the three most common being desktop full client, mobile lightweight wallet, and web third-party wallet. The lines between different categories are often blurry, as many wallets run on multiple platforms and can interact with the network in different ways.
+이러한 분류를 결합하면 많은 비트 코인 지갑이 몇 개의 그룹으로 분류되며, 가장 일반적인 3 가지 기능은 데스크탑 풀 클라이언트, 모바일 경량 지갑 및 웹 제 3 자 지갑입니다. 서로 다른 범주 사이의 행은 여러 플랫폼에서 실행되는 여러 가지 방법으로 네트워크와 상호 작용할 수 있으므로 종종 흐릿한 경우가 많습니다.
 
-For the purposes of this book, we will be demonstrating the use of a variety of downloadable bitcoin clients, from the reference implementation (Bitcoin Core) to mobile and web wallets. Some of the examples will require the use of Bitcoin Core, which, in addition to being a full client, also exposes APIs to the wallet, network, and transaction services. If you are planning to explore the programmatic interfaces into the bitcoin system, you will need to run Bitcoin Core, or one of the alternative clients (see <<alt_libraries>>).((("", startref="GSwallet01")))((("", startref="Wselect01")))
+이 책의 목적을 위해 참조 구현 (Bitcoin Core)에서 모바일 및 웹 지갑에 이르기까지 다양한 다운로드 가능한 Bitcoin 클라이언트의 사용을 시연합니다. 일부 예제에서는 전체 클라이언트가되는 것 외에도 Wallet, Network 및 Transaction 서비스에 API를 노출하는 Bitcoin Core를 사용해야합니다. Bitcoin 시스템으로 프로그래밍 인터페이스를 탐색하려는 경우 Bitcoin Core 또는 다른 클라이언트 중 하나 (alt_libraries >> 참조)를 실행해야합니다. (( "" ", startref ="GSwallet01 ")) ) (( "" ", startref ="Wselect01 ")))
 
-==== Quick Start
+==== 빠른 시작
 
-((("getting started", "quick start example", id="GSquick01")))((("wallets", "quick start example", id="Wquick01")))((("use cases", "buying coffee", id="aliceone")))Alice, who we introduced in <<user-stories>>, is not a technical user and only recently heard about bitcoin from her friend Joe. While at a party, Joe is once again enthusiastically explaining bitcoin to all around him and is offering a demonstration. Intrigued, Alice asks how she can get started with bitcoin. Joe says that a mobile wallet is best for new users and he recommends a few of his favorite wallets. Alice downloads "Mycelium" for Android and installs it on her phone.
+((("getting started", "quick start example", id="GSquick01")))((("wallets", "quick start example", id="Wquick01")))((("use cases", "buying coffee", id="aliceone")))우리가 << 사용자 이야기 >>에서 소개 한 앨리스는 기술적 인 사용자가 아니며 최근에는 친구 Joe의 비트 코인에 대해서만 들었습니다. 파티가 열리는 동안 Joe는 다시 열정적으로 비트 코인을 주변 사람들에게 설명하고 데모를 제공합니다. 호기심 많은 Alice는 어떻게 비트 코인을 시작할 수 있는지 묻습니다. Joe는 모바일 지갑이 신규 사용자에게 가장 적합하다고 말하면서 자신이 좋아하는 지갑을 몇 권 추천합니다. Alice는 Android 용 "균사체"를 다운로드하여 휴대 전화에 설치합니다.
 
-When Alice runs Mycelium for the first time, as with many bitcoin wallets, the application automatically creates a new wallet for her. Alice sees the wallet on her screen, as shown in <<mycelium-welcome>> (note: do _not_ send bitcoin to this sample address, it will be lost forever).
+앨리스가 많은 비트 코 지갑과 마찬가지로 처음으로 균사체를 실행할 때 응용 프로그램이 자동으로 새 지갑을 만듭니다. Alice는 << mycelium-welcome >> (주의 :이 샘플 주소에 bitcoin을 보내지 마십시오. 영원히 사라집니다)과 같이 화면에 지갑을 표시합니다.
 
 [[mycelium-welcome]]
 .The Mycelium Mobile Wallet
 image::images/mbc2_0101.png["MyceliumWelcome"]
 
-((("addresses", "bitcoin wallet quick start example")))((("QR codes", "bitcoin wallet quick start example")))((("addresses", see="also keys and addresses")))The most important part of this screen is Alice's _bitcoin address_. On the screen it appears as a long string of letters and numbers: +1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK+. Next to the wallet's bitcoin address is a QR code, a form of barcode that contains the same information in a format that can be scanned by a smartphone camera. The QR code is the square with a pattern of black and white dots. Alice can copy the bitcoin address or the QR code onto her clipboard by tapping the QR code, or the Receive button. In most wallets, tapping the QR code will also magnify it, so that it can be more easily scanned by a smartphone camera.
+((("addresses", "bitcoin wallet quick start example")))((("QR codes", "bitcoin wallet quick start example")))((("addresses", see="also keys and addresses")))이 화면의 가장 중요한 부분은 Alice의 _bitcoin address_입니다. 화면에 문자와 숫자의 긴 문자열로 나타납니다 : + 1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK +. 지갑의 비트 코인 주소 옆에는 스마트 폰 카메라로 스캔 할 수있는 형식으로 동일한 정보가 들어있는 바코드 형식 인 QR 코드가 있습니다. QR 코드는 흑백 점들의 패턴이있는 사각형입니다. 앨리스는 QR 코드 또는 수신 버튼을 눌러 비트 코인 주소 또는 QR 코드를 클립 보드에 복사 할 수 있습니다. 대부분의 지갑에서 QR 코드를 두드리면 스마트 폰 카메라로 쉽게 스캔 할 수 있도록 QR 코드를 확대합니다.
 
-[TIP]
+[팁]
 ====
-((("addresses", "security of")))((("security", "bitcoin addresses")))Bitcoin addresses start with a 1 or 3. Like email addresses, they can be shared with other bitcoin users who can use them to send bitcoin directly to your wallet. There is nothing sensitive, from a security perspective, about the bitcoin address. It can be posted anywhere without risking the security of the account. Unlike email addresses, you can create new addresses as often as you like, all of which will direct funds to your wallet. In fact, many modern wallets automatically create a new address for every transaction to maximize privacy. A wallet is simply a collection of addresses and the keys that unlock the funds within.
+((("addresses", "security of")))((("security", "bitcoin addresses")))Bitcoin 주소는 1 또는 3으로 시작합니다. 전자 메일 주소와 마찬가지로 다른 Bitcoin 사용자와도 공유 할 수 있습니다 (Bitcoin 주소는 (또는 "보안 주소"))) 그들을 사용하여 지갑에 직접 비트 코인을 보낼 수 있습니다. 비트 코인 주소에 대해서는 보안 관점에서 민감한 부분이 없습니다. 계정의 보안을 위험에 노출시키지 않으면 서 어디서나 게시 할 수 있습니다. 이메일 주소와는 달리 원하는만큼 자주 새 주소를 만들 수 있습니다.이 주소는 모두 지갑에 직접 입금됩니다. 실제로 많은 현대 지갑은 모든 트랜잭션에 대해 자동으로 개인 주소를 생성하여 개인 정보를 극대화합니다. 지갑이란 단순히 주소와 그 안에있는 돈을 풀 수있는 열쇠의 집합입니다.
+
 ====
 
-Alice is now ready to receive funds. Her wallet application randomly generated a private key (described in more detail in <<private_keys>>) together with its corresponding bitcoin address. At this point, her bitcoin address is not known to the bitcoin network or "registered" with any part of the bitcoin system. Her bitcoin address is simply a number that corresponds to a key that she can use to control access to the funds. It was generated independently by her wallet without reference or registration with any service. In fact, in most wallets, there is no association between the bitcoin address and any externally identifiable information including the user's identity. Until the moment this address is referenced as the recipient of value in a transaction posted on the bitcoin ledger, the bitcoin address is simply part of the vast number of possible addresses that are valid in bitcoin. Only once it has been associated with a transaction does it become part of the known addresses in the network.
+앨리스는 이제 자금을받을 준비가되었습니다. 그녀의 지갑 응용 프로그램은 해당 비트 코인 주소와 함께 개인 키 (임의로 << private_keys >>에 설명 됨)를 무작위로 생성했습니다. 이 시점에서, 비트 코인 주소는 비트 코인 네트워크에 알려지지 않았거나 비트 코인 시스템의 어떤 부분에 "등록"되어 있지 않습니다. 그녀의 비트 코인 주소는 자금 액세스를 제어하는 ​​데 사용할 수있는 키에 해당하는 숫자입니다. 그녀의 지갑에서 임의로 서비스를 참조하거나 등록하지 않고 독립적으로 생성되었습니다. 사실, 대부분의 지갑에서 비트 코인 주소와 사용자의 신분을 포함하여 외부에서 식별 가능한 정보는 연관되어 있지 않습니다. 비트 코인 원장에 게시 된 트랜잭션에서이 주소가 값의 수신자로 참조 될 때까지 비트 코인 주소는 비트 코인에서 유효한 주소의 방대한 수의 일부입니다. 일단 트랜잭션과 관련이 있으면 네트워크의 알려진 주소의 일부가됩니다.
 
-Alice is now ready to start using her new bitcoin wallet.((("", startref="GSquick01")))((("", startref="Wquick01")))
+Alice는 이제 새 비트 코인 지갑을 사용할 준비가되었습니다.((("", startref="GSquick01")))((("", startref="Wquick01")))
 
 [[getting_first_bitcoin]]
-==== Getting Your First Bitcoin
+==== 첫 번째 Bitcoin 얻기
 
-((("getting started", "acquiring bitcoin")))The first and often most difficult task for new users is to acquire some bitcoin. Unlike other foreign currencies, you cannot yet buy bitcoin at a bank or foreign exchange kiosk.
+((("getting started", "acquiring bitcoin")))새로운 사용자를위한 첫 번째 그리고 종종 가장 어려운 작업은 비트 코인을 얻는 것입니다. 다른 외화와 달리 은행이나 외환 키오스크에서 비트 코인을 구입할 수는 없습니다.
 
-Bitcoin transactions are irreversible. Most electronic payment networks such as credit cards, debit cards, PayPal, and bank account transfers are reversible. For someone selling bitcoin, this difference introduces a very high risk that the buyer will reverse the electronic payment after they have received bitcoin, in effect defrauding the seller. To mitigate this risk, companies accepting traditional electronic payments in return for bitcoin usually require buyers to undergo identity verification and credit-worthiness checks, which may take several days or weeks. As a new user, this means you cannot buy bitcoin instantly with a credit card. With a bit of patience and creative thinking, however, you won't need to.
+Bitcoin 트랜잭션은 되돌릴 수 없습니다. 신용 카드, 직불 카드, PayPal 및 은행 계좌 이체와 같은 대부분의 전자 지불 네트워크는 되돌릴 수 있습니다. 비트 코인 (bitcoin)을 파는 사람의 경우,이 차이는 구매자가 비트 코인 (bitcoin)을받은 후 전자 지불을 되돌릴 것이고, 사실상 판매자를 속이는 위험성이 높습니다. 이러한 위험을 줄이기 위해 비트 코인 대가로 전통적인 전자 지불을받는 회사는 일반적으로 구매자가 며칠 또는 몇 주가 걸릴 수도있는 신원 확인 및 신용도 검사를 받아야합니다. 새로운 사용자 인 경우 이는 곧 신용 카드로 비트 코인을 구입할 수 없음을 의미합니다. 그러나 약간의 인내와 창조적 인 생각으로, 당신은 필요가 없습니다.
 
 [role="pagebreak-before"]
-Here are some methods for getting bitcoin as a new user:
+비트 코인을 새 사용자로 가져 오는 방법은 다음과 같습니다.
 
-* Find a friend who has bitcoin and buy some from him or her directly. Many bitcoin users start this way. This method is the least complicated. One way to meet people with bitcoin is to attend a local bitcoin meetup listed at https://meetup.com[Meetup.com].
-* Use a classified service such as pass:[<a class="orm:hideurl" href="https://localbitcoins.com/">localbitcoins.com</a>] to find a seller in your area to buy bitcoin for cash in an in-person transaction.
-* Earn bitcoin by selling a product or service for bitcoin. If you are a programmer, sell your programming skills. If you're a hairdresser, cut hair for bitcoin.
-* ((("Coin ATM Radar")))((("ATMs, locating")))Use a bitcoin ATM in your city.  A bitcoin ATM is a machine that accepts cash and sends bitcoin to your smartphone bitcoin wallet. Find a bitcoin ATM close to you using an online map from http://coinatmradar.com[Coin ATM Radar].
-* ((("exchange rates", "listing services")))Use a bitcoin currency exchange linked to your bank account. Many countries now have currency exchanges that offer a market for buyers and sellers to swap bitcoin with local currency. Exchange-rate listing services, such as https://bitcoinaverage.com[BitcoinAverage], often show a list of bitcoin exchanges for each currency.
+* 비트 코인을 가지고있는 친구를 찾아 직접 구매하십시오. 많은 비트 코 사용자가 이런 식으로 시작합니다. 이 방법은 가장 복잡하지 않습니다. 비트 코인으로 사람들을 만나는 한 가지 방법은 https://meetup.com [Meetup.com]에 나와있는 지역 비트 코 모임에 참석하는 것입니다.
+* 패스와 같은 분류 된 서비스를 사용하십시오 : [<a class="orm:hideurl" href="https://localbitcoins.com/"> localbitcoins.com </a>] 귀하의 지역에서 비트 코인을 사려고하는 판매자를 찾으십시오 대인 거래로 현금을 위해.
+* 비트 코인 제품 또는 서비스를 판매하여 비트 코인을 획득하십시오. 프로그래머라면 프로그래밍 기술을 판매 할 수 있습니다. 미용사라면 비트 코를위한 머리를 자르십시오.
+* ((( "Coin ATM Radar"))) (( "ATM", locating "))) 귀하의 도시에 비트 코 ATM을 사용하십시오. 비트 코인 ATM은 현금을 수령하고 비트 코인을 스마트 폰 비트 동전 지갑에 보내는 기계입니다. http://coinatmradar.com [Coin ATM Radar]의 온라인지도를 사용하여 가까이있는 비트 코인 ATM을 찾으십시오.
+* (( "환율", "상장 서비스"))) 귀하의 은행 계좌와 연결된 Bitcoin 통화 교환기를 사용하십시오. 많은 국가에서 현재 구매자와 판매자가 비트 코인을 현지 통화로 바꿀 수있는 시장을 제공하는 통화 거래소가 있습니다. https://bitcoinaverage.com [BitcoinAverage]와 같은 환율 목록 서비스에는 종종 각 통화에 대한 비트 동전 교환 목록이 표시됩니다.
 
-[TIP]
+[팁]
 ====
-((("privacy, maintaining")))((("security", "maintaining privacy")))((("digital currencies", "currency exchanges")))((("currency exchanges")))((("digital currencies", "benefits of bitcoin")))((("bitcoin", "benefits of")))One of the advantages of bitcoin over other payment systems is that, when used correctly, it affords users much more privacy. Acquiring, holding, and spending bitcoin does not require you to divulge sensitive and personally identifiable information to third parties. However, where bitcoin touches traditional systems, such as currency exchanges, national and international regulations often apply. In order to exchange bitcoin for your national currency, you will often be required to provide proof of identity and banking information. Users should be aware that once a bitcoin address is attached to an identity, all associated bitcoin transactions are also easy to identify and track. This is one reason many users choose to maintain dedicated exchange accounts unlinked to their wallets.
+((("privacy, maintaining")))((("security", "maintaining privacy")))((("digital currencies", "currency exchanges")))((("currency exchanges")))((("digital currencies", "benefits of bitcoin")))((("bitcoin", "benefits of")))다른 지불 시스템에 비해 비트 코인의 장점 중 하나는 올바르게 사용될 때 사용자에게 훨씬 더 프라이버시. 비트 코인을 취득, 보유 및 지출하는 경우 민감한 개인 식별 정보를 제 3 자에게 누설하지 않아도됩니다. 그러나 비트 동전이 외환 거래와 같은 전통적인 시스템에 접하게되면 국가 및 국제 규정이 종종 적용됩니다. 귀하의 자국 통화로 비트 코인을 교환하려면 신분 증명서 및 은행 정보를 제공해야합니다. 사용자는 비트 코인 주소가 ID에 연결되면 관련된 모든 비트 코인 트랜잭션을 쉽게 식별하고 추적 할 수 있음을 알아야합니다. 이것은 많은 사용자가 전용 교환 계정을 지갑에 연결하지 않기로 선택한 이유 중 하나입니다.
 ====
 
-Alice was introduced to bitcoin by a friend so she has an easy way to acquire her first bitcoin. Next, we will look at how she buys bitcoin from her friend Joe and how Joe sends the bitcoin to her wallet.
+앨리스는 친구가 비트 코인을 소개 받았으므로 첫 비트 코인을 쉽게 얻을 수 있습니다. 다음으로, 우리는 그녀가 친구 조 (Joe)의 비트 코인 (bitcoin)을 구입하는 방법과 조 (Joe)가 비트 코인을 지갑에 보내는 방법을 살펴볼 것입니다.
 
 [[bitcoin_price]]
-==== Finding the Current Price of Bitcoin
+==== Bitcoin의 현재 가격 찾기
 
-((("getting started", "exchange rates")))((("exchange rates", "determining")))Before Alice can buy bitcoin from Joe, they have to agree on the _exchange rate_ between bitcoin and US dollars. This brings up a common question for those new to bitcoin: "Who sets the bitcoin price?" The short answer is that the price is set by markets.
+((("getting started", "exchange rates")))((("exchange rates", "determining")))앨리스가 조에서 비트 코인을 사기 전에 비트 코인과 미 달러 사이의 환율을 합의해야합니다 . 이것은 bitcoin을 처음 접하는 사람들에게 공통적 인 질문을 던집니다. "누가 bitcoin 가격을 책정합니까?" 짧은 대답은 가격이 시장에 의해 결정된다는 것입니다.
 
-((("exchange rates", "floating")))((("floating exchange rate")))Bitcoin, like most other currencies, has a _floating exchange rate_. That means that the value of bitcoin vis-a-vis any other currency fluctuates according to supply and demand in the various markets where it is traded. For example, the "price" of bitcoin in US dollars is calculated in each market based on the most recent trade of bitcoin and US dollars. As such, the price tends to fluctuate minutely several times per second. A pricing service will aggregate the prices from several markets and calculate a volume-weighted average representing the broad market exchange rate of a currency pair (e.g., BTC/USD).
+((("exchange rates", "floating")))((("floating exchange rate")))대부분의 다른 통화와 마찬가지로 Bitcoin도 환율을 가지고 있습니다. 즉, 다른 통화에 대한 비트 코인의 가치는 거래되는 다양한 시장에서의 수요와 공급에 따라 변동합니다. 예를 들어, 비트 코인의 "가격"은 최근의 비트 코인과 미국 달러의 거래를 기반으로 각 시장에서 계산됩니다. 따라서 가격은 초당 몇 번씩 미세하게 변동하는 경향이 있습니다. 가격 결정 서비스는 여러 시장의 가격을 합산하고 통화 쌍의 광범위한 시장 환율 (예 : BTC / USD)을 나타내는 가중 평균을 계산합니다.
 
-There are hundreds of applications and websites that can provide the current market rate. Here are some of the most popular:
+현재 시장 속도를 제공 할 수있는 수많은 응용 프로그램과 웹 사이트가 있습니다. 다음은 가장 인기있는 몇 가지 예입니다.
 
-http://bitcoinaverage.com/[Bitcoin Average]:: ((("BitcoinAverage")))A site that provides a simple view of the volume-weighted-average for each currency.
-http://coincap.io/[CoinCap]:: A service listing the market capitalization and exchange rates of hundreds of crypto-currencies, including bitcoin.
-http://bit.ly/cmebrr[Chicago Mercantile Exchange Bitcoin Reference Rate]:: A reference rate that can be used for institutional and contractual reference, provided as part of investment data feeds by the CME.
+http://bitcoinaverage.com/ [Bitcoin Average] :: (( "BitcoinAverage")) 각 통화에 대한 가중 평균 평균을 제공하는 사이트입니다.
+http://coincap.io/[CoinCap] : 비트 코인 (bitcoin)을 포함하여 수백 개의 암호화 통화의 시가 총액 및 환율을 나열하는 서비스.
+http://bit.ly/cmebrrChicago 상업 거래 Bitcoin 참조 비율] : CME의 투자 데이터 피드의 일부로 제공되는 기관 및 계약 참조에 사용될 수있는 참조 비율.
 
-In addition to these various sites and applications, most bitcoin wallets will automatically convert amounts between bitcoin and other currencies. Joe will use his wallet to convert the price automatically before sending bitcoin to Alice.
+이러한 다양한 사이트 및 응용 프로그램 외에도 대부분의 비트 동전 지갑은 비트 동전과 다른 통화 사이의 금액을 자동으로 변환합니다. Joe는 자신의 지갑을 사용하여 비트 코인을 Alice에게 보내기 전에 가격을 자동으로 변환합니다.
 
 [[sending_receiving]]
-==== Sending and Receiving Bitcoin
+==== Bitcoin 보내기 및 받기
 
 
-((("getting started", "sending and receiving bitcoin", id="GSsend01")))((("spending bitcoin", "bitcoin wallet quick start example")))((("spending bitcoin", see="also transactions")))Alice has decided to convert $10 US dollars into bitcoin, so as not to risk too much money on this new technology. She gives Joe $10 in cash, opens her Mycelium wallet application, and selects Receive. This displays a QR code with Alice's first bitcoin address.
+((("getting started", "sending and receiving bitcoin", id="GSsend01")))((("spending bitcoin", "bitcoin wallet quick start example")))((("spending bitcoin", see="also transactions")))Alice는이 새로운 기술에 너무 많은 돈을 투자하지 않기 위해 10 달러를 비트 코인으로 변환하기로 결정했습니다. 그녀는 Joe에게 현금 10 달러를주고 Mycelium Wallet 응용 프로그램을 열고 Receive를 선택합니다. 앨리스의 첫 번째 비트 코인 주소가 포함 된 QR 코드가 표시됩니다.
 
-Joe then selects Send on his smartphone wallet and is presented with a screen containing two inputs:
+그런 다음 Joe는 스마트 폰 지갑에서 보내기를 선택하고 두 개의 입력이 포함 된 화면이 표시됩니다.
 
-* A destination bitcoin address
-* The amount to send, in bitcoin (BTC) or his local currency (USD)
+* 대상 비트 코인 주소
+* 비트 코인 (BTC) 또는 현지 통화 (USD)로 보낼 금액
 
-In the input field for the bitcoin address, there is a small icon that looks like a QR code. This allows Joe to scan the barcode with his smartphone camera so that he doesn't have to type in Alice's bitcoin address, which is quite long and difficult to type. Joe taps the QR code icon and activates the smartphone camera, scanning the QR code displayed on Alice's smartphone.
+비트 코인 주소의 입력 필드에는 QR 코드처럼 보이는 작은 아이콘이 있습니다. 이를 통해 Joe는 그의 스마트 폰 카메라로 바코드를 스캔 할 수 있으므로 Alice의 비트 코인 주소를 입력 할 필요가 없으므로 길고 어려움이 있습니다. Joe는 QR 코드 아이콘을 탭하고 스마트 폰 카메라를 활성화하여 Alice의 스마트 폰에 표시된 QR 코드를 검색합니다.
 
-Joe now has Alice's bitcoin address set as the recipient. Joe enters the amount as $10 US dollars and his wallet converts it by accessing the most recent exchange rate from an online service. The exchange rate at the time is $100 US dollars per bitcoin, so $10 US dollars is worth 0.10 bitcoin (BTC), or 100 millibitcoin (mBTC) as shown in the screenshot from Joe's wallet (see <<airbitz-mobile-send>>).
+Joe는 Alice의 비트 코인 주소를 수신자로 설정했습니다. Joe는 금액을 10 달러로 입력하고 그의 지갑은 온라인 서비스에서 가장 최근의 환율에 액세스하여이를 변환합니다. 그 당시의 환율은 비트 코인 당 100 달러 였으므로 Joe 지갑의 스크린 샷과 같이 $ 10 미국 달러는 0.10 비트 코인 (BTC) 또는 100 밀리 비트 코인 (mBTC)의 가치가 있습니다 (<< airbitz-mobile-send >> 참조). ).
 
 [[airbitz-mobile-send]]
 [role="smallereighty"]
 .Airbitz mobile bitcoin wallet send screen
 image::images/mbc2_0102.png["airbitz mobile send screen"]
 
-Joe then carefully checks to make sure he has entered the correct amount, because he is about to transmit money and mistakes are irreversible. After double-checking the address and amount, he presses Send to transmit the transaction. Joe's mobile bitcoin wallet constructs a transaction that assigns 0.10 BTC to the address provided by Alice, sourcing the funds from Joe's wallet and signing the transaction with Joe's private keys. This tells the bitcoin network that Joe has authorized a transfer of value to Alice's new address. As the transaction is transmitted via the peer-to-peer protocol, it quickly propagates across the bitcoin network. In less than a second, most of the well-connected nodes in the network receive the transaction and see Alice's address for the first time.
+조는 조심스럽게 그가 정확한 금액을 입력했는지 확인합니다. 왜냐하면 그는 돈을 전송하려하기 때문에 실수는 돌이킬 수 없기 때문입니다. 주소와 금액을 다시 한 번 확인한 후 Send를 눌러 거래를 전송합니다. Joe의 모바일 비트 동전 지갑은 Alice가 제공 한 주소에 0.10 BTC를 할당하고 Joe의 지갑에서 자금을 조달하고 Joe의 개인 키를 사용하여 트랜잭션에 서명하는 트랜잭션을 생성합니다. 이것은 Joe가 Alice의 새 주소로 가치 이전을 승인했음을 비트 코인 네트워크에 알려줍니다. 트랜잭션이 피어 - 투 - 피어 프로토콜을 통해 전송되기 때문에 비트 코인 네트워크를 통해 신속하게 전달됩니다. 1 초 이내에 네트워크의 잘 연결된 노드 대부분이 트랜잭션을 수신하고 처음으로 Alice의 주소를 봅니다.
 
-Meanwhile, Alice's wallet is constantly "listening" to published transactions on the bitcoin network, looking for any that match the addresses in her wallets. A few seconds after Joe's wallet transmits the transaction, Alice's wallet will indicate that it is receiving 0.10 BTC.
+한편, Alice의 지갑은 Bitcoin 네트워크에서 게시 된 트랜잭션을 지속적으로 "청취"하여 지갑의 주소와 일치하는 것을 찾습니다. Joe의 지갑이 거래를 전송 한 후 몇 초 후에 Alice의 지갑에 0.10 BTC가 있음을 알립니다.
 
-.Confirmations
+.확인
 ****
-((("getting started", "confirmations")))((("confirmations", "bitcoin wallet quick start example")))((("confirmations", see="also mining and consensus; transactions")))((("clearing", seealso="confirmations")))At first, Alice's address will show the transaction from Joe as "Unconfirmed." This means that the transaction has been propagated to the network but has not yet been recorded in the bitcoin transaction ledger, known as the blockchain. To be confirmed, a transaction must be included in a block and added to the blockchain, which happens every 10 minutes, on average. In traditional financial terms this is known as _clearing_. For more details on propagation, validation, and clearing (confirmation) of bitcoin transactions, see <<mining>>.
+((("getting started", "confirmations")))((("confirmations", "bitcoin wallet quick start example")))((("confirmations", see="also mining and consensus; transactions")))((("clearing", seealso="confirmations")))처음에는 Alice의 주소에서 Joe의 거래가 "Unconfirmed"로 표시됩니다. 이는 트랜잭션이 네트워크에 전파되었지만 블록 체인 (blockchain)이라고하는 비트 동전 트랜잭션 원장에 아직 기록되지 않았 음을 의미합니다. 확인하려면 트랜잭션을 블록에 포함시켜 평균 10 분마다 발생하는 블록 체인에 추가해야합니다. 전통적인 재정적 인 용어로 이것을 _clearing_이라고합니다. Bitcoin 트랜잭션의 전달, 유효성 검사 및 삭제 (확인)에 대한 자세한 내용은 << 마이닝 >>을 참조하십시오.
 ****
 
-Alice is now the proud owner of 0.10 BTC that she can spend. In the next chapter we will look at her first purchase with bitcoin, and examine the underlying transaction and propagation technologies in more detail.((("", startref="BCbasic01")))((("use cases", "buying coffee", startref="aliceone")))
+Alice는 이제 0.10 BTC의 자랑스러운 소유자입니다. 다음 장에서는 비트 코인으로 처음 구입할 때를 살펴보고 기본 트랜잭션 및 전파 기술을 자세히 살펴 보겠습니다.((("", startref="BCbasic01")))((("use cases", "buying coffee", startref="aliceone")))
 
 
