@@ -1,157 +1,159 @@
 [[ch02_bitcoin_overview]]
-== How Bitcoin Works
+== Bitcoin 작동 방법
 
-=== Transactions, Blocks, Mining, and the Blockchain
+=== 트랜잭션, 블록, 마이닝 및 블록 체인
 
-((("bitcoin", "overview of", id="BCover02")))((("central trusted authority")))((("decentralized systems", "bitcoin overview", id="DCSover02")))The bitcoin system, unlike traditional banking and payment systems, is based on decentralized trust. Instead of a central trusted authority, in bitcoin, trust is achieved as an emergent property from the interactions of different participants in the bitcoin system. In this chapter, we will examine bitcoin from a high level by tracking a single transaction through the bitcoin system and watch as it becomes "trusted" and accepted by the bitcoin mechanism of distributed consensus and is finally recorded on the blockchain, the distributed ledger of all transactions. Subsequent chapters will delve into the technology behind transactions, the network, and mining. 
+((("bitcoin", "overview of", id="BCover02")))((("central trusted authority")))((("decentralized systems", "bitcoin overview", id="DCSover02")))비트 코인 시스템은 전통적인 은행 및 지불 시스템과 달리 분산 된 신뢰를 기반으로합니다. 중앙 집중식 신뢰 기관 대신 비트 코인 (bitcoin)에서 신뢰는 비트 코인 시스템의 서로 다른 참가자의 상호 작용에서 나오는 속성으로 실현됩니다. 이 장에서는 Bitcoin 시스템을 통해 단일 트랜잭션을 추적하여 높은 수준의 비트 코먼을 검토하고 분산 된 컨센서스의 비트 코닉 메커니즘에 의해 "신뢰"되고 받아 들여지는 것을 지켜 보며 마침내 블록 체인에있는 분산 원장 모든 거래 창구. 다음 장에서는 트랜잭션, 네트워크 및 마이닝 기술에 대해 설명합니다.
 
-==== Bitcoin Overview
+==== Bitcoin 개요
 
-In the overview diagram shown in <<bitcoin-overview>>, we see that the bitcoin system consists of users with wallets containing keys, transactions that are propagated across the network, and miners who produce (through competitive computation) the consensus blockchain, which is the authoritative ledger of all transactions. 
+<< bitcoin-overview >>에 표시된 개요 다이어그램에서 우리는 비트 동전 시스템이 키를 포함하는 지갑을 가진 사용자, 네트워크를 통해 전달되는 트랜잭션 및 경쟁 블록 체인을 생산하는 (경쟁적인 계산을 통해) 광부로 구성된다는 것을 알 수 있습니다. 모든 거래의 권위있는 원장입니다.
 
 
-((("blockchain explorer sites")))Each example in this chapter is based on an actual transaction made on the bitcoin network, simulating the interactions between the users (Joe, Alice, Bob, and Gopesh) by sending funds from one wallet to another. While tracking a transaction through the bitcoin network to the blockchain, we will use a _blockchain explorer_ site to visualize each step. A blockchain explorer is a web application that operates as a bitcoin search engine, in that it allows you to search for addresses, transactions, and blocks and see the relationships and flows between them.
+((("blockchain explorer sites")))이 장의 각 예는 비트 동전 네트워크에서 이루어진 실제 거래를 기반으로 한 지갑에서 자금을 보내 사용자 (조, 앨리스, 밥, 고페 쉬) 간의 상호 작용을 시뮬레이션합니다. 다른 사람에게. Bitcoin 네트워크를 통해 블록 체인에 대한 트랜잭션을 추적하는 동안 _blockchain explorer_ 사이트를 사용하여 각 단계를 시각화합니다. 블록 체인 탐색기는 주소, 트랜잭션 및 블록을 검색하고 이들 간의 관계 및 흐름을 볼 수 있도록 비트 코 검색 엔진으로 작동하는 웹 응용 프로그램입니다.
 
-[[bitcoin-overview]]
-.Bitcoin overview
-image::images/mbc2_0201.png["Bitcoin Overview"]
+[[비트 코인 개요]]
+.Bitcoin 개요
+image::images/mbc2_0201.png["Bitcoin 개요"]
 
-((("Bitcoin Block Explorer")))((("BlockCypher Explorer")))((("blockchain.info")))((("BitPay Insight")))Popular blockchain explorers include: 
+((("Bitcoin Block Explorer")))((("BlockCypher Explorer")))((("blockchain.info")))((("BitPay Insight")))인기있는 블록 체인 탐색기는 다음과 같습니다 :
 
 * https://blockexplorer.com[Bitcoin Block Explorer]
 * https://live.blockcypher.com[BlockCypher Explorer]
 * https://blockchain.info[blockchain.info]
 * https://insight.bitpay.com[BitPay Insight]
 
-Each of these has a search function that can take a bitcoin address, transaction hash, block number, or block hash and retrieve corresponding information from the bitcoin network. With each transaction or block example, we will provide a URL so you can look it up yourself and study it in detail.
+이들 각각은 비트 코인 주소, 트랜잭션 해시, 블록 번호 또는 블록 해시를 취해 비트 코인 네트워크에서 해당 정보를 검색 할 수있는 검색 기능을 가지고 있습니다. 각 거래 또는 블록 예를 통해 URL을 제공하므로 직접 찾아보고 자세히 조사 할 수 있습니다.
 
 
 [[cup_of_coffee]]
-==== Buying a Cup of Coffee
+==== 커피 한 잔 사기
 
-((("use cases", "buying coffee", id="UCcoffee02")))Alice, introduced in the previous chapter, is a new user who has just acquired her first bitcoin. In <<getting_first_bitcoin>>, Alice met with her friend Joe to exchange some cash for bitcoin. The transaction created by Joe funded Alice's wallet with 0.10 BTC. Now Alice will make her first retail transaction, buying a cup of coffee at Bob's coffee shop in Palo Alto, California. 
+((("use cases", "buying coffee", id="UCcoffee02")))이전의 장에서 소개 된 Alice는 첫 번째 비트 동전을 새로 구입 한 사용자입니다. <<getting_first_bitcoin>>, 에서 Alice는 친구 Joe와 만나 비트 코인을 교환했습니다. Joe가 만든 트랜잭션은 Alice의 지갑에 0.10 BTC로 자금이 공급되었습니다. 이제 앨리스는 캘리포니아 주 팔로 알토 (Palo Alto)에있는 밥의 커피 숍에서 커피 한 잔을 사서 첫 소매 거래를하게됩니다.
 
-((("exchange rates", "determining")))Bob's Cafe recently started accepting bitcoin payments by adding a bitcoin option to its point-of-sale system. The prices at Bob's Cafe are listed in the local currency (US dollars), but at the register, customers have the option of paying in either dollars or bitcoin. Alice places her order for a cup of coffee and Bob enters it into the register, as he does for all transactions.  The point-of-sale system automatically converts the total price from US dollars to bitcoin at the prevailing market rate and displays the price in both currencies:
+((("exchange rates", "determining")))Bob 's Cafe는 최근 POS (point-of-sale) 시스템에 비트 코인 옵션을 추가하여 비트 코 인 지불을 받기 시작했습니다. Bob 's Cafe의 가격은 현지 통화 (미화)로 표시되지만, 등록시 고객은 달러 또는 비트 코인으로 지불 할 수 있습니다. Alice는 커피 한 잔을 주문하고 Bob은 모든 거래를 위해 등록부에 그것을 입력합니다. POS 시스템은 총 판매 가격을 미국 달러에서 비트 코인으로 자동 변환하여 가격을 두 통화로 표시합니다.
 
 ----
-Total:
+합계:
 $1.50 USD
 0.015 BTC
 ----
 
 
-((("millibits")))Bob says, "That's one-dollar-fifty, or fifteen millibits."
+((("millibits")))Bob은 "1 달러 50 또는 15 밀리비언"이라고 말합니다.
 
-((("payment requests")))((("QR codes", "payment requests")))Bob's point-of-sale system will also automatically create a special QR code containing a _payment request_ (see <<payment-request-QR>>).
+((("payment requests")))((("QR codes", "payment requests")))Bob의 POS 시스템은 자동으로 _payment 요청 _을 포함하는 특수 QR 코드를 생성합니다 (<< 지불 - request-QR >>).
 
-Unlike a QR code that simply contains a destination bitcoin address, a payment request is a QR-encoded URL that contains a destination address, a payment amount, and a generic description such as "Bob's Cafe." This allows a bitcoin wallet application to prefill the information used to send the payment while showing a human-readable description to the user. You can scan the QR code with a bitcoin wallet application to see what Alice would see. 
+단순히 대상 비트 코인 주소가 포함 된 QR 코드와 달리 지불 요청은 대상 주소, 지불 금액 및 "Bob 's Cafe"와 같은 일반적인 설명이 포함 된 QR 인코딩 URL입니다. 이렇게하면 비트 코인 지갑 응용 프로그램에서 사람이 읽을 수있는 설명을 사용자에게 표시하면서 지불하는 데 사용 된 정보를 미리 채울 수 있습니다. 앨리스 (Alice)가 볼 수있는 비트 동전 지갑 응용 프로그램으로 QR 코드를 스캔 할 수 있습니다.
 
 
 [[payment-request-QR]]
-.Payment request QR code
+. 지불 요청 QR 코드
 image::images/mbc2_0202.png["payment-request"]
 
-[TIP]
+[팁]
 ====
-((("QR codes", "warnings and cautions")))((("transactions", "warnings and cautions")))((("warnings and cautions", "avoid sending money to addresses appearing in book")))Try to scan this with your wallet to see the address and amount but DO NOT SEND MONEY. 
+((("QR codes", "warnings and cautions")))((("transactions", "warnings and cautions")))((("warnings and cautions", "avoid sending money to addresses appearing in book")))주소 및 금액을 보려면 지갑으로 스캔 해보고 돈은 보내지 마십시오.
 ====
 [[payment-request-URL]]
-.The payment request QR code encodes the following URL, defined in BIP-21:
+.지불 요청 QR 코드는 BIP-21에 정의 된 다음 URL을 인코딩합니다.
 ----
 bitcoin:1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA?
 amount=0.015&
 label=Bob%27s%20Cafe&
 message=Purchase%20at%20Bob%27s%20Cafe
 
-Components of the URL 
+URL 구성 요소
 
-A bitcoin address: "1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA"
-The payment amount: "0.015"
-A label for the recipient address: "Bob's Cafe"
-A description for the payment: "Purchase at Bob's Cafe"
+비트 코인 주소 : "1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA"
+지불 금액 : "0.015"
+수신자 주소의 라벨 : "Bob 's Cafe"
+지불에 대한 설명 : "Bob 's Cafe에서 구입"
 ----
 
-Alice uses her smartphone to scan the barcode on display. Her smartphone shows a payment of +0.0150 BTC+ to +Bob's Cafe+ and she selects Send to authorize the payment. Within a few seconds (about the same amount of time as a credit card authorization), Bob sees the transaction on the register, completing the transaction.
+Alice는 스마트 폰을 사용하여 디스플레이의 바코드를 스캔합니다. 그녀의 스마트 폰은 +0.0150 BTC + to + Bob 's Cafe +의 지불을 보여주고 지불을 승인하기 위해 Send를 선택합니다. 몇 초 내에 (신용 카드 승인과 거의 동일한 시간), Bob은 트랜잭션을 레지스터에서보고 트랜잭션을 완료합니다.
 
-In the following sections we will examine this transaction in more detail. We'll see how Alice's wallet constructed it, how it was propagated across the network, how it was verified, and finally, how Bob can spend that amount in subsequent transactions.
+다음 섹션에서는이 트랜잭션에 대해 자세히 설명합니다. Alice의 지갑이 어떻게 구성되었는지, 네트워크를 통해 어떻게 전파되었는지, 어떻게 검증되었는지, 그리고 Bob이 후속 트랜잭션에서이 금액을 사용할 수 있는지에 대해 알아 봅니다.
 
 [NOTE]
 ====
-((("fractional values")))((("milli-bitcoin")))((("satoshis")))The bitcoin network can transact in fractional values, e.g., from millibitcoin (1/1000th of a bitcoin) down to 1/100,000,000th of a bitcoin, which is known as a satoshi.  Throughout this book we’ll use the term “bitcoin” to refer to any quantity of bitcoin currency, from the smallest unit (1 satoshi) to the total number (21,000,000) of all bitcoin that will ever be mined. 
+((("fractional values")))((("milli-bitcoin")))((("satoshis")))비트 코인 네트워크는 분수 값으로 거래 할 수 있습니다 (예 : 밀리비트 동전 (1/1000 비트 코 인)). (밀리 비트 코친 (1/1000 비트 코 인) )에서 1 / 100,000,000 번째 비트 코인 (satoshi)으로 알려져 있습니다. 이 책 전체에서 가장 작은 단위 (1 satoshi)부터 채굴 될 모든 비트 코인의 총 수 (21,000,000)까지 비트 코인 통화의 양을 나타 내기 위해 "비트 코인"이라는 용어를 사용합니다.
+
 ====
 
-You can examine Alice's transaction to Bob's Cafe on the blockchain using a block explorer site (<<view_alice_transaction>>):
+블록 탐색기 사이트 (<< view_alice_transaction >>)를 사용하여 블록 체인에서 Bob 's Cafe에 대한 Alice의 트랜잭션을 검사 할 수 있습니다.
 
 [[view_alice_transaction]]
-.View Alice's transaction on https://blockexplorer.com/tx/0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2[blockexplorer.com]
+.View Alice의 거래에 대한 
+https://blockexplorer.com/tx/0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2[blockexplorer.com]
 ====
 ----
 https://blockexplorer.com/tx/0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2
 ----
 ====
 
-=== Bitcoin Transactions
+=== Bitcoin 트랜잭션
 
-((("transactions", "defined")))In simple terms, a transaction tells the network that the owner of some bitcoin value has authorized the transfer of that value to another owner. The new owner can now spend the bitcoin by creating another transaction that authorizes transfer to another owner, and so on, in a chain of ownership. 
+((("transactions", "defined")))간단히 말해 트랜잭션은 비트 코인 값의 소유자가 해당 값을 다른 소유자에게 이전 할 수 있음을 네트워크에 알려줍니다. 새 소유자는 이제 소유권 체인에서 다른 소유자에게 이전을 허가하는 등의 다른 트랜잭션을 생성하여 비트 코인을 보낼 수 있습니다.
 
-==== Transaction Inputs and Outputs
+==== 트랜잭션 입력과 출력
 
-((("transactions", "overview of", id="Tover02")))((("outputs and inputs", "basics of")))Transactions are like lines in a double-entry bookkeeping ledger.  Each transaction contains one or more "inputs," which are like debits against a bitcoin account. On the other side of the transaction, there are one or more "outputs," which are like credits added to a bitcoin account. ((("fees", "transaction fees")))The inputs and outputs (debits and credits) do not necessarily add up to the same amount. Instead, outputs add up to slightly less than inputs and the difference represents an implied _transaction fee_, which is a small payment collected by the miner who includes the transaction in the ledger. A bitcoin transaction is shown as a bookkeeping ledger entry in <<transaction-double-entry>>. 
+((("transactions", "overview of", id="Tover02")))((("outputs and inputs", "basics of")))트랜잭션은 이중 입력 부기 원장의 행과 같습니다. 각 거래에는 비트 동전 계정에 대한 차변과 같은 하나 이상의 '입력'이 포함됩니다. 트랜잭션의 반대편에는 비트 코인 계정에 추가 된 크레딧과 같은 하나 이상의 "출력"이 있습니다. ((( "수수료", "거래 수수료"))) 입력과 출력 (빚과 크레딧)은 반드시 동일한 금액을 합산하지 않습니다. 대신 산출물은 투입물보다 약간 적게 합산되며 그 차이는 거래가 원장에 포함 된 광부가 수집 한 소액의 지불액 인 암시 적 거래 수수료를 의미합니다. Bitcoin 트랜잭션은 << transaction-double-entry >>에 부기 원장 항목으로 표시됩니다.
 
-The transaction also contains proof of ownership for each amount of bitcoin (inputs) whose value is being spent, in the form of a digital signature from the owner, which can be independently validated by anyone. ((("spending bitcoin", "defined")))In bitcoin terms, "spending" is signing a transaction that transfers value from a previous transaction over to a new owner identified by a bitcoin address.
+거래에는 소유자로부터 디지털 서명 형태로 가치가 소비되는 비트 코인 (입력)의 각 금액에 대한 소유권 증명이 포함되어 있으며, 이는 모든 사람이 독립적으로 확인할 수 있습니다. ((( "지출 bitcoin", "defined"))) bitcoin 용어에서 "지출"은 이전 거래의 값을 비트 코인 주소로 식별 된 새 소유자로 이전하는 트랜잭션에 서명하는 것입니다.
 
 [[transaction-double-entry]]
-.Transaction as double-entry bookkeeping 
+.이중 등록 부기와의 거래
 image::images/mbc2_0203.png["Transaction Double-Entry"]
 
-==== Transaction Chains
+==== 트랜잭션 체인
 
-((("chain of transactions")))Alice's payment to Bob's Cafe uses a previous transaction's output as its input. In the previous chapter, Alice received bitcoin from her friend Joe in return for cash. That transaction created a bitcoin value locked by Alice's key. Her new transaction to Bob's Cafe references the previous transaction as an input and creates new outputs to pay for the cup of coffee and receive change. The transactions form a chain, where the inputs from the latest transaction correspond to outputs from previous transactions. Alice's key provides the signature that unlocks those previous transaction outputs, thereby proving to the bitcoin network that she owns the funds. She attaches the payment for coffee to Bob's address, thereby "encumbering" that output with the requirement that Bob produces a signature in order to spend that amount. This represents a transfer of value between Alice and Bob. This chain of transactions, from Joe to Alice to Bob, is illustrated in <<blockchain-mnemonic>>.
+((("chain of transactions")))Bob 's Cafe에 대한 Alice의 지불은 이전 트랜잭션의 결과를 입력으로 사용합니다. 이전 장에서 Alice는 현금으로 대가로 그녀의 친구 Joe에게 비트 코 인을 받았습니다. 그 거래는 Alice의 열쇠로 잠긴 비트 코인 값을 만들었습니다. Bob 's Cafe와의 새로운 거래는 이전 거래를 입력으로 참조하고 커피 한 잔을 지불하고 변경 사항을 받기위한 새로운 출력을 생성합니다. 트랜잭션은 최신 트랜잭션의 입력이 이전 트랜잭션의 출력에 해당하는 체인을 형성합니다. Alice의 키는 이전 트랜잭션 출력의 잠금을 해제하는 서명을 제공함으로써 비트 코인 네트워크에 자신이 자금을 소유하고 있음을 증명합니다. 그녀는 커피에 대한 지불을 Bob의 주소에 첨부하여 Bob이 그 금액을 소비하기 위해 서명을 생성해야한다는 요구 사항에 "결과를"방해합니다. 이것은 Alice와 Bob 사이의 가치 이동을 나타냅니다. 조 (Joe)에서 앨리스 (Alice), 밥 (Bob)에 이르는 일련의 트랜잭션은 << 블록 체인 - 니모닉 >>에 설명되어 있습니다.
 
-[[blockchain-mnemonic]]
-.A chain of transactions, where the output of one transaction is the input of the next transaction
-image::images/mbc2_0204.png["Transaction chain"]
+[[블록 체인 - 니모닉]]
+. 하나의 트랜잭션의 출력이 다음 트랜잭션의 입력 인 트랜잭션 체인.
+image::images/mbc2_0204.png["거래 체인"]
 
 ==== Making Change
 
-((("change, making")))((("change addresses")))((("addresses", "change addresses")))Many bitcoin transactions will include outputs that reference both an address of the new owner and an address of the current owner, called the _change_ address. This is because transaction inputs, like currency notes, cannot be divided. If you purchase a $5 US dollar item in a store but use a $20 US dollar bill to pay for the item, you expect to receive $15 US dollars in change. The same concept applies with bitcoin transaction inputs. If you purchased an item that costs 5 bitcoin but only had a 20 bitcoin input to use, you would send one output of 5 bitcoin to the store owner and one output of 15 bitcoin back to yourself as change (less any applicable transaction fee). Importantly, the change address does not have to be the same address as that of the input and for privacy reasons is often a new address from the owner's wallet. 
+((("change, making")))((("change addresses")))((("addresses", "change addresses")))많은 비트 코인 트랜잭션은 새로운 소유자의 주소 _change_ 주소라고하는 현재 소유자의 주소입니다. 이는 통화 메모와 같은 거래 입력을 나눌 수 없기 때문입니다. 상점에서 미화 5 달러짜리 물건을 구입했지만 물건을 사는 데 20 달러짜리 지폐를 사용한다면, 당신은 15 달러의 미화를받을 것으로 예상됩니다. 동일한 개념이 비트 코인 트랜잭션 입력에도 적용됩니다. 5 비트 코스트는 들었지만 사용하려면 20 비트 코만만 입력 한 항목을 구입 한 경우 5 비트 코인의 한 출력을 상점 소유자에게 보내고 15 비트 코인의 한 출력은 변경 사항 (적용 가능한 거래 수수료 제외)으로 직접 보냅니다. 중요하게도, 변경 주소는 입력 주소와 동일한 주소 일 필요는 없으며 개인 정보 보호를 위해 소유자의 지갑에서 새 주소를 입력하는 경우가 많습니다.
 
-Different wallets may use different strategies when aggregating inputs to make a payment requested by the user. They might aggregate many small inputs, or use one that is equal to or larger than the desired payment. Unless the wallet can aggregate inputs in such a way to exactly match the desired payment plus transaction fees, the wallet will need to generate some change. This is very similar to how people handle cash. If you always use the largest bill in your pocket, you will end up with a pocket full of loose change. If you only use the loose change, you'll always have only big bills. People subconsciously find a balance between these two extremes, and bitcoin wallet developers strive to program this balance.
+다른 지갑은 입력을 집계하여 사용자가 요청한 지불을 할 때 다른 전략을 사용할 수 있습니다. 그들은 많은 작은 입력을 모으거나 원하는 지불액과 같거나 더 큰 것을 사용할 수 있습니다. 지갑이 원하는 지불과 거래 수수료를 정확히 일치시키는 방식으로 입력을 집계 할 수 없다면 지갑은 약간의 변경을 생성해야합니다. 이는 사람들이 현금을 취급하는 것과 매우 유사합니다. 당신이 항상 주머니에서 가장 큰 청구서를 사용한다면, 당신은 느슨한 변화로 가득한 주머니로 끝날 것입니다. 느슨한 변경 만 사용하면 항상 큰 지폐가 생깁니다. 사람들은 무의식적으로이 두 극단의 균형을 찾으며 비트 동전 지갑 개발자는 이러한 균형을 프로그램하려고 노력합니다.
 
-((("transactions", "defined")))((("outputs and inputs", "defined")))((("inputs", see="outputs and inputs")))In summary, _transactions_ move value from _transaction inputs_ to _transaction outputs_. An input is a reference to a previous transaction's output, showing where the value is coming from. A transaction output directs a specific value to a new owner's bitcoin address and can include a change output back to the original owner. Outputs from one transaction can be used as inputs in a new transaction, thus creating a chain of ownership as the value is moved from owner to owner (see <<blockchain-mnemonic>>).
+((("transactions", "defined")))((("outputs and inputs", "defined")))((("inputs", see="outputs and inputs")))요약하면, _transactions_ move (( "트랜잭션", "정의" _transaction 입력 _에서 _ 트랜잭션 출력 _ 값. 입력은 이전 트랜잭션의 출력에 대한 참조이며 값의 출처를 나타냅니다. 트랜잭션 출력은 특정 값을 새 소유자의 비트 코인 주소로 보내며 원래 소유자에게 변경 출력을 포함 할 수 있습니다. 한 트랜잭션의 출력을 새 트랜잭션의 입력으로 사용할 수 있으므로 값이 소유자에서 소유자로 이동함에 따라 소유권 체인이 만들어집니다 (<< blockchain-mnemonic >> 참조).
 
-==== Common Transaction Forms
+==== 공통 거래 양식
 
-The most common form of transaction is a simple payment from one address to another, which often includes some "change" returned to the original owner. This type of transaction has one input and two outputs and is shown in <<transaction-common>>.
+가장 일반적인 거래 형태는 한 주소에서 다른 주소로 간단하게 지불하는 것입니다.이 주소는 종종 원래 소유자에게 반환되는 "변경"을 포함합니다. 이 트랜잭션 유형은 하나의 입력과 두 개의 출력을 가지며 << transaction-common >>에 표시됩니다.
 
-[[transaction-common]]
-.Most common transaction
-image::images/mbc2_0205.png["Common Transaction"]
+[[거래 - 공통]]
+가장 일반적인 거래
+image::images/mbc2_0205.png[ "공통 거래"]
 
-Another common form of transaction is one that aggregates several inputs into a single output (see <<transaction-aggregating>>). This represents the real-world equivalent of exchanging a pile of coins and currency notes for a single larger note. Transactions like these are sometimes generated by wallet applications to clean up lots of smaller amounts that were received as change for payments.
+트랜잭션의 또 다른 일반적인 형식은 여러 입력을 단일 출력으로 집계하는 것입니다 (<< transaction-aggregating >> 참조). 이것은 하나의 큰 메모를 위해 동전 더미와 통화 메모를 교환하는 현실 세계를 나타냅니다. 이와 같은 거래는 월렛 애플리케이션에서 지불을위한 변경으로받은 많은 금액을 정리하기 위해 생성됩니다.
 
-[[transaction-aggregating]]
-.Transaction aggregating funds
-image::images/mbc2_0206.png["Aggregating Transaction"]
+[[거래 집계]]
+. 자금 조달 자금
+image::images/mbc2_0206.png [ "Aggregating Transaction"]
 
-Finally, another transaction form that is seen often on the bitcoin ledger is a transaction that distributes one input to multiple outputs representing multiple recipients (see <<transaction-distributing>>). This type of transaction is sometimes used by commercial entities to distribute funds, such as when processing payroll payments to multiple employees.((("", startref="Tover02"))) 
+마지막으로 bitcoin ledger에서 자주 볼 수있는 또 다른 트랜잭션 형식은 하나의 입력을 여러 수신자를 나타내는 여러 출력에 분배하는 트랜잭션입니다 (<< transaction-distributing >> 참조). 이러한 유형의 거래는 종종 여러 종업원에게 급여 지급을 처리 할 때와 같이 상업 기관에서 자금을 분배하는 데 사용됩니다. (( "startref ="Tover02 ")))
 
-[[transaction-distributing]]
-.Transaction distributing funds
-image::images/mbc2_0207.png["Distributing Transaction"]
+[[거래 분배]]
+자금을 배포하는 거래
+image::images/mbc2_0207.png [ "배포 거래"]
 
-=== Constructing a Transaction
+=== 트랜잭션 구성하기
 
-((("transactions", "constructing", id="Tconstruct02")))((("wallets", "constructing transactions")))Alice's wallet application contains all the logic for selecting appropriate inputs and outputs to build a transaction to Alice's specification. Alice only needs to specify a destination and an amount, and the rest happens in the wallet application without her seeing the details. Importantly, a wallet application can construct transactions even if it is completely offline. Like writing a check at home and later sending it to the bank in an envelope, the transaction does not need to be constructed and signed while connected to the bitcoin network.
+((("transactions", "constructing", id="Tconstruct02")))((("wallets", "constructing transactions")))Alice의 Wallet 애플리케이션에는 트랜잭션을 작성하기위한 적절한 입력 및 출력을 선택하는 모든 로직이 포함되어 있습니다 (( "("transactions ","constructing ", id ="Tconstruct02 ")))) 앨리스의 사양에 앨리스는 목적지와 금액을 지정하기 만하면됩니다. 나머지는 세부 사항을 보지 않고도 지갑 응용 프로그램에서 발생합니다. 중요하게도, Wallet 애플리케이션은 완전히 오프라인 인 경우에도 트랜잭션을 생성 할 수 있습니다. 집에서 수표를 쓰고 나중에 은행에 봉투로 보내는 것처럼 비트 코인 네트워크에 연결되어있는 동안 트랜잭션을 구성하고 서명 할 필요가 없습니다.
 
-==== Getting the Right Inputs
+==== 올바른 입력 방법 얻기
 
-((("outputs and inputs", "locating and tracking inputs")))Alice's wallet application will first have to find inputs that can pay for the amount she wants to send to Bob. Most wallets keep track of all the available outputs belonging to addresses in the wallet. Therefore, Alice's wallet would contain a copy of the transaction output from Joe's transaction, which was created in exchange for cash (see <<getting_first_bitcoin>>). A bitcoin wallet application that runs as a full-node client actually contains a copy of every unspent output from every transaction in the blockchain. This allows a wallet to construct transaction inputs as well as quickly verify incoming transactions as having correct inputs. However, because a full-node client takes up a lot of disk space, most user wallets run "lightweight" clients that track only the user's own unspent outputs. 
-	
-If the wallet application does not maintain a copy of unspent transaction outputs, it can query the bitcoin network to retrieve this information using a variety of APIs available by different providers or by asking a full-node using an application programming interface (API) call. <<example_2-2>> shows a API request, constructed as an HTTP GET command to a specific URL. This URL will return all the unspent transaction outputs for an address, giving any application the information it needs to construct transaction inputs for spending. We use the simple command-line HTTP client _cURL_ to retrieve the response.
+((("outputs and inputs", "locating and tracking inputs")))Alice의 Wallet 응용 프로그램은 먼저 Bob에게 보낼 금액을 지불 할 수있는 입력을 찾아야합니다. 대부분의 지갑은 지갑의 주소에 속한 사용 가능한 모든 출력을 추적합니다. 그러므로 Alice의 지갑에는 Joe의 거래에서 나온 현금으로 교환 된 트랜잭션 출력 사본이 들어 있습니다 (<< getting_first_bitcoin >> 참조). 전체 노드 클라이언트로 실행되는 비트 동전 지갑 응용 프로그램에는 실제로 블록 체인에있는 모든 트랜잭션의 사용되지 않은 모든 출력 사본이 들어 있습니다. 이를 통해 지갑은 트랜잭션 입력을 구성 할뿐만 아니라 들어오는 트랜잭션을 올바른 입력으로 신속하게 확인합니다. 그러나 전체 노드 클라이언트가 많은 디스크 공간을 차지하므로 대부분의 사용자 Wallet은 사용자 자신의 미사용 출력 만 추적하는 "경량"클라이언트를 실행합니다.
 
-[[example_2-2]]
-.Look up all the unspent outputs for Alice's bitcoin address
+지갑 응용 프로그램이 사용되지 않은 트랜잭션 출력 사본을 유지 관리하지 않으면 다른 공급 업체가 제공하는 다양한 API를 사용하거나 API (Application Programming Interface) 호출을 사용하여 전체 노드에 요청하여 비트 코인 네트워크를 조회하여이 정보를 검색 할 수 있습니다. << example_2-2 >>는 특정 URL에 대한 HTTP GET 명령으로 생성 된 API 요청을 보여줍니다. 이 URL은 주소에 대한 사용되지 않은 모든 트랜잭션 출력을 반환하여 모든 응용 프로그램에 지출을위한 트랜잭션 입력을 구성하는 데 필요한 정보를 제공합니다. 간단한 명령 행 HTTP 클라이언트 _cURL_을 사용하여 응답을 검색합니다.
+
+[[예제 2-2-2]]
+. 앨리스의 비트 코인 주소에 대한 사용하지 않은 모든 출력을 확인하십시오.
 ====
 [source,bash]
 ----
@@ -180,29 +182,28 @@ $ curl https://blockchain.info/unspent?active=1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK
 ----
 
 
-The response in <<example_2-2>> shows one unspent output (one that has not been redeemed yet) under the ownership of Alice's address +1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK+. The response includes the reference to the transaction in which this unspent output is contained (the payment from Joe) and its value in satoshis, at 10 million, equivalent to 0.10 bitcoin. With this information, Alice's wallet application can construct a transaction to transfer that value to new owner addresses.
+<< example_2-2 >>의 응답은 Alice의 주소 + 1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK +의 소유권에 따라 사용되지 않은 출력 (아직 회수되지 않은 출력)을 보여줍니다. 응답에는이 사용되지 않은 결과가 포함 된 트랜잭션 (조 (Joe)의 지불)과 0.10 비트 코마에 해당하는 1000 만 개의 사 토시 (satoshis) 값이 포함됩니다. 이 정보를 사용하여 Alice의 Wallet 애플리케이션은 트랜잭션을 구성하여 해당 값을 새 소유자 주소로 전송할 수 있습니다.
 
-[TIP]
+[팁]
 ====
-View the http://bit.ly/1tAeeGr[transaction from Joe to Alice].
+Jbit에서 Alice 로의 http://bit.ly/1tAeeGr[transaction을 봅니다.
 ====
 
-As you can see, Alice's wallet contains enough bitcoin in a single unspent output to pay for the cup of coffee. Had this not been the case, Alice's wallet application might have to "rummage" through a pile of smaller unspent outputs, like picking coins from a purse until it could find enough to pay for the coffee. In both cases, there might be a need to get some change back, which we will see in the next section, as the wallet application creates the transaction outputs (payments).
+보시다시피 Alice의 지갑에는 커피 한 잔을 지불하기 위해 소비되지 않은 단일 출력에 충분한 비트 코인이 들어 있습니다. 이런 경우가 아니라면 Alice의 지갑 응용 프로그램은 지갑에서 동전을 뽑아 커피를 지불 할만큼 충분히 찾을 수있을 때까지 작은 소비되지 않은 출력 더미를 "샅샅이 뒤 져야"할 수 있습니다. 두 경우 모두 Wallet 응용 프로그램이 트랜잭션 출력 (지불)을 작성하기 때문에 다음 섹션에서 볼 수있는 몇 가지 변경 사항을 다시 가져올 필요가있을 수 있습니다.
 
+==== 출력 생성하기
 
-==== Creating the Outputs
+((("outputs and inputs", "creating outputs")))트랜잭션 출력은 값에 간섭을 일으키고 스크립트에 대한 해결책 도입으로 만 회수 할 수있는 스크립트 형태로 생성됩니다. 간단히 말해서 Alice의 트랜잭션 출력에는 "Bob의 공개 주소에 해당하는 키에서 서명을 제공 할 수있는 사람에게 지불 할 수 있습니다."와 같은 스크립트가 포함됩니다. Bob에만 해당 주소에 해당하는 키가있는 지갑이 있기 때문에 Bob의 지갑 만이 출력을 사용할 수있는 서명을 제공 할 수 있습니다. 따라서 Alice는 Bob의 서명 요구로 출력 값을 "방해"합니다.
 
-((("outputs and inputs", "creating outputs")))A transaction output is created in the form of a script that creates an encumbrance on the value and can only be redeemed by the introduction of a solution to the script. In simpler terms, Alice's transaction output will contain a script that says something like, "This output is payable to whoever can present a signature from the key corresponding to Bob's public address." Because only Bob has the wallet with the keys corresponding to that address, only Bob's wallet can present such a signature to redeem this output. Alice will therefore "encumber" the output value with a demand for a signature from Bob. 
+Alice의 자금은 0.10 BTC 출력의 형태로되어 있기 때문에이 트랜잭션에는 두 번째 출력이 포함됩니다. 이는 0.015 BTC 커피 용으로 너무 많은 금액입니다. Alice는 변경시 0.085 BTC가 필요합니다. Alice의 변경 지불은 Alice의 지갑이 Bob에게 지불하는 것과 동일한 트랜잭션에서 산출물로 생성됩니다. 본질적으로, Alice의 지갑은 그녀의 자금을 두 개의 지불로 나눕니다. 하나는 Bob으로, 다른 하나는 자신에게 돌아갑니다. 그런 다음 후속 트랜잭션에서 변경 출력을 사용 (소비) 할 수 있습니다.
 
-This transaction will also include a second output, because Alice's funds are in the form of a 0.10 BTC output, too much money for the 0.015 BTC cup of coffee. Alice will need 0.085 BTC in change. Alice's change payment is created by Alice's wallet as an output in the very same transaction as the payment to Bob. Essentially, Alice's wallet breaks her funds into two payments: one to Bob and one back to herself. She can then use (spend) the change output in a subsequent transaction.
+마지막으로, 트랜잭션이 적시에 네트워크에서 처리되도록하려면 Alice의 지갑 응용 프로그램에 약간의 수수료가 추가됩니다. 이것은 트랜잭션에서 명시 적이지 않습니다. 그것은 입력과 출력의 차이에 의해 암시된다. 0.085를 변경하는 대신 Alice가 두 번째 출력으로 0.0845 만 생성하면 0.0005 BTC (반 밀리비티 동전)가 남습니다. 입력의 0.10 BTC는 두 출력과 함께 완전히 소비되지 않습니다. 왜냐하면 0.10 미만으로 합쳐지기 때문입니다. 결과 차이는 블록 체인에 기록 된 블록의 거래를 확인하고 확인하는 비용으로 광부가 수집 한 _ 거래 수수료 _입니다.
 
-Finally, for the transaction to be processed by the network in a timely fashion, Alice's wallet application will add a small fee. This is not explicit in the transaction; it is implied by the difference between inputs and outputs. If instead of taking 0.085 in change, Alice creates only 0.0845 as the second output, there will be 0.0005 BTC (half a millibitcoin) left over. The input's 0.10 BTC is not fully spent with the two outputs, because they will add up to less than 0.10. The resulting difference is the _transaction fee_ that is collected by the miner as a fee for validating and including the transaction in a block to be recorded on the blockchain.
-
-The resulting transaction can be seen using a blockchain explorer web application, as shown in <<transaction-alice>>.
+결과 트랜잭션은 << transaction-alice >>와 같이 블록 체인 탐색기 웹 응용 프로그램을 사용하여 볼 수 있습니다.
 
 [[transaction-alice]]
 [role="smallerseventyfive"]
-.Alice's transaction to Bob's Cafe
+.앨리스와 밥스 카페 거래
 image::images/mbc2_0208.png["Alice Coffee Transaction"]
 
 [[transaction-alice-url]]
@@ -211,78 +212,78 @@ image::images/mbc2_0208.png["Alice Coffee Transaction"]
 View the http://bit.ly/1u0FIGs[transaction from Alice to Bob's Cafe].
 ====
 
-==== Adding the Transaction to the Ledger
+==== 회계 원장에 거래 추가
 
-The transaction created by Alice's wallet application is 258 bytes long and contains everything necessary to confirm ownership of the funds and assign new owners. Now, the transaction must be transmitted to the bitcoin network where it will become part of the blockchain. In the next section we will see how a transaction becomes part of a new block and how the block is "mined." Finally, we will see how the new block, once added to the blockchain, is increasingly trusted by the network as more blocks are added.
+Alice의 Wallet 애플리케이션에 의해 생성 된 트랜잭션은 258 바이트이며 자금의 소유권을 확인하고 새 소유자를 지정하는 데 필요한 모든 것을 포함합니다. 이제 트랜잭션이 블록 체인의 일부가 될 비트 코닝 네트워크로 전송되어야합니다. 다음 섹션에서는 트랜잭션이 어떻게 새로운 블록의 일부가되고 블록이 "채굴 (mined)"되는지를 살펴볼 것입니다. 마지막으로, 일단 블록 체인에 추가 된 새로운 블록이 더 많은 블록이 추가됨에 따라 네트워크에 의해 점점 더 신뢰받는 것을 볼 수 있습니다.
 
-===== Transmitting the transaction
+===== 거래 전송
 
-((("propagation", "process of")))Because the transaction contains all the information necessary to process, it does not matter how or where it is transmitted to the bitcoin network. The bitcoin network is a peer-to-peer network, with each bitcoin client participating by connecting to several other bitcoin clients. The purpose of the bitcoin network is to propagate transactions and blocks to all participants.
+((("propagation", "process of")))트랜잭션에는 처리에 필요한 모든 정보가 포함되어 있기 때문에 비트 코인 네트워크로 전송되는 방법 또는 위치는 중요하지 않습니다. 비트 코인 네트워크는 피어 투 피어 네트워크이며 각 비트 코인 클라이언트는 여러 다른 비트 코인 클라이언트에 연결하여 참여합니다. 비트 코인 네트워크의 목적은 모든 참여자에게 트랜잭션과 블록을 전파하는 것입니다.
 
-===== How it propagates
+===== 전파되는 방식
 
-((("bitcoin nodes", "defined")))((("nodes", see="bitcoin nodes")))Any system, such as a server, desktop application, or wallet, that participates in the bitcoin network by "speaking" the bitcoin protocol is called a _bitcoin node_. Alice's wallet application can send the new transaction to any bitcoin node it is connected to over any type of connection: wired, WiFi, mobile, etc.  Her bitcoin wallet does not have to be connected to Bob's bitcoin wallet directly and she does not have to use the internet connection offered by the cafe, though both those options are possible, too. ((("propagation", "flooding technique")))((("flooding technique")))Any bitcoin node that receives a valid transaction it has not seen before will immediately forward it to all other nodes to which it is connected, a propagation technique known as _flooding_. Thus, the transaction rapidly propagates out across the peer-to-peer network, reaching a large percentage of the nodes within a few seconds.
+((("bitcoin nodes", "defined")))((("nodes", see="bitcoin nodes")))비트 코인 네트워크에 참여하는 서버, 데스크톱 응용 프로그램 또는 지갑과 같은 모든 시스템 (( "비트 코인 노드", "정의 됨")))) (( "노드", "비트 코인 노드"참조)) 비트 코인 (bitcoin) 프로토콜을 "말하기 (speaking)"하는 것을 _bitcoin 노드라고합니다. Alice의 지갑 응용 프로그램은 유선, WiFi, 모바일 등 모든 유형의 연결을 통해 연결된 모든 비트 코인 노드에 새 트랜잭션을 전송할 수 있습니다. 비트 코인 지갑은 Bob의 비트 동전 지갑에 직접 연결할 필요가 없으며 카페에서 제공하는 인터넷 연결을 사용하십시오. 두 옵션 모두 가능합니다. (( "flooding technique"))) 이전에 보지 못했던 유효한 트랜잭션을 수신하는 모든 비트 코인 노드는 연결되어있는 다른 모든 노드로 즉시 전달할 것입니다 (( "propagation", "flooding technique")) , _flooding_으로 알려진 전파 기술. 따라서 트랜잭션은 피어 투 피어 네트워크를 통해 빠르게 전파되어 몇 초 내에 많은 노드에 도달합니다.
 
-===== Bob's view
+===== Bob의 견해
 
-If Bob's bitcoin wallet application is directly connected to Alice's wallet application, Bob's wallet application might be the first node to receive the transaction. However, even if Alice's wallet sends the transaction through other nodes, it will reach Bob's wallet within a few seconds. Bob's wallet will immediately identify Alice's transaction as an incoming payment because it contains outputs redeemable by Bob's keys. Bob's wallet application can also independently verify that the transaction is well formed, uses previously unspent inputs, and contains sufficient transaction fees to be included in the next block. At this point Bob can assume, with little risk, that the transaction will shortly be included in a block and confirmed.
+Bob의 Bitcoin Wallet 응용 프로그램이 Alice의 Wallet 응용 프로그램에 직접 연결되어있는 경우 Bob의 Wallet 응용 프로그램이 트랜잭션을 수신하는 첫 번째 노드 일 수 있습니다. 그러나 Alice의 지갑이 다른 노드를 통해 트랜잭션을 보내는 경우에도 몇 초 내에 Bob의 지갑에 도달하게됩니다. Bob의 지갑은 Alice의 트랜잭션을 Bob의 키로 회수 할 수있는 출력을 포함하기 때문에 즉시 수신 트랜잭션으로 식별합니다. 또한 Bob의 Wallet 응용 프로그램은 트랜잭션이 제대로 구성되었는지 여부를 독립적으로 확인할 수 있으며 이전에 사용하지 않은 입력을 사용하고 다음 블록에 포함될 충분한 트랜잭션 수수료를 포함합니다. 이 시점에서 Bob은 위험이 거의 없으며 거래가 곧 블록에 포함되고 확정 될 것이라고 추정 할 수 있습니다.
 
-[TIP]
+[팁]
 ====
-((("confirmations", "of small-value transactions", secondary-sortas="small-value transactions")))A common misconception about bitcoin transactions is that they must be "confirmed" by waiting 10 minutes for a new block, or up to 60 minutes for a full six confirmations. Although confirmations ensure the transaction has been accepted by the whole network, such a delay is unnecessary for small-value items such as a cup of coffee. A merchant may accept a valid small-value transaction with no confirmations, with no more risk than a credit card payment made without an ID or a signature, as merchants routinely accept today.((("", startref="Tconstruct02")))
+((("confirmations", "of small-value transactions", secondary-sortas="small-value transactions")))비트 동전 거래에 대한 일반적인 오해는 새로운 블록을 10 분 동안 기다려야 "확인"되어야한다는 것입니다 , 전체 6 회의 확인을 위해 최대 60 분. 확인을 통해 거래가 전체 네트워크에 의해 승인되었음을 확신 할지라도, 커피 한 잔과 같은 작은 값의 항목에는 그러한 지연이 필요하지 않습니다. 상인은 오늘날 상인이 일상적으로 승인하는 바와 같이 ID 또는 서명없이 신용 카드로 지불하는 것보다 위험이 없으며, 확인이없는 유효한 소액 거래를 수락 할 수 있습니다.((("", startref="Tconstruct02")))
 ====
 
 === Bitcoin Mining
 
-((("mining and consensus", "overview of", id="MACover02")))((("blockchain (the)", "overview of mining", id="BToverview02")))Alice's transaction is now propagated on the bitcoin network. It does not become part of the _blockchain_ until it is verified and included in a block by a process called _mining_. See <<mining>> for a detailed explanation. 
+((("mining and consensus", "overview of", id="MACover02")))((("blockchain (the)", "overview of mining", id="BToverview02")))앨리스의 거래는 현재 ( "("광산 및 합의, "개요", id = "MACover02" 비트 코인 네트워크상에서 전파된다. _mining_이라는 프로세스에 의해 블록에 포함되고 검증 될 때까지 _blockchain_의 일부가됩니다. 자세한 설명은 << 마이닝 >>을 참조하십시오.
 
-The bitcoin system of trust is based on computation. Transactions are bundled into _blocks_, which require an enormous amount of computation to prove, but only a small amount of computation to verify as proven. The mining process serves two purposes in bitcoin:
+신뢰의 비트 코인 시스템은 계산을 기반으로합니다. 트랜잭션은 증명하기 위해 엄청난 양의 계산이 필요한 _blocks_에 번들로 제공되지만 검증 된 것으로 확인하기 위해서는 계산량이 적습니다. 광업 프로세스는 비트 코인의 두 가지 목적을 수행합니다.
 
-* ((("mining and consensus", "consensus rules", "security provided by")))((("consensus", see="mining and consensus")))Mining nodes validate all transactions by reference to bitcoin's _consensus rules_. Therefore, mining provides security for bitcoin transactions by rejecting invalid or malformed transactions.
-* Mining creates new bitcoin in each block, almost like a central bank printing new money. The amount of bitcoin created per block is limited and diminishes with time, following a fixed issuance schedule.
+* ((("mining and consensus", "consensus rules", "security provided by")))((("consensus", see="mining and consensus")))광업 노드는 비트 코인의 _consensus를 참조하여 모든 거래의 유효성을 검사합니다. ((("광업 및 합의 ","합의 규칙 ","보안 제공 " rules_. 따라서 마이닝은 유효하지 않거나 조작 된 트랜잭션을 거부하여 비트 동전 트랜잭션에 대한 보안을 제공합니다.
+* 광업은 중앙 은행이 새로운 돈을 인쇄하는 것처럼 거의 각 블록에 비트 코인을 만듭니다. 고정 된 발행 일정에 따라 블록 당 생성되는 비트 코 인량은 제한적이며 시간이 지남에 따라 감소합니다.
 
 
-Mining achieves a fine balance between cost and reward. Mining uses electricity to solve a mathematical problem. A successful miner will collect a _reward_ in the form of new bitcoin and transaction fees. However, the reward will only be collected if the miner has correctly validated all the transactions, to the satisfaction of the rules of _consensus_. This delicate balance provides security for bitcoin without a central authority.
+광업은 비용과 보상 사이의 균형을 잘 맞 춥니 다. 광업은 전기를 사용하여 수학 문제를 해결합니다. 성공한 광부는 새로운 비트 코인 및 거래 수수료 형태로 _reward_를 수집합니다. 그러나 광부가 _consensus_의 규칙을 충족시키기 위해 모든 거래의 유효성을 올바르게 검증 한 경우에만 보상금이 수금됩니다. 이 섬세한 균형은 중앙 권위없이 비트 코인에 대한 보안을 제공합니다.
 
-A good way to describe mining is like a giant competitive game of sudoku that resets every time someone finds a solution and whose difficulty automatically adjusts so that it takes approximately 10 minutes to find a solution. Imagine a giant sudoku puzzle, several thousand rows and columns in size. If I show you a completed puzzle you can verify it quite quickly. However, if the puzzle has a few squares filled and the rest are empty, it takes a lot of work to solve! The difficulty of the sudoku can be adjusted by changing its size (more or fewer rows and columns), but it can still be verified quite easily even if it is very large. The "puzzle" used in bitcoin is based on a cryptographic hash and exhibits similar characteristics: it is asymmetrically hard to solve but easy to verify, and its difficulty can be adjusted.
+광산을 묘사하는 좋은 방법은 누군가가 해결책을 찾고 그 어려움이 자동으로 조정될 때마다 재설정하여 해결책을 찾는 데 약 10 분이 걸리는 스도쿠의 거대한 경쟁 게임과 같습니다. 거대한 스도쿠 퍼즐, 수천 개의 행과 열을 상상해보십시오. 완성 된 퍼즐을 보여 주면 아주 빨리 확인할 수 있습니다. 그러나 퍼즐에 몇 개의 사각형이 채워지고 나머지가 비어 있으면 해결하기 위해 많은 노력이 필요합니다! 스도쿠의 난이도는 크기 (행 또는 열이 많거나 적음)를 변경하여 조정할 수 있지만 매우 큰 경우에도 쉽게 확인할 수 있습니다. 비트 코인에 사용되는 "퍼즐"은 암호화 해시를 기반으로하며 유사한 특성을 나타냅니다. 비대칭으로는 해결하기는 어렵지만 확인하기 쉽고 어려움을 조정할 수 있습니다.
 
-((("mining and consensus", "mining farms and pools")))In <<user-stories>>, we introduced ((("use cases", "mining for bitcoin")))Jing, an entrepreneur in Shanghai. Jing runs a _mining farm_, which is a business that runs thousands of specialized mining computers, competing for the reward. Every 10 minutes or so, Jing's mining computers compete against thousands of similar systems in a global race to find a solution to a block of transactions. ((("Proof-of-Work algorithm")))((("mining and consensus", "Proof-of-Work algorithm")))Finding such a solution, the so-called _Proof-of-Work_ (PoW), requires quadrillions of hashing operations per second across the entire bitcoin network. The algorithm for Proof-of-Work involves repeatedly hashing the header of the block and a random number with the SHA256 cryptographic algorithm until a solution matching a predetermined pattern emerges. The first miner to find such a solution wins the round of competition and publishes that block into the blockchain.
+((("mining and consensus", "mining farms and pools")))<< 사용자 이야기 >>에서 우리는 (("유스 케이스 ","광산 용 광산 ")))의 기업가 인 Jing을 소개했습니다. 상해. Jing은 수천 개의 전문 광산 컴퓨터를 운영하는 비즈니스 인 _mining farm_을 운영하여 보상을 얻고 있습니다. 매 10 분마다 Jing의 광산 컴퓨터는 글로벌 경쟁에서 수천 개의 유사한 시스템과 경쟁하여 트랜잭션 블록에 대한 솔루션을 찾습니다. ((( "광업과 공감대", "Proof-of-Work 알고리즘"))) 소위 말하는 _Proof-of-Work_ (PoW ), 비트 코인 네트워크 전체에서 초당 해시 연산이 필요합니다. Proof-of-Work 알고리즘은 미리 결정된 패턴과 일치하는 솔루션이 나올 때까지 SHA256 암호화 알고리즘으로 블록 헤더와 난수를 반복 해싱합니다. 이러한 솔루션을 찾는 첫 번째 광부가 경쟁 라운드에서 우승하고 해당 블록을 블록 체인에 게시합니다.
 
-Jing started mining in 2010 using a very fast desktop computer to find a suitable Proof-of-Work for new blocks. As more miners started joining the bitcoin network, the difficulty of the problem increased rapidly. Soon, Jing and other miners upgraded to more specialized hardware, such as high-end dedicated graphical processing units (GPUs) cards such as those used in gaming desktops or consoles. At the time of this writing, the difficulty is so high that it is profitable only to mine with ((("application-specific integrated circuits (ASIC)")))application-specific integrated circuits (ASIC), essentially hundreds of mining algorithms printed in hardware, running in parallel on a single silicon chip. ((("mining pools", "defined")))Jing's company also participates in a _mining pool_, which much like a lottery pool allows several participants to share their efforts and rewards. Jing's company now runs a warehouse containing thousands of  ASIC miners to mine for bitcoin 24 hours a day. The company pays its electricity costs by selling the bitcoin it is able to generate from mining, creating some income from the profits.
+Jing은 2010 년에 매우 빠른 데스크톱 컴퓨터를 사용하여 새 블록에 적합한 작업 증명을 찾는 작업을 시작했습니다. 광부들이 광역 네트워크에 합류하기 시작하면서 문제의 어려움이 급속히 증가했습니다. 곧 Jing과 다른 광부들은 게임 데스크탑이나 콘솔에 사용되는 고급 GPU (graphic processing unit) 카드와 같은보다 특수화 된 하드웨어로 업그레이드했습니다. 이 글을 쓸 당시에는 어려움이 너무 커서 ( "("ASIC (Application-Specific Integrated Circuits) "))) ASIC (Application-Specific Integrated Circuit), 수백 가지의 마이닝 알고리즘 하드웨어로 인쇄되어 단일 실리콘 칩에서 병렬로 실행됩니다. (( "마이닝 풀", "정의 된"))) Jing의 회사는 또한 복권 풀처럼 많은 참가자가 자신의 노력과 보상을 공유 할 수있는 _ 수영장 _에 참여합니다. Jing의 회사는 현재 ASIC 광부가 수천 명이 들어있는 창고를 운영하여 하루 24 시간 bitcoin을 처리합니다. 회사는 광업에서 생산할 수있는 비트 코인을 팔아 전기 비용을 지불하고 이익에서 약간의 소득을 창출합니다.
 
-=== Mining Transactions in Blocks
+=== 블록 내 마이닝 트랜잭션
 
-((("blocks", "mining transactions in")))New transactions are constantly flowing into the network from user wallets and other applications. As these are seen by the bitcoin network nodes, they get added to a temporary pool of unverified transactions maintained by each node. As miners construct a new block, they add unverified transactions from this pool to the new block and then attempt to prove the validity of that new block, with the mining algorithm (Proof-of-Work). The process of mining is explained in detail in <<mining>>.
+((("blocks", "mining transactions in")))새로운 거래가 사용자 지갑 및 기타 애플리케이션에서 네트워크로 끊임없이 유입되고 있습니다. 이들은 비트 코인 네트워크 노드에서 볼 수 있으므로 각 노드가 관리하는 확인되지 않은 트랜잭션의 임시 풀에 추가됩니다. 광부가 새로운 블록을 구성하면이 풀에서 확인되지 않은 트랜잭션을 새 블록에 추가 한 다음 마이닝 알고리즘 (Proof-of-Work)을 사용하여 새 블록의 유효성을 증명하려고 시도합니다. 채광 과정은 << 채광 >>에서 자세히 설명합니다.
 
-Transactions are added to the new block, prioritized by the highest-fee transactions first and a few other criteria. Each miner starts the process of mining a new block of transactions as soon as he receives the previous block from the network, knowing he has lost that previous round of competition. He immediately creates a new block, fills it with transactions and the fingerprint of the previous block, and starts calculating the Proof-of-Work for the new block. Each miner includes a special transaction in his block, one that pays his own bitcoin address the block reward (currently 12.5 newly created bitcoin) plus the sum of transaction fees from all the transactions included in the block. If he finds a solution that makes that block valid, he "wins" this reward because his successful block is added to the global blockchain and the reward transaction he included becomes spendable. ((("mining pools", "operation of")))Jing, who participates in a mining pool, has set up his software to create new blocks that assign the reward to a pool address. From there, a share of the reward is distributed to Jing and other miners in proportion to the amount of work they contributed in the last round.
+트랜잭션은 새 블록에 추가되며 가장 높은 수수료 트랜잭션 우선 순위와 몇 가지 다른 기준에 우선 순위가 지정됩니다. 각 광부는 네트워크에서 이전 블록을 수신하자마자 새로운 트랜잭션 블록을 채굴하는 프로세스를 시작하여 이전 경쟁 라운드를 잃어버린 사실을 알게됩니다. 그는 즉시 새 블록을 생성하고 트랜잭션 및 이전 블록의 지문으로 채우고 새 블록에 대한 작업 기록 계산을 시작합니다. 각 광부는 자신의 블록에 특별한 거래를 포함하는데, 블록 보상 (현재 12.5 개의 새로 생성 된 비트 코인)에 블록에 포함 된 모든 거래의 거래 수수료 합계를 더한 것입니다. 블록을 유효하게 만드는 해결책을 찾으면 성공한 블록이 글로벌 블록 체인에 추가되고 그에 포함 된 보상 거래가 낭비되기 때문에 그는이 보상을 "이기게됩니다". ((( "광산 웅덩이", "운영"))) 광산 수영장에 참여한 Jing은 보상금을 풀 주소로 할당하는 새로운 블록을 만들기 위해 소프트웨어를 설정했습니다. 거기에서 보상의 몫은 그들이 마지막 라운드에 기여한 일의 양에 비례하여 징 (Jing)과 다른 광부들에게 분배된다.
 
-((("candidate blocks")))((("blocks", "candidate blocks")))Alice's transaction was picked up by the network and included in the pool of unverified transactions. Once validated by the mining software it was included in a new block, called a _candidate block_, generated by Jing's mining pool. All the miners participating in that mining pool immediately start computing Proof-of-Work for the candidate block. Approximately five minutes after the transaction was first transmitted by Alice's wallet, one of Jing's ASIC miners found a solution for the candidate block and announced it to the network. Once other miners validated the winning block they started the race to generate the next block.
+((("candidate blocks")))((("blocks", "candidate blocks")))Alice의 트랜잭션이 네트워크에 의해 선택되어 확인되지 않은 트랜잭션 풀에 포함되었습니다. 일단 마이닝 소프트웨어에 의해 유효성이 확인되면 그것은 Jing의 광산 수영장에서 생성 된 _candidate block_이라는 새로운 블록에 포함되었습니다. 해당 마이닝 풀에 참여하는 모든 광부는 즉시 후보 블록에 대한 작업 증명 계산을 시작합니다. Alice의 지갑이 트랜잭션을 처음 전송 한 지 약 5 분 후, Jing의 ASIC 광부 중 한 명이 후보 블록에 대한 해결책을 발견하고이를 네트워크에 발표했습니다. 다른 광부들이 승리 한 블록을 확인하고 나면 다음 블록을 생성하기위한 경쟁을 시작했습니다.
 
-Jing's winning block became part of the blockchain as block #277316, containing 420 transactions, including Alice's transaction. The block containing Alice's transaction is counted as one "confirmation" of that transaction. 
+Jing의 우승 한 블록은 Alice의 트랜잭션을 포함하여 420 개의 트랜잭션을 포함하는 블록 # 277316과 같은 블록 체인의 일부가되었습니다. Alice의 트랜잭션을 포함하는 블록은 해당 트랜잭션의 "확인"으로 계산됩니다.
 
-[TIP]
+[팁]
 ====
-You can see the block that includes https://blockchain.info/block-height/277316[Alice's transaction].
+https://blockchain.info/block-height/277316[Alice의 거래]가 포함 된 블록을 볼 수 있습니다.
 ====
 
-((("confirmations", "role in transactions")))Approximately 19 minutes later, a new block, #277317, is mined by another miner. Because this new block is built on top of block #277316 that contained Alice's transaction, it added even more computation to the blockchain, thereby strengthening the trust in those transactions. Each block mined on top of the one containing the transaction counts as an additional confirmation for Alice's transaction. As the blocks pile on top of each other, it becomes exponentially harder to reverse the transaction, thereby making it more and more trusted by the network.
+((("confirmations", "role in transactions")))약 19 분 후에, 새로운 블록 # 277317이 다른 광부에 의해 채굴됩니다. 이 새로운 블록은 앨리스의 트랜잭션이 포함 된 블록 # 277316 위에 구축되었으므로 블록 체인에 더 많은 계산을 추가함으로써 이러한 트랜잭션에 대한 신뢰를 강화합니다. 트랜잭션이 포함 된 블록 위에 채굴 된 각 블록은 Alice의 트랜잭션에 대한 추가 확인으로 간주됩니다. 블록이 서로 겹쳐지면 트랜잭션을 역으로 변환하는 것이 점점 더 어려워지고 네트워크에서 더 많은 신뢰를 얻게됩니다.
 
-((("genesis block")))((("blocks", "genesis block")))((("blockchain (the)", "genesis block")))In the diagram in <<block-alice1>>,  we can see block #277316, which contains Alice's transaction. Below it are 277,316 blocks (including block #0), linked to each other in a chain of blocks (blockchain) all the way back to block #0, known as the _genesis block_. Over time, as the "height" in blocks increases, so does the computation difficulty for each block and the chain as a whole. The blocks mined after the one that contains Alice's transaction act as further assurance, as they pile on more computation in a longer and longer chain. By convention, any block with more than six confirmations is considered irrevocable, because it would require an immense amount of computation to invalidate and recalculate six blocks. We will examine the process of mining and the way it builds trust in more detail in <<mining>>.((("", startref="BToverview02")))((("", startref="MACover02")))
+((("genesis block")))((("blocks", "genesis block")))((("blockchain (the)", "genesis block")))블록 다이어그램에서 "block-alice1"다이어그램에서 (( "("창세기 블록 ")) >>를 선택하면 Alice의 트랜잭션이 포함 된 블록 # 277316을 볼 수 있습니다. 그 아래에는 277,316 개의 블록 (블록 # 0 포함)이 있으며, 블록 체인 (블록 체인)에서 서로 연결되어 _genesis 블록 _으로 알려진 블록 # 0으로 되돌아갑니다. 시간이 지남에 따라 블록의 "높이"가 높아짐에 따라 각 블록과 체인 전체의 계산이 어려워집니다. Alice의 트랜잭션을 포함하는 블록 다음에 채굴 된 블록은 더 길고 긴 체인에서 더 많은 계산을 쌓기 때문에 더 확실한 역할을합니다. 관례 상 6 개 이상의 확인이있는 블록은 취소 불가능한 것으로 간주됩니다. 6 개의 블록을 무효화하고 다시 계산하기 위해 엄청난 양의 계산이 필요하기 때문입니다. << 마이닝 >>에서 마이닝 프로세스 및 신뢰 구축 방식을 자세히 검토합니다 ((("", startref="BToverview02")))((("", startref="MACover02")))
 
 [[block-alice1]]
-.Alice's transaction included in block #277316
+.앨리스의 거래는 블록 # 277316에 포함되어 있습니다.
 image::images/mbc2_0209.png["Alice's transaction included in a block"]
 
-=== Spending the Transaction
+=== 거래 지출
 
-((("spending bitcoin", "simple-payment-verification (SPV)")))((("simple-payment-verification (SPV)")))Now that Alice's transaction has been embedded in the blockchain as part of a block, it is part of the distributed ledger of bitcoin and visible to all bitcoin applications. Each bitcoin client can independently verify the transaction as valid and spendable. Full-node clients can track the source of the funds from the moment the bitcoin were first generated in a block, incrementally from transaction to transaction, until they reach Bob's address. Lightweight clients can do what is called a simplified payment verification (see <<spv_nodes>>) by confirming that the transaction is in the blockchain and has several blocks mined after it, thus providing assurance that the miners accepted it as valid. 
-	
-Bob can now spend the output from this and other transactions. For example, Bob can pay a contractor or supplier by transferring value from Alice's coffee cup payment to these new owners. Most likely, Bob's bitcoin software will aggregate many small payments into a larger payment, perhaps concentrating all the day's bitcoin revenue into a single transaction. This would aggregate the various payments into a single output (and a single address). For a diagram of an aggregating transaction, see <<transaction-aggregating>>. 
-	
-As Bob spends the payments received from Alice and other customers, he extends the chain of transactions. Let's assume that Bob pays his web designer Gopesh((("use cases", "offshore contract services"))) in Bangalore for a new website page. Now the chain of transactions will look like <<block-alice2>>.
+((("spending bitcoin", "simple-payment-verification (SPV)")))((("simple-payment-verification (SPV)")))앨리스의 거래가 다음과 같이 블록 체인에 포함되었으므로 (( "("지출 비트 코인 ","간단한 지불 확인 (SPV) 블록, 그것은 비트 코의 분산 원장의 일부이며 모든 비트 코인 응용 프로그램에서 볼 수 있습니다. 각 Bitcoin 클라이언트는 트랜잭션을 유효하고 소비 가능하다고 독립적으로 확인할 수 있습니다. 전체 노드 클라이언트는 Bitcoin이 트랜잭션에서 트랜잭션으로 점진적으로 블록에서 생성 된 순간부터 Bob의 주소에 도달 할 때까지 자금 출처를 추적 할 수 있습니다. 경량 클라이언트는 트랜잭션이 블록 체인에 있고 그 뒤에 몇 개의 블록이 채워져 있는지 확인하여 간단한 지불 확인 (<< spv_nodes >> 참조)을 수행 할 수 있으므로 광부가 해당 트랜잭션을 유효한 것으로 받아 들일 수 있습니다.
 
-[[block-alice2]]
-.Alice's transaction as part of a transaction chain from Joe to Gopesh
-image::images/mbc2_0210.png["Alice's transaction as part of a transaction chain"]
+Bob은 이제이 트랜잭션 및 다른 트랜잭션의 출력을 보낼 수 있습니다. 예를 들어, Bob은 Alice의 커피 잔 결제 금액을이 새로운 소유자에게 양도함으로써 계약자 또는 공급 업체에게 비용을 지불 할 수 있습니다. 대부분의 경우 Bob의 비트 코인 소프트웨어는 많은 소액 결제를 더 큰 결제로 집계하여 하루 종일 비트 코인 수익을 단일 거래로 집중시킬 수 있습니다. 이것은 다양한 지불을 단일 출력 (및 단일 주소)으로 집계합니다. 집계 트랜잭션 다이어그램은 << transaction-aggregating >>을 참조하십시오.
 
-In this chapter, we saw how transactions build a chain that moves value from owner to owner. We also tracked Alice's transaction, from the moment it was created in her wallet, through the bitcoin network and to the miners who recorded it on the blockchain. In the rest of this book we will examine the specific technologies behind wallets, addresses, signatures, transactions, the network, and finally mining.((("", startref="BCover02")))((("", startref="DCSover02"))) ((("", startref="UCcoffee02")))
+Bob은 Alice 및 다른 고객으로부터받은 지불금을 사용하면서 거래 체인을 확장합니다. 밥이 방갈로르의 웹 사이트 디자이너 인 Gopesh (( "유스 케이스", "오프 쇼어 계약 서비스"))에게 새로운 웹 사이트 페이지를 지불한다고 가정 해 봅시다. 이제 거래 체인은 << block-alice2 >>처럼 보일 것입니다.
+
+[[블록 - 앨리스 2]]
+Joe에서 Gopesh 로의 트랜잭션 체인의 일부로 Alice의 트랜잭션
+image::images/mbc2_0210.png [ "거래 체인의 일부인 Alice의 거래"]
+
+이 장에서는 트랜잭션이 소유자에서 소유자로 가치를 이동시키는 체인을 구축하는 방법을 살펴 보았습니다. 우리는 또한 앨리스의 거래 내역을 지갑에서, 비트 코인 네트워크를 통해, 블록 체인에 기록한 광부들까지 추적했습니다. 이 책의 나머지 부분에서는 지갑, 주소, 서명, 트랜잭션, 네트워크 및 마지막으로 마이닝에 대한 구체적인 기술을 검토합니다 ((("", startref="BCover02")))((("", startref="DCSover02"))) ((("", startref="UCcoffee02")))
